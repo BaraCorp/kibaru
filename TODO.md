@@ -1,7 +1,7 @@
 
 Fonctionalités:
 --------------
-1. Présentation du journaliste (Mot de bienvenu, nom, photo, de Maciré Diop) ;
+1. Présentation du journaliste (Mot de bienvenu, nom, photo, du Client) ;
 2. Publication des articles (Photo et description)
 3. Faire de la publicité ;
 4. Consultation des articles par catégorie ;
@@ -36,4 +36,4 @@ Tâches
     * pub
   - Integration des réseaux sociaux
   - Generation des harchives
-  - 
+
