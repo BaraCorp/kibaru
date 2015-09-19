@@ -18,22 +18,22 @@ Tâches
   choix des coleurs
   
 ### Developpement:
-  - specification des fonctionnalités ou definition des tâches
-  - attribution des tâches
-  - preparation de l'evenvironnement (Création du requirement)
-  - creation du projet et config du settings
-  - modele
-  - preparation des fixtures
-  - templates statics
-    * bannier
+  - Specification des fonctionnalités ou definition des tâches
+  - Attribution des tâches
+  - Preparation de l'evenvironnement (Création du requirement)
+  - Creation du projet et config du settings
+  - Modele
+  - Préparation des fixtures
+  - Templates statics
+    * Bannier
     - Menus et sous menus
-    * details article
+    * Details article
     * Acuiel
     * Apropos
   - Forms
     * Article
     * Apropos
-    * pub
+    * Pub
   - Integration des réseaux sociaux
   - Generation des harchives
 
