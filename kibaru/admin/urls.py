@@ -13,16 +13,10 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
-from site import urls as site_urls
-from admin import urls as admin_urls
+from django.conf.urls import patterns, url
+from kibaru.admin import views
 
-urlpatterns = [
-    url(r'^root/', include(admin.site.urls)),
-    url(r'^admin/', include(admin_urls)),
-    url(r'^', include(site_urls)),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = patterns('',
+                       url(r'^$', views.home, name='home')
+                       )
