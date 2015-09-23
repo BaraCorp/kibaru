@@ -1,0 +1,1 @@
+[{"fields": {"first_name": "Macire", "last_name": "Diop", "image": "", "is_active": true, "is_staff": true, "last_login": "2015-09-23T23:09:55Z", "date_joined": "2015-09-23T23:09:48Z", "password": "macire", "email": "macire@gmail.com", "job_title": "Redacteur en Chef"}, "model": "kibaru.member", "pk": "macire"}]
