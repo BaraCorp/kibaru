@@ -1,4 +1,4 @@
 Django==1.8.4
-django-tinymce==1.5.1b4
+django-tinymce==2.0.5
 Pillow==2.9.0
 py3compat==0.2
