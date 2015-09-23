@@ -2,6 +2,9 @@
 # encoding=utf-8
 # vim: ai ts=4 sts=4 et sw=4 nu
 
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
+
 import datetime
 import re
 
@@ -77,7 +80,7 @@ class Member(AbstractBaseUser):
 
 
 @implements_to_string
-class News(models.Model):
+class New(models.Model):
     """ """
     title = models.CharField(max_length=100, verbose_name=("Titre"))
     comment = models.TextField(blank=True, verbose_name=("Contenu"))
@@ -97,19 +100,39 @@ class Newsletter(models.Model):
     email = models.EmailField(max_length=75, verbose_name=("E-mail"), unique=True)
 
     def __str__(self):
-        return "{email} {slug}".format(email=self.email,
+        return "{email} {date}".format(email=self.email,
                                        date=self.date)
 
 
 @implements_to_string
 class Article(models.Model):
-    slug = models.SlugField("Code", max_length=75, primary_key=True)
+    DRAFT = 'draft'
+    POSTED = 'posted'
+
+    STATUS = {
+        DRAFT: "Brouillon",
+        POSTED: "Publié",
+    }
+    title = models.CharField(max_length=200, verbose_name=("Titre"))
     text = HTMLField(blank=True, verbose_name=("Texte"))
+    image = models.ImageField(upload_to='images_article/', blank=True,
+                              verbose_name=("Photo"))
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
     date = models.DateField(verbose_name=("Fait le"),
                             default=datetime.datetime.today)
 
     category = models.ForeignKey(Category, verbose_name=("Categorie"))
+    status = models.CharField(verbose_name="Status", max_length=50,
+                              choices=STATUS.items())
 
     def __str__(self):
-        return "{slug}".format(slug=self.slug)
+        return "{title} {status}".format(title=self.title, status=self.status)
+
+
+@implements_to_string
+class Publicity(models.Model):
+    image = models.ImageField(upload_to='images_pub/', blank=True,
+                              verbose_name=("Photo"))
+
+    def __str__(self):
+        return self.image.__str__()
