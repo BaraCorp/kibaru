@@ -5,9 +5,33 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
+    color: #828282;
+    background-color: inherit;
 
+    padding-top: 100px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+container {
+    margin-bottom: 10px
+}
 footer {
     margin: 50px 0;
+}
+.navbar-fixed-top {
+  top: 0px;
+  background-color: rgb(0, 52, 6)
+}
+
+#sticky {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+  padding: 0.5ex;
+  background-color: #002104;
+  color: #fff;
+  border-radius: 0.5ex;
+  margin-bottom: 1em;
+}
+#sticky.stick {
+  position: fixed;
+  top: 3.5em;
+  z-index: 10000;
+  border-radius: 0 0 0.5em 0.5em;
 }
