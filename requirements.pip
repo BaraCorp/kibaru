@@ -1,2 +1,4 @@
 Django==1.8.4
-MySQL-python==1.2.5
+django-tinymce==1.5.1b4
+Pillow==2.9.0
+py3compat==0.2
