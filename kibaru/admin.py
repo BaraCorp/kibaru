@@ -4,7 +4,7 @@
 
 from django.contrib import admin
 
-from kibaru.models import Category, Member, News, Article, Newsletter
+from .models import Category, Member, News, Article, Newsletter
 
 admin.site.register(Category)
 admin.site.register(Member)

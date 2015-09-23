@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from site import urls as site_urls
-from admin import urls as admin_urls
+from administation import urls as admin_urls
 
 urlpatterns = [
     url(r'^root/', include(admin.site.urls)),
