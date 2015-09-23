@@ -15,8 +15,8 @@ Tâches
 -----
 ### Design
   choix du template
-  choix des coleurs
-  
+  choix des couleurs
+
 ### Developpement:
   - Specification des fonctionnalités ou definition des tâches
   - Attribution des tâches
@@ -28,12 +28,12 @@ Tâches
     * Bannier
     - Menus et sous menus
     * Details article
-    * Acuiel
-    * Apropos
+    * Accueil
+    * A propos
   - Forms
     * Article
     * Apropos
     * Pub
   - Integration des réseaux sociaux
-  - Generation des harchives
+  - Generation des archives
 
