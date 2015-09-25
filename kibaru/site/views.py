@@ -6,7 +6,7 @@ from kibaru.models import Article, Publicity
 
 def home(request):
     context = {}
-    articles = Article.objects.all()
+    articles = Article.objects.filter(status='posted')
     publicities = Publicity.objects.all()
 
     for article in articles:
