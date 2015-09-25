@@ -41,7 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'kibaru',
     'tinymce',
+    'disqus'
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

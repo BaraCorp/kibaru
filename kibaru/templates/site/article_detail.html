@@ -9,14 +9,14 @@
 
 <div class="post hentry">
 <h1 class="article_post_title entry-title">
-Sales Of iPod Has Break The Records : 2013
+{{ article.title}}
 </h1>
 <div class="article_meta_container post-header">
 <span class="article_author vcard">
-<abbr class="fn">posted by <u><a href="https://plus.google.com/104108638584969442322">Lucky sao</a></u></abbr>
+<abbr class="fn">posted by <u><a href="#">{{ article.author}}</a></u></abbr>
 </span>
 <span class="article_timestamp">
-on 4/21/2015
+on {{ article.date}}
 </span>
 <span class="article_comment_link right">
 <i class="fa fa-comments"></i>
@@ -26,14 +26,12 @@ on 4/21/2015
 <div class="post-body entry-content" id="post-body-592708702398450324">
 <div dir="ltr" style="text-align: left;" trbidi="on">
 <div class="separator" style="clear: both; text-align: center;">
-<a href=src="{% static "700x300.png"%}" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img src="http://3.bp.blogspot.com/-NYE_ochRrZg/VTXyuxhJiXI/AAAAAAAABM4/XfsJo6bjedw/s250/image__651-e1423056358296.jpg" border="0"></a></div>
-Donec et accumsan lectus, non tincidunt arcu. Phasellus tincidunt semper tortor, ut interdum diam commodo ut. Curabitur et magna tellus. Nullam et elit suscipit, iaculis elit sed, bibendum tellus. Curabitur purus ex, sodales ac consequat eu, accumsan id est. Proin sagittis tempus arcu, ac malesuada orci aliquam nec. Donec congue orci eget sem cursus, ac vehicula nisi ornare. Nulla elit nibh, dignissim nec leo non, tempus rhoncus metus.<br>
-<br>
-<br>
-Aliquam imperdiet ac turpis non accumsan. Donec eleifend erat justo, eu tristique erat dignissim sed. Donec quam nisi, pretium nec lacus id, efficitur vehicula metus. Fusce porttitor porta ante, vitae semper nunc ullamcorper eget. Duis vel rutrum lectus. Nullam lobortis euismod odio, at gravida ex varius vel.<br>
-<br>
-Suspendisse elit lacus, condimentum non porta vitae, efficitur id metus. Mauris eu urna sit amet elit auctor egestas sed ac justo. Phasellus ac leo augue. Maecenas faucibus nunc et lobortis tincidunt. Sed sollicitudin feugiat eros eu feugiat. Ut est velit, molestie in dapibus ac, accumsan at dolor. Phasellus sit amet risus in nulla malesuada tristique. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque ut lacinia sem. Mauris scelerisque congue est a rhoncus. Etiam eget lobortis lectus, a vehicula dui.<br>
-<br></div>
+<a href=src="#" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img src="{{ article.image.url}}" border="0"></a></div>
+{% if article %} <html>{{article.text|safe}}</html>
+{% else %}
+    Article à venir...
+{% endif %}
+</div>
 <div style="clear: both;"></div>
 
 {% disqus_show_comments %}

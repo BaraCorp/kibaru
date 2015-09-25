@@ -15,9 +15,6 @@ def home(request):
     for publicity in publicities:
         publicity.url_display = reverse("display_publicity", args=[publicity.id])
     context.update({'articles': articles, 'publicities': publicities})
-
-    print(context)
-    # return HttpResponse("Hello, world. You're at the site home.")
     return render(request, 'site/index.html', context)
 
 
