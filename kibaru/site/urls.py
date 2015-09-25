@@ -5,5 +5,6 @@ from kibaru.site import views
 
 
 urlpatterns = patterns('',
-                       url(r'^$', views.home, name='home')
+                       url(r'^$', views.home, name='home'),
+                       url(r'^detail/$', views.detail, name='detail')
                        )
