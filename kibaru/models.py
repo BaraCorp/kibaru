@@ -22,6 +22,7 @@ from tinymce.models import HTMLField
 
 @implements_to_string
 class Category(models.Model):
+
     """ """
     slug = models.SlugField("Code", max_length=75, primary_key=True)
     name = models.CharField(u"Nom", max_length=150)
@@ -41,7 +42,7 @@ class Member(AbstractBaseUser):
         help_text=_("Required. 50 characters or fewer. "
                     "Letters, numbers and @/./+/-/_ characters"),
         validators=[validators.RegexValidator(re.compile("^[\w.@+-]+$"),
-                    _("Enter a valid username."), "invalid")])
+                                              _("Enter a valid username."), "invalid")])
 
     first_name = models.CharField(max_length=100, blank=True, null=True,
                                   verbose_name=_("First Name"))
@@ -81,6 +82,7 @@ class Member(AbstractBaseUser):
 
 @implements_to_string
 class New(models.Model):
+
     """ """
     title = models.CharField(max_length=100, verbose_name=("Titre"))
     comment = models.TextField(blank=True, verbose_name=("Contenu"))
@@ -94,10 +96,12 @@ class New(models.Model):
 
 @implements_to_string
 class Newsletter(models.Model):
+
     """ """
     date = models.DateField(verbose_name=("Date d'inscription"),
                             default=datetime.datetime.today)
-    email = models.EmailField(max_length=75, verbose_name=("E-mail"), unique=True)
+    email = models.EmailField(
+        max_length=75, verbose_name=("E-mail"), unique=True)
 
     def __str__(self):
         return "{email} {date}".format(email=self.email,
@@ -113,17 +117,28 @@ class Article(models.Model):
         DRAFT: "Brouillon",
         POSTED: "Publié",
     }
+    slug = models.CharField(
+        max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))
     text = HTMLField(blank=True, verbose_name=("Texte"))
     image = models.ImageField(upload_to='images_article/', blank=True,
                               verbose_name=("Photo"))
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
-    date = models.DateField(verbose_name=("Fait le"),
-                            default=datetime.datetime.today)
-
+    date_created = models.DateField(verbose_name=("Fait le"),
+                                    default=datetime.datetime.today)
+    tags = models.CharField(max_length=200)
+    date_modified = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, verbose_name=("Categorie"))
     status = models.CharField(verbose_name="Status", max_length=50,
                               choices=STATUS.items())
+
+    def get_tag_list(self):
+        return re.split(" ", self.tags)
+
+    def save(self, *args, **kwargs):
+
+        self.slug = self.title.replace(" ", "-").lower()
+        super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
         return "{title} {status}".format(title=self.title, status=self.status)

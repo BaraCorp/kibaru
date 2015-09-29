@@ -1,42 +1,36 @@
 {% extends "base.html" %}
-{% load i18n staticfiles disqus_tags %}
+{% load i18n staticfiles disqus_tags%}
 
-{% block title %} index {% endblock %}
+{% block title %} {{ article.title }} {% endblock %}
 
-{% block page-id %}index{% endblock %}
+{% block page-id %} {{ article.id }}{% endblock %}
 
 {% block content %}
 
-<div class="post hentry">
-<h1 class="article_post_title entry-title">
-{{ article.title}}
-</h1>
-<div class="article_meta_container post-header">
-<span class="article_author vcard">
-<abbr class="fn">posted by <u><a href="#">{{ article.author}}</a></u></abbr>
-</span>
-<span class="article_timestamp">
-on {{ article.date}}
-</span>
-<span class="article_comment_link right">
-<i class="fa fa-comments"></i>
-<a href="#comment-form" onclick="">2 comments</a>
-</span>
-</div>
-<div class="post-body entry-content" id="post-body-592708702398450324">
-<div dir="ltr" style="text-align: left;" trbidi="on">
-<div class="separator" style="clear: both; text-align: center;">
-<a href=src="#" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img src="{{ article.image.url}}" border="0"></a></div>
-{% if article %} <html>{{article.text|safe}}</html>
-{% else %}
-    Article à venir...
-{% endif %}
-</div>
-<div style="clear: both;"></div>
-
-{% disqus_show_comments %}
-</div>
-</div>
-<div id="disqus_thread"></div>
-
+    <div class="post hentry">
+        <h1 class="article_post_title entry-title"> {{ article.title }} </h1>
+        <div class="article_meta_container post-header">
+            <span class="article_author vcard">
+                <abbr class="fn">Publier par <u><a href="#">{{ article.author}}</a></u></abbr>
+            </span>
+            <span class="article_timestamp"> le {{ article.date_created }} </span>
+        </div>
+        <div class="post-body entry-content">
+            <div dir="ltr" style="text-align: left;" trbidi="on">
+                <div class="separator" style="clear: both; text-align: center;">
+                    <a href=src="#" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;">
+                    <img style="width: 100%; display: block;" src= {% if article.image %}"{{ article.image.url}}" {% else %} "" {% endif %} border="0"></a>
+                </div>
+                {% if article %}
+                    <html>{{article.text|safe}}</html>
+                {% else %}
+                    Article à venir...
+                {% endif %}
+            </div>
+            <div style="clear: both;"></div>
+            {% disqus_show_comments %}
+        </div>
+    </div>
+    <div id="disqus_thread"></div>
+    <div class="fb-like"></div>
 {% endblock %}
