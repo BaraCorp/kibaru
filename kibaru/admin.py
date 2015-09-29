@@ -6,9 +6,34 @@ from django.contrib import admin
 
 from .models import Category, Member, New, Article, Newsletter, Publicity
 
-admin.site.register(Category)
-admin.site.register(Member)
-admin.site.register(New)
-admin.site.register(Article)
-admin.site.register(Newsletter)
-admin.site.register(Publicity)
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Member)
+class MemberAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(New)
+class NewAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Newsletter)
+class NewsletterAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Publicity)
+class PublicityAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    # fields = ('date_created', 'title', 'category',
+    #           'status', 'tags', 'text', 'image')
+    exclude = ('slug',)

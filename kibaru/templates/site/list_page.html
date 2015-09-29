@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ settings.DISQUS_WEBSITE_SHORTNAME }}
+  {% if subtitle %}|{% endif %}
+  {{ subtitle }}
+{% endblock %}
+
+{% block header1 %}
+  {% if subtitle %}
+    <a href="/article/">{{settings.DISQUS_WEBSITE_SHORTNAME}}</a>
+  {% else %}
+    Kibaru|
+  {% endif %}
+{% endblock %}
+
+{% block header2 %}
+  {{ subtitle }}
+{% endblock %}
+
+{% block  content %}
+  {% for post in post_list %}
+    <h3><a href="{{ post.url_display }}">
+        {{ post.title }}</a>
+    </h3>
+    {{ post.body }}
+    <hr>
+    <div class="post_footer">
+      {% ifnotequal post.date_modified.date post.date_created.date %}
+          Last modified: {{ post.date_modified.date }}<br>
+      {% endifnotequal %}
+      Date created: {{ post.date_created.date }}<br>
+      Tags:
+          {% for tag in post.get_tag_list %}
+            <a href="/article/tag/{{ tag }}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+    </div>
+    <br>
+  {% endfor %}
+{% endblock %}

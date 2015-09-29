@@ -26,9 +26,7 @@ SECRET_KEY = '3(p&^=gsgxk84xf8s4-rqpob41t7rrwp(tqm_enwxr2ov^!bf='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -41,7 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'kibaru',
     'tinymce',
-    'disqus'
+    'disqus',
+    'django.contrib.sites',
+    'menus'
 )
 
 
@@ -76,6 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kibaru.wsgi.application'
 
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases

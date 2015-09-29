@@ -6,8 +6,8 @@
 
 body {
     color: #828282;
-    background-color: inherit;
-
+    line-height: 16px;
+    font: 13px/17px "Roboto",Helvetica,Arial,sans-serif;
     padding-top: 100px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 container {
@@ -34,4 +34,29 @@ footer {
   top: 3.5em;
   z-index: 10000;
   border-radius: 0 0 0.5em 0.5em;
+}
+.grid h3 a, .list h3 a, aside h3 a, .grid .h3 a, .list .h3 a, aside .h3 a, .most-popular .h4 a, .most-popular h4 a, .most-comments .h4 a, .most-comments h4 a, .edition .h3 a, .edition h3 a {
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.25s ease 0s;
+    font-weight: 400;
+}
+.meta {
+    font-size: 11px;
+    line-height: 16px;
+    font-family: Arial;
+    color: #8E8E8F;
+}
+.grid > li, .most-popular li, .edition > div {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border: 1px solid #e3e3e3;
+    float: left;
+    height: 229px;
+    margin: 0 15px 15px 0;
+    overflow: hidden;
+    padding: 8px;
+    position: relative;
+    width: 187px;
 }

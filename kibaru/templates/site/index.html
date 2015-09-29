@@ -26,78 +26,63 @@
     <div class="row well">
         {% if articles %}
         {% for article in articles %}
-        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-            <div class="thumbnail">
-                <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100px; width: 100%; display: block;" src="{% if article.image %}{{ article.image.url}}{% endif %}" data-holder-rendered="true">
-                <div class="caption">
-                    <h3><a href="{{article.url_display}}">{{ article.title}}</a></h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100px; width: 100%; display: block;" src="{% if article.image %}{{ article.image.url}}{% endif %}" data-holder-rendered="true">
+                    <div class="caption">
+                        <h6><a href="{{article.url_display}}">{{ article.title}}</a></h6>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
-    {% else %}
-        Aucun Article publié.
-    {% endif %}
+        {% endfor %}
+        {% else %}
+            Aucun Article publié.
+        {% endif %}
     </div>
     <hr>
 {% endblock %}
 
-
-{% block right %}
-<div class="well">
-    <div class="row">
-        <div id="myCarousel" class="carousel slide">
-      <ol class="carousel-indicators">
-        <li data-target="" data-slide-to="" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <div class="active item">…</div>
-        <div class="item">…</div>
-        <div class="item">…</div>
-      </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-    </div>
-</div>
-<div class="well">
-    <h4>Archives</h4>
-    <ul>
-      <li><a href="#">March 2014</a></li>
-      <li><a href="#">February 2014</a></li>
-      <li><a href="#">January 2014</a></li>
-      <li><a href="#">December 2013</a></li>
-      <li><a href="#">November 2013</a></li>
-      <li><a href="#">October 2013</a></li>
-      <li><a href="#">September 2013</a></li>
-      <li><a href="#">August 2013</a></li>
-      <li><a href="#">July 2013</a></li>
-      <li><a href="#">June 2013</a></li>
-      <li><a href="#">May 2013</a></li>
-      <li><a href="#">April 2013</a></li>
-    </ul>
-    <!-- /.row -->
-</div>
-{% endblock %}
-
-{% block pub %}
-<h4>Publicité</h4>
-{% for publicity in publicities %}
+{% block sidebar %}
     <div class="well">
         <div class="row">
-            <div class="">
-                <a href="{{publicity.url_display}}" class="thumbnail">
-                  <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="...">
-                </a>
-            </div>
+            <div id="myCarousel" class="carousel slide">
+          <ol class="carousel-indicators">
+            <li data-target="" data-slide-to="" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="active item">…</div>
+            <div class="item">…</div>
+            <div class="item">…</div>
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
         </div>
     </div>
-{% endfor %}
+    <div class="well">
+        <!-- <h4>TAGS</h4>
+        {% for line in tag_counts %}
+            <a href="/article/tag/{{ line.tag }}/">{{ line.tag }}</a> ({{ line.count }})<br>
+        {% endfor %}
+        <br> -->
+        <h4>ARCHIVE</h4>
+        {% for line in archive_counts %}
+          {% if line.isyear %}
+            {% if not forloop.first %}
+              <br>
+            {% endif %}
+              <a href="/article/{{ line.year }}/">{{ line.year }}</a> ({{ line.count }})<br>
+          {% else %}
+                <a href="/article/{{ line.yearmonth }}/">{{ line.monthname }}</a> ({{ line.count }})<br>
+          {% endif %}
+        {% endfor %}
+        <!-- /.row -->
+    </div>
 {% endblock %}
 {% block onJQready %}
 
@@ -106,7 +91,4 @@ $('.navbar').affix({
           top: 20
         }
 });
-$('.myCarousel').carousel({
-  interval: 2000
-})
 {% endblock %}
