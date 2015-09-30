@@ -9,66 +9,62 @@
         <title>{% block title %}{{settings.DISQUS_WEBSITE_SHORTNAME}}{% endblock %}</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+        <!-- Jquery UI CSS -->
+        <link rel="stylesheet" href="{% static "jquery-ui.css" %}">
         <!-- Custom CSS -->
         <link  rel="stylesheet" href="{% static "kibaru.css" %}">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <div >{% include "site/banner.html" %}</div>
+        <div >
+            {% include "site/banner.html" %}
+        </div>
     </head>
+
     <div id="{% block page-id %}{% endblock %}">
     <body>   <!-- Navigation -->
         <div id="sticky-anchor"></div>
         <div id="sticky"> <marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">Mon texte défile | bla blan blan new</marquee></div>
         <div >{% include "menu.html" %}</div>
-          <!-- Page Content -->
-          <div class="container">
-            <div class="row">
-                <!-- Blog Entries Column -->
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <h4>Publicité</h4>
-                    {% block pub %}
-                        {% for publicity in publicities %}
-                            <div class="well">
-                                <div class="row">
-                                    <div class="">
-                                        <a href="{{publicity.url_display}}" class="thumbnail">
-                                          <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="...">
-                                        </a>
+            <!-- Page Content -->
+            <div class="container">
+                <div class="row">
+                    <!-- Blog Entries Column -->
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <h4>Publicité</h4>
+                        {% block pub %}
+                            {% for publicity in publicities %}
+                                <div class="well">
+                                    <div class="row">
+                                        <div class="">
+                                            <a href="{{publicity.url_display}}" class="thumbnail">
+                                              <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="...">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
-                    {% endblock %}
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
+                    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                        {% block sidebar %}
+                        {% endblock %}
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                    {% block sidebar %}
-                    {% endblock %}
-                </div>
-
-            </div>
-            <!-- Footer -->
-            <hr>
-            <footer>
-                <div >
-                    <p>Copyright &copy;  Kibaru 2015</p>
-                </div>
-                    <!-- /.row -->
+                <!-- Footer -->
+                <hr>
+                <footer>
+                    <div >
+                        <p>Copyright &copy;  Kibaru 2015</p>
+                    </div>
+                        <!-- /.row -->
                 </footer>
             </div>
         </div>
         <script src="{% static "jquery.min.js"%}"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
-        <script src="ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="{% static "jquery-ui.js"%}"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 function sticky_relocate() {

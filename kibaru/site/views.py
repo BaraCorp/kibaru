@@ -54,7 +54,6 @@ def tag_view(request, tag):
 
 
 def init(month=None, year=None):
-    print("init")
     posts = Article.objects.all()
 
     if month:

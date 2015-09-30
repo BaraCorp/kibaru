@@ -17,8 +17,6 @@ from django.utils import timezone
 
 from py3compat import implements_to_string
 
-from tinymce.models import HTMLField
-
 
 @implements_to_string
 class Category(models.Model):
@@ -120,7 +118,7 @@ class Article(models.Model):
     slug = models.CharField(
         max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))
-    text = HTMLField(blank=True, verbose_name=("Texte"))
+    text = models.TextField(blank=True, verbose_name=("Texte"))
     image = models.ImageField(upload_to='images_article/', blank=True,
                               verbose_name=("Photo"))
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
@@ -131,6 +129,7 @@ class Article(models.Model):
     category = models.ForeignKey(Category, verbose_name=("Categorie"))
     status = models.CharField(verbose_name="Status", max_length=50,
                               choices=STATUS.items())
+    start = models.BooleanField(verbose_name="Start", default=False)
 
     def get_tag_list(self):
         return re.split(" ", self.tags)
