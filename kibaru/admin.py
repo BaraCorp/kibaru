@@ -4,7 +4,8 @@
 
 from django.contrib import admin
 
-from .models import Category, Member, New, Article, Newsletter, Publicity
+from kibaru.models import Category, Member, New, Article, Newsletter, Publicity
+from kibaru.form import Articleform
 
 
 @admin.register(Category)
@@ -34,6 +35,5 @@ class PublicityAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    # fields = ('date_created', 'title', 'category',
-    #           'status', 'tags', 'text', 'image')
     exclude = ('slug',)
+    form = Articleform

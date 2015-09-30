@@ -44,7 +44,6 @@ def tag_view(request, tag):
 
 
 def init(month=None, year=None):
-    print("init")
     posts = Article.objects.all()
     publicities = Publicity.objects.all()
 
@@ -60,11 +59,11 @@ def init(month=None, year=None):
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
 
-    tag_data = create_tag_data(posts)
+    # tag_data = create_tag_data(posts)
     archive_data = create_archive_data(posts)
     context = {'settings': settings,
                'post_list': posts,
-               'tag_counts': tag_data,
+               # 'tag_counts': tag_data,
                'archive_counts': archive_data,
                'publicities': publicities}
     return posts, context

@@ -12,10 +12,6 @@
               Dernière modification : {{ post.date_modified.date }}<br>
           {% endifnotequal %}
           Date de publication : {{ post.date_created.date }}<br>
-    <!--       Tags:
-              {% for tag in post.get_tag_list %}
-                <a href="/article/tag/{{ tag }}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
-              {% endfor %} -->
     </div>
     <br>
   {% endfor %}
