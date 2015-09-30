@@ -9,10 +9,15 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
 from kibaru.form import Articleform
+from kibaru.models import Article
 
 
+@login_required()
 def home(request):
-    return HttpResponse("Hello, world. You're at the admin home.")
+    context = {}
+    articles = Article.objects.all().order_by('date_created')
+    context.update({'articles': articles})
+    return render(request, 'administration/index.html', context)
 
 
 @login_required()
@@ -25,9 +30,9 @@ def add_article(request):
         if form.is_valid():
             form.save()
             messages.success(request, u"L'article")
-            return HttpResponseRedirect('/admin/add_article/')
+            return HttpResponseRedirect('/administration/add_article/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = Articleform()
-    return render(request, 'admin/add_article.html', {'form': form})
+    return render(request, 'administration/add_article.html', {'form': form})
