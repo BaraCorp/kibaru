@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>{% block title %}{{settings.DISQUS_WEBSITE_SHORTNAME}}{% endblock %}</title>
+        <title>{{settings.DISQUS_WEBSITE_SHORTNAME}}{% block title %}{% endblock %}</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
         <!-- Custom CSS -->
@@ -22,13 +22,12 @@
     </head>
     <div id="{% block page-id %}{% endblock %}">
     <body>   <!-- Navigation -->
-        <div id="sticky-anchor"></div>
-        <div id="sticky"> <marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">Mon texte défile | bla blan blan new</marquee></div>
         <div >{% include "menu.html" %}</div>
           <!-- Page Content -->
-          <div class="container">
+        <div id="sticky-anchor"></div>
+        <div class="container">
+            <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">Mon texte défile | bla blan blan new</marquee></div>
             <div class="row">
-                <!-- Blog Entries Column -->
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     <h4>Publicité</h4>
                     {% block pub %}
@@ -46,11 +45,51 @@
                     {% endblock %}
                 </div>
                 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div class="subtitle">{% block subtitle %}{% endblock %}</div>
                     {% block content %}
                     {% endblock %}
                 </div>
                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                     {% block sidebar %}
+                        <div class="well">
+                            <div class="row">
+                                <div id="myCarousel" class="carousel slide">
+                              <ol class="carousel-indicators">
+                                <li data-target="" data-slide-to="" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                              </ol>
+                              <!-- Carousel items -->
+                              <div class="carousel-inner">
+                                <div class="active item">…</div>
+                                <div class="item">…</div>
+                                <div class="item">…</div>
+                              </div>
+                              <!-- Carousel nav -->
+                              <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                              <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="well">
+                            <!-- <h4>TAGS</h4>
+                            {% for line in tag_counts %}
+                                <a href="/article/tag/{{ line.tag }}/">{{ line.tag }}</a> ({{ line.count }})<br>
+                            {% endfor %}
+                            <br> -->
+                            <h4>ARCHIVE</h4>
+                            {% for line in archive_counts %}
+                              {% if line.isyear %}
+                                {% if not forloop.first %}
+                                  <br>
+                                {% endif %}
+                                  <a href="/article/{{ line.year }}/">{{ line.year }}</a> ({{ line.count }})<br>
+                              {% else %}
+                                    <a href="/article/{{ line.yearmonth }}/">{{ line.monthname }}</a> ({{ line.count }})<br>
+                              {% endif %}
+                            {% endfor %}
+                            <!-- /.row -->
+                        </div>
                     {% endblock %}
                 </div>
 
@@ -66,7 +105,6 @@
             </div>
         </div>
         <script src="{% static "jquery.min.js"%}"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
         <script src="ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script type="text/javascript">

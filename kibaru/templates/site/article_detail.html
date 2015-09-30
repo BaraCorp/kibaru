@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n staticfiles disqus_tags%}
 
-{% block title %} {{ article.title }} {% endblock %}
+{% block title %} | {{ article.title }} {% endblock %}
 
 {% block page-id %} {{ article.id }}{% endblock %}
 
@@ -11,7 +11,7 @@
         <h1 class="article_post_title entry-title"> {{ article.title }} </h1>
         <div class="article_meta_container post-header">
             <span class="article_author vcard">
-                <abbr class="fn">Publier par <u><a href="#">{{ article.author}}</a></u></abbr>
+                <abbr class="fn">Publier par <u><a href="#">{{ article.author }}</a></u></abbr>
             </span>
             <span class="article_timestamp"> le {{ article.date_created }} </span>
         </div>

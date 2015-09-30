@@ -14,28 +14,18 @@ MONTH_NAMES = ('', 'Janvier', u'Février', 'Mars', 'Avril', 'peut', 'Juin',
                'Juillet', u'Août', 'Septembre', 'Octobre', 'Novembre', u'Décembre')
 
 
-def single_post(request, year, month, slug2):
-    posts, context = init()
-    post = posts.get(date_created__year=year,
-                     date_created__month=int(month),
-                     slug=slug2,)
-    context.update({'post': post})
-    print(posts)
-    return render('site/single_post.html', context)
-
-
 def year_view(request, year):
     print("year_view")
     posts, context = init(year=year)
     context.update({'post_list': posts,
-                    'subtitle': 'Articles for %s' % year})
+                    'subtitle': 'Articles pour %s' % year})
     return render(request, 'site/list_page.html', context)
 
 
 def month_view(request, year, month):
     posts, context = init(month=month, year=year)
     context.update({'post_list': posts,
-                    'subtitle': 'Articles for %s %s' % (MONTH_NAMES[int(month)], year), })
+                    'subtitle': 'Articles pour %s %s' % (MONTH_NAMES[int(month)], year), })
     return render(request, 'site/list_page.html', context)
 
 
@@ -56,6 +46,7 @@ def tag_view(request, tag):
 def init(month=None, year=None):
     print("init")
     posts = Article.objects.all()
+    publicities = Publicity.objects.all()
 
     if month:
         posts = posts.filter(
@@ -65,13 +56,17 @@ def init(month=None, year=None):
 
     for article in posts:
         article.url_display = reverse("display_article", args=[article.slug])
+    for publicity in publicities:
+        publicity.url_display = reverse(
+            "display_publicity", args=[publicity.id])
 
     tag_data = create_tag_data(posts)
     archive_data = create_archive_data(posts)
     context = {'settings': settings,
                'post_list': posts,
                'tag_counts': tag_data,
-               'archive_counts': archive_data, }
+               'archive_counts': archive_data,
+               'publicities': publicities}
     return posts, context
 
 
@@ -121,25 +116,19 @@ def create_tag_data(posts):
 
 def home(request):
     context = {}
-    # articles = Article.objects.all()
-    publicities = Publicity.objects.all()
-
     posts, context = init()
     context.update({'subtitle': '', })
 
-    for publicity in publicities:
-        publicity.url_display = reverse(
-            "display_publicity", args=[publicity.id])
-    context.update({'articles': posts, 'publicities': publicities})
+    context.update({'articles': posts})
     return render(request, 'site/index.html', context)
 
 
 def display_article(request, *args, **kwargs):
-    context = {}
+    posts, context = init()
     article_slug = kwargs["slug"]
-    article = Article.objects.get(slug=article_slug)
+    article = posts.get(slug=article_slug)
 
-    context.update({'article': article})
+    context.update({'settings': settings, 'article': article})
     return render(request, 'site/article_detail.html', context)
 
 
@@ -148,5 +137,5 @@ def display_publicity(request, *args, **kwargs):
     publicity_id = kwargs["id"]
     publicity = Publicity.objects.get(id=publicity_id)
 
-    context.update({'publicity': publicity})
+    context.update({'settings': settings, 'publicity': publicity})
     return render(request, 'site/display_publicity.html', context)

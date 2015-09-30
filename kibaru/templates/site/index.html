@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
 
-{% block title %} index {% endblock %}
+{% block title %} {% endblock %}
 
 {% block page-id %}index{% endblock %}
 
@@ -43,52 +43,10 @@
     <hr>
 {% endblock %}
 
-{% block sidebar %}
-    <div class="well">
-        <div class="row">
-            <div id="myCarousel" class="carousel slide">
-          <ol class="carousel-indicators">
-            <li data-target="" data-slide-to="" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-            <div class="active item">…</div>
-            <div class="item">…</div>
-            <div class="item">…</div>
-          </div>
-          <!-- Carousel nav -->
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        </div>
-        </div>
-    </div>
-    <div class="well">
-        <!-- <h4>TAGS</h4>
-        {% for line in tag_counts %}
-            <a href="/article/tag/{{ line.tag }}/">{{ line.tag }}</a> ({{ line.count }})<br>
-        {% endfor %}
-        <br> -->
-        <h4>ARCHIVE</h4>
-        {% for line in archive_counts %}
-          {% if line.isyear %}
-            {% if not forloop.first %}
-              <br>
-            {% endif %}
-              <a href="/article/{{ line.year }}/">{{ line.year }}</a> ({{ line.count }})<br>
-          {% else %}
-                <a href="/article/{{ line.yearmonth }}/">{{ line.monthname }}</a> ({{ line.count }})<br>
-          {% endif %}
-        {% endfor %}
-        <!-- /.row -->
-    </div>
-{% endblock %}
 {% block onJQready %}
-
-$('.navbar').affix({
-        offset: {
-          top: 20
-        }
-});
+    $('.navbar').affix({
+            offset: {
+              top: 20
+            }
+    });
 {% endblock %}
