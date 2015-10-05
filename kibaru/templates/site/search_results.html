@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %} {% endblock %}
+
+{% block page-id %}index{% endblock %}
+
+{% block content %}
+    <div>Recherche de : {{ query_string }} </div>
+
+  {% for post in found_article %}
+    <h3><a href="{{ post.url_display }}">{{ post.title }}</a></h3>
+    <html>{{post.text|safe}}</html>
+    <hr>
+    <div class="post_footer">
+          {% ifnotequal post.date_modified.date post.date_created.date %}
+              Dernière modification : {{ post.date_modified.date }}<br>
+          {% endifnotequal %}
+          Date de publication : {{ post.date_created.date }}<br>
+    </div>
+    <br>
+  {% endfor %}
+{% endblock %}

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import re
+
+
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
@@ -9,6 +10,7 @@ from django.shortcuts import render_to_response
 
 from kibaru.models import Article, Publicity
 from django.conf import settings
+from kibaru.site.search import get_query
 
 MONTH_NAMES = ('', 'Janvier', u'Février', 'Mars', 'Avril', 'peut', 'Juin',
                'Juillet', u'Août', 'Septembre', 'Octobre', 'Novembre', u'Décembre')
@@ -113,8 +115,24 @@ def create_tag_data(posts):
     return tag_data
 
 
+def search(request):
+    query_string = ''
+    found_article = None
+    posts, context = init()
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+
+        article_query = get_query(query_string, ['title', 'text', ])
+
+        found_article = Article.objects.filter(
+            article_query).order_by('-date_created')
+
+    context.update({'query_string': query_string,
+                    'found_article': found_article})
+    return render(request, 'site/search_results.html', context)
+
+
 def home(request):
-    context = {}
     posts, context = init()
     context.update({'subtitle': '', })
 
