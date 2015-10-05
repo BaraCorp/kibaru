@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import (unicode_literals, absolute_import,
+                        division, print_function)
 
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
@@ -32,7 +34,6 @@ def month_view(request, year, month):
 
 
 def tag_view(request, tag):
-    print("tagview")
     allposts, context = init()
     posts = []
     for post in allposts:
@@ -45,8 +46,12 @@ def tag_view(request, tag):
     return render(request, 'site/list_page.html', context)
 
 
-def init(month=None, year=None):
-    posts = Article.objects.all()
+def init(month=None, year=None, cat_slug=None):
+    posts = Article.objects.filter(status=Article.POSTED)
+    if cat_slug:
+        print(cat_slug)
+        posts = Article.objects.filter(
+            status=Article.POSTED, category__slug=cat_slug)
     publicities = Publicity.objects.all()
 
     if month:
@@ -56,7 +61,8 @@ def init(month=None, year=None):
         posts = posts.filter(date_created__year=year)
 
     for article in posts:
-        article.url_display = reverse("display_article", args=[article.slug])
+        article.url_display = reverse("display_article", args=[
+                                      u"{}".format(article.slug)])
     for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
@@ -132,8 +138,10 @@ def search(request):
     return render(request, 'site/search_results.html', context)
 
 
-def home(request):
-    posts, context = init()
+def home(request, *args, **kwargs):
+    cat_slug = kwargs["slug"]
+    print(cat_slug)
+    posts, context = init(cat_slug=cat_slug)
     context.update({'subtitle': '', })
 
     context.update({'articles': posts})
