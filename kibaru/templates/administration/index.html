@@ -2,6 +2,15 @@
 {% block title %} Administration index {% endblock %}
 {% block page-id %}admin-index{% endblock %}
 {% block content %}
+
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="page-header">Liste des articles</h2>
+        </div>
+        <div class="col-md-2">
+            <a href="add_article/" class="btn btn-success page-header" >Ajouter</a>
+        </div>
+    </div>
     <table class="table table-bordered table-striped">
     <tr>
         <th>Titre</th>
@@ -13,6 +22,7 @@
         <th>Modification</th>
         <th>Suppression</th>
     </tr>
+    {% if articles %}
     {% for article in articles %}
     <tr>
         <td>{{ article.slug }}</td>
@@ -21,10 +31,17 @@
         <td>{{ article.author.username }}</td>
         <td>{{ article.category.name }}</td>
         <td>{{ article.status }}</td>
-        <td><a href="{{ article.url_edit}}" class="btn btn-primary" >Modifier</a></td><td><a href="{{ article.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer l'article ?">Supprimer</a></td>
+        <td><a href="{{ article.url_edit}}" class="btn btn-primary" >Modifier</a></td>
+        <td><a href="{{ article.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer l'article ?">Supprimer</a></td>
     </tr>
     {% endfor %}
+    {% else %}
+        <td colspan="8">
+            Aucun Article publié.
+        </td>
+    {% endif %}
     </table>
+
 {% endblock %}
 {% block pub %}
 {% endblock %}

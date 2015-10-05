@@ -1,36 +1,36 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block title %}Ajout Article{% endblock %}
 {% load staticfiles %}
 {% block content %}
     <script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js"%}"></script>
     <h2 class="page-header">{{ page_title }}</h2>
+
     <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">{% csrf_token %}
-        <div lass="input-group">
-            <table class="table table-bordered table-striped">
-                <tr>
-                    <td>{{form.title.label}}:</td><td>{{form.title}}</td>
-                    {% if form.title.errors %}
-                        <td>{{form.title.errors}}</td>
-                    {% endif %}
-                </tr>
-                <tr>
-                    <td>{{form.text.label}}:</td><td>{{form.text}} {{form.text.errors}}</td>
-                </tr>
-                <tr>
-                    <td>{{form.image.label}}: {{image}}</td><td>{{form.image}} {{form.image.errors}}</td>
-                </tr>
-                <tr>
-                    <td>{{form.author.label}}:</td><td>{{form.author}} {{form.author.errors}}</td>
-                </tr>
-                <tr>
-                    <td>{{form.category.label}}:</td><td>{{form.category}} {{form.category.errors}}</td>
-                </tr>
-                <tr>
-                    <td>{{form.status.label}}:</td><td>{{form.status}} {{form.status.errors}}</td>
-                </tr>
-            </table>
-            <input type='submit' class="btn btn-primary" value =  "Enregistrer"/>
+        <div class="form-group">
+            <label>{{form.title.label}}</label>
+            {{form.title|add_class:"form-control"}} {{form.title.errors}}
         </div>
+        <div  class="form-group">
+            {{form.text|add_class:"form-control"|attr:"rows:10"}} {{form.text.errors}}
+        </div>
+        <div  class="form-group">
+            <label>{{form.image.label}}</label>{{image}} {{form.image}} {{form.image.errors}}
+        </div>
+        <div class="form-group">
+            <label>{{form.author.label}}</label>
+            {{form.author|add_class:"form-control"}} {{form.author.errors}}
+        </div>
+        <div class="form-group">
+            <label>{{form.category.label}}</label>
+            {{form.category|add_class:"form-control"}} {{form.category.errors}}
+        </div>
+        <div class="form-group">
+            <label>{{form.status.label}}</label>
+            {{form.status|add_class:"form-control"}} {{form.status.errors}}
+        </div>
+        <a class="btn btn-default" href="/admin" role="button">Annuler</a>
+        <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
     </form>
 {% endblock %}
 
@@ -68,7 +68,6 @@
         // Skin options
         skin : "o2k7",
         skin_variant : "silver",
-
     });
 {% endblock %}
 {% block pub %}

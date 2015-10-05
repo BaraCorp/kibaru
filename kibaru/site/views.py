@@ -4,8 +4,6 @@ import re
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
-from datetime import datetime
-from django.shortcuts import render_to_response
 
 from kibaru.models import Article, Publicity
 from django.conf import settings
@@ -30,7 +28,6 @@ def month_view(request, year, month):
 
 
 def tag_view(request, tag):
-    print("tagview")
     allposts, context = init()
     posts = []
     for post in allposts:
@@ -43,8 +40,11 @@ def tag_view(request, tag):
     return render(request, 'site/list_page.html', context)
 
 
-def init(month=None, year=None):
-    posts = Article.objects.all()
+def init(month=None, year=None, cat_slug=None):
+    posts = Article.objects.filter(status=Article.POSTED)
+    if cat_slug:
+        print(cat_slug)
+        posts = Article.objects.filter(status=Article.POSTED, category__slug=cat_slug)
     publicities = Publicity.objects.all()
 
     if month:
@@ -113,9 +113,10 @@ def create_tag_data(posts):
     return tag_data
 
 
-def home(request):
-    context = {}
-    posts, context = init()
+def home(request, *args, **kwargs):
+    cat_slug = kwargs["slug"]
+    print(cat_slug)
+    posts, context = init(cat_slug=cat_slug)
     context.update({'subtitle': '', })
 
     context.update({'articles': posts})

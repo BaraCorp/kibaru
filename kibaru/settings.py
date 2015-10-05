@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'kibaru',
     'tinymce',
+    'widget_tweaks',
     'disqus',
     'django.contrib.sites',
     # 'menus'
