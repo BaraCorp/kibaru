@@ -13,6 +13,6 @@ urlpatterns = patterns('',
                        url(r'^article/(\d{4,4})/$', views.year_view),
                        url(r'^article/(\d{4,4})/(\d{2,2})/$',
                            views.month_view),
-                       url(r'^article/tag/([\w\-]+)/$', views.tag_view),
+                       # url(r'^article/tag/([\w\-]+)/$', views.tag_view),
                        url(r'^search/$', views.search),
                        )

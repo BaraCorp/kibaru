@@ -7,9 +7,6 @@ from __future__ import (unicode_literals, absolute_import,
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
-from datetime import datetime
-from django.shortcuts import render_to_response
-
 from kibaru.models import Article, Publicity
 from django.conf import settings
 from kibaru.site.search import get_query
@@ -33,17 +30,17 @@ def month_view(request, year, month):
     return render(request, 'site/list_page.html', context)
 
 
-def tag_view(request, tag):
-    allposts, context = init()
-    posts = []
-    for post in allposts:
-        post.url_display_tag = reverse("display_article", args=[post.slug])
-        tags = re.split(' ', post.tags)
-        if tag in tags:
-            posts.append(post)
-    context.update({'post_list': posts,
-                    'subtitle': "Articles tagged '%s'" % tag, })
-    return render(request, 'site/list_page.html', context)
+# def tag_view(request, tag):
+#     allposts, context = init()
+#     posts = []
+#     for post in allposts:
+#         post.url_display_tag = reverse("display_article", args=[post.slug])
+#         tags = re.split(' ', post.tags)
+#         if tag in tags:
+#             posts.append(post)
+#     context.update({'post_list': posts,
+#                     'subtitle': "Articles tagged '%s'" % tag, })
+#     return render(request, 'site/list_page.html', context)
 
 
 def init(month=None, year=None, cat_slug=None):
@@ -105,20 +102,20 @@ def create_archive_data(posts):
     return archive_data
 
 
-def create_tag_data(posts):
-    tag_data = []
-    count = {}
-    for post in posts:
-        tags = re.split(" ", post.tags)
-        for tag in tags:
-            if tag not in count:
-                count[tag] = 1
-            else:
-                count[tag] += 1
-    for tag, count in sorted(count.iteritems(), key=lambda(k, v): (v, k), reverse=True):
-        tag_data.append({'tag': tag,
-                         'count': count, })
-    return tag_data
+# def create_tag_data(posts):
+#     tag_data = []
+#     count = {}
+#     for post in posts:
+#         tags = re.split(" ", post.tags)
+#         for tag in tags:
+#             if tag not in count:
+#                 count[tag] = 1
+#             else:
+#                 count[tag] += 1
+#     for tag, count in sorted(count.iteritems(), key=lambda(k, v): (v, k), reverse=True):
+#         tag_data.append({'tag': tag,
+#                          'count': count, })
+#     return tag_data
 
 
 def search(request):
