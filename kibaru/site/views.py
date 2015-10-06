@@ -135,7 +135,15 @@ def search(request):
     return render(request, 'site/search_results.html', context)
 
 
-def home(request, *args, **kwargs):
+def home(request):
+    posts, context = init()
+    context.update({'subtitle': '', })
+
+    context.update({'articles': posts})
+    return render(request, 'site/index.html', context)
+
+
+def home_filter(request, *args, **kwargs):
     cat_slug = kwargs["slug"]
     print(cat_slug)
     posts, context = init(cat_slug=cat_slug)

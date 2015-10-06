@@ -4,8 +4,8 @@ from django.conf.urls import patterns, url
 from kibaru.site import views
 
 urlpatterns = patterns('',
-                       url(r'^(?P<slug>[a-zA-Z0-9\-]+)*$',
-                           views.home, name='home'),
+                       url(r'^(?P<slug>[-\w\d]+)$',
+                           views.home_filter, name='home_filter'),
                        url(r'^display_article/(?P<slug>[-\w\d]+)*$',
                            views.display_article, name='display_article'),
                        url(r'^display_publicity/(?P<id>\d+)$',
