@@ -27,7 +27,7 @@ def home(request):
     return render(request, 'administration/index.html', context)
 
 
-@login_required
+# @login_required
 def add_article(request):
     c = {'page_title': "Ajout d'article"}
     if request.method == 'POST':
@@ -42,7 +42,7 @@ def add_article(request):
     return render(request, 'administration/add_article.html', c)
 
 
-@login_required()
+# @login_required()
 def edit_article(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected_article = Article.objects.get(id=id_url)
@@ -66,7 +66,7 @@ def edit_article(request, *args, **kwargs):
     return render(request, 'administration/add_article.html', {'form': form, 'page_title': "Modification d'article"})
 
 
-@login_required
+# @login_required
 def del_article(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected = Article.objects.get(id=id_url)
