@@ -34,7 +34,6 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'disqus',
     'django.contrib.sites',
-    # 'menus'
 )
 
 
@@ -101,8 +100,6 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 try:
     from kibaru.settings_local import *
