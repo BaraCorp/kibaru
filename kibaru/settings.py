@@ -9,8 +9,6 @@ import os
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(abs_path)
 
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -103,14 +101,10 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = (
-#     BASE_DIR + '/media/',
-# )
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 try:
-    from settings_local import *
-except ImportError:
-    pass
+    from kibaru.settings_local import *
+except Exception as e:
+    print(e)
