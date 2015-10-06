@@ -18,6 +18,7 @@ SECRET_KEY = '3(p&^=gsgxk84xf8s4-rqpob41t7rrwp(tqm_enwxr2ov^!bf='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -34,6 +35,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'disqus',
     'django.contrib.sites',
+    # 'menus'
 )
 
 
@@ -100,6 +102,9 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 try:
     from kibaru.settings_local import *

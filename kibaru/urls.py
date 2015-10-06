@@ -28,4 +28,4 @@ urlpatterns = [
     url(r'^site/', include(site_urls)),
     url(r'^tinymce/', include('tinymce.urls')),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
