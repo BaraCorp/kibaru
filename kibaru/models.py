@@ -4,9 +4,12 @@
 
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
+from django_resized import ResizedImageField
+
 
 import datetime
 import re
+import os
 
 from django.core import validators
 from django.db import models
@@ -119,8 +122,11 @@ class Article(models.Model):
         max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))
     text = models.TextField(blank=True, verbose_name=("Texte"))
-    image = models.ImageField(upload_to='images_article/', blank=True,
-                              verbose_name=("Photo"))
+    image = ResizedImageField(
+        size=[1024, 578], upload_to='images_article/', blank=True,
+        verbose_name=("Image"))
+    thumbnail = ResizedImageField(
+        size=[187, 103], upload_to='images_article', blank=True)
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
     date_created = models.DateField(verbose_name=("Fait le"),
                                     default=datetime.datetime.today)
@@ -134,7 +140,6 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
-
         self.slug = self.title.replace(" ", "-").lower()
         super(Article, self).save(*args, **kwargs)
 

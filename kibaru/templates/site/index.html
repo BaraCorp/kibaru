@@ -124,7 +124,7 @@
             {% for article in articles %}
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                     <div class="thumbnail">
-                        <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100px; width: 100%; display: block;" src="{% if article.image %}{{ article.image.url}}{% endif %}" data-holder-rendered="true">
+                        <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100px; width: 100%; display: block;" src="{% if article.thumbnail %}{{ article.thumbnail.url }}{% endif %}" data-holder-rendered="true">
                         <div class="caption">
                             <h6><a href="{{article.url_display}}">{{ article.title}}</a></h6>
                             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
