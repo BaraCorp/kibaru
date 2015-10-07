@@ -11,7 +11,7 @@ from kibaru.site import views
 urlpatterns = patterns('',
                        url(r'^(?P<slug>[-\w\d]*)$',
                            views.home, name='home'),
-                       url(r'^display_article/(?P<slug>[-\w\d]+)$',
+                       url(r'^display_article/(?P<slug>[-\w\d]*)$',
                            views.display_article, name='display_article'),
                        url(r'^display_publicity/(?P<id>\d+)$',
                            views.display_publicity, name='display_publicity'),
