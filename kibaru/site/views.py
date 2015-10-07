@@ -58,6 +58,7 @@ def init(month=None, year=None, cat_slug=None):
 
     for article in posts:
         article.url_display = reverse("display_article", args=[article.slug])
+        # article.intro = article.text.split('</p>')[0][3:]
     for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])

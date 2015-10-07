@@ -134,13 +134,14 @@ class Article(models.Model):
     category = models.ForeignKey(Category, verbose_name=("Categorie"))
     status = models.CharField(verbose_name="Status", max_length=50,
                               choices=STATUS.items())
-    # start = models.BooleanField(verbose_name="Start", default=False)
+    start = models.BooleanField(verbose_name="Start", default=False)
 
     def get_tag_list(self):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
         self.slug = self.title.replace(" ", "-").lower()
+        self.thumbnail = self.image
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):

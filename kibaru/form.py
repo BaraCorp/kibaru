@@ -13,4 +13,4 @@ class Articleform(forms.ModelForm):
 
     class Meta:
         model = Article
-        exclude = ['slug', 'date_created', 'date_modified']
+        exclude = ['slug', 'date_created', 'date_modified', 'thumbnail']
