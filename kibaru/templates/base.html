@@ -66,6 +66,7 @@
                             </div>
                             </div>
                         </div>
+                        <div class="well">
                             {% block social %}
                             <h4>SOCIAL</h4>
                              <ul class="social">
@@ -74,6 +75,7 @@
                               <li class="pinterest"><a href="https://plus.google.com/{{user.compte}}"><i class="fa fa-google-plus fa-3x"></i></a></li> -->
                             </ul>
                             {% endblock %}
+                        </div>
                         <div class="well">
                             <!-- <h4>TAGS</h4>
                             {% for line in tag_counts %}
@@ -82,14 +84,14 @@
                             <br> -->
                             <h4>ARCHIVE</h4>
                             {% for line in archive_counts %}
-                              {% if line.isyear %}
-                                {% if not forloop.first %}
-                                  <br>
+                                {% if line.isyear %}
+                                    {% if not forloop.first %}
+                                    <br>
+                                    {% endif %}
+                                    <a href="{% url 'article_year' line.year %}" >{{ line.year }}</a> ({{ line.count }})<br>
+                                {% else %}
+                                    <a href="{% url 'article_month' line.year line.month %}"> - {{ line.monthname }}</a> ({{ line.count }})<br>
                                 {% endif %}
-                                  <a href="/article/{{ line.year }}/">{{ line.year }}</a> ({{ line.count }})<br>
-                              {% else %}
-                                    <a href="/article/{{ line.yearmonth }}/"> - {{ line.monthname }}</a> ({{ line.count }})<br>
-                              {% endif %}
                             {% endfor %}
                             <!-- /.row -->
                         </div>

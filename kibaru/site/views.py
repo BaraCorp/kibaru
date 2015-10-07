@@ -8,7 +8,7 @@ from __future__ import (unicode_literals, absolute_import,
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
-from kibaru.models import Article, Publicity
+from kibaru.models import Article, Publicity, Category
 from django.conf import settings
 from kibaru.site.search import get_query
 
@@ -47,9 +47,7 @@ def month_view(request, year, month):
 def init(month=None, year=None, cat_slug=None):
     posts = Article.objects.filter(status=Article.POSTED)
     if cat_slug:
-        print(cat_slug)
-        posts = Article.objects.filter(
-            status=Article.POSTED, category__slug=cat_slug)
+        posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
 
     if month:
@@ -97,7 +95,8 @@ def create_archive_data(posts):
                              'count': count[year], })
         for month in sorted(mcount[year].iterkeys(), reverse=True):
             archive_data.append({'isyear': False,
-                                 'yearmonth': '%d/%02d' % (year, month),
+                                 'year': year,
+                                 'month': month,
                                  'monthname': MONTH_NAMES[month],
                                  'count': mcount[year][month], })
     return archive_data
@@ -136,18 +135,14 @@ def search(request):
     return render(request, 'site/search_results.html', context)
 
 
-def home(request):
-    posts, context = init()
-    context.update({'subtitle': '', })
-
-    context.update({'articles': posts})
-    return render(request, 'site/index.html', context)
-
-
-def home_filter(request, *args, **kwargs):
+def home(request, *args, **kwargs):
     cat_slug = kwargs["slug"]
-    print(cat_slug)
-    posts, context = init(cat_slug=cat_slug)
+    try:
+        slug = Category.objects.get(slug=cat_slug).slug
+    except Category.DoesNotExist:
+        slug = None
+
+    posts, context = init(cat_slug=slug)
     context.update({'subtitle': '', })
 
     context.update({'articles': posts})

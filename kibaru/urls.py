@@ -19,13 +19,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from site import urls as site_urls
 from administation import urls as admin_urls
-from kibaru.site import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
     url(r'^root/', include(admin.site.urls)),
     url(r'^admin/', include(admin_urls)),
-    url(r'^site/', include(site_urls)),
+    url(r'^', include(site_urls)),
     url(r'^tinymce/', include('tinymce.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
