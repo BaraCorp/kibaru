@@ -57,8 +57,7 @@ def init(month=None, year=None, cat_slug=None):
         posts = posts.filter(date_created__year=year)
 
     for article in posts:
-        article.url_display = reverse("display_article", args=[
-                                      u"{}".format(article.slug)])
+        article.url_display = reverse("display_article", args=[article.slug])
     for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
