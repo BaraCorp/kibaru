@@ -4,11 +4,11 @@
 
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
-
+from datetime import datetime
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
-from kibaru.models import Article, Publicity, Category
+from kibaru.models import Article, Publicity, Category, New
 from django.conf import settings
 from kibaru.site.search import get_query
 
@@ -62,9 +62,13 @@ def init(month=None, year=None, cat_slug=None):
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
 
+    for n in New.objects.filter(date__gte=datetime.now()):
+        news = "{} | {}".format(n.title, n.comment)
+
     # tag_data = create_tag_data(posts)
     archive_data = create_archive_data(posts)
     context = {'settings': settings,
+               'news': news,
                'post_list': posts,
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,

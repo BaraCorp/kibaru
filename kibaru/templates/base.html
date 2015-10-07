@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
             <div id="sticky-anchor"></div>
-            <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">Mon texte défile | bla blan blan new</marquee></div>
+            <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">{% if news %}{{ news }}{% endif %}</marquee></div>
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     {% block pub %}
                         <h4>Publicité</h4>
