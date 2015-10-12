@@ -63,7 +63,10 @@ def init(month=None, year=None, cat_slug=None):
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
 
-    for n in New.objects.filter(date__gte=datetime.now()):
+    news = New.objects.order_by('-date')
+    if news.filter(date__gte=datetime.now()):
+        news = news.filter(date__gte=datetime.now())
+    for n in news:
         news = "{} | {}".format(n.title, n.comment)
 
     # tag_data = create_tag_data(posts)

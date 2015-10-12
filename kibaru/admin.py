@@ -6,6 +6,7 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
 from django.contrib import admin
+from django.db import models
 
 from kibaru.models import Category, Member, New, Article, Newsletter, Publicity
 from kibaru.form import Articleform
@@ -23,7 +24,9 @@ class MemberAdmin(admin.ModelAdmin):
 
 @admin.register(New)
 class NewAdmin(admin.ModelAdmin):
-    pass
+    formfield_overrides = {
+        models.DateTimeField: {'input_formats': ('%m/%d/%Y',)},
+    }
 
 
 @admin.register(Newsletter)

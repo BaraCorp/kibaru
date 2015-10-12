@@ -9,7 +9,6 @@ from django_resized import ResizedImageField
 
 import datetime
 import re
-import os
 
 from django.core import validators
 from django.db import models
@@ -146,6 +145,9 @@ class Article(models.Model):
 
     def __str__(self):
         return "{title} {status}".format(title=self.title, status=self.status)
+
+    def title_status(self):
+        return self.STATUS.get(self.status)
 
 
 @implements_to_string

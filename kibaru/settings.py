@@ -70,6 +70,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kibaru.wsgi.application'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
 SITE_ID = 1
 
 # Database
@@ -88,6 +91,8 @@ DATABASES = {
 
 LANGUAGES = (('fr', "French"),)
 LANGUAGE_CODE = 'fr-fr'
+
+DATE_INPUT_FORMATS = ('%Y-%m-%d')
 
 TIME_ZONE = 'UTC'
 

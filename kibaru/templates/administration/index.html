@@ -4,11 +4,13 @@
 {% block content %}
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <h2 class="page-header">Liste des articles</h2>
         </div>
+        <div class="col-md-1">
+        </div>
         <div class="col-md-2">
-            <a href="add_article/" class="btn btn-success page-header" >Ajouter</a>
+            <a href="{% url 'add_article' %}" class="btn btn-success page-header" >Ajouter un article</a>
         </div>
     </div>
     <table class="table table-bordered table-striped">
@@ -28,16 +30,51 @@
         <td>{{ article.slug }}</td>
         <td>{{ article.date_created }}</td>
         <td>{{ article.date_modified }}</td>
-        <td>{{ article.author.username }}</td>
+        <td>{{ article.author.name }}</td>
         <td>{{ article.category.name }}</td>
-        <td>{{ article.status }}</td>
+        <td>{{ article.title_status }}</td>
         <td><a href="{{ article.url_edit}}" class="btn btn-primary" >Modifier</a></td>
         <td><a href="{{ article.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer l'article ?">Supprimer</a></td>
     </tr>
     {% endfor %}
     {% else %}
         <td colspan="8">
-            Aucun Article publié.
+            Aucun article publié.
+        </td>
+    {% endif %}
+    </table>
+
+    <div class="row">
+        <div class="col-md-9">
+            <h2 class="page-header">Liste des nouvelles</h2>
+        </div>
+        <div class="col-md-">
+            <a href="{% url 'add_new' %}" class="btn btn-success page-header" >Ajouter une nouvelle</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+    <tr>
+        <th>Titre</th>
+        <th>Contenu</th>
+        <th>Auteur</th>
+        <th>Fait le</th>
+        <th>Modification</th>
+        <th>Suppression</th>
+    </tr>
+    {% if news %}
+    {% for new in news %}
+    <tr>
+        <td>{{ new.title }}</td>
+        <td>{{ new.comment }}</td>
+        <td>{{ new.author.name }}</td>
+        <td>{{ new.date }}</td>
+        <td><a href="{{ new.url_edit}}" class="btn btn-primary" >Modifier</a></td>
+        <td><a href="{{ new.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer l'new ?">Supprimer</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+        <td colspan="8">
+            Aucune nouvelle postée.
         </td>
     {% endif %}
     </table>

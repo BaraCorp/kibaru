@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Identification{% endblock %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<h1 class="page-header">Identification</h1>
+
+{% if form.errors %}
+<p class="alert alert-danger">Votre nom d'utilisateur et mot de passe ne correspondent pas. S'il vous plaît essayez de nouveau.</p>
+{% endif %}
+
+<form "form-horizontal" method="POST">
+    {% csrf_token %}
+    <h3>Merci de vous identifier</h3>
+    <div  class="form-group">
+        <label>{{form.username.label}}</label>
+        {{form.username|add_class:"form-control"}}
+    </div>
+    <div  class="form-group">
+        <label>{{form.password.label}}</label>
+        {{form.password|add_class:"form-control"}}
+    </div>
+    <button type="submit" class="btn btn-primary">S'identifier</button>
+</form>
+{% endblock %}
