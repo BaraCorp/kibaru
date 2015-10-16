@@ -16,6 +16,7 @@ from django.contrib.auth.models import (AbstractBaseUser,
                                         UserManager)
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+from tinymce import models as tinymce_models
 
 from py3compat import implements_to_string
 
@@ -120,7 +121,7 @@ class Article(models.Model):
     slug = models.CharField(
         max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))
-    text = models.TextField(blank=True, verbose_name=("Texte"))
+    text = tinymce_models.HTMLField(blank=True, verbose_name=("Texte"))
     image = ResizedImageField(
         size=[1024, 578], upload_to='images_article/', blank=True,
         verbose_name=("Image"))
@@ -139,8 +140,9 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
-        self.slug = self.title.replace(" ", "-").lower()
+        self.slug = "-".join(re.findall("([a-zA-Z]+)", self.title.lower()))
         self.thumbnail = self.image
+
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -148,6 +150,9 @@ class Article(models.Model):
 
     def title_status(self):
         return self.STATUS.get(self.status)
+
+    def clean_tags_html(self, linit=150):
+        return u"%s" % re.sub(re.compile('<[^<]+?>'), '', self.text)[:linit]
 
 
 @implements_to_string
