@@ -1,7 +1,6 @@
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -13,20 +12,39 @@
                 <img src="" alt="">
             </a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" id="new-stop">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'home' '' %}">Accueil</a></li>
-                <li><a href="{% url 'home' 'economie' %}">Economie</a></li>
-                <li><a href="{% url 'home' 'cooperation' %}">Coopération</a></li>
-                <li><a href="{% url 'home' 'sante' %}">Santé</a></li>
-                <li><a href="{% url 'home' 'culture' %}">Culture</a></li>
-                <li><a href="{% url 'home' 'sport' %}">Sport</a></li>
-                <li><a href="{% url 'home' 'reportage' %}">Reportage</a></li>
-                <li><a href="{% url 'home' 'portrait' %}">Portrait</a></li>
+                <li class="dropdown">
+                    <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Economie <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'home' 'econationale' %}">Nationale</a></li>
+                        <li><a href="{% url 'home' 'ecoregionale' %}">Régionale</a></li>
+                        <li><a href="{% url 'home' 'ecointernationale' %}">Internationale</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="{% url 'home' 'cooperation' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Coopération <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'home' 'cooperationbila' %}">Bilatérale</a></li>
+                        <li><a href="{% url 'home' 'cooperationmulti' %}">Multilatérale</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Société <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'home' 'paix' %}">Processus de paix</a></li>
+                        <li><a href="{% url 'home' 'portrait' %}">Portrait</a></li>
+                        <li><a href="{% url 'home' 'education' %}">Education</a></li>
+                        <li><a href="{% url 'home' 'sante' %}">Santé</a></li>
+                        <li><a href="{% url 'home' 'sport' %}">Sports</a></li>
+                        <li><a href="{% url 'home' 'culture' %}">Culture</a></li>
+                        <li><a href="{% url 'home' 'ntic' %}">NTIC</a></li>
+                        <li><a href="{% url 'home' 'reportage' %}">Reportage</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'home' 'environnement' %}">Environnement</a></li>
                 <li><a href="{% url 'home' 'expression-libre' %}">Expression Libre</a></li>
-                <!-- <li><a href="{% url 'home' 'environnement' %}">Environnement</a></li> -->
-                <!-- <li><a href="{% url 'home' 'ntic' %}">NTIC</a></li> -->
                 <li>
                 <form method="get" action="{% url 'search' %}" class="navbar-form">
                     <div style="display:inline;" class="form-group">
