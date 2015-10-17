@@ -46,6 +46,8 @@ def month_view(request, year, month):
 
 def init(month=None, year=None, cat_slug=None):
     posts = Article.objects.filter(status=Article.POSTED)
+    start = Article.objects.get(start=True)
+    start.url_display = reverse("display_article", args=[start.slug])
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
@@ -76,7 +78,8 @@ def init(month=None, year=None, cat_slug=None):
                'post_list': posts,
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,
-               'publicities': publicities}
+               'publicities': publicities,
+               "start": start}
     return posts, context
 
 

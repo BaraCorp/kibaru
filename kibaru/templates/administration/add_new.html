@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% block title %}Ajout News{% endblock %}
 {% load staticfiles %}
-{% block content %}
+{% block content_larg %}
     <h2 class="page-header">{{ page_title }}</h2>
     <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">{% csrf_token %}
         <div class="form-group">

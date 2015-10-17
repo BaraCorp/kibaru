@@ -13,32 +13,17 @@
         <link rel="stylesheet" href="{% static "jquery-ui.css" %}">
         <!-- Custom CSS -->
         <link  rel="stylesheet" href="{% static "kibaru.css" %}">
+        <link  rel="stylesheet" href="{% static "font-awesome.min.css" %}">
     </head>
-        {% include "site/banner.html" %}
     <div id="{% block page-id %}{% endblock %}"></div>
+    <div >{% include "menu.html" %}</div>
+    <div>{% include "site/banner.html" %}</div>
     <body>
-        <div >{% include "menu.html" %}</div>
           <!-- Page Content -->
-        <div class="container">
+        <div class="container page">
             <div class="row">
-            <div id="sticky-anchor"></div>
-            <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">{% if news %}{{ news }}{% endif %}</marquee></div>
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    {% block pub %}
-                        <h4>Publicité</h4>
-                        {% for publicity in publicities %}
-                            <div class="well">
-                                <div class="row">
-                                    <div class="">
-                                        <a href="{{publicity.url_display}}" class="thumbnail">
-                                          <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="...">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% endblock %}
-                </div>
+                <div id="sticky-anchor"></div>
+                <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">{% if news %}{{ news }}{% endif %}</marquee></div>
                 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
                     <div class="subtitle">{% block subtitle %}{% endblock %}</div>
                     {% block content %}
@@ -46,69 +31,80 @@
                 </div>
                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                     {% block sidebar %}
-                        <!-- <div class="well"> -->
-                            <!-- <div class="row"> -->
-                                <!-- <div id="myCarousel" class="carousel slide"> -->
-                             <!--  <ol class="carousel-indicators">
-                                <li data-target="" data-slide-to="" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                              </ol> -->
-                              <!-- Carousel items -->
-                              <!-- <div class="carousel-inner">
-                                <div class="active item">…</div>
-                                <div class="item">…</div>
-                                <div class="item">…</div>
-                              </div> -->
-                              <!-- Carousel nav -->
-                             <!--  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                              <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-                            </div>
-                            </div>
-                        </div> -->
-                        <div class="well">
-                            {% block social %}
-                            <h4>SOCIAL</h4>
-                                <ul class="social">
-                                    <li class="facebook"><a href="http://facebook.com/{{user.compte}}"><i class="fa fa-facebook fa-3x"></i></a></li>
-                                    <li class="twitter"><a href="http://twitter.com/{{user.compte}}"><i class="fa fa-twitter fa-3x"></i></a></li>
-                                    <li class="pinterest"><a href="https://plus.google.com/{{user.compte}}"><i class="fa fa-google-plus fa-3x"></i></a></li>
-                                </ul>
-                            {% endblock %}
-                        </div>
-                        <div class="well">
-                            <!-- <h4>TAGS</h4>
-                            {% for line in tag_counts %}
-                                <a href="/article/tag/{{ line.tag }}/">{{ line.tag }}</a> ({{ line.count }})<br>
-                            {% endfor %}
-                            <br> -->
-                            <h4>ARCHIVE</h4>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">ARCHIVE</div>
+                          <div class="panel-body">
                             {% for line in archive_counts %}
-                                {% if line.isyear %}
-                                    {% if not forloop.first %}
-                                    <br>
+                                    {% if line.isyear %}
+                                        {% if not forloop.first %}
+                                        <br>
+                                        {% endif %}
+                                        <a href="{% url 'article_year' line.year %}" >{{ line.year }}</a> ({{ line.count }})<br>
+                                    {% else %}
+                                        <a href="{% url 'article_month' line.year line.month %}"> - {{ line.monthname }}</a> ({{ line.count }})<br>
                                     {% endif %}
-                                    <a href="{% url 'article_year' line.year %}" >{{ line.year }}</a> ({{ line.count }})<br>
-                                {% else %}
-                                    <a href="{% url 'article_month' line.year line.month %}"> - {{ line.monthname }}</a> ({{ line.count }})<br>
-                                {% endif %}
-                            {% endfor %}
-                            <!-- /.row -->
+                                {% endfor %}
+                          </div>
                         </div>
+                        {% block social %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">SOCIAL</div>
+                            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+                            <div class="panel-body">
+                                <ul class="social-network social-circle">
+                                    <!-- <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li> -->
+                                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endblock %}
+                    {% endblock %}
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    {% block pub %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Publicité</div>
+                            {% for publicity in publicities %}
+                                <div class="">
+                                    <a href="{{publicity.url_display}}">
+                                      <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endblock %}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">L'Hebdo</div>
+                        {% for publicity in publicities %}
+                            <div class="">
+                                <a href="{{publicity.url_display}}">
+                                  <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    {% block content_larg %}
                     {% endblock %}
                 </div>
             </div>
             <!-- Footer -->
             <hr>
             <footer>
-                <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         Copyright &copy;  Kibaru 2015
                     </div>
                 </div>
             </footer>
-            </div>
         </div>
         <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
         <script src="{% static "bootstrap/js/bootstrap.js"%}"></script>
@@ -120,7 +116,7 @@
                 var window_top = $(window).scrollTop();
                 var div_top = $('#sticky-anchor').offset().top;
                 if (window_top > div_top) {
-                $('#sticky').addClass('stick');
+                $('#sticky').addClass('container stick');
             } else {
                 $('#sticky').removeClass('stick');
             }
