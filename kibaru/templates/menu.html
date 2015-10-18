@@ -26,12 +26,13 @@
                 <li class="dropdown">
                     <a href="{% url 'home' 'cooperation' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Coopération <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{% url 'home' 'actualite' %}">Actualité</a></li>
                         <li><a href="{% url 'home' 'cooperationbila' %}">Bilatérale</a></li>
                         <li><a href="{% url 'home' 'cooperationmulti' %}">Multilatérale</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Société <span class="caret"></span></a>
+                    <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">Société <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'home' 'paix' %}">Processus de paix</a></li>
                         <li><a href="{% url 'home' 'portrait' %}">Portrait</a></li>
