@@ -23,7 +23,10 @@
         <div class="container page">
             <div class="row">
                 <div id="sticky-anchor"></div>
+                {% block alert %}
                 <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">{% if news %}{{ news }}{% endif %}</marquee></div>
+                {% endblock %}
+
                 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
                     <div class="subtitle">{% block subtitle %}{% endblock %}</div>
                     {% block content %}
@@ -76,22 +79,26 @@
                         </div>
                     {% endblock %}
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">L'Hebdo</div>
-                        <div class="">
-                            <ul>
-                                {% for article in articles %}
-                                    <li><a href="{{article.url_display}}"> <span>{{ article.title }}</span></a></li>
-                                {% endfor %}
-                            </ul>
+                    {% block hebdo %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">L'Hebdo</div>
+                            <div class="">
+                                <ul>
+                                    {% for article in articles %}
+                                        <li><a href="{{article.url_display}}"> <span>{{ article.title }}</span></a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Twitter</div>
-                            <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    {% endblock %}
 
-                    </div>
+                    {% block twitter %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Twitter</div>
+                                <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    {% endblock %}
                 </div>
             </div>
             <div class="row">
