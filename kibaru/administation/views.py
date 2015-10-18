@@ -41,6 +41,9 @@ def add_article(request):
     if request.method == 'POST':
         form = Articleform(request.POST, request.FILES)
         if form.is_valid():
+            article = Article.objects.get(start=True)
+            article.start = False
+            article.save()
             form.save()
             messages.success(request, u"l'article a ete ajouter")
             return HttpResponseRedirect('/admin/')
@@ -75,6 +78,9 @@ def edit_article(request, *args, **kwargs):
     if request.method == 'POST':
         form = Articleform(request.POST, request.FILES, instance=selected_article)
         if form.is_valid():
+            article = Article.objects.get(start=True)
+            article.start = False
+            article.save()
             selected_article.title = request.POST.get('title')
             selected_article.text = request.POST.get('text')
             if request.FILES.get('image'):
