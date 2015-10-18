@@ -78,19 +78,27 @@
                         </div>
                     {% endblock %}
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">L'Hebdo</div>
-                        <div class="">
-                            <ul>
-                                {% for article in articles %}
-                                    <li><a href="{{article.url_display}}"> <span>{{ article.title }}</span></a></li>
-                                {% endfor %}
-                            </ul>
+                    {% block hebdo %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">L'Hebdo</div>
+                            <div class="">
+                                <ul>
+                                    {% for article in articles %}
+                                        <li><a href="{{article.url_display}}"> <span>{{ article.title }}</span></a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Twitter</div>
-                    </div>
+                    {% endblock %}
+
+                    {% block twitter %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Twitter</div>
+                                <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    {% endblock %}
+
                     <div class="panel panel-default">
                         <div class="panel-heading">Facebook</div>
                         <div class="fb-page" style="width: 100%;" data-href="https://www.facebook.com/{{settings.FACEBOOK_PAGE}}/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"></div>

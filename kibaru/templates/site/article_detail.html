@@ -14,10 +14,12 @@
                     <span class="article_timestamp"style="clear: both; float: right;">  Publié le {{ article.date_created }} </span>
                     <span class="article_author vcard"> <abbr class="fn">Par <u><a href="#">{{ article.author.name }}</a></u></abbr></span>
                 </div>
-                <div class="separator thumbnail " style="clear: both; text-align: center;">
-                    <a href=src="{{ article.image.url}}">
-                    <img style="width: 100%; display: block;" src= {% if article.image %}"{{ article.image.url}}" {% else %} "" {% endif %} border="1"></a>
-                </div>
+                {% if article.image %}
+                    <div class="separator thumbnail " style="clear: both; text-align: center;">
+                        <a href=src="{{ article.image.url}}">
+                        <img style="width: 100%; display: block;" src= {% if article.image %}"{{ article.image.url}}" {% else %} "" {% endif %} border="1"></a>
+                    </div>
+                {% endif %}
             </div>
             <div class="col-xs-12" >
                 <div class="post-body entry-content">

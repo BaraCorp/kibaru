@@ -26,10 +26,12 @@ def home(request):
     for article in articles:
         article.url_edit = reverse("edit_article", args=[article.id])
         article.url_del = reverse("del_article", args=[article.id])
+    str_news = ""
     for new in news:
         new.url_edit = reverse("edit_new", args=[new.id])
         new.url_del = reverse("del_new", args=[new.id])
-    context.update({'articles': articles, 'news': news})
+        str_news += "{} | {}; ".format(new.title, new.comment)
+    context.update({'articles': articles, 'news': news, 'str_news': str_news})
     return render(request, 'administration/index.html', context)
 
 
