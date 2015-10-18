@@ -10,7 +10,7 @@
 
   {% for post in found_article %}
     <h3><a href="{{ post.url_display }}">{{ post.title }}</a></h3>
-    <html>{{post.text|safe}}</html>
+    <html>{{post.clean_tags_html|safe}}...</html>
     <hr>
     <div class="post_footer">
           {% ifnotequal post.date_modified.date post.date_created.date %}
