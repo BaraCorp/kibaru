@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n staticfiles disqus_tags%}
-
+{% load social_widgets %}
 {% block title %} | {{ article.title }} {% endblock %}
 
 {% block page-id %} {{ article.id }}{% endblock %}
@@ -21,19 +21,15 @@
             </div>
             <div class="col-xs-12" >
                 <div class="post-body entry-content">
-                    <div dir="ltr" style="text-align: left;" trbidi="on">
-                        <html>{{article.text|safe}}</html>
-                    </div>
-                    <div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-                        <h3 class="sd-title"></h3>
-                        <div class="sd-content"> </div>
-                    </div>
-                    <div style="clear: both;"></div>
-                    {% disqus_show_comments %}
+                    <div dir="ltr" style="text-align: left;" trbidi="on"> <html>{{article.text|safe}}</html></div>
+                    <span>{% social_widget_render "facebook/follow_button.html" href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}" %}</span>
+                    <span>{% social_widget_render "twitter/share_button.html" href="{{ article.image.url }}" %} </span>
+                    <span>{% social_widget_render 'google/plus_share_button.html' href='https://www.google.com' %} </span>
+                    <span>{% social_widget_render "facebook/share_button.html" href="{{ settings.FACEBOOK_PAGE }}.facebook.com" %}</span>
+                    <span class="fb-like"></span>
                 </div>
+                {% disqus_show_comments %}
             </div>
          </div>
     </div>
-    <div id="disqus_thread"></div>
-    <div class="fb-like"></div>
 {% endblock %}

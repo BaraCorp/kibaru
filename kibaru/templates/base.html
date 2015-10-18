@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
     {% load staticfiles %}
+
+    {% load social_widgets %}
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +14,7 @@
         <!-- Jquery UI CSS -->
         <link rel="stylesheet" href="{% static "jquery-ui.css" %}">
         <!-- Custom CSS -->
-        <link  rel="stylesheet" href="{% static "font-awesome.min.css" %}">
+        <!-- <link  rel="stylesheet" href="{% static "font-awesome.min.css" %}"> -->
         <link  rel="stylesheet" href="{% static "kibaru.css" %}">
     </head>
     <div id="{% block page-id %}{% endblock %}"></div>
@@ -54,7 +56,7 @@
                                 <ul class="social-network social-circle">
                                     <!-- <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li> -->
                                     <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2F127.0.0.1%3A8000%2Fdisplay_article%2Fpour-aider-les-autorit-s-du-pays-r-tablir-la-paix-et-la-s-curit&ref_src=twsrc%5Etfw&region=follow_link&screen_name={{ settings.TWITTER_USER }}&tw_p=followbutton" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
                                 </ul>
                             </div>
@@ -89,6 +91,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Twitter</div>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Facebook</div>
+                        <div class="fb-page" style="width: 100%;" data-href="https://www.facebook.com/{{settings.FACEBOOK_PAGE}}/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"></div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -102,7 +108,7 @@
             <footer>
                 <div class="row">
                     <div class="col-md-12">
-                        Copyright &copy;  Kibaru 2015
+                        Copyright &copy;  {{ settings.APP_NAME }} 2015
                     </div>
                 </div>
             </footer>

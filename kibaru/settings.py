@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'disqus',
     'django.contrib.sites',
+    "social_widgets",
     # 'menus'
 )
 
@@ -111,6 +112,11 @@ STATIC_URL = '/static/'
 DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
 DJANGORESIZED_DEFAULT_QUALITY = 75
 DJANGORESIZED_DEFAULT_KEEP_META = True
+
+FACEBOOK_PAGE = "BaraCorp-1557724531167282"
+FACEBOOK_USER = "kibaruuml"
+TWITTER_USER = "kibaruu1"
+APP_NAME = "kibaruu"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

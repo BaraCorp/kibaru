@@ -9,9 +9,7 @@ body {
     color: #3a3939;
     line-height: 16px;
     background: whitesmoke none repeat scroll 0 0;
-
-    /*font: 13px/17px "Roboto",Helvetica,Arial,sans-serif;*/
-    padding-top: 100px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 100px;
 }
 .page {
     /*margin: 10px 0px 40px;*/
@@ -43,9 +41,10 @@ footer {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
   padding: 0.5ex;
   background-color: #002104;
-  color: #fff;
+  color: #D5D5D5;
   border-radius: 0.5em 0.5em 0 0;
   margin-bottom: 1em;
+  height: 2em;
 }
 #sticky.stick {
   position: fixed;
@@ -210,7 +209,6 @@ a {
     color: #002104;
 }
 a:hover{
-    /*color: #000;*/
     text-decoration: none
 }
 .social-network a {

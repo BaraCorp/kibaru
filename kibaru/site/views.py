@@ -164,7 +164,7 @@ def display_article(request, *args, **kwargs):
     article_slug = kwargs["slug"]
     article = posts.get(slug=article_slug)
 
-    context.update({'settings': settings, 'article': article})
+    context.update({'article': article})
     return render(request, 'site/article_detail.html', context)
 
 
