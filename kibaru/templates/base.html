@@ -12,11 +12,11 @@
         <!-- Jquery UI CSS -->
         <link rel="stylesheet" href="{% static "jquery-ui.css" %}">
         <!-- Custom CSS -->
-        <link  rel="stylesheet" href="{% static "kibaru.css" %}">
         <link  rel="stylesheet" href="{% static "font-awesome.min.css" %}">
+        <link  rel="stylesheet" href="{% static "kibaru.css" %}">
     </head>
     <div id="{% block page-id %}{% endblock %}"></div>
-    <div >{% include "menu.html" %}</div>
+    <div>{% include "menu.html" %}</div>
     <div>{% include "site/banner.html" %}</div>
     <body>
           <!-- Page Content -->
@@ -35,15 +35,15 @@
                           <div class="panel-heading">ARCHIVE</div>
                           <div class="panel-body">
                             {% for line in archive_counts %}
-                                    {% if line.isyear %}
-                                        {% if not forloop.first %}
-                                        <br>
-                                        {% endif %}
-                                        <a href="{% url 'article_year' line.year %}" >{{ line.year }}</a> ({{ line.count }})<br>
-                                    {% else %}
-                                        <a href="{% url 'article_month' line.year line.month %}"> - {{ line.monthname }}</a> ({{ line.count }})<br>
+                                {% if line.isyear %}
+                                    {% if not forloop.first %}
+                                    <br>
                                     {% endif %}
-                                {% endfor %}
+                                    <a href="{% url 'article_year' line.year %}" >{{ line.year }}</a> ({{ line.count }})<br>
+                                {% else %}
+                                    <a href="{% url 'article_month' line.year line.month %}"> - {{ line.monthname }}</a> ({{ line.count }})<br>
+                                {% endif %}
+                            {% endfor %}
                           </div>
                         </div>
                         {% block social %}
@@ -78,19 +78,20 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">L'Hebdo</div>
-                        {% for publicity in publicities %}
-                            <div class="">
-                                <a href="{{publicity.url_display}}">
-                                  <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
-                                </a>
-                            </div>
-                        {% endfor %}
+                        <div class="">
+                            <ul>
+                                {% for article in articles %}
+                                    <li><a href="{{article.url_display}}"> <span>{{ article.title }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Twitter</div>
                     </div>
                 </div>
-
             </div>
             <div class="row">
-
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     {% block content_larg %}
                     {% endblock %}
@@ -106,10 +107,10 @@
                 </div>
             </footer>
         </div>
-        <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
-        <script src="{% static "bootstrap/js/bootstrap.js"%}"></script>
-        <script src="{% static "jquery.min.js"%}"></script>
-        <script src="{% static "jquery-ui.js"%}"></script>
+        <script src="{% static "jquery.min.js" %}"></script>
+        <script src="{% static "jquery-ui.js" %}"></script>
+        <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
         <script type="text/javascript">
         $(document).ready(function(){
             function sticky_relocate() {

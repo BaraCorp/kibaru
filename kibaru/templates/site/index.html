@@ -7,32 +7,22 @@
 
 {% block content %}
     <!-- Project One -->
-    <div class="row well">
-            <div id="main_area">
-                <!-- Slider -->
-                <div class="row">
-                    <div class="col-xs-12" id="slider">
-                        <!-- Top part of the slider -->
-                        <div class="row">
-                            <div class="col-sm-8" id="carousel-bounding-box">
-                                <a href="{{start.url_display}}">
-                                    <div class="thumbnail">
-                                        <img alt="100%x200" data-src="holder.js/100%x200" style="display: block;" src="{% if start.image %}{{ start.image.url }}{% endif %}" data-holder-rendered="true">
-                                    </div>
-                                        <div class="art-title">{{ start.title}}</div>
-                                        <hr/>
-                                </a>
-                            </div>
-                            <div class="col-sm-4" id="carousel-text">
-                                <div><p>{{ start.clean_tags_html|safe }} ...</p></div>
-                            </div>
-                        </div>
+    <div class="row">
+        <div class="start">
+            <a href="{{start.url_display}}">
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="thumbnail">
+                        <img alt="100%x200" data-src="holder.js/100%x200" style="display: block;" src="{% if start.image %}{{ start.image.url }}{% endif %}" data-holder-rendered="true">
                     </div>
-                </div><!--/Slider-->
-
+                    <div class="art-title">{{ start.title}}</div><hr/>
+                    <div></div>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="carousel-text">
+                    <div><p>{{ start.clean_tags_html|safe }} ...</p></div>
+                </div>
+            </a>
         </div>
     </div>
-        <!-- /.row -->
     <div class="row">
         {% if articles %}
             {% for article in articles %}
@@ -56,23 +46,5 @@
 
 {% block onJQready %}
 
-    $('#my_Carousel').carousel({
-            interval: 5000
-    });
-    $('#carousel-text').html($('#slide-content-0').html());
-
-    //Handles the carousel thumbnails
-   $('[id^=carousel-selector-]').click( function(){
-        var id = this.id.substr(this.id.lastIndexOf("-") + 1);
-        var id = parseInt(id);
-        $('#my_Carousel').carousel(id);
-    });
-
-
-    // When the carousel slides, auto update the text
-    $('#my_Carousel').on('slid.bs.carousel', function (e) {
-             var id = $('.item.active').data('slide-number');
-            $('#carousel-text').html($('#slide-content-'+id).html());
-    });
 
 {% endblock %}
