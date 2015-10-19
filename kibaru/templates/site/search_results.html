@@ -9,14 +9,22 @@
     <div>Recherche de : {{ query_string }} </div>
 
   {% for post in found_article %}
-    <h3><a href="{{ post.url_display }}">{{ post.title }}</a></h3>
-    <html>{{post.text|safe}}</html>
-    <hr>
-    <div class="post_footer">
-          {% ifnotequal post.date_modified.date post.date_created.date %}
-              Dernière modification : {{ post.date_modified.date }}<br>
-          {% endifnotequal %}
-          Date de publication : {{ post.date_created.date }}<br>
+
+    <div class="media">
+      <div class="media-left media-middle">
+        <a href="{{ post.url_display }}">
+          <img class="media-object" src="{{ post.thumbnail.url }}" alt="{{ post.thumbnail.url }}">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ post.title }}</h4>
+        <div class="post_footer">
+              {% ifnotequal post.date_modified.date post.date_created.date %}
+                  Dernière modification : {{ post.date_modified.date }}<br>
+              {% endifnotequal %}
+              Date de publication : {{ post.date_created.date }}<br>
+        </div>
+      </div>
     </div>
     <br>
   {% endfor %}

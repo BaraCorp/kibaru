@@ -41,6 +41,7 @@ def add_article(request):
     if request.method == 'POST':
         form = Articleform(request.POST, request.FILES)
         if form.is_valid():
+            thumbnail = form.cleaned_data['image']
             form.save()
             messages.success(request, u"l'article a ete ajouter")
             return HttpResponseRedirect('/admin/')
@@ -73,14 +74,17 @@ def edit_article(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected_article = Article.objects.get(id=id_url)
     if request.method == 'POST':
-        form = Articleform(request.POST, request.FILES, instance=selected_article)
+        form = Articleform(request.POST, request.FILES,
+                           instance=selected_article)
         if form.is_valid():
             selected_article.title = request.POST.get('title')
             selected_article.text = request.POST.get('text')
             if request.FILES.get('image'):
                 selected_article.image = request.FILES.get('image')
-            selected_article.author = Member.objects.get(username=request.POST.get('author'))
-            selected_article.category = Category.objects.get(slug=request.POST.get('category'))
+            selected_article.author = Member.objects.get(
+                username=request.POST.get('author'))
+            selected_article.category = Category.objects.get(
+                slug=request.POST.get('category'))
             selected_article.status = request.POST.get('status')
 
             form.save()
@@ -110,7 +114,8 @@ def edit_new(request, *args, **kwargs):
         if form.is_valid():
             selected_new.title = request.POST.get('title')
             selected_new.comment = request.POST.get('comment')
-            selected_new.author = Member.objects.get(username=request.POST.get('author'))
+            selected_new.author = Member.objects.get(
+                username=request.POST.get('author'))
             selected_new.date = date(form.cleaned_data.get('date').year,
                                      form.cleaned_data.get('date').month,
                                      form.cleaned_data.get('date').day)
