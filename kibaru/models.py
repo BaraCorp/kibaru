@@ -122,7 +122,7 @@ class Article(models.Model):
         max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))
     text = tinymce_models.HTMLField(blank=True, verbose_name=("Texte"))
-    image = ResizedImageField(size=[500, 300], upload_to='images_article/',
+    image = ResizedImageField(size=[600, 400], upload_to='images_article/',
                               blank=True, verbose_name=("Image"))
     thumbnail = ResizedImageField(
         size=[187, 103], upload_to='images_article', blank=True)
