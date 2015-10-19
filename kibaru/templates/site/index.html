@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
+{% load imagefit %}
 
 {% block title %} {% endblock %}
 
@@ -12,7 +13,7 @@
             <a href="{{start.url_display}}">
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                     <div class="thumbnail">
-                        <img alt="100%x200" data-src="holder.js/100%x200" style="display: block;" src="{% if start.image %}{{ start.image.url }}{% endif %}" data-holder-rendered="true">
+                        <img alt="100%x200" data-src="holder.js/100%x200" style="display: block;" src="{% if start.image %}{{ start.image.url|resize:'500x300'}}{% endif %}" data-holder-rendered="true">
                     </div>
                     <div class="art-title">{{ start.title}}</div>
                     <div></div>
@@ -29,7 +30,7 @@
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 art">
                     <a href="{{article.url_display}}">
                         <div class="thumbnail ">
-                            <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100%; width: 100%; display: block;" src="{% if article.thumbnail %}{{ article.thumbnail.url }}{% endif %}" data-holder-rendered="true">
+                            <img  data-src="holder.js/100%x200"src="{% if article.image %}{{ article.image.url|resize:'250x200' }}{% endif %}" data-holder-rendered="true">
                             <div class="art-title">{{ article.title}}</div>
                             <hr/>
                             <!-- <div><p>{{ article.clean_tags_html|safe }} ...</p></div> -->
