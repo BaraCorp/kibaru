@@ -113,13 +113,6 @@ DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
 DJANGORESIZED_DEFAULT_QUALITY = 75
 DJANGORESIZED_DEFAULT_KEEP_META = True
 
-# IMAGEFIT_ROOT = "public"
-# IMAGEFIT_PRESETS = {
-#     'thumbnail': {'width': 64, 'height': 64, 'crop': True},
-#     'thumbnail1': {'width': 300, 'height': 220},
-#     'my_preset2': {'width': 100},
-# }
-
 FACEBOOK_PAGE = "BaraCorp-1557724531167282"
 FACEBOOK_USER = "kibaruuml"
 TWITTER_USER = "kibaruu1"
@@ -127,16 +120,7 @@ APP_NAME = "kibaruu"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-# enable/disable server cache
-# IMAGEFIT_CACHE_ENABLED = True
-# # set the cache name specific to imagefit with the cache dict
-# IMAGEFIT_CACHE_BACKEND_NAME = 'imagefit'
-# CACHES = {
-#     'imagefit': {
-#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-#         'LOCATION': os.path.join(tempfile.gettempdir(), 'django_imagefit')
-#     }
-# }
+
 try:
     from kibaru.settings_local import *
 except Exception as e:

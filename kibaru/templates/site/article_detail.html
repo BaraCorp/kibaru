@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load i18n staticfiles disqus_tags%}
 {% load social_widgets %}
+{% load imagefit %}
+
 {% block title %} | {{ article.title }} {% endblock %}
 
 {% block page-id %} {{ article.id }}{% endblock %}
@@ -16,8 +18,8 @@
                 </div>
                 {% if article.image %}
                     <div class="separator thumbnail " style="clear: both; text-align: center;">
-                        <a href=src="{{ article.image.url}}">
-                        <img style="width: 100%; display: block;" src= {% if article.image %}"{{ article.image.url}}" {% else %} "" {% endif %} border="1"></a>
+                        <a href=src="{{ article.image.url }}">
+                        <img src= {% if article.image %}"{{ article.image.url|resize:'250x200' }}" {% else %} "" {% endif %} border="1"></a>
                     </div>
                 {% endif %}
             </div>

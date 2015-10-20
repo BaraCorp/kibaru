@@ -9,29 +9,50 @@
 {% block content %}
     <!-- Project One -->
     <div class="row">
-        <div class="start">
-            <a href="{{start.url_display}}">
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                    <div class="thumbnail">
-                        <img alt="100%x200" data-src="holder.js/100%x200" style="display: block;" src="{% if start.image %}{{ start.image.url|resize:'500x300'}}{% endif %}" data-holder-rendered="true">
-                    </div>
-                    <div class="art-title">{{ start.title}}</div>
-                    <div></div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 start" >
+            <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    {% for star in starts %}
+                        <li data-slide-to="{{star.id}}" data-target="#carousel-caption" class="{% if forloop.first %} active{% endif %}"></li>
+                    {% endfor %}
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    {% for star in starts %}
+                        <div class="item {% if forloop.first %} active{% endif %}">
+                            <img alt="" src="{% if star.image %}{{ star.image.url|resize:'900x300'}}{% endif %}">
+                            <div class="carousel-caption">
+                                <h3 class="carousel-caption-header">{{ star.title }}</h3>
+                                <p class="carousel-caption-text hidden-sm hidden-xs">
+                                    <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">Suite</a>
+                                </p>
+                            </div>
+                            <h6>{{ star.title }}</h6>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="carousel-text">
-                    <div><p>{{ start.clean_tags_html|safe }} ...</p></div>
-                </div>
-            </a>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+                <!-- Timer "progress bar" -->
+                <hr class="transition-timer-carousel-progress-bar animate" />
+            </div>
         </div>
-    </div><hr/>
-    <div class="row">
+    </div>
+    <hr/>
+    <div class="row art">
         {% if articles %}
             {% for article in articles %}
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 art">
                     <a href="{{article.url_display}}">
                         <div class="thumbnail ">
                             <img  data-src="holder.js/100%x200"src="{% if article.image %}{{ article.image.url|resize:'250x200' }}{% endif %}" data-holder-rendered="true">
-                            <div class="art-title">{{ article.title}}</div>
+                            <p class="art-title">{{ article.title}}</p>
                             <hr/>
                             <!-- <div><p>{{ article.clean_tags_html|safe }} ...</p></div> -->
                         </div>
@@ -43,4 +64,22 @@
         {% endif %}
     </div>
 
+{% endblock %}
+
+{% block onJQready %}
+    //Events that reset and restart the timer animation when the slides change
+    $("#transition-timer-carousel").on("slide.bs.carousel", function(event) {
+        //The animate class gets removed so that it jumps straight back to 0%
+        $(".transition-timer-carousel-progress-bar", this)
+            .removeClass("animate").css("width", "0%");
+    }).on("slid.bs.carousel", function(event) {
+        //The slide transition finished, so re-add the animate class so that
+        //the timer bar takes time to fill up
+        $(".transition-timer-carousel-progress-bar", this)
+            .addClass("animate").css("width", "100%");
+    });
+
+    //Kick off the initial slide animation when the document is ready
+    $(".transition-timer-carousel-progress-bar", "#transition-timer-carousel")
+        .css("width", "100%");
 {% endblock %}

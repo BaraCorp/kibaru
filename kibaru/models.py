@@ -122,10 +122,10 @@ class Article(models.Model):
         max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))
     text = tinymce_models.HTMLField(blank=True, verbose_name=("Texte"))
-    image = ResizedImageField(size=[600, 400], upload_to='images_article/',
+    image = ResizedImageField(size=[900, 500], upload_to='images_article/',
                               blank=True, verbose_name=("Image"))
-    # thumbnail = ResizedImageField(
-    #     size=[187, 103], upload_to='images_article', blank=True)
+    thumbnail = ResizedImageField(
+        size=[187, 103], upload_to='images_article', blank=True)
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
     date_created = models.DateField(verbose_name=("Fait le"),
                                     default=datetime.datetime.today)

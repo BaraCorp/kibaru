@@ -15,7 +15,7 @@
         {% if post.image %}
             <div class="media-left media-middle">
                 <a href="{{ post.url_display }}">
-                  <img class="media-object thumbnail" src="{{ post.image.url|resize:'180x120'}}" alt="{{ post.image.url }}">
+                  <img class="media-object thumbnail" src="{% if article.image %}{{ article.image.url|resize:'250x200' }}{% endif %}" alt="{{ post.image.url }}">
                 </a>
             </div>
         {% endif %}
