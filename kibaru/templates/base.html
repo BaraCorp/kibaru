@@ -65,46 +65,50 @@
                     {% endblock %}
                 </div>
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    {% block pub %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Publicité</div>
-                            {% for publicity in publicities %}
-                                <div class="">
-                                    <a href="{{publicity.url_display}}">
-                                      <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
-                                    </a>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endblock %}
-
-                    {% block hebdo %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">L'Hebdo</div>
-                            <div class="">
-                                <ul>
-                                    {% for article in articles %}
-                                        <li><a href="{{article.url_display}}"> <span>{{ article.title }}</span></a></li>
-                                    {% endfor %}
-                                </ul>
+                    {% block sidebar1 %}
+                        {% block pub %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Publicité</div>
+                                {% for publicity in publicities %}
+                                    <div class="">
+                                        <a href="{{publicity.url_display}}">
+                                          <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
+                                        </a>
+                                    </div>
+                                {% endfor %}
                             </div>
-                        </div>
-                    {% endblock %}
+                        {% endblock %}
 
-                    {% block twitter %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Twitter</div>
-                                <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                        </div>
-                    {% endblock %}
-                    {% block facebook %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Facebook</div>
-                            <div class="fb-page" style="width: 100%;" data-href="https://www.facebook.com/{{settings.FACEBOOK_PAGE}}/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"></div>
-                        </div>
-                    {% endblock %}
+                        {% block hebdo %}
+                            <div class="list-group">
+                                <a href="#" class="list-group-item disabled">L&#145;Hebdo</a>
+                                {% for article in articles %}
+                                  <a href="{{article.url_display}}" class="list-group-item">
+                                    <h6 class="list-group-item-heading">{{ article.title }} </h6>
+                                    <h6 class="list-group-item-text" style="float: right;"> suite </h6>
+                                    <h6 class="list-grouh6-item-text">{{ article.date_created }}</h6>
+                                  </a>
+                                {% endfor %}
+                                  <a href="{{article.url_display}}" class="list-group-item">
+                                    <h6 class="list-group-item-heading">&rsaquo; Tous les articles</h6>
+                                  </a>
+                            </div>
+                        {% endblock %}
 
+                        {% block twitter %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Twitter</div>
+                                    <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+                        {% endblock %}
+                        {% block facebook %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Facebook</div>
+                                <div class="fb-page" style="width: 100%;" data-href="https://www.facebook.com/{{settings.FACEBOOK_PAGE}}/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"></div>
+                            </div>
+                        {% endblock%}
+                    {% endblock%}
                 </div>
             </div>
             <div class="row">

@@ -44,6 +44,7 @@ def add_article(request):
             article = Article.objects.get(start=True)
             article.start = False
             article.save()
+            thumbnail = form.cleaned_data['image']
             form.save()
             messages.success(request, u"l'article a ete ajouter")
             return HttpResponseRedirect('/admin/')
