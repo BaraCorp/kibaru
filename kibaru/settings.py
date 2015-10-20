@@ -6,6 +6,8 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
 import os
+import tempfile
+
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(abs_path)
 
@@ -36,7 +38,7 @@ INSTALLED_APPS = (
     'disqus',
     'django.contrib.sites',
     "social_widgets",
-    'imagefit',
+    # 'imagefit',
 )
 
 
@@ -112,6 +114,17 @@ STATIC_URL = '/static/'
 DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
 DJANGORESIZED_DEFAULT_QUALITY = 75
 DJANGORESIZED_DEFAULT_KEEP_META = True
+
+# enable/disable server cache
+IMAGEFIT_CACHE_ENABLED = True
+# set the cache name specific to imagefit with the cache dict
+IMAGEFIT_CACHE_BACKEND_NAME = 'imagefit'
+# CACHES = {
+#     'imagefit': {
+#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+#         'LOCATION': os.path.join(tempfile.gettempdir(), 'django_imagefit')
+#     }
+# }
 
 FACEBOOK_PAGE = "BaraCorp-1557724531167282"
 FACEBOOK_USER = "kibaruuml"
