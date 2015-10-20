@@ -12,11 +12,13 @@
   {% for post in found_article %}
 
     <div class="media">
-      <div class="media-left media-middle">
-        <a href="{{ post.url_display }}">
-          <img class="media-object thumbnail" src="{{ post.image.url|resize:'180x120'}}" alt="{{ post.image.url }}">
-        </a>
-      </div>
+        {% if post.image %}
+            <div class="media-left media-middle">
+                <a href="{{ post.url_display }}">
+                  <img class="media-object thumbnail" src="{{ post.image.url|resize:'180x120'}}" alt="{{ post.image.url }}">
+                </a>
+            </div>
+        {% endif %}
       <div class="media-body">
         <h4 class="media-heading">{{ post.title }}</h4>
         <div class="post_footer">
