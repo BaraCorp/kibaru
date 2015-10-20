@@ -33,7 +33,7 @@
             <label>{{form.start.label}}</label>
             {{form.start|add_class:"form-control"}} {{form.start.errors}}
         </div>
-        <a class="btn btn-default" href="/admin" role="button">Annuler</a>
+        <a class="btn btn-default" href="{% url 'admin_home' %}" role="button">Annuler</a>
         <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
     </form>
 {% endblock %}
