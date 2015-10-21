@@ -44,12 +44,12 @@
         </div>
     </div>
     <hr/>
-    <div class="row art">
+    <div class="row">
         {% if articles %}
             {% for article in articles %}
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 art">
                     <a href="{{article.url_display}}">
-                        <div class="thumbnail ">
+                        <div class="thumbnail art">
                             <img  data-src="holder.js/100%x200"src="{% if article.image %}{{ article.image.url }}{% endif %}" data-holder-rendered="true">
                             <p class="art-title">{{ article.title}}</p>
                             <hr/>
