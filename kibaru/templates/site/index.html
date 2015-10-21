@@ -20,14 +20,13 @@
                 <div class="carousel-inner">
                     {% for star in starts %}
                         <div class="item {% if forloop.first %} active{% endif %}">
-                            <img alt="" src="{% if star.image %}{{ star.image.url}}{% endif %}">
+                            <img alt="" style="width: 100%;height: 100%;"src="{% if star.image %}{{ star.image.url}}{% endif %}">
                             <div class="carousel-caption">
-                                <h3 class="carousel-caption-header">{{ star.title }}</h3>
-                                <p class="carousel-caption-text hidden-sm hidden-xs">
+                                <h4 class="carousel-caption-header">{{ star.title }}
+                                <span class="carousel-caption-text hidden-sm hidden-xs">
                                     <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">Suite</a>
-                                </p>
+                                </span></h4>
                             </div>
-                            <h6>{{ star.title }}</h6>
                         </div>
                     {% endfor %}
                 </div>
@@ -50,7 +49,7 @@
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 art">
                     <a href="{{article.url_display}}">
                         <div class="thumbnail art">
-                            <img  data-src="holder.js/100%x200"src="{% if article.image %}{{ article.image.url }}{% endif %}" data-holder-rendered="true">
+                            <img data-src="holder.js/100%x200"src="{% if article.image %}{{ article.image.url }}{% endif %}" data-holder-rendered="true">
                             <p class="art-title">{{ article.title}}</p>
                             <hr/>
                             <!-- <div><p>{{ article.clean_tags_html|safe }} ...</p></div> -->
