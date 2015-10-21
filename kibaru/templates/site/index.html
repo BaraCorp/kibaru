@@ -51,8 +51,9 @@
                         <div class="thumbnail art">
                             <img data-src="holder.js/100%x200"src="{% if article.image %}{{ article.image.url }}{% endif %}" data-holder-rendered="true">
                             <p class="art-title">{{ article.title}}</p>
-                            <hr/>
-                            <!-- <div><p>{{ article.clean_tags_html|safe }} ...</p></div> -->
+                            <!-- <hr/> -->
+                            <span class="btn btn-xs btn-default"> {{article.count_view }} <i class="glyphicon glyphicon-eye-open"></i></span>
+                            <!-- <span class="btn btn-xs btn-default"> {{article.count_like}} <i class="glyphicon glyphicon-thumbs-up"></i></span> -->
                         </div>
                     </a>
                 </div>

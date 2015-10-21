@@ -22,6 +22,11 @@ body {
 .post-header{
     margin: 0px 0px 6px;
 }
+
+a {
+    text-decoration: none;
+}
+
 .art-title{
     height: 90px;
     margin: 5px;
@@ -142,7 +147,7 @@ footer {
     /*max-height: 350px;*/
     width: 100%;
     min-height: 20em;
-    max-height: 20em;
+    max-height: 25em;
 }
 .transition-timer-carousel .carousel-caption {
     background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 4%, rgba(0,0,0,0.5) 32%, rgba(0,0,0,1) 100%); /* FF3.6+ */

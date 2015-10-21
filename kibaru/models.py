@@ -134,6 +134,8 @@ class Article(models.Model):
     status = models.CharField(verbose_name="Status", max_length=50,
                               choices=STATUS.items())
     start = models.BooleanField(verbose_name="Start", default=False)
+    count_view = models.IntegerField(default=0)
+    count_like = models.IntegerField(default=0)
 
     def get_tag_list(self):
         return re.split(" ", self.tags)
