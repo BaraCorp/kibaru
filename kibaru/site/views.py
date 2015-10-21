@@ -156,7 +156,7 @@ def home(request, *args, **kwargs):
         start.url_start_display = reverse("display_article", args=[start.slug])
     context.update({'subtitle': '', })
 
-    context.update({'articles': posts, "start": start, "starts": starts})
+    context.update({'articles': posts, "start": start, "starts": starts, "cat_slug": cat_slug})
     return render(request, 'site/index.html', context)
 
 
