@@ -164,6 +164,8 @@ def display_article(request, *args, **kwargs):
     posts, context = init()
     article_slug = kwargs["slug"]
     article = posts.get(slug=article_slug)
+    article.count_view += 1
+    article.save()
 
     context.update({'article': article})
     return render(request, 'site/article_detail.html', context)
