@@ -156,7 +156,8 @@ def home(request, *args, **kwargs):
         start.url_start_display = reverse("display_article", args=[start.slug])
     context.update({'subtitle': '', })
 
-    context.update({'articles': posts, "start": start, "starts": starts, "cat_slug": cat_slug})
+    context.update({'articles': posts, "start": start,
+                    "starts": starts, "cat_slug": cat_slug})
     return render(request, 'site/index.html', context)
 
 
@@ -166,6 +167,7 @@ def display_article(request, *args, **kwargs):
     article = posts.get(slug=article_slug)
     article.count_view += 1
     article.save()
+    # article.url_display = reverse("display_article", args=[article.slug])
 
     context.update({'article': article})
     return render(request, 'site/article_detail.html', context)
