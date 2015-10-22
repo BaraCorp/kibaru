@@ -23,9 +23,9 @@ from kibaru.models import Article, Member, Category, New
 def home(request):
     context = {}
     articles = Article.objects.all().order_by('-date_created')
-    paginator = Paginator(articles, 10)
+    paginator = Paginator(articles, 1)
     news = New.objects.all().order_by('-date')
-    paginator1 = Paginator(news, 10)
+    paginator1 = Paginator(news, 1)
     page = request.GET.get('page')
     print(page)
     page1 = request.GET.get('page1')
@@ -36,6 +36,7 @@ def home(request):
         articles = paginator.page(1)
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
+    print(articles)
 
     try:
         news = paginator1.page(page1)
@@ -49,7 +50,7 @@ def home(request):
         article.url_edit = reverse("edit_article", args=[article.id])
         article.url_del = reverse("del_article", args=[article.id])
     str_news = ""
-    for new in news:
+    for new in news.object_list:
         new.url_edit = reverse("edit_new", args=[new.id])
         new.url_del = reverse("del_new", args=[new.id])
         str_news += "{} | {}; ".format(new.title, new.comment)

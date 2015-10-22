@@ -24,7 +24,7 @@
           <!-- Page Content -->
         <div class="container page">
             <div class="row">
-                <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">{% if news %}{{ news }}{% endif %}</marquee></div>
+                <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">{% if str_news %}{{ str_news }}{% endif %}</marquee></div>
                 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
                     <div class="subtitle">{% block subtitle %}{% endblock %}</div>
                     {% block content %}

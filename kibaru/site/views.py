@@ -68,12 +68,12 @@ def init(month=None, year=None, cat_slug=None):
     if news.filter(date__gte=datetime.now()):
         news = news.filter(date__gte=datetime.now())
     for n in news:
-        news = "{} | {}".format(n.title, n.comment)
+        str_news = "{} | {}".format(n.title, n.comment)
 
     # tag_data = create_tag_data(posts)
     archive_data = create_archive_data(posts)
     context = {'settings': settings,
-               'news': news,
+               'str_news': str_news,
                'post_list': posts,
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,
