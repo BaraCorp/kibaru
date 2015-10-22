@@ -4,8 +4,25 @@
 {% block content_larg %}
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-7">
             <h2 class="page-header">Liste des articles</h2>
+        </div>
+        <div class="col-md-3">
+                <div class="pagination" style="margin-top: 51px;">
+                    <span class="step-links">
+                        {% if articles.has_previous %}
+                            <a href="?page={{ articles.previous_page_number }}">precedent</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ articles.number }} sur {{ articles.paginator.num_pages }}.
+                        </span>
+
+                        {% if articles.has_next %}
+                            <a href="?page={{ articles.next_page_number }}">suivant</a>
+                        {% endif %}
+                    </span>
+                </div>
         </div>
         <div class="col-md-2">
             <a href="{% url 'add_article' %}" class="btn btn-success page-header" >Ajouter un article</a>
@@ -25,7 +42,7 @@
         {% if articles %}
         {% for article in articles %}
         <tr>
-            <td>{{ article.slug }}</td>
+            <td>{{ article.title }}</td>
             <td>{{ article.date_created }}</td>
             <td>{{ article.date_modified }}</td>
             <td>{{ article.author.name }}</td>
@@ -43,8 +60,25 @@
     </table>
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-7">
             <h2 class="page-header">Liste des nouvelles</h2>
+        </div>
+        <div class="col-md-3">
+            <div class="pagination" style="margin-top: 51px;">
+                <span class="step-links">
+                    {% if news.has_previous %}
+                        <a href="?page1={{ news.previous_page_number }}">precedent</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ news.number }} sur {{ news.paginator.num_pages }}.
+                    </span>
+
+                    {% if news.has_next %}
+                        <a href="?page1={{ news.next_page_number }}">suivant</a>
+                    {% endif %}
+                </span>
+            </div>
         </div>
         <div class="col-md-2">
             <a href="{% url 'add_new' %}" class="btn btn-success page-header" >Ajouter une nouvelle</a>
