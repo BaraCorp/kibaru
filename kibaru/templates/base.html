@@ -19,12 +19,11 @@
     </head>
     <div id="{% block page-id %}{% endblock %}"></div>
     <div>{% include "menu.html" %}</div>
-    <div>{% include "site/banner.html" %}</div>
+    <div id="sticky-anchor">{% include "site/banner.html" %}</div>
     <body>
           <!-- Page Content -->
         <div class="container page">
             <div class="row">
-                <div id="sticky-anchor"></div>
                 <div id="sticky"><marquee direction="left" scrollamount="3" onMouseOver="this.stop();" onMouseOut="this.start();">{% if news %}{{ news }}{% endif %}</marquee></div>
                 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
                     <div class="subtitle">{% block subtitle %}{% endblock %}</div>
@@ -72,15 +71,15 @@
                         {% block hebdo %}
                             <div class="list-group">
                                 <a href="#" class="list-group-item disabled">L&#145;Hebdo</a>
-                                {% for article in articles %}
-                                  <a href="{{article.url_display}}" class="list-group-item">
-                                    <h6 class="list-group-item-heading">{{ article.title }} </h6>
+                                {% for post in posts %}
+                                  <a href="{{post.url_display}}" class="list-group-item">
+                                    <h6 class="list-group-item-heading">{{ post.title }} </h6>
                                     <h6 class="list-group-item-text" style="float: right;"> suite </h6>
-                                    <h6 class="list-grouh-item-text">{{ article.date_created }}</h6>
+                                    <h6 class="list-grouh-item-text">{{ post.date_created }}</h6>
                                   </a>
                                 {% endfor %}
-                                  <a href="{{article.url_display}}" class="list-group-item">
-                                    <h6 class="list-group-item-heading">&rsaquo; Tous les articles</h6>
+                                  <a href="{{post.url_display}}" class="list-group-item">
+                                    <h6 class="list-group-item-heading">&rsaquo; Tous les posts</h6>
                                   </a>
                             </div>
                         {% endblock %}
@@ -118,7 +117,7 @@
                             <div class="panel-body">
                                 <ul class="social-network social-circle">
                                     <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2F127.0.0.1%3A8000%2Fdisplay_article%2Fpour-aider-les-autorit-s-du-pays-r-tablir-la-paix-et-la-s-curit&ref_src=twsrc%5Etfw&region=follow_link&screen_name={{ settings.TWITTER_USER }}&tw_p=followbutton" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2F127.0.0.1%3A8000%2Fdisplay_post%2Fpour-aider-les-autorit-s-du-pays-r-tablir-la-paix-et-la-s-curit&ref_src=twsrc%5Etfw&region=follow_link&screen_name={{ settings.TWITTER_USER }}&tw_p=followbutton" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
                                 </ul>
                             </div> -->
@@ -136,10 +135,10 @@
                 var window_top = $(window).scrollTop();
                 var div_top = $('#sticky-anchor').offset().top;
                 if (window_top > div_top) {
-                $('#sticky').addClass('container stick');
-            } else {
-                $('#sticky').removeClass('stick');
-            }
+                    $('#sticky').addClass('container stick');
+                } else {
+                    $('#sticky').removeClass('stick');
+                }
         }
         $(function() {
             $(window).scroll(sticky_relocate);
@@ -154,7 +153,7 @@
           ga('create', 'UA-69139072-1', 'auto');
           ga('send', 'pageview');
 
-        {% block onJQready %}{% endblock %}
+            {% block onJQready %}{% endblock %}
         });
 
        </script>

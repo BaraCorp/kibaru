@@ -129,7 +129,7 @@ IMAGEFIT_CACHE_BACKEND_NAME = 'imagefit'
 FACEBOOK_PAGE = "https://www.facebook.com/BaraCorp-1557724531167282"
 FACEBOOK_USER = "kibaruuml"
 FACEBOOK_APP_ID = "1651809315058736"
-TWITTER_USER = "kibaruu1"
+TWITTER_USER = "kibaruuml1"
 APP_NAME = "kibaruu"
 
 # Static files (CSS, JavaScript, Images)

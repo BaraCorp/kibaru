@@ -44,15 +44,15 @@
     </div>
     <hr/>
     <div class="row" id="articles">
-        {% if articles %}
-            {% for article in articles %}
+        {% if posts %}
+            {% for post in posts %}
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 art">
-                    <a href="{{article.url_display}}">
+                    <a href="{{post.url_display}}">
                         <div class="thumbnail art">
-                            <img data-src="holder.js/100%x200"src="{% if article.image %}{{ article.image.url }}{% endif %}" data-holder-rendered="true">
-                            <p class="art-title">{{ article.title}}</p>
+                            <img data-src="holder.js/100%x200"src="{% if post.image %}{{ post.image.url }}{% endif %}" data-holder-rendered="true">
+                            <p class="art-title">{{ post.title}}</p>
                             <!-- <hr/> -->
-                            <span class="btn btn-xs btn-default"> {{article.count_view }} <i class="glyphicon glyphicon-eye-open"></i></span>
+                            <span class="btn btn-xs btn-default"> {{post.count_view }} <i class="glyphicon glyphicon-eye-open"></i></span>
                             <!-- <span class="btn btn-xs btn-default"> {{article.count_like}} <i class="glyphicon glyphicon-thumbs-up"></i></span> -->
                         </div>
                     </a>

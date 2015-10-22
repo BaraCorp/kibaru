@@ -67,6 +67,13 @@ footer {
   z-index: 10000;
   border-radius: 0 0 0.5em 0.5em;
 }
+
+#navbar {
+  position: fixed;
+  top: 3.85em;
+  z-index: 10000;
+  border-radius: 0 0 0.5em 0.5em;
+}
 .grid h3 a, .list h3 a, aside h3 a, .grid .h3 a, .list .h3 a, aside .h3 a, .most-popular .h4 a, .most-popular h4 a, .most-comments .h4 a, .most-comments h4 a, .edition .h3 a, .edition h3 a {
     display: block;
     font-size: 13px;
