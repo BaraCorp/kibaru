@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from kibaru.forms import Articleform, Newform
 from kibaru.models import Article, Member, Category, New
@@ -22,7 +23,28 @@ from kibaru.models import Article, Member, Category, New
 def home(request):
     context = {}
     articles = Article.objects.all().order_by('-date_created')
+    paginator = Paginator(articles, 10)
     news = New.objects.all().order_by('-date')
+    paginator1 = Paginator(news, 10)
+    page = request.GET.get('page')
+    print(page)
+    page1 = request.GET.get('page1')
+    print(page1)
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
+    try:
+        news = paginator1.page(page1)
+    except PageNotAnInteger:
+        news = paginator1.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        news = paginator1.page(paginator.num_pages)
+
     for article in articles:
         article.url_edit = reverse("edit_article", args=[article.id])
         article.url_del = reverse("del_article", args=[article.id])
@@ -44,7 +66,7 @@ def add_article(request):
             # article = Article.objects.get(start=True)
             # article.start = False
             # article.save()
-            thumbnail = form.cleaned_data['image']
+            # thumbnail = form.cleaned_data['image']
             form.save()
             messages.success(request, u"l'article a ete ajouter")
             return HttpResponseRedirect('/admin/')
