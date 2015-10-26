@@ -22,9 +22,9 @@ from kibaru.models import Article, Member, Category, New
 def home(request):
     context = {}
     articles = Article.objects.all().order_by('-date_created')
-    paginator = Paginator(articles, 5)
+    paginator = Paginator(articles, 4)
     news = New.objects.all().order_by('-date')
-    paginator1 = Paginator(news, 5)
+    paginator1 = Paginator(news, 4)
     page = request.GET.get('page')
     print(page)
     page1 = request.GET.get('page1')
