@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
+{% load imagefit %}
 
 {% block title %} {% endblock %}
 
@@ -49,7 +50,7 @@
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 art">
                     <a href="{{post.url_display}}">
                         <div class="thumbnail art">
-                            <img data-src="holder.js/100%x200"src="{% if post.image %}{{ post.image.url }}{% endif %}" data-holder-rendered="true">
+                            <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'188x120' }}{% endif %}" data-holder-rendered="true">
                             <p class="art-title">{{ post.title}}</p>
                             <!-- <hr/> -->
                             <span class="btn btn-xs btn-default"> {{post.count_view }} <i class="glyphicon glyphicon-eye-open"></i></span>
