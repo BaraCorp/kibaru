@@ -67,13 +67,10 @@ def init(month=None, year=None, cat_slug=None):
     news = New.objects.order_by('-date')
     if news.filter(date__gte=datetime.now()):
         news = news.filter(date__gte=datetime.now())
-    for n in news:
-        str_news = "{} | {}".format(n.title, n.comment)
-
     # tag_data = create_tag_data(posts)
     archive_data = create_archive_data(posts)
     context = {'settings': settings,
-               'str_news': str_news,
+               'flash_news': news,
                'post_list': posts,
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,

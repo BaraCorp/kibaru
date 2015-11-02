@@ -25,11 +25,12 @@ urlpatterns = [
     url(r'^admin/', include(admin_urls)),
     url(r'^', include(site_urls)),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^imagefit/', include('imagefit.urls')),
+    url(r'^daguerre/', include('daguerre.urls')),
     # authentication
     url(r'^login/$', 'django.contrib.auth.views.login',
         {'template_name': 'administration/login.html'}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': '/'}, name='logout'),
+    url(r'^media/', include('imagefit.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

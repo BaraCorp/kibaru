@@ -6,6 +6,9 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 from django_resized import ResizedImageField
 
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
+
 
 import datetime
 import re
@@ -124,8 +127,11 @@ class Article(models.Model):
     text = tinymce_models.HTMLField(blank=True, verbose_name=("Texte"))
     image = ResizedImageField(size=[900, 500], upload_to='images_article/',
                               blank=True, verbose_name=("Image"))
-    thumbnail = ResizedImageField(
-        size=[187, 103], upload_to='images_article', blank=True)
+
+    # thumbnail = ImageSpecField(source='avatar',
+    #                                   processors=[ResizeToFill(187, 103)],
+    #                                   format='JPEG',
+    #                                   options={'quality': 60})
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
     date_created = models.DateField(verbose_name=("Fait le"),
                                     default=datetime.datetime.today)
