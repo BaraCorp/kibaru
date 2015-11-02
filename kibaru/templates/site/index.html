@@ -21,7 +21,7 @@
                 <div class="carousel-inner">
                     {% for star in starts %}
                         <div class="item {% if forloop.first %} active{% endif %}">
-                            <img alt="" style="width: 100%;height: 100%;"src="{% if star.image %}{{ star.image.url}}{% endif %}">
+                            <img alt="" style="width: 100%;height: 100%;"src="{% if star.image %}{{ star.image.url | resize:'600x320'}}{% endif %}">
                             <div class="carousel-caption">
                                 <h4 class="carousel-caption-header">{{ star.title }}
                                 <span class="carousel-caption-text hidden-sm hidden-xs">
