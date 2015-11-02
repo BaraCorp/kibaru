@@ -30,6 +30,6 @@ urlpatterns = [
         {'template_name': 'administration/login.html'}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': '/'}, name='logout'),
-    url(r'^media/', include('imagefit.urls')),
+    url(r'^thumbnails/', include('imagefit.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
