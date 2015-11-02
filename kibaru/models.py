@@ -6,9 +6,6 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 from django_resized import ResizedImageField
 
-from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFill
-
 
 import datetime
 import re
