@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n staticfiles disqus_tags%}
 {% load social_widgets %}
+{% load imagefit %}
 
 {% block title %} | {{ article.title }} {% endblock %}
 
@@ -19,7 +20,7 @@
                 {% if article.image %}
                     <div class="separator thumbnail " style="clear: both; text-align: center;">
                         <a href=src="{{ article.image.url }}">
-                        <img src= {% if article.image %}"{{ article.image.url }}" {% else %} "" {% endif %} border="1"></a>
+                        <img  style="min-height: 20em;max-height: 25em;" src= {% if article.image %} "{{ article.image.url | resize:'300x220'}}" {% else %} "" {% endif %} border="1"></a>
                     </div>
                 {% endif %}
             </div>
