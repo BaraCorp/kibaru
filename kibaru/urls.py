@@ -25,7 +25,6 @@ urlpatterns = [
     url(r'^admin/', include(admin_urls)),
     url(r'^', include(site_urls)),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^daguerre/', include('daguerre.urls')),
     # authentication
     url(r'^login/$', 'django.contrib.auth.views.login',
         {'template_name': 'administration/login.html'}, name='login'),
