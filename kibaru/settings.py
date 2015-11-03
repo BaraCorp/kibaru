@@ -126,12 +126,16 @@ IMAGEFIT_CACHE_BACKEND_NAME = 'imagefit'
 #     }
 # }
 
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+
 FACEBOOK_PAGE = "https://www.facebook.com/BaraCorp-1557724531167282"
 FACEBOOK_USER = "kibaruuml"
 FACEBOOK_APP_ID = "1651809315058736"
 TWITTER_USER = "kibaruuml1"
 APP_NAME = "kibaruu"
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
