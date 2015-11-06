@@ -2,7 +2,8 @@
 {% load widget_tweaks %}
 {% block title %}Ajout Article{% endblock %}
 {% load staticfiles %}
-{% block content_larg %}
+{% block content %}
+    <div class="container-fluid">
     <script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js"%}"></script>
     <h2 class="page-header">{{ page_title }}</h2>
 
@@ -36,6 +37,7 @@
         <a class="btn btn-default" href="{% url 'admin_home' %}" role="button">Annuler</a>
         <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
     </form>
+    </div>
 {% endblock %}
 
 {% block onJQready %}

@@ -30,7 +30,7 @@
                     <div>
                         {% for new in flash_news %}
                           <div class="update-nag">
-                           <span class="new-text">{{new.title}} <a href="#">Suite</a> </span>
+                           <span class="new-text">{{new.title}} <a href="{{new.url_display}}">Suite</a> </span>
                           </div>
                         {% endfor %}
                     </div>

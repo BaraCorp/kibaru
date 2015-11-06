@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n staticfiles disqus_tags%}
+{% load social_widgets %}
+{% load imagefit %}
+
+{% block title %} | {{ new.title }} {% endblock %}
+
+{% block page-id %} {{ new.id }}{% endblock %}
+
+{% block content %}
+    <div class="post hentry">
+        <div class="row">
+            <div class="col-xs-12" >
+                <h3 class="new_post_title entry-title"> {{ new.title }} </h3>
+                <div class="post-header">
+                    <span class="new_timestamp badge badge-success"style="clear: both; float: right;">
+                      Nouvelle publiée le {{ new.date }} </span>
+                    <span class="new_author vcard"> <abbr class="fn">Par <u><a href="#">{{ new.author.name }}</a></u></abbr></span>
+                </div>
+            </div>
+            <div class="col-xs-12" >
+                <div class="post-body entry-content">
+                    <div dir="ltr" style="text-align: left;" trbidi="on"> <html>{{new.comment}}</html></div>
+                </div>
+                <div class="social">
+                    <span>{% social_widget_render "twitter/share_button.html"  %} </span>
+                    <span>{% social_widget_render 'google/plus_share_button.html' %} </span>
+                    <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
+                    <span>{% social_widget_render "facebook/share_button.html" %}</span>
+                    <span>{% social_widget_render "facebook/follow_button.html" href="{{ new.url_display }}" %}</span>
+                    <span class="fb-like"></span>
+                    <script type="text/javascript">
+                      window.___gcfg = {lang: 'fr'};
+                      (function() {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/platform.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                      })();
+                    </script>
+                </div>
+                {% disqus_show_comments %}
+            </div>
+         </div>
+    </div>
+{% endblock %}

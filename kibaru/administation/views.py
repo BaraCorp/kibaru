@@ -26,16 +26,13 @@ def home(request):
     news = New.objects.all().order_by('-date')
     paginator1 = Paginator(news, 4)
     page = request.GET.get('page')
-    print(page)
     page1 = request.GET.get('page1')
-    print(page1)
     try:
         articles = paginator.page(page)
     except PageNotAnInteger:
         articles = paginator.page(1)
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
-    print(articles)
 
     try:
         news = paginator1.page(page1)
