@@ -8,7 +8,6 @@ from __future__ import (unicode_literals, absolute_import,
 from datetime import date
 
 from django.contrib import messages
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -23,9 +22,9 @@ from kibaru.models import Article, Member, Category, New
 def home(request):
     context = {}
     articles = Article.objects.all().order_by('-date_created')
-    paginator = Paginator(articles, 1)
+    paginator = Paginator(articles, 5)
     news = New.objects.all().order_by('-date')
-    paginator1 = Paginator(news, 1)
+    paginator1 = Paginator(news, 5)
     page = request.GET.get('page')
     print(page)
     page1 = request.GET.get('page1')
