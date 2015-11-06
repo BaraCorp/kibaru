@@ -65,6 +65,8 @@ def init(month=None, year=None, cat_slug=None):
             "display_publicity", args=[publicity.id])
 
     news = New.objects.order_by('-date')
+    for new in news:
+        new.url_display = reverse("display_new", args=[new.id])
     if news.filter(date__gte=datetime.now()):
         news = news.filter(date__gte=datetime.now())
     # tag_data = create_tag_data(posts)
@@ -167,6 +169,14 @@ def display_article(request, *args, **kwargs):
 
     context.update({'article': article})
     return render(request, 'site/article_detail.html', context)
+
+
+def display_new(request, *args, **kwargs):
+    posts, context = init()
+    new_id = kwargs["id"]
+    new = New.objects.get(id=new_id)
+    context.update({'new': new})
+    return render(request, 'site/new_detail.html', context)
 
 
 def display_publicity(request, *args, **kwargs):

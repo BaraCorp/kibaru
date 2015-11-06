@@ -148,9 +148,9 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         self.slug = "-".join(re.findall("([a-zA-Z]+)", self.title.lower()))
         super(Article, self).save(*args, **kwargs)
-        for ne in Newsletter.objects.all():
-            print(ne.email)
-            send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
+        # for ne in Newsletter.objects.all():
+            # print(ne.email)
+            # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
 
     def __str__(self):
         return "{title} {status}".format(title=self.title, status=self.status)

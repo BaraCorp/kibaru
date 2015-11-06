@@ -2,7 +2,8 @@
 {% load widget_tweaks %}
 {% block title %}Ajout News{% endblock %}
 {% load staticfiles %}
-{% block content_larg %}
+{% block content %}
+    <div class="container-fluid">
     <h2 class="page-header">{{ page_title }}</h2>
     <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">{% csrf_token %}
         <div class="form-group">
@@ -24,6 +25,7 @@
         <a class="btn btn-default" href="{% url 'admin_home' %}" role="button">Annuler</a>
         <input type='submit' class="btn btn-primary" value ="Poster"/>
     </form>
+    </div>
 {% endblock %}
 
 {% block onJQready %}
@@ -44,4 +46,6 @@
 {% block pub %}
 {% endblock %}
 {% block sidebar %}
+{% endblock %}
+{% block sidebar1 %}
 {% endblock %}
