@@ -6,7 +6,7 @@
 {% block page-id %}index{% endblock %}
 
 {% block content %}
-    <div>Recherche de : {{ query_string }} </div>
+    <div><b>Résultats de recherche pour : </b> {{ query_string }} </div>
     {% for post in found_article %}
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 art thumbnail">

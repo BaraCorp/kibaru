@@ -117,8 +117,18 @@ DJANGORESIZED_DEFAULT_KEEP_META = True
 FACEBOOK_PAGE = "https://www.facebook.com/BaraCorp-1557724531167282"
 FACEBOOK_USER = "kibaruuml"
 FACEBOOK_APP_ID = "1651809315058736"
-TWITTER_USER = "kibaruuml1"
+
+TWITTER_USER = "kibml"
 APP_NAME = "kibaruu"
+
+GOOGLE_PLUS = "112702821247370813954"
+YOUTUBE = "kibaruuml"
+GMAIL = "kibaruuml@gmail.com"
+TEL1 = ""
+TEL2 = ""
+ADDRESS = ""
+BP = ""
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
