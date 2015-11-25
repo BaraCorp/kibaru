@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static "favicon.ico" %}" rel="icon" type="image/x-icon" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>{{settings.DISQUS_WEBSITE_SHORTNAME}}{% block title %}{% endblock %}</title>
         <!-- Bootstrap -->
@@ -19,11 +20,11 @@
         <link  rel="stylesheet" href="{% static "kibaru.css" %}">
     </head>
     <div id="{% block page-id %}{% endblock %}"></div>
-    <div id="sticky-anchor">{% include "site/banner.html" %}</div>
-    <div>{% include "menu.html" %}</div>
     <body>
           <!-- Page Content -->
         <div class="container page">
+            <div>{% include "menu.html" %}</div>
+            <div id="sticky-anchor">{% include "site/banner.html" %}</div>
             <div class="" id="sticky">
                 <span class="title">DERNIÈRES INFOS</span>
                 <div class="myWrapper">
@@ -124,24 +125,16 @@
                 {% block footer %}
                     <div class="row">
                         <div class="col-md-12">
-                            Copyright &copy;  {{ settings.APP_NAME }} 2015
-                           <!--  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
-                            <div class="panel-body">
-                                <ul class="social-network social-circle">
-                                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2F127.0.0.1%3A8000%2Fdisplay_post%2Fpour-aider-les-autorit-s-du-pays-r-tablir-la-paix-et-la-s-curit&ref_src=twsrc%5Etfw&region=follow_link&screen_name={{ settings.TWITTER_USER }}&tw_p=followbutton" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div> -->
+                            <div>{% include "site/footer.html" %}</div>
                         </div>
                     </div>
                 {% endblock %}
             </footer>
         </div>
         <script src="{% static "jquery.min.js" %}"></script>
-        <script src="{% static "jquery-ui.js" %}"></script>
         <script src="{% static "jquery.easy-ticker.min.js" %}"></script>
         <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "jquery-ui.js" %}"></script>
         <script type="text/javascript">
         $(document).ready(function(){
             function sticky_relocate() {
@@ -153,7 +146,6 @@
                     $('#sticky').removeClass('container stick');
                 }
             }
-
             $(function() {
                 $(window).scroll(sticky_relocate);
                   sticky_relocate();
@@ -164,15 +156,12 @@
                     visible: 1,
                     interval: 2500
             });
-
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
           ga('create', 'UA-69139072-1', 'auto');
           ga('send', 'pageview');
-
             {% block onJQready %}{% endblock %}
         });
 
