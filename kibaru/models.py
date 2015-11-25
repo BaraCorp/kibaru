@@ -85,8 +85,19 @@ class Member(AbstractBaseUser):
 
 @implements_to_string
 class New(models.Model):
+    INFO = "I"
+    URGENT = "U"
+    COMMUNICATED = "C"
 
+    TYPE_NEWS_CHOICES = (
+        (INFO, 'info'),
+        (URGENT, 'urgent'),
+        (COMMUNICATED, 'communiqué'),
+    )
     """ """
+
+    type_new = models.CharField(max_length=2, choices=TYPE_NEWS_CHOICES,
+                                default=INFO)
     title = models.CharField(max_length=100, verbose_name=("Titre"))
     comment = models.TextField(blank=True, verbose_name=("Contenu"))
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
@@ -127,10 +138,6 @@ class Article(models.Model):
     image = ResizedImageField(size=[900, 500], upload_to='images_article/',
                               blank=True, verbose_name=("Image"))
 
-    # thumbnail = ImageSpecField(source='avatar',
-    #                                   processors=[ResizeToFill(187, 103)],
-    #                                   format='JPEG',
-    #                                   options={'quality': 60})
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
     date_created = models.DateField(verbose_name=("Fait le"),
                                     default=datetime.datetime.today)
@@ -149,8 +156,8 @@ class Article(models.Model):
         self.slug = "-".join(re.findall("([a-zA-Z]+)", self.title.lower()))
         super(Article, self).save(*args, **kwargs)
         # for ne in Newsletter.objects.all():
-            # print(ne.email)
-            # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
+        # print(ne.email)
+        # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
 
     def __str__(self):
         return "{title} {status}".format(title=self.title, status=self.status)
