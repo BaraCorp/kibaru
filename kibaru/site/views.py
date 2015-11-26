@@ -7,8 +7,11 @@ from __future__ import (unicode_literals, absolute_import,
 from datetime import datetime
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 from kibaru.models import Article, Publicity, Category, New
+from kibaru.forms import Newsletterform
 from django.conf import settings
 from kibaru.site.search import get_query
 
@@ -42,6 +45,21 @@ def month_view(request, year, month):
 #     context.update({'post_list': posts,
 #                     'subtitle': "Articles tagged '%s'" % tag, })
 #     return render(request, 'site/list_page.html', context)
+
+
+# @login_required
+def add_newsletter(request):
+    c = {}
+    if request.method == 'POST':
+        form = Newsletterform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, u"Merci pour ton abonnement")
+            return HttpResponseRedirect('/')
+    else:
+        form = Newsletterform()
+    c.update({'form': form})
+    return render(request, 'site/footer.html', c)
 
 
 def init(month=None, year=None, cat_slug=None):

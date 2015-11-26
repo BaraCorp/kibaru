@@ -6,7 +6,7 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
 from django import forms
-from kibaru.models import Article, New
+from kibaru.models import Article, New, Newsletter
 
 
 class Articleform(forms.ModelForm):
@@ -22,3 +22,10 @@ class Newform(forms.ModelForm):
     class Meta:
         model = New
         exclude = []
+
+
+class Newsletterform(forms.ModelForm):
+
+    class Meta:
+        model = Newsletter
+        exclude = ['date']
