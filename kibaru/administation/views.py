@@ -23,7 +23,7 @@ def home(request):
     context = {}
     articles = Article.objects.all().order_by('-date_created')
     paginator = Paginator(articles, 4)
-    news = New.objects.all().order_by('-date')
+    news = New.objects.all()
     paginator1 = Paginator(news, 4)
     page = request.GET.get('page')
     page1 = request.GET.get('page1')
@@ -118,7 +118,8 @@ def edit_article(request, *args, **kwargs):
 
     else:
         form = Articleform(instance=selected_article)
-    return render(request, 'administration/add_article.html', {'form': form, 'page_title': "Modification d'article"})
+    return render(request, 'administration/add_article.html',
+                  {'form': form, 'page_title': "Modification d'article"})
 
 
 # @login_required
@@ -151,7 +152,8 @@ def edit_new(request, *args, **kwargs):
 
     else:
         form = Newform(instance=selected_new)
-    return render(request, 'administration/add_new.html', {'form': form, 'page_title': "Modification de la nouvelle"})
+    return render(request, 'administration/add_new.html',
+                  {'form': form, 'page_title': "Modification de la nouvelle"})
 
 
 # @login_required

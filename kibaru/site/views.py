@@ -46,7 +46,7 @@ def month_view(request, year, month):
 
 def init(month=None, year=None, cat_slug=None):
     posts = Article.objects.filter(
-        status=Article.POSTED).order_by('-date_created')
+        status=Article.POSTED)
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
@@ -135,7 +135,7 @@ def search(request):
         article_query = get_query(query_string, ['title', 'text', ])
 
         found_article = Article.objects.filter(
-            article_query).order_by('-date_created')
+            article_query)
 
     context.update({'query_string': query_string,
                     'found_article': found_article})
@@ -150,7 +150,7 @@ def home(request, *args, **kwargs):
         slug = None
     posts, context = init(cat_slug=slug)
 
-    starts = Article.objects.filter(start=True)
+    starts = Article.objects.filter(start=True)[:5]
     for start in starts:
         start.url_start_display = reverse("display_article", args=[start.slug])
     context.update({'subtitle': '', })
