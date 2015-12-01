@@ -52,7 +52,7 @@
                         <div class="thumbnail art">
                             <!-- <span class="badge">{{ post.category.name}}</span> -->
                             <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'188x120' }}{% endif %}" data-holder-rendered="true">
-                            <p class="art-title"><span class="badge alert-info">{{ post.category.name}}</span> {{ post.title}}</p>
+                            <p class="art-title"> {{ post.title}}</p>
                             <!-- <hr/> -->
                             <span class="btn btn-xs btn-default"> {{post.count_view }} <i class="glyphicon glyphicon-eye-open"></i></span>
 
