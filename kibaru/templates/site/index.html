@@ -10,7 +10,7 @@
     <!-- Project One -->
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 start" >
-            <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+            <div id="transition-timer-carousel" class="thumbnail carousel slide transition-timer-carousel" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     {% for star in starts %}
@@ -84,7 +84,7 @@
 
 {% block video %}
     {% if videos_home %}
-        <div class="list-group list-group-item">
+        <div class="thumbnail">
             <div class="row">
                 {% for video in videos_home %}
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
