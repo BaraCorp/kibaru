@@ -20,5 +20,4 @@ urlpatterns = patterns('',
                        url(r'^article/(\d{4,4})/$', views.year_view, name='article_year'),
                        url(r'^article/(\d{4,4})/(\d{2,2})/$', views.month_view, name='article_month'),
                        url(r'^search/$', views.search, name='search'),
-                       url(r'^add_newsletter/$', views.add_newsletter, name='add_newsletter'),
                        )

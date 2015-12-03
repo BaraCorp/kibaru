@@ -47,21 +47,6 @@ def month_view(request, year, month):
 #     return render(request, 'site/list_page.html', context)
 
 
-# @login_required
-def add_newsletter(request):
-    c = {}
-    if request.method == 'POST':
-        form = Newsletterform(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, u"Merci pour ton abonnement")
-            return HttpResponseRedirect('/')
-    else:
-        form = Newsletterform()
-    c.update({'form': form})
-    return render(request, 'site/footer.html', c)
-
-
 def init(month=None, year=None, cat_slug=None):
     posts = Article.objects.filter(
         status=Article.POSTED).order_by('-date_created')
@@ -172,8 +157,16 @@ def home(request, *args, **kwargs):
     for start in starts:
         start.url_start_display = reverse("display_article", args=[start.slug])
     context.update({'subtitle': '', })
+    if request.method == 'POST':
+        form = Newsletterform(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, u"Merci pour ton abonnement")
+            return HttpResponseRedirect('/')
+    else:
+        form = Newsletterform()
 
-    context.update({'posts': posts, "start": start,
+    context.update({'posts': posts, "start": start, 'form': form,
                     "starts": starts, "cat_slug": cat_slug})
     return render(request, 'site/index.html', context)
 
