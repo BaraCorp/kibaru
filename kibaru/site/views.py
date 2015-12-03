@@ -17,18 +17,17 @@ MONTH_NAMES = ('', 'Janvier', u'Février', 'Mars', 'Avril', 'peut', 'Juin',
 
 
 def year_view(request, year):
-    print("year_view")
     posts, context = init(year=year)
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s' % year})
-    return render(request, 'site/search_results.html', context)
+    return render(request, 'site/list_page.html', context)
 
 
 def month_view(request, year, month):
     posts, context = init(month=month, year=year)
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s %s' % (MONTH_NAMES[int(month)], year), })
-    return render(request, 'site/search_results.html', context)
+    return render(request, 'site/list_page.html', context)
 
 
 # def tag_view(request, tag):
@@ -45,8 +44,8 @@ def month_view(request, year, month):
 
 
 def init(month=None, year=None, cat_slug=None):
-    posts = Article.objects.filter(
-        status=Article.POSTED)
+    posts = Article.objects.filter(status=Article.POSTED)
+    archive_data = create_archive_data(posts)
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
@@ -59,18 +58,16 @@ def init(month=None, year=None, cat_slug=None):
 
     for article in posts:
         article.url_display = reverse("display_article", args=[article.slug])
-        # article.intro = article.text.split('</p>')[0][3:]
     for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
 
-    news = New.objects.order_by('-date')
+    news = New.objects.all()
     for new in news:
         new.url_display = reverse("display_new", args=[new.id])
     if news.filter(date__gte=datetime.now()):
         news = news.filter(date__gte=datetime.now())
     # tag_data = create_tag_data(posts)
-    archive_data = create_archive_data(posts)
     context = {'settings': settings,
                'flash_news': news,
                'post_list': posts,
@@ -131,7 +128,6 @@ def search(request):
     posts, context = init()
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
-
         article_query = get_query(query_string, ['title', 'text', ])
 
         found_article = Article.objects.filter(
