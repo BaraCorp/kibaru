@@ -59,7 +59,6 @@ def home(request):
     for article in articles:
         article.url_edit = reverse("edit_article", args=[article.id])
         article.url_del = reverse("del_article", args=[article.id])
-
     str_news = ""
     for new in news.object_list:
         new.url_edit = reverse("edit_new", args=[new.id])
@@ -152,7 +151,8 @@ def edit_article(request, *args, **kwargs):
 
     else:
         form = Articleform(instance=selected_article)
-    return render(request, 'administration/add_article.html', {'form': form, 'page_title': "Modification d'article"})
+    return render(request, 'administration/add_article.html',
+                  {'form': form, 'page_title': "Modification d'article"})
 
 
 # @login_required
@@ -194,7 +194,8 @@ def edit_new(request, *args, **kwargs):
 
     else:
         form = Newform(instance=selected_new)
-    return render(request, 'administration/add_new.html', {'form': form, 'page_title': "Modification de la nouvelle"})
+    return render(request, 'administration/add_new.html',
+                  {'form': form, 'page_title': "Modification de la nouvelle"})
 
 
 # @login_required

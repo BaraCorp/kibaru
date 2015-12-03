@@ -85,6 +85,10 @@ class Member(AbstractBaseUser):
 
 @implements_to_string
 class New(models.Model):
+
+    class Meta:
+        ordering = ('-date',)
+
     INFO = "I"
     URGENT = "U"
     COMMUNICATED = "C"
@@ -94,6 +98,7 @@ class New(models.Model):
         (URGENT, 'urgent'),
         (COMMUNICATED, 'communiqué'),
     )
+
     """ """
 
     type_new = models.CharField(max_length=2, choices=TYPE_NEWS_CHOICES,
@@ -112,6 +117,7 @@ class New(models.Model):
 class Newsletter(models.Model):
 
     """ """
+
     date = models.DateField(verbose_name=("Date d'inscription"),
                             default=datetime.datetime.today)
     email = models.EmailField(
@@ -124,6 +130,10 @@ class Newsletter(models.Model):
 
 @implements_to_string
 class Article(models.Model):
+
+    class Meta:
+        ordering = ('-date_created', )
+
     DRAFT = 'draft'
     POSTED = 'posted'
 

@@ -49,7 +49,7 @@ def month_view(request, year, month):
 
 def init(month=None, year=None, cat_slug=None):
     posts = Article.objects.filter(
-        status=Article.POSTED).order_by('-date_created')
+        status=Article.POSTED)
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
@@ -62,15 +62,15 @@ def init(month=None, year=None, cat_slug=None):
     elif year:
         posts = posts.filter(date_created__year=year)
 
-    for article in posts:
+    for article in posts.iterator():
         article.url_display = reverse("display_article", args=[article.slug])
         # article.intro = article.text.split('</p>')[0][3:]
-    for publicity in publicities:
+    for publicity in publicities.iterator():
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
 
     news = New.objects.order_by('-date')
-    for new in news:
+    for new in news.iterator():
         new.url_display = reverse("display_new", args=[new.id])
     if news.filter(date__gte=datetime.now()):
         news = news.filter(date__gte=datetime.now())
@@ -91,7 +91,7 @@ def create_archive_data(posts):
     archive_data = []
     count = {}
     mcount = {}
-    for post in posts:
+    for post in posts.iterator():
         year = post.date_created.year
         month = post.date_created.month
         if year not in count:
@@ -142,7 +142,7 @@ def search(request):
         article_query = get_query(query_string, ['title', 'text', ])
 
         found_article = Article.objects.filter(
-            article_query).order_by('-date_created')
+            article_query)
 
     context.update({'query_string': query_string,
                     'found_article': found_article})
@@ -157,7 +157,7 @@ def home(request, *args, **kwargs):
         slug = None
     posts, context = init(cat_slug=slug)
 
-    starts = Article.objects.filter(start=True)
+    starts = Article.objects.filter(start=True)[:5]
     for start in starts:
         start.url_start_display = reverse("display_article", args=[start.slug])
     context.update({'subtitle': '', })

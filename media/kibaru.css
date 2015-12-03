@@ -12,7 +12,12 @@
     box-shadow: -6px 2px 6px 0px #A9A9A9;
 }
 .page{margin-top: 1em;overflow: hidden;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);margin-bottom: 5em;padding: 1em;}
-
+.row {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
 body{
     font:1px/1.33 "Roboto",Helvetica,Arial,sans-serif;
     color: #002104;line-height: 16px;
@@ -24,12 +29,11 @@ body{
 .art-title{height: 90px;margin: 5px;font-size: 12px}
 .art img{width: 100%;height: 120px;min-height: 8em;max-height: 8em;}
  img {width: 100%;height: 100%}
-#sticky{margin-bottom: 10px;border-radius: 3px;background: rgba(0, 40, 0, 0.8);}
+#sticky{margin-bottom: 10px;border-radius: 3px;}
 #sticky.stick{position: fixed;bottom: 5px;z-index: 10000;margin-bottom: 0px;margin-left: -12px;}
 .update-nag{padding: 3px;border:display: inline-block;font-size: 14px;-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);margin-bottom: 10px;}
 .title{background-color: #d9534f;padding: 2px;margin: 10px}
 .update-nag > .new-text{color: #9D9D9D;margin: 3px;font-size: 11px;}
-
 
 #custom-search-input button {
     border: 0px none;
@@ -37,6 +41,9 @@ body{
     margin-top: 2px;
     left: -28px;
     color: #D9230F;
+}
+.input-group-addon, .input-group-btn {
+    width: 100%;
 }
 /*#custom-search-input{margin:0;margin-top: 10px;padding: 0;}
 #custom-search-input .search-query{padding-right: 3px;padding-right: 4px \9;padding-left: 3px;padding-left: 4px \9;/* IE7-8 doesn't have border-radius, so don't indent the padding */margin-bottom: 0;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
@@ -83,6 +90,12 @@ body{
 /*.full {
     width: 100%;
 }*/
+
+.list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+    background-color: green;
+    color: white;
+    background: rgba(0, 40, 0, 0.8);}
+}
 .gap {
     height: 30px;
     width: 100%;
@@ -269,4 +282,3 @@ margin: 0 50px 0 0;
 ul.newsticker span {
 margin: 0 10px 0 0;
 }
-

@@ -24,24 +24,25 @@
                     <h3> Newsletter </h3>
                     <ul>
                         <li>
+                            {% if form %}
+                                <div class="input-append newsletter-box text-center">
+                                    {% if messages %}
+                                    <ul class="messages">
+                                        {% for message in messages %}
+                                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                    <form action="" method="post" class="form-inline">{% csrf_token %}
+                                        <div  class="form-group">
+                                            <label>{{form.email.label}}</label>
+                                            {{form.email|add_class:"form-control"}}
+                                        </div>
 
-                            <div class="input-append newsletter-box text-center">
-                                {% if messages %}
-                                <ul class="messages">
-                                    {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                                <form action="" method="post" class="form-inline">{% csrf_token %}
-                                    <div  class="form-group">
-                                        <label>{{form.email.label}}</label>
-                                        {{form.email|add_class:"form-control"}}
-                                    </div>
-
-                                    <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
-                                </form>
-                            </div>
+                                        <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
+                                    </form>
+                                </div>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
