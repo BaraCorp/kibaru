@@ -24,14 +24,14 @@ def year_view(request, year):
     posts, context = init(year=year)
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s' % year})
-    return render(request, 'site/list_page.html', context)
+    return render(request, 'site/search_results.html', context)
 
 
 def month_view(request, year, month):
     posts, context = init(month=month, year=year)
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s %s' % (MONTH_NAMES[int(month)], year), })
-    return render(request, 'site/list_page.html', context)
+    return render(request, 'site/search_results.html', context)
 
 
 # def tag_view(request, tag):
@@ -44,7 +44,7 @@ def month_view(request, year, month):
 #             posts.append(post)
 #     context.update({'post_list': posts,
 #                     'subtitle': "Articles tagged '%s'" % tag, })
-#     return render(request, 'site/list_page.html', context)
+#     return render(request, 'site/search_results.html', context)
 
 
 def init(month=None, year=None, cat_slug=None):
