@@ -52,7 +52,7 @@
                         <div class="thumbnail art">
                             <!-- <span class="badge">{{ post.category.name}}</span> -->
                             <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'188x120' }}{% endif %}" data-holder-rendered="true">
-                            <p class="art-title"><span class="badge alert-info">{{ post.category.name}}</span> {{ post.title}}</p>
+                            <p class="art-title"> {{ post.title}}</p>
                             <!-- <hr/> -->
                             <span class="btn btn-xs btn-default"> {{post.count_view }} <i class="glyphicon glyphicon-eye-open"></i></span>
 
@@ -65,14 +65,54 @@
             Aucun Article publié.
         {% endif %}
     </div>
-
 {% endblock %}
 
 {% block pub %}
+    {% if publicities %}
+        <div class="list-group">
+            <div class="list-group-item disabled">Publicité</div>
+            {% for publicity in publicities %}
+                <div class="">
+                    <a href="{{publicity.url_display}}">
+                      <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
 
-{% block facebook %}
+{% block video %}
+    {% if videos_home %}
+        <div class="list-group list-group-item">
+            <div class="row">
+                {% for video in videos_home %}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="{{video.link}}"></iframe>
+                        </div>
+                        <h6>{{video.title}}</h6>
+                    <hr/>
+                    </div>
+                {% endfor %}
+             <a href="{% url 'display_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; Toutes les videos</h6> </a>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
+
+{% block twitter %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="list-group">
+            <!-- <div class="list-group-item disabled">Twitter</div> -->
+                <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 
 {% block onJQready %}
     //Events that reset and restart the timer animation when the slides change

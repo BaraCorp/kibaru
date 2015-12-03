@@ -8,8 +8,8 @@ from __future__ import (unicode_literals, absolute_import,
 from django.contrib import admin
 from django.db import models
 
-from kibaru.models import Category, Member, New, Article, Newsletter, Publicity
-from kibaru.form import Articleform
+from kibaru.models import Category, Member, New, Article, Newsletter, Publicity, Video
+from kibaru.forms import Articleform, Videoform
 
 
 @admin.register(Category)
@@ -43,3 +43,8 @@ class PublicityAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     exclude = ('slug',)
     form = Articleform
+
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    form = Videoform
