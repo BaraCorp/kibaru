@@ -1,0 +1,69 @@
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"> <img src="" alt=""></a>
+    </div>
+<<<<<<< HEAD
+    <div class="collapse navbar-collapse"" id="bs-example-navbar-collapse-1">
+=======
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+>>>>>>> master
+        <ul class="nav navbar-nav">
+            <li {% ifequal cat_slug '' %} class="active" {% endifequal %}><a href="{% url 'home' '' %}">Accueil</a></li>
+            <li {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %} class="dropdown">
+                <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Economie <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'home' 'econationale' %}">Nationale</a></li>
+                    <li><a href="{% url 'home' 'ecoregionale' %}">Régionale</a></li>
+                    <li><a href="{% url 'home' 'ecointernationale' %}">Internationale</a></li>
+                </ul>
+            </li>
+            <li {% if cat_slug == 'cooperationbila' or cat_slug == 'actualite' or cat_slug == 'cooperationmulti' %} class="active" {% endif %} class="dropdown">
+                <a href="{% url 'home' 'cooperation' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Coopération <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'home' 'actualite' %}">Actualité</a></li>
+                    <li><a href="{% url 'home' 'cooperationbila' %}">Bilatérale</a></li>
+                    <li><a href="{% url 'home' 'cooperationmulti' %}">Multilatérale</a></li>
+                </ul>
+            </li>
+            <li {% if cat_slug == 'paix' or cat_slug == 'portrait' or cat_slug == 'education' %} cat_slug == 'sante' or cat_slug == 'sport' or cat_slug == 'culture' or cat_slug == 'ntic' or cat_slug == 'reportage' %} class="active" {% endif %} class="dropdown">
+                <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">Société <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'home' 'paix' %}">Processus de paix</a></li>
+                    <li><a href="{% url 'home' 'portrait' %}">Portrait</a></li>
+                    <li><a href="{% url 'home' 'education' %}">Education</a></li>
+                    <li><a href="{% url 'home' 'sante' %}">Santé</a></li>
+                    <li><a href="{% url 'home' 'sport' %}">Sports</a></li>
+                    <li><a href="{% url 'home' 'culture' %}">Culture</a></li>
+                    <li><a href="{% url 'home' 'ntic' %}">NTIC</a></li>
+                    <li><a href="{% url 'home' 'reportage' %}">Reportage</a></li>
+                </ul>
+            </li>
+            <li {% ifequal cat_slug 'environnement' %} class="active" {% endifequal %}><a href="{% url 'home' 'environnement' %}">Environnement</a></li>
+            <li {% ifequal cat_slug 'expression-libre' %} class="active" {% endifequal %}><a href="{% url 'home' 'expression-libre' %}">Expression Libre</a></li>
+            <li>
+                <div class="input-group col-xs-6 col-sm-9 col-md-9 col-lg-12">
+                    <form method="get" action="{% url 'search' %}" class="navbar-form">
+                        <div style="display:inline;" class="form-group">
+                           <div id="custom-search-input">
+                                <span class="input-group-btn">
+                                    <input type="text" class="search-query form-control" name="q" placeholder="Recherche" />
+                                    <button type="submit" class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            {% if user.is_authenticated %}<li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Déconnection <em>{{ user.name }}</em></a></li>{% endif %}
+        </ul>
+    </div>
+</nav>

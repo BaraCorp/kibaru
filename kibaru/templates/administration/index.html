@@ -111,6 +111,51 @@
         {% endif %}
     </table>
 
+    <div class="row">
+        <div class="col-md-7">
+            <h2 class="page-header">Liste des videos</h2>
+        </div>
+        <div class="col-md-3">
+            <div class="pagination" style="margin-top: 51px;">
+                <span class="step-links">
+                    {% if videos.has_previous %}
+                        <a href="?page1={{ videos.previous_page_number }}">precedent</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ videos.number }} sur {{ videos.paginator.num_pages }}.
+                    </span>
+
+                    {% if videos.has_next %}
+                        <a href="?page1={{ videos.next_page_number }}">suivant</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'add_video' %}" class="btn btn-success page-header" >Ajouter un lien de video</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Id Video</th>
+            <th>Titre</th>
+        </tr>
+        {% if videos %}
+        {% for video in videos %}
+        <tr>
+            <td>{{ video.slug }}</td>
+            <td>{{ video.title }}</td>
+            <td><a href="{{ video.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer le lien de la video ?">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <td colspan="8">
+                Aucune video postée.
+            </td>
+        {% endif %}
+    </table>
+
 {% endblock %}
 {% block pub %}
 {% endblock %}

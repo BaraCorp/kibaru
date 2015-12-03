@@ -97,6 +97,23 @@
                                   </a>
                             </div>
                         {% endblock %}
+                        {% block video %}
+                            <div class="list-group">
+                                <div class="row">
+                                    {% for video in videos_home %}
+                                        <div class="col-sm-12">
+                                            <h2>{{video.title}}</h2>
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe class="embed-responsive-item" src="{{video.link}}"></iframe>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <a href="{% url 'display_videos' %}" class="list-group-item">
+                                    <h6 class="list-group-item-heading">&rsaquo; Toutes les videos</h6>
+                                  </a>
+                            </div>
+                        {% endblock %}
 
                         {% block twitter %}
                             <div class="list-group">

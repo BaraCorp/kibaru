@@ -176,3 +176,18 @@ class Publicity(models.Model):
 
     def __str__(self):
         return self.image.__str__()
+
+
+class Video(models.Model):
+    slug = models.CharField(
+        max_length=200, unique=True, blank=True, verbose_name=("Slug"))
+    title = models.CharField(max_length=200, verbose_name=("Titre"))
+    date_created = models.DateTimeField(verbose_name=("Ajouter le"),
+                                        default=datetime.datetime.today)
+
+    def __str__(self):
+        return "{title} {slug}".format(slug=self.slug,
+                                       title=self.title)
+
+    def link(self):
+        return "//www.youtube.com/embed/{slug}".format(slug=self.slug)

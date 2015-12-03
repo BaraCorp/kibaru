@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
-from kibaru.models import Article, Publicity, Category, New
+from kibaru.models import Article, Publicity, Category, New, Video
 from kibaru.forms import Newsletterform
 from django.conf import settings
 from kibaru.site.search import get_query
@@ -53,6 +53,8 @@ def init(month=None, year=None, cat_slug=None):
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
+    videos = Video.objects.all()
+    videos_home = videos[:3]
 
     if month:
         posts = posts.filter(
@@ -79,7 +81,9 @@ def init(month=None, year=None, cat_slug=None):
                'post_list': posts,
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,
-               'publicities': publicities}
+               'publicities': publicities,
+               'videos_home': videos_home,
+               'videos': videos}
     return posts, context
 
 
@@ -197,3 +201,11 @@ def display_publicity(request, *args, **kwargs):
 
     context.update({'publicity': publicity})
     return render(request, 'site/display_publicity.html', context)
+
+
+def display_videos(request, *args, **kwargs):
+    posts, context = init()
+    videos = Video.objects.all()
+
+    context.update({'posts': posts})
+    return render(request, 'site/videos.html', context)

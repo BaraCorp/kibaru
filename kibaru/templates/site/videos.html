@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} | Videos {% endblock %}
+
+{% block page-id %} videos {% endblock %}
+
+{% block content %}
+    <div class="row" id="videos">
+        {% if videos %}
+            {% for video in videos %}
+                <div class="col-xs-6 col-sm-6 col-md-6 art">
+                    <div class="col-sm-12">
+                        <h2>{{video.title}}</h2>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="{{video.link}}"></iframe>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            Aucunne Video publiée.
+        {% endif %}
+    </div>
+{% endblock %}
+{% block video %}
+{% endblock %}

@@ -14,19 +14,26 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from kibaru.forms import Articleform, Newform
-from kibaru.models import Article, Member, Category, New
+from kibaru.forms import Articleform, Newform, Videoform
+from kibaru.models import Article, Member, Category, New, Video
 
 
 @login_required()
 def home(request):
     context = {}
+
     articles = Article.objects.all().order_by('-date_created')
     paginator = Paginator(articles, 4)
+    page = request.GET.get('page')
+
     news = New.objects.all().order_by('-date')
     paginator1 = Paginator(news, 4)
-    page = request.GET.get('page')
     page1 = request.GET.get('page1')
+
+    videos = Video.objects.all().order_by('-date_created')
+    paginator2 = Paginator(videos, 4)
+    page2 = request.GET.get('page2')
+
     try:
         articles = paginator.page(page)
     except PageNotAnInteger:
@@ -42,15 +49,27 @@ def home(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         news = paginator1.page(paginator.num_pages)
 
+    try:
+        videos = paginator2.page(page2)
+    except PageNotAnInteger:
+        videos = paginator2.page(1)
+    except EmptyPage:
+        videos = paginator2.page(paginator.num_pages)
+
     for article in articles:
         article.url_edit = reverse("edit_article", args=[article.id])
         article.url_del = reverse("del_article", args=[article.id])
+
     str_news = ""
     for new in news.object_list:
         new.url_edit = reverse("edit_new", args=[new.id])
         new.url_del = reverse("del_new", args=[new.id])
         str_news += "{} | {}; ".format(new.title, new.comment)
-    context.update({'articles': articles, 'news': news, 'str_news': str_news})
+
+    for video in videos:
+        video.url_del = reverse("del_video", args=[video.id])
+
+    context.update({'articles': articles, 'news': news, 'videos': videos, 'str_news': str_news})
     return render(request, 'administration/index.html', context)
 
 
@@ -91,6 +110,21 @@ def add_new(request):
     return render(request, 'administration/add_new.html', c)
 
 
+# @login_required
+def add_video(request):
+    c = {'page_title': "Ajout de lien d'une video Youtube"}
+    if request.method == 'POST':
+        form = Videoform(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, u"le lien de la video a ete ajouter")
+            return HttpResponseRedirect('/admin/')
+    else:
+        form = Videoform()
+    c.update({'form': form})
+    return render(request, 'administration/add_video.html', c)
+
+
 # @login_required()
 def edit_article(request, *args, **kwargs):
     id_url = kwargs["id"]
@@ -127,6 +161,15 @@ def del_article(request, *args, **kwargs):
     selected = Article.objects.get(id=id_url)
     selected.delete()
     messages.success(request, u"L'article a ete supprime")
+    return redirect('/admin/')
+
+
+# @login_required
+def del_video(request, *args, **kwargs):
+    id_url = kwargs["id"]
+    selected = Video.objects.get(id=id_url)
+    selected.delete()
+    messages.success(request, u"Le lien de la video a ete supprime")
     return redirect('/admin/')
 
 
