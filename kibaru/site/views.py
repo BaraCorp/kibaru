@@ -62,16 +62,15 @@ def init(month=None, year=None, cat_slug=None):
     elif year:
         posts = posts.filter(date_created__year=year)
 
-    for article in posts.iterator():
+    for article in posts:
         article.url_display = reverse("display_article", args=[article.slug])
-    for publicity in publicities.iterator():
+    for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
 
     news = New.objects.order_by('-date')
-    for new in news.iterator():
+    for new in news:
         new.url_display = reverse("display_new", args=[new.id])
-        print(new.url_display)
     if news.filter(date__gte=datetime.now()):
         news = news.filter(date__gte=datetime.now())
     # tag_data = create_tag_data(posts)
@@ -91,7 +90,7 @@ def create_archive_data(posts):
     archive_data = []
     count = {}
     mcount = {}
-    for post in posts.iterator():
+    for post in posts:
         year = post.date_created.year
         month = post.date_created.month
         if year not in count:
