@@ -64,7 +64,6 @@ def init(month=None, year=None, cat_slug=None):
 
     for article in posts.iterator():
         article.url_display = reverse("display_article", args=[article.slug])
-        # article.intro = article.text.split('</p>')[0][3:]
     for publicity in publicities.iterator():
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
@@ -72,6 +71,7 @@ def init(month=None, year=None, cat_slug=None):
     news = New.objects.order_by('-date')
     for new in news.iterator():
         new.url_display = reverse("display_new", args=[new.id])
+        print(new.url_display)
     if news.filter(date__gte=datetime.now()):
         news = news.filter(date__gte=datetime.now())
     # tag_data = create_tag_data(posts)
@@ -205,7 +205,6 @@ def display_publicity(request, *args, **kwargs):
 
 def display_videos(request, *args, **kwargs):
     posts, context = init()
-    videos = Video.objects.all()
 
     context.update({'posts': posts})
     return render(request, 'site/videos.html', context)
