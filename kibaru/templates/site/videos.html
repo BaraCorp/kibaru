@@ -5,20 +5,33 @@
 {% block page-id %} videos {% endblock %}
 
 {% block content %}
-    <div class="row" id="videos">
+    <div class="row">
         {% if videos %}
             {% for video in videos %}
-                <div class="col-xs-6 col-sm-6 col-md-6 art">
-                    <div class="col-sm-12">
-                        <h2>{{video.title}}</h2>
+                <div class="col-xs-12 col-sm-12 col-md-6 ">
+                    <div class="thumbnail">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="{{video.link}}"></iframe>
+                            <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                         </div>
+                        <h6>{{video.title}}</h6>
+                    <!-- <hr/> -->
                     </div>
                 </div>
             {% endfor %}
         {% else %}
             Aucune Video publiée.
         {% endif %}
+    </div>
+{% endblock %}
+
+{% block twitter %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="list-group">
+            <!-- <div class="list-group-item disabled">Twitter</div> -->
+                <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+        </div>
     </div>
 {% endblock %}

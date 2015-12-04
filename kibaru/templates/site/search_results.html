@@ -10,10 +10,12 @@
         <div><b>Résultats de recherche pour : </b> {{ query_string }} </div>
         {% for post in found_article %}
             <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 art thumbnail">
-                    <a href="{{ post.url_display }}">
-                      <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url}}{% endif %}">
-                    </a>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class="thumbnail art">
+                        <a href="{{ post.url_display }}">
+                          <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url}}{% endif %}">
+                        </a>
+                    </div>
                 </div>
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
                     <h4>{{ post.title }}</h4>

@@ -44,10 +44,10 @@
         </div>
     </div>
     <hr/>
-    <div class="row" id="articles">
+    <div class="row">
         {% if posts %}
             {% for post in posts %}
-                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 art">
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                     <a href="{{post.url_display}}">
                         <div class="thumbnail art">
                             <!-- <span class="badge">{{ post.category.name}}</span> -->
@@ -89,7 +89,8 @@
                 {% for video in videos_home %}
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="{{video.link}}"></iframe>
+
+                            <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <h6>{{video.title}}</h6>
                     <hr/>

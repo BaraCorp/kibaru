@@ -189,6 +189,10 @@ class Publicity(models.Model):
 
 
 class Video(models.Model):
+
+    class Meta:
+        ordering = ('-date_created',)
+
     slug = models.CharField(
         max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))

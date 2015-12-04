@@ -19,8 +19,8 @@
         <!-- <link  rel="stylesheet" href="{% static "font-awesome.min.css" %}"> -->
         <link  rel="stylesheet" href="{% static "kibaru.css" %}">
     </head>
-    <div id="{% block page-id %}{% endblock %}"></div>
     <body>
+        <div id="{% block page-id %}{% endblock %}">
           <!-- Page Content -->
         <div class="container page">
             {% include "menu.html" %}
@@ -132,5 +132,6 @@
         });
 
        </script>
+       </div>
     </body>
 </html>
