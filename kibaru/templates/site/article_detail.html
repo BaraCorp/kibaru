@@ -15,7 +15,7 @@
     <meta property="og:article:author" content="{{ settings.APP_NAME }}" />
     <meta property="og:article:section" content="Afrique" />
     <!-- <meta property="og:url" content="" /> -->
-    <meta property="og:image" content="{{ article.image.url }}" />
+    <meta property="og:image" content="{{ settings.DOMMAIN }}/{{ article.image.url }}" />
     <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
 
     <meta name="twitter:card" content="summary_large_image">
@@ -23,7 +23,7 @@
     <meta name="twitter:title" content=" {{ article.title }} - {{ settings.APP_NAME }}">
     <meta name="twitter:description" content="{{ article.title }}">
     <meta name="twitter:creator" content="@{{ settings.TWITTER_NAME }}">
-    <meta name="twitter:image:src" content="{{ article.image.url }}"
+    <meta name="twitter:image:src" content="{{ settings.DOMMAIN }}/{{ article.image.url }}"
     <meta name="twitter:image:alt" content=" {{ article.title }}" />
     <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
 {% endblock %}
