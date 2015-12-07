@@ -50,7 +50,6 @@
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                     <a href="{{post.url_display}}">
                         <div class="thumbnail art">
-                            <!-- <span class="badge">{{ post.category.name}}</span> -->
                             <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'188x120' }}{% endif %}" data-holder-rendered="true">
                             <p class="art-title"> {{ post.title}}</p>
                             <!-- <hr/> -->
@@ -107,7 +106,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="list-group">
             <!-- <div class="list-group-item disabled">Twitter</div> -->
-                <a class="twitter-timeline"  href="https://twitter.com/kibaruuml1" data-widget-id="655801487575117824">Tweets de @kibaruuml1</a>
+                <a class="twitter-timeline"  href="https://twitter.com/{{settings.TWITTER_NAME}}" data-widget-id="655801487575117824">Tweets de @{{ settings.TWITTER_NAME}}</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div>
         </div>

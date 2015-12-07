@@ -7,9 +7,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block head %}
+        {% endblock %}
         <link href="{% static "favicon.ico" %}" rel="icon" type="image/x-icon" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>{{settings.DISQUS_WEBSITE_SHORTNAME}}{% block title %}{% endblock %}</title>
+        <title>{{settings.APP_NAME}}{% block title %}{% endblock %}</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
         <!-- Jquery UI CSS -->
