@@ -7,6 +7,7 @@ from __future__ import (unicode_literals, absolute_import,
 from datetime import datetime
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
@@ -153,6 +154,16 @@ def home(request, *args, **kwargs):
     except Category.DoesNotExist:
         slug = None
     posts, context = init(cat_slug=slug)
+
+    paginator = Paginator(posts, 12)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     starts = Article.objects.filter(start=True)[:5]
     for start in starts:

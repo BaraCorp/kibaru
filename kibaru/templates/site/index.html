@@ -45,6 +45,22 @@
     </div>
     <hr/>
     <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 51px;">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}">precedent</a>
+                {% endif %}
+            <span class="current">
+                Page {{ posts.number }} sur {{ posts.paginator.num_pages }}.
+            </span>
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">suivant</a>
+            {% endif %}
+            </span>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
         {% if posts %}
             {% for post in posts %}
                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
@@ -52,16 +68,27 @@
                         <div class="thumbnail art">
                             <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'188x120' }}{% endif %}" data-holder-rendered="true">
                             <p class="art-title"> {{ post.title}}</p>
-                            <!-- <hr/> -->
-                           <!--  <span class="btn btn-xs btn-default"> {{post.count_view }} <i class="glyphicon glyphicon-eye-open"></i></span> -->
-
-                            <!-- <span class="btn btn-xs btn-default"> {{article.count_like}} <i class="glyphicon glyphicon-thumbs-up"></i></span> -->
                         </div>
                     </a>
                 </div>
             {% endfor %}
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 51px;">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}">precedent</a>
+                {% endif %}
+            <span class="current">
+                Page {{ posts.number }} sur {{ posts.paginator.num_pages }}.
+            </span>
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">suivant</a>
+            {% endif %}
+            </span>
+        </div>
         {% else %}
-            Aucun Article publié.
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <h3>Aucun Article publié.</h3>
+        </div>
         {% endif %}
     </div>
 {% endblock %}
