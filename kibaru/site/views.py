@@ -68,10 +68,11 @@ def init(month=None, year=None, cat_slug=None):
             "display_publicity", args=[publicity.id])
 
     news = New.objects.all()
+    news_today = news.filter(date__gte=datetime.today())
+    if news_today:
+        news = news_today
     for new in news:
         new.url_display = reverse("display_new", args=[new.id])
-    if news.filter(date__gte=datetime.now()):
-        news = news.filter(date__gte=datetime.now())
     # tag_data = create_tag_data(posts)
     context = {'settings': settings,
                'flash_news': news,

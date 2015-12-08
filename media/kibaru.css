@@ -35,6 +35,7 @@ a:focus, a:hover {
     /*color: #1A2A1A;*/
     text-decoration: none;
 }
+#sticky ul { display: -moz-grid-line; list-style-type:none;}
 #sticky.stick{position: fixed;bottom: 5px;z-index: 10000;margin-bottom: 0px;margin-left: -12px;}
 .update-nag{padding: 3px;border:display: inline-block;font-size: 14px;-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);margin-bottom: 10px;}
 .title{background-color: #d9534f;padding: 2px;margin: 10px}
