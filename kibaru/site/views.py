@@ -156,8 +156,8 @@ def home(request, *args, **kwargs):
     posts, context = init(cat_slug=slug)
 
     paginator = Paginator(posts, 12)
-    page = request.GET.get('page')
 
+    page = request.GET.get('page')
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -165,6 +165,7 @@ def home(request, *args, **kwargs):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
+    context.update(get_paginator_context(paginator, page))
     starts = Article.objects.filter(start=True)[:5]
     for start in starts:
         start.url_start_display = reverse("display_article", args=[start.slug])
@@ -179,8 +180,38 @@ def home(request, *args, **kwargs):
         form = Newsletterform()
 
     context.update({'posts': posts, "start": start, 'form': form,
-                    "starts": starts, "cat_slug": cat_slug})
+                    "starts": starts, "cat_slug": cat_slug,
+                    # "page_range": page_range,
+                    })
     return render(request, 'site/index.html', context)
+
+
+def get_paginator_context(obj_pagina, page, range_gap=5):
+    try:
+        page = int(page)
+    except Exception as e:
+        # print(e)
+        page = 1
+    try:
+        paginator = obj_pagina.page(page)
+    except Exception as e:
+        paginator = obj_pagina.page(1)
+
+    if page > 5:
+        start = page - range_gap
+    else:
+        start = 1
+
+    if page < obj_pagina.num_pages - range_gap:
+        end = page + range_gap + 1
+    else:
+        end = obj_pagina.num_pages + 1
+
+    context = {
+        'page_range': range(start, end),
+    }
+
+    return context
 
 
 def display_article(request, *args, **kwargs):

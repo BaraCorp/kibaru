@@ -27,9 +27,31 @@ body{
 .art a{text-decoration: none;color: #1A2A1A}
 .art-title{height: 90px;margin: 5px;font-size: 12px}
 .art img{width: 100%;height: 120px;min-height: 8em;max-height: 8em;}
- img {width: 100%;height: 100%}
+img {width: 100%;height: 100%}
 .art_d{padding: 10px;}
 #sticky{margin-bottom: 10px;border-radius: 3px;}
+
+.pagination {float: right;}
+.pagination > li > a, .pagination > li > span {
+    margin-left: 3px;
+    line-height: 1.42857;
+    color: #FFF;
+    background-color: #315131;
+    border: 0px none;
+}
+.pagination>li>a.page-prev, .pagination>li>span.page-prev,.pagination>li>a.page-next, .pagination>li>span.page-next {
+  background-color: #315131;
+  color: #FFF;
+}
+.kib_active{color: #FFF;background-color: black;}
+/*.pagination>li>a.page-prev, .pagination>li>span.page-prev{
+  position: absolute;
+  right: 60px;
+}
+.pagination>li>a.page-next, .pagination>li>span.page-next{
+  position: absolute;
+  right: 0px;
+}*/
 a {color: #000;}
 a:focus, a:hover {
     /*color: #1A2A1A;*/

@@ -6,7 +6,6 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 from django_resized import ResizedImageField
 
-
 import datetime
 import re
 from django.core.urlresolvers import reverse
