@@ -22,6 +22,8 @@ MONTH_NAMES = ('', 'Janvier', u'Février', 'Mars', 'Avril', 'peut', 'Juin',
 
 def year_view(request, year):
     posts, context = init(year=year)
+    for article in posts:
+        article.url_display = reverse("display_article", args=[article.slug])
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s' % year})
     return render(request, 'site/list_page.html', context)
@@ -29,6 +31,8 @@ def year_view(request, year):
 
 def month_view(request, year, month):
     posts, context = init(month=month, year=year)
+    for article in posts:
+        article.url_display = reverse("display_article", args=[article.slug])
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s %s' % (MONTH_NAMES[int(month)], year), })
     return render(request, 'site/list_page.html', context)
@@ -62,8 +66,6 @@ def init(month=None, year=None, cat_slug=None):
     elif year:
         posts = posts.filter(date_created__year=year)
 
-    for article in posts:
-        article.url_display = reverse("display_article", args=[article.slug])
     for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
@@ -138,10 +140,10 @@ def search(request):
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
         article_query = get_query(query_string, ['title', 'text', ])
+        found_article = posts.filter(article_query)
 
-        found_article = Article.objects.filter(
-            article_query)
-
+    for article in found_article:
+        article.url_display = reverse("display_article", args=[article.slug])
     context.update({'query_string': query_string,
                     'found_article': found_article})
     return render(request, 'site/search_results.html', context)
@@ -154,9 +156,14 @@ def home(request, *args, **kwargs):
     except Category.DoesNotExist:
         slug = None
     posts, context = init(cat_slug=slug)
+    for article in posts:
+        article.url_display = reverse("display_article", args=[article.slug])
+
+    starts = posts.filter(start=True)[:5]
+    for start in starts:
+        start.url_start_display = reverse("display_article", args=[start.slug])
 
     paginator = Paginator(posts, 12)
-
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -166,10 +173,6 @@ def home(request, *args, **kwargs):
         posts = paginator.page(paginator.num_pages)
 
     context.update(get_paginator_context(paginator, page))
-    starts = Article.objects.filter(start=True)[:5]
-    for start in starts:
-        start.url_start_display = reverse("display_article", args=[start.slug])
-    context.update({'subtitle': '', })
     if request.method == 'POST':
         form = Newsletterform(request.POST)
         if form.is_valid():
@@ -179,10 +182,8 @@ def home(request, *args, **kwargs):
     else:
         form = Newsletterform()
 
-    context.update({'posts': posts, "start": start, 'form': form,
-                    "starts": starts, "cat_slug": cat_slug,
-                    # "page_range": page_range,
-                    })
+    context.update({'posts': posts, 'form': form, 'subtitle': '',
+                    "starts": starts, "cat_slug": cat_slug, })
     return render(request, 'site/index.html', context)
 
 

@@ -1,36 +1,36 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
 
-{% block title %} {% endblock %}
+{% block title %} {{ query_string }} {% endblock %}
 
 {% block page-id %}index{% endblock %}
 
 {% block content %}
     {% if found_article %}
-        <div><b>Résultats de recherche pour : </b> {{ query_string }} </div>
+        <h4><b>Résultats de recherche pour : </b> {{ query_string }} </h4>
         {% for post in found_article %}
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <div class="thumbnail art">
-                        <a href="{{ post.url_display }}">
-                          <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url}}{% endif %}">
-                        </a>
+            <a href="{{ post.url_display }}">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="thumbnail art">
+                              <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url}}{% endif %}">
+                        </div>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+                        <h4>{{ post.title }}</h4>
+                        <div class="post_footer">
+                              Date de publication : {{ post.date_created.date }}<br>
+                              {% ifnotequal post.date_modified.date post.date_created.date %}
+                                  Dernière modification : {{ post.date_modified.date }}<br>
+                              {% endifnotequal %}
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
-                    <h4>{{ post.title }}</h4>
-                    <div class="post_footer">
-                          {% ifnotequal post.date_modified.date post.date_created.date %}
-                              Dernière modification : {{ post.date_modified.date }}<br>
-                          {% endifnotequal %}
-                          Date de publication : {{ post.date_created.date }}<br>
-                    </div>
-                </div>
-            </div>
+            </a>
             <hr>
         {% endfor %}
     {% else %}
-        <div><b> Aucun résultat trouvé pour : </b> {{ query_string }} </div>
+        <h4><b> Aucun résultat trouvé pour : </b> {{ query_string }} </h4>
     {% endif %}
 {% endblock %}
 
