@@ -187,29 +187,34 @@ def home(request, *args, **kwargs):
     return render(request, 'site/index.html', context)
 
 
-def get_paginator_context(obj_pagina, page, range_gap=5):
+def get_paginator_context(obj_pagina, page, range_gap=3):
     try:
         page = int(page)
     except Exception as e:
-        # print(e)
         page = 1
     try:
         paginator = obj_pagina.page(page)
     except Exception as e:
         paginator = obj_pagina.page(1)
 
-    if page > 5:
+    if page > 4:
         start = page - range_gap
+        start_pt = True
     else:
         start = 1
+        start_pt = False
 
     if page < obj_pagina.num_pages - range_gap:
         end = page + range_gap + 1
+        end_pt = True
     else:
+        end_pt = False
         end = obj_pagina.num_pages + 1
-
     context = {
         'page_range': range(start, end),
+        'start_pt': start_pt,
+        'end_pt': end_pt,
+        'last_page': obj_pagina.num_pages,
     }
 
     return context

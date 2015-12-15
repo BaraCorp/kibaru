@@ -24,6 +24,10 @@ body{
     padding: 2px;
     margin-top: 10px;
 }
+.post{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .post-header{margin: 0px 0px 6px;}
 .art a{text-decoration: none;color: #1A2A1A}
 .art-title{height: 90px;margin: 5px;font-size: 12px}
@@ -31,35 +35,20 @@ body{
 .art .glyphicon {
     font-size: smaller;
 }
-.art_d{padding: 10px;}
 #sticky{margin-bottom: 10px;border-radius: 3px;}
 
 .pagination {float: right;}
 .pagination > li > a, .pagination > li > span {
     margin-left: 3px;
     line-height: 1.42857;
-    color: #FFF;
-    background-color: #315131;
+    color: #315131;
+    font-size: 10px;
     border: 0px none;
 }
-.pagination>li>a.page-prev, .pagination>li>span.page-prev,.pagination>li>a.page-next, .pagination>li>span.page-next {
-  background-color: #315131;
-  color: #FFF;
-}
-.kib_active{color: #FFF;background-color: black;}
-/*.pagination>li>a.page-prev, .pagination>li>span.page-prev{
-  position: absolute;
-  right: 60px;
-}
-.pagination>li>a.page-next, .pagination>li>span.page-next{
-  position: absolute;
-  right: 0px;
-}*/
+.pagination .active{color: #FFF;background-color: 315131;}
+
 a {color: #061F09;}
-a:focus, a:hover {
-    /*color: #1A2A1A;*/
-    text-decoration: none;
-}
+a:focus, a:hover {text-decoration: none;}
 #sticky ul { display: -moz-grid-line; list-style-type:none;}
 #sticky.stick{position: fixed;bottom: 5px;z-index: 10000;margin-bottom: 0px;margin-left: -12px;}
 .update-nag{padding: 3px;border:display: inline-block;font-size: 14px;-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);margin-bottom: 10px;}
@@ -73,9 +62,7 @@ a:focus, a:hover {
     left: -28px;
     color: #D9230F;
 }
-.input-group-addon, .input-group-btn {
-    width: 100%;
-}
+.input-group-addon, .input-group-btn {width: 100%;}
 /*#custom-search-input{margin:0;margin-top: 10px;padding: 0;}
 #custom-search-input .search-query{padding-right: 3px;padding-right: 4px \9;padding-left: 3px;padding-left: 4px \9;/* IE7-8 doesn't have border-radius, so don't indent the padding */margin-bottom: 0;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
 */.search-query:focus + button{z-index: 3;}
@@ -114,13 +101,6 @@ a:focus, a:hover {
 .nav li:hover:nth-child(8n+6), .nav li.active:nth-child(8n+6){border-bottom: #C49CDE 3px solid;}
 .nav li:hover:nth-child(8n+7), .nav li.active:nth-child(8n+7){border-bottom: #669AE1 3px solid;}
 .nav li:hover:nth-child(8n+8), .nav li.active:nth-child(8n+8){border-bottom: #62C2E4 3px solid;}
-/*.navbar-nav > li > a {
-    padding-top: 2px;
-    padding-bottom: 0px;
-}*/
-/*.full {
-    width: 100%;
-}*/
 
 .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
     background-color: green;
@@ -195,8 +175,6 @@ a:focus, a:hover {
     -ms-border-radius: 3px;
     border-radius: 3px;
     display: inline-block;
-    /*height: 40px;*/
-    /*width: 100%;*/
     color: #fff;
 }
 .newsletter-box {
@@ -272,11 +250,8 @@ a:focus, a:hover {
 
 /* liScroll styles */
 
-.tickercontainer { /* the outer div with the black border */
-/*border: 1px solid #000;*/
+.tickercontainer {
 background: #fff;
-/*width: 738px;*/
-/*height: 27px;*/
 margin: 0;
 padding: 0;
 overflow: hidden;
@@ -285,8 +260,6 @@ box-shadow: 0px 1px 1px 0px #A9A9A9;
 .tickercontainer .mask { /* that serves as a mask. so you get a sort of padding both left and right */
 position: relative;
 left: 10px;
-/*top: 8px;*/
-/*width: 718px;*/
 overflow: hidden;
 }
 ul.newsticker { /* that's your list */
@@ -307,7 +280,6 @@ background: #fff;
 ul.newsticker a {
 white-space: nowrap;
 padding: 0;
-/*color: #ff0000;*/
 font: bold 10px Verdana;
 margin: 0 50px 0 0;
 }

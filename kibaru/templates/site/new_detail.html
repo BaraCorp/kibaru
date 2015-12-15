@@ -1,16 +1,35 @@
 {% extends "base.html" %}
-{% load i18n staticfiles disqus_tags%}
-{% load social_widgets %}
 {% load imagefit %}
 
-{% block title %} | {{ new.title }} {% endblock %}
+{% block title %} {{ new.title }} {% endblock %}
 
 {% block page-id %} {{ new.id }}{% endblock %}
+
+{% block head %}
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="{{ new.title }}" />
+    <meta property="og:site_name" content="{{ settings.APP_NAME }}" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:new:author" content="{{ settings.APP_NAME }}" />
+    <meta property="og:new:section" content="Afrique" />
+    <!-- <meta property="og:url" content="" /> -->
+    <meta property="og:image" content="{{ settings.DOMMAIN }}/{{ new.image.url }}" />
+    <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ settings.APP_NAME }}">
+    <meta name="twitter:title" content=" {{ new.title }} - {{ settings.APP_NAME }}">
+    <meta name="twitter:description" content="{{ new.title }}">
+    <meta name="twitter:creator" content="@{{ settings.TWITTER_NAME }}">
+    <meta name="twitter:image:src" content="{{ settings.DOMMAIN }}/{{ new.image.url }}"
+    <meta name="twitter:image:alt" content=" {{ new.title }}" />
+    <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
+{% endblock %}
 
 {% block content %}
     <div class="post hentry">
         <div class="row">
-            <div class="col-xs-12" >
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                 <h3 class="new_post_title entry-title"> {{ new.title }} </h3>
                 <div class="post-header">
                     <span class="new_timestamp badge badge-success"style="clear: both; float: right;">
@@ -18,28 +37,12 @@
                     <span class="new_author vcard"> <abbr class="fn">Par <u><a href="#">{{ new.author.name }}</a></u></abbr></span>
                 </div>
             </div>
-            <div class="col-xs-12" >
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                 <div class="post-body entry-content">
                     <div dir="ltr" style="text-align: left;" trbidi="on"> <html>{{new.comment}}</html></div>
                 </div>
-                <div class="social">
-                    <span>{% social_widget_render "twitter/share_button.html"  %} </span>
-                    <span>{% social_widget_render 'google/plus_share_button.html' %} </span>
-                    <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
-                    <span>{% social_widget_render "facebook/share_button.html" %}</span>
-                    <span>{% social_widget_render "facebook/follow_button.html" href="{{ new.url_display }}" %}</span>
-                    <span class="fb-like"></span>
-                    <script type="text/javascript">
-                      window.___gcfg = {lang: 'fr'};
-                      (function() {
-                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                        po.src = 'https://apis.google.com/js/platform.js';
-                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                      })();
-                    </script>
-                </div>
-                {% disqus_show_comments %}
             </div>
+                {% include "_chare.html" with url_name=new.url_display %}
          </div>
     </div>
 {% endblock %}

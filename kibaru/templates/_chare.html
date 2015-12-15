@@ -1,0 +1,26 @@
+
+{% load i18n staticfiles disqus_tags%}
+{% load social_widgets %}
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+
+    <h1>{{ url_name }}</h1>
+    <div class="social">
+        <span>{% social_widget_render "twitter/share_button.html"  %} </span>
+        <span>{% social_widget_render 'google/plus_share_button.html' %} </span>
+        <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
+        <span>{% social_widget_render "facebook/share_button.html" %}</span>
+        <span>{% social_widget_render "facebook/follow_button.html" href="{{ article.url_display }}" %}</span>
+        <span class="fb-like"></span>
+        <script type="text/javascript">
+          window.___gcfg = {lang: 'fr'};
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+    </div>
+
+        {% disqus_show_comments %}
+</div>

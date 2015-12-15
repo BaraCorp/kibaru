@@ -6,6 +6,14 @@
                 <a href="?page={{ posts.previous_page_number }}"rel="prev" class="page-prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
             </li>
         {% endif %}
+        {% if start_pt %}
+            <li>
+                <a href="?page=1">1</a>
+            </li>
+            <li>
+                <a href="#">...</a>
+            </li>
+        {% endif %}
 
         {% for page in page_range %}
             <li {% if page == posts.number %}class="active"{% endif %}>
@@ -13,6 +21,14 @@
             </li>
         {% endfor %}
 
+        {% if end_pt %}
+            <li>
+                <a href="#">...</a>
+            </li>
+            <li>
+                <a href="?page={{ last_page }}">{{ last_page }}</a>
+            </li>
+        {% endif %}
         {% if posts.has_next %}
             <li >
                 <a href="?page={{ posts.next_page_number }}" rel="next" class="page-next"><span class="glyphicon glyphicon-chevron-right"></span></a>
