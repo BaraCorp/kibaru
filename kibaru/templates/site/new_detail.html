@@ -1,30 +1,7 @@
 {% extends "base.html" %}
-{% load imagefit %}
-
 {% block title %} {{ new.title }} {% endblock %}
 
 {% block page-id %} {{ new.id }}{% endblock %}
-
-{% block head %}
-    <meta property="og:type" content="website"/>
-    <meta property="og:description" content="{{ new.title }}" />
-    <meta property="og:site_name" content="{{ settings.APP_NAME }}" />
-    <meta property="og:locale" content="en_GB" />
-    <meta property="og:new:author" content="{{ settings.APP_NAME }}" />
-    <meta property="og:new:section" content="Afrique" />
-    <!-- <meta property="og:url" content="" /> -->
-    <meta property="og:image" content="{{ settings.DOMMAIN }}/{{ new.image.url }}" />
-    <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="{{ settings.APP_NAME }}">
-    <meta name="twitter:title" content=" {{ new.title }} - {{ settings.APP_NAME }}">
-    <meta name="twitter:description" content="{{ new.title }}">
-    <meta name="twitter:creator" content="@{{ settings.TWITTER_NAME }}">
-    <meta name="twitter:image:src" content="{{ settings.DOMMAIN }}/{{ new.image.url }}"
-    <meta name="twitter:image:alt" content=" {{ new.title }}" />
-    <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
-{% endblock %}
 
 {% block content %}
     <div class="post hentry">
@@ -39,10 +16,10 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                 <div class="post-body entry-content">
-                    <div dir="ltr" style="text-align: left;" trbidi="on"> <html>{{new.comment}}</html></div>
+                    <div class= "art-d" dir="ltr" style="text-align: left;" trbidi="on"> <html>{{new.comment}}</html></div>
                 </div>
             </div>
-                {% include "_chare.html" with url_name=new.url_display %}
+                {% include "_chare.html" with object=new %}
          </div>
     </div>
 {% endblock %}

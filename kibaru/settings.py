@@ -32,13 +32,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     'kibaru',
     'tinymce',
+    'imagefit',
     'widget_tweaks',
     'disqus',
-    'django.contrib.sites',
-    "social_widgets",
-    'imagefit',
 )
 
 
@@ -114,7 +113,7 @@ DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
 DJANGORESIZED_DEFAULT_QUALITY = 75
 DJANGORESIZED_DEFAULT_KEEP_META = True
 
-FACEBOOK_PAGE = "https://www.facebook.com/Kibaruu-1652451611660511/"
+FACEBOOK_PAGE = "Kibaruu-1652451611660511"
 FACEBOOK_USER = "kibaruuml"
 FACEBOOK_APP_ID = "1652451611660511"
 

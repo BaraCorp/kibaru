@@ -14,10 +14,12 @@
                 <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12">
                     <h3> Suivez-nous </h3>
                     <ul class="social">
-                        <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_USER }}"> <i class=" fa fa-facebook">   </i> </a> </li>
-                        <li> <a href="https://twitter.com/{{ settings.TWITTER_USER }}"> <i class="fa fa-twitter">   </i> </a> </li>
+                        <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class=" fa fa-facebook">   </i> </a> </li>
+                        <li> <a href="https://twitter.com/{{ settings.TWITTER_NAME }}"> <i class="fa fa-twitter">   </i> </a> </li>
                         <li> <a href="https://plus.google.com/u/0/{{ settings.GOOGLE_PLUS}}/posts"> <i class="fa fa-google-plus">   </i> </a> </li>
                         <li> <a href="https://www.youtube.com/user/{{ settings.YOUTUBE }}"> <i class="fa fa-youtube">   </i> </a> </li>
+                          <!-- <li class="fb-follow" data-href="https://www.facebook.com/Kibaruu-1652451611660511" data-layout="standard" data-show-faces="true"></li> -->
+
                     </ul>
                 </div>
                 <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12 ">
@@ -37,9 +39,9 @@
                                         <div  class="form-group">
                                             <label>{{form.email.label}}</label>
                                             {{form.email|add_class:"form-control"}}
+                                        <input type='submit' class="btn btn-primary" value ="envoyer"/>
                                         </div>
 
-                                        <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
                                     </form>
                                 </div>
                             {% endif %}
@@ -63,3 +65,11 @@
     </div>
     <!--/.footer-bottom-->
 </footer>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=1651809315058736";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

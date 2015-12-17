@@ -51,7 +51,7 @@
                     <a href="{{post.url_display}}">
                         <div class="thumbnail art">
                             <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'188x120' }}{% endif %}" data-holder-rendered="true">
-                            <h6 class="art-title"> {{ post.title}}</h6>
+                            <h4 class="art-title"> {{ post.title }} </h4>
                             <span style="color: gray;"class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ post.date_created |timesince }}</span>
                         </div>
                     </a>

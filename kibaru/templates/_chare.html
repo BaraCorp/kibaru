@@ -1,26 +1,50 @@
 
 {% load i18n staticfiles disqus_tags%}
-{% load social_widgets %}
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+{% block head %}
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="{{ object.title }}" />
+    <meta property="og:site_name" content="{{ settings.DOMMAIN }}" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:new:author" content="{{ settings.APP_NAME }}" />
+    <meta property="og:new:section" content="Afrique" />
+    <meta property="og:url" content="{{ object.url_display }}" />
+    <meta property="og:title" content="{{ object.title }}" />
+    <meta property="og:image" content="{{ object.image.url }}" />
+    <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
 
-    <h1>{{ url_name }}</h1>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ settings.DOMMAIN }}">
+    <meta name="twitter:title" content=" {{ object.title }} - {{ settings.APP_NAME }}">
+    <meta name="twitter:description" content="{{ object.title }}">
+    <meta name="twitter:creator" content="@{{ settings.TWITTER_NAME }}">
+    <meta name="twitter:image:src" content="{{ object.image.url }}"
+    <meta name="twitter:image:alt" content=" {{ object.title }}" />
+    <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
+
+    <link rel="canonical" href="{{ object.url_display }}" />
+{% endblock %}
+
+<div class="social col-xs-12 col-sm-12 col-md-12 col-lg-12" >
     <div class="social">
-        <span>{% social_widget_render "twitter/share_button.html"  %} </span>
-        <span>{% social_widget_render 'google/plus_share_button.html' %} </span>
-        <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
-        <span>{% social_widget_render "facebook/share_button.html" %}</span>
-        <span>{% social_widget_render "facebook/follow_button.html" href="{{ article.url_display }}" %}</span>
-        <span class="fb-like"></span>
-        <script type="text/javascript">
-          window.___gcfg = {lang: 'fr'};
-          (function() {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-            po.src = 'https://apis.google.com/js/platform.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-          })();
-        </script>
+        <a href="https://twitter.com/share" class="twitter-share-button"{count} data-via="{{ settings.TWITTER_NAME }}" data-dnt="true">Tweet</a>
+        <span class="g-plusone" data-size="medium"></span>
+        <g:plus action="share"></g:plus>
+        <span class="fb-like" data-href="{{ object.url_display }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span>
     </div>
-
-        {% disqus_show_comments %}
+    {% disqus_show_comments %}
 </div>
+
+<!-- twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!-- Gplus -->
+<script src="https://apis.google.com/js/platform.js" async defer>{lang: 'fr'}</script>
+<!-- Fb -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=1651809315058736";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
