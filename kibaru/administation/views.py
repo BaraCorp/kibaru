@@ -5,7 +5,7 @@
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
-from datetime import date
+from datetime import datetime
 
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -78,10 +78,6 @@ def add_article(request):
     if request.method == 'POST':
         form = Articleform(request.POST, request.FILES)
         if form.is_valid():
-            # article = Article.objects.get(start=True)
-            # article.start = False
-            # article.save()
-            # thumbnail = form.cleaned_data['image']
             form.save()
             messages.success(request, u"l'article a ete ajouter")
             return HttpResponseRedirect('/admin/')
@@ -97,9 +93,9 @@ def add_new(request):
     if request.method == 'POST':
         form = Newform(request.POST, request.FILES)
         if form.is_valid():
-            request.date = date(form.cleaned_data.get('date').year,
-                                form.cleaned_data.get('date').month,
-                                form.cleaned_data.get('date').day)
+            request.date = datetime(form.cleaned_data.get('date').year,
+                                    form.cleaned_data.get('date').month,
+                                    form.cleaned_data.get('date').day)
             form.save()
             messages.success(request, u"la nouvelle a ete ajouter")
             return HttpResponseRedirect('/admin/')
@@ -184,9 +180,9 @@ def edit_new(request, *args, **kwargs):
             selected_new.comment = request.POST.get('comment')
             selected_new.author = Member.objects.get(
                 username=request.POST.get('author'))
-            selected_new.date = date(form.cleaned_data.get('date').year,
-                                     form.cleaned_data.get('date').month,
-                                     form.cleaned_data.get('date').day)
+            selected_new.date = datetime(form.cleaned_data.get('date').year,
+                                         form.cleaned_data.get('date').month,
+                                         form.cleaned_data.get('date').day)
 
             form.save()
             messages.success(request, u"La nouvelle a ete mise a jour")

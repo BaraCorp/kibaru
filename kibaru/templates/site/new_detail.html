@@ -10,8 +10,8 @@
                 <h3 class="new_post_title entry-title"> {{ new.title }} </h3>
                 <div class="post-header">
                     <span class="new_timestamp badge badge-success"style="clear: both; float: right;">
-                      Nouvelle publiée le {{ new.date }} </span>
-                    <span class="new_author vcard"> <abbr class="fn">Par <u><a href="#">{{ new.author.name }}</a></u></abbr></span>
+                      Nouvelle publiée le {{ new.date|date:"D d M Y" }} </span>
+                    <span class="new_author vcard"> <abbr class="fn">Par <u><a href="#">kibaruu</a></u></abbr></span>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
