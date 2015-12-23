@@ -4,7 +4,7 @@
 
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -18,6 +18,8 @@ from kibaru.site.search import get_query
 
 MONTH_NAMES = ('', 'Janvier', u'Février', 'Mars', 'Avril', 'peut', 'Juin',
                'Juillet', u'Août', 'Septembre', 'Octobre', 'Novembre', u'Décembre')
+
+NOW = datetime.now()
 
 
 def year_view(request, year):
@@ -71,9 +73,14 @@ def init(month=None, year=None, cat_slug=None):
             "display_publicity", args=[publicity.id])
 
     news = New.objects.all()
-    news_today = news.filter(date__gte=datetime.today())
-    if news_today:
+    start_dat = datetime(NOW.year, NOW.month, NOW.day)
+    end_dat = start_dat + timedelta(days=1)
+    news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
+    if news_today.count() > 0:
         news = news_today
+    else:
+        news = news[:5]
+
     for new in news:
         new.url_display = reverse("display_new", args=[new.id])
     # tag_data = create_tag_data(posts)
