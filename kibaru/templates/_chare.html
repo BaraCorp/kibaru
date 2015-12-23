@@ -1,12 +1,9 @@
 
 {% load i18n staticfiles disqus_tags%}
 
-{% block head %}
-    <meta property="og:type" content="website"/>
+{% block head_ %}
+    <meta property="og:type" content="article"/>
     <meta property="og:description" content="{{ object.title }}" />
-    <meta property="og:site_name" content="{{ settings.DOMMAIN }}" />
-    <meta property="og:locale" content="en_GB" />
-    <meta property="og:new:author" content="{{ settings.APP_NAME }}" />
     <meta property="og:new:section" content="Afrique" />
     <meta property="og:url" content="{{ object.url_display }}" />
     <meta property="og:title" content="{{ object.title }}" />
@@ -15,13 +12,12 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="{{ settings.DOMMAIN }}">
-    <meta name="twitter:title" content=" {{ object.title }} - {{ settings.APP_NAME }}">
+    <meta name="twitter:title" content="{{ settings.APP_NAME }} - {{ object.title }}">
     <meta name="twitter:description" content="{{ object.title }}">
     <meta name="twitter:creator" content="@{{ settings.TWITTER_NAME }}">
     <meta name="twitter:image:src" content="{{ object.image.url }}"
     <meta name="twitter:image:alt" content=" {{ object.title }}" />
     <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
-
     <link rel="canonical" href="{{ object.url_display }}" />
 {% endblock %}
 
