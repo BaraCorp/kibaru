@@ -105,10 +105,10 @@ class New(models.Model):
     title = models.CharField(max_length=100, verbose_name=("Titre"))
     comment = models.TextField(blank=True, verbose_name=("Contenu"))
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
-    date = models.DateTimeField(verbose_name=("Fait le"),
+    date = models.DateField(verbose_name=("Fait le"),
                             default=datetime.datetime.today)
-    # date1 = models.DateTimeField(verbose_name=("Fait le"),
-    #                              default=datetime.datetime.today)
+    date1 = models.DateTimeField(verbose_name=("Fait le"),
+                                 default=datetime.datetime.today)
 
     def __str__(self):
         return "{title} {date}".format(title=self.title, date=self.date)
@@ -119,10 +119,10 @@ class Newsletter(models.Model):
 
     """ """
 
-    date = models.DateTimeField(verbose_name=("Date d'inscription"),
+    date = models.DateField(verbose_name=("Date d'inscription"),
                             default=datetime.datetime.today)
-    # date1 = models.DateTimeField(verbose_name=("Date d'inscription"),
-    #                              default=datetime.datetime.today)
+    date1 = models.DateTimeField(verbose_name=("Date d'inscription"),
+                                 default=datetime.datetime.today)
     email = models.EmailField(
         max_length=75, verbose_name=("E-mail"), unique=True)
 
@@ -152,10 +152,10 @@ class Article(models.Model):
                               blank=True, verbose_name=("Image"))
 
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
-    date_created = models.DateTimeField(verbose_name=("Fait le"),
+    date_created = models.DateField(verbose_name=("Fait le"),
                                         default=datetime.datetime.today)
-    # date_created1 = models.DateTimeField(verbose_name=("Fait le"),
-    #                                      default=datetime.datetime.today)
+    date_created1 = models.DateTimeField(verbose_name=("Fait le"),
+                                         default=datetime.datetime.today)
     date_modified = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, verbose_name=("Categorie"))
     status = models.CharField(verbose_name="Status", max_length=50,
