@@ -5,5 +5,5 @@ py3compat==0.2
 django-disqus==0.5
 django-widget-tweaks==1.4.1
 django-resized==0.3.5
-django-social-widgets==0.3.0
 django-imagefit==0.4
+django-maintenancemode==0.11.1
