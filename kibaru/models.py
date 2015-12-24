@@ -105,7 +105,7 @@ class New(models.Model):
     title = models.CharField(max_length=100, verbose_name=("Titre"))
     comment = models.TextField(blank=True, verbose_name=("Contenu"))
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
-    date = models.DateField(verbose_name=("Fait le"),
+    date = models.DateTimeField(verbose_name=("Fait le"),
                             default=datetime.datetime.today)
     date1 = models.DateTimeField(verbose_name=("Fait le"),
                                  default=datetime.datetime.today)
@@ -119,7 +119,7 @@ class Newsletter(models.Model):
 
     """ """
 
-    date = models.DateField(verbose_name=("Date d'inscription"),
+    date = models.DateTimeField(verbose_name=("Date d'inscription"),
                             default=datetime.datetime.today)
     date1 = models.DateTimeField(verbose_name=("Date d'inscription"),
                                  default=datetime.datetime.today)
@@ -152,7 +152,7 @@ class Article(models.Model):
                               blank=True, verbose_name=("Image"))
 
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
-    date_created = models.DateField(verbose_name=("Fait le"),
+    date_created = models.DateTimeField(verbose_name=("Fait le"),
                                         default=datetime.datetime.today)
     date_created1 = models.DateTimeField(verbose_name=("Fait le"),
                                          default=datetime.datetime.today)
