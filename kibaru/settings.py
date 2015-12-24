@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'imagefit',
     'widget_tweaks',
     'disqus',
-    'maintenancemode',
 )
 
 
