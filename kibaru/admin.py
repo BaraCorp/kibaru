@@ -24,9 +24,7 @@ class MemberAdmin(admin.ModelAdmin):
 
 @admin.register(New)
 class NewAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.DateTimeField: {'input_formats': ('%m/%d/%Y',)},
-    }
+    pass
 
 
 @admin.register(Newsletter)

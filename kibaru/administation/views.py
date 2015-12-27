@@ -182,7 +182,10 @@ def edit_new(request, *args, **kwargs):
                 username=request.POST.get('author'))
             selected_new.date = datetime(form.cleaned_data.get('date').year,
                                          form.cleaned_data.get('date').month,
-                                         form.cleaned_data.get('date').day)
+                                         form.cleaned_data.get('date').day,
+                                         datetime.now().hour,
+                                         datetime.now().minute,
+                                         datetime.now().second)
 
             form.save()
             messages.success(request, u"La nouvelle a ete mise a jour")
