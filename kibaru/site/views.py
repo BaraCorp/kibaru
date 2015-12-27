@@ -73,13 +73,13 @@ def init(month=None, year=None, cat_slug=None):
             "display_publicity", args=[publicity.id])
 
     news = New.objects.all()
-    start_dat = datetime(NOW.year, NOW.month, NOW.day)
-    end_dat = start_dat + timedelta(days=1)
-    news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
-    if news_today.count() > 0:
-        news = news_today
-    else:
-        news = news[:5]
+    # start_dat = datetime(NOW.year, NOW.month, NOW.day)
+    # end_dat = start_dat + timedelta(days=1)
+    # news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
+    # if news_today.count() > 0:
+        # news = news_today
+    # else:
+        # news = news[:5]
 
     for new in news:
         new.url_display = reverse("display_new", args=[new.id])
