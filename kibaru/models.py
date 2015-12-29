@@ -8,6 +8,7 @@ from django_resized import ResizedImageField
 
 import datetime
 import re
+import short_url
 # from django.core.urlresolvers import reverse
 
 # from django.core.mail import send_mail
@@ -157,6 +158,10 @@ class Article(models.Model):
     start = models.BooleanField(verbose_name="Start", default=False)
     count_view = models.IntegerField(default=0)
     count_like = models.IntegerField(default=0)
+
+    @property
+    def get_short_id(self):
+        return short_url.encode_url(self.id)
 
     def get_tag_list(self):
         return re.split(" ", self.tags)

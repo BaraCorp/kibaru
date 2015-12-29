@@ -119,7 +119,7 @@ FACEBOOK_APP_ID = "1652451611660511"
 
 TWITTER_NAME = "kibml"
 APP_NAME = "kibaruu"
-DOMMAIN = "kibaruu.ml"
+DOMMAIN = "http://kibaruu.ml"
 GOOGLE_PLUS = "112702821247370813954"
 YOUTUBE = "kibaruuml"
 GMAIL = "kibaruuml@gmail.com"

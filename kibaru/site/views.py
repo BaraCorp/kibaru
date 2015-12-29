@@ -4,8 +4,11 @@
 
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
+
+import short_url
+
 from datetime import datetime, timedelta
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
@@ -25,7 +28,7 @@ NOW = datetime.now()
 def year_view(request, year):
     posts, context = init(year=year)
     for article in posts:
-        article.url_display = reverse("display_article", args=[article.slug])
+        article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s' % year})
     return render(request, 'site/list_page.html', context)
@@ -34,7 +37,7 @@ def year_view(request, year):
 def month_view(request, year, month):
     posts, context = init(month=month, year=year)
     for article in posts:
-        article.url_display = reverse("display_article", args=[article.slug])
+        article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts,
                     'subtitle': 'Articles pour %s %s' % (MONTH_NAMES[int(month)], year), })
     return render(request, 'site/list_page.html', context)
@@ -44,7 +47,7 @@ def month_view(request, year, month):
 #     allposts, context = init()
 #     posts = []
 #     for post in allposts:
-#         post.url_display_tag = reverse("display_article", args=[post.slug])
+#         post.url_display_tag = reverse("art", args=[post.slug])
 #         tags = re.split(' ', post.tags)
 #         if tag in tags:
 #             posts.append(post)
@@ -77,12 +80,12 @@ def init(month=None, year=None, cat_slug=None):
     # end_dat = start_dat + timedelta(days=1)
     # news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
     # if news_today.count() > 0:
-        # news = news_today
+    # news = news_today
     # else:
-        # news = news[:5]
+    # news = news[:5]
 
     for new in news:
-        new.url_display = reverse("display_new", args=[new.id])
+        new.url_display = reverse("news", args=[new.id])
     # tag_data = create_tag_data(posts)
     context = {'settings': settings,
                'flash_news': news,
@@ -150,7 +153,7 @@ def search(request):
         found_article = posts.filter(article_query)
 
     for article in found_article:
-        article.url_display = reverse("display_article", args=[article.slug])
+        article.url_display = reverse("art", args=[article.slug])
     context.update({'query_string': query_string,
                     'found_article': found_article})
     return render(request, 'site/search_results.html', context)
@@ -164,11 +167,11 @@ def home(request, *args, **kwargs):
         slug = None
     posts, context = init(cat_slug=slug)
     for article in posts:
-        article.url_display = reverse("display_article", args=[article.slug])
+        article.url_display = reverse("art", args=[article.slug])
 
     starts = posts.filter(start=True)[:5]
     for start in starts:
-        start.url_start_display = reverse("display_article", args=[start.slug])
+        start.url_start_display = reverse("art", args=[start.slug])
 
     paginator = Paginator(posts, 12)
     page = request.GET.get('page')
@@ -228,12 +231,17 @@ def get_paginator_context(obj_pagina, page, range_gap=3):
 
 
 def display_article(request, *args, **kwargs):
+
     posts, context = init()
     article_slug = kwargs["slug"]
-    article = posts.get(slug=article_slug)
+    if len(article_slug) < 9:
+        article = posts.get(id=short_url.decode_url(article_slug))
+    else:
+        article = posts.get(slug=article_slug)
+
+    article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()
-
     context.update({'article': article})
     return render(request, 'site/article_detail.html', context)
 
