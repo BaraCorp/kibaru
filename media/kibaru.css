@@ -66,13 +66,48 @@ body {
     position: fixed;
     bottom: 5px;
     z-index: 10000;
-    margin-bottom: 0px;
-    margin-left: -12px;
+    /*margin-bottom: 0px;*/
+    /*margin-left: -12px;*/
 }
 #sticky li {
-    list-style-type: none;
     display: inline;
+    list-style-type: none;
 }
+/* liScroll styles */
+
+.tickercontainer {
+    background: #fff;
+    position: relative;
+    /*left: 10px;*/
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 1px 1px 0px #A9A9A9;
+}
+.tickercontainer .mask {
+}
+ul.newsticker {
+    background: #fff;
+    position: relative;
+    left: 750px;
+    font-size: 15px ;
+    list-style-type: none;
+    margin: 5px;
+    /*padding: 0;*/
+}
+
+li.newsticker {
+    /*display: inline-block;*/
+}
+ul.newsticker a {
+    white-space: nowrap;
+    padding: 0;
+    margin: 0 50px 0 0;
+}
+ul.newsticker span {
+    margin: 0 10px 0 0;
+}
+
 .pagination {
     float: right;
 }
@@ -97,24 +132,6 @@ a {
 a:focus,
 a:hover {
     text-decoration: none;
-}
-.update-nag {
-    padding: 3px;
-    border: display: inline-block;
-    font-size: 14px;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-    margin-bottom: 10px;
-}
-.title {
-    background-color: #d9534f;
-    padding: 2px;
-    margin: 10px
-}
-.update-nag > .new-text {
-    color: #9D9D9D;
-    margin: 3px;
-    font-size: 11px;
 }
 #custom-search-input button {
     border: 0px none;
@@ -291,13 +308,6 @@ border-radius: 3px;
     color: white;
     background: rgba(0, 40, 0, 0.8);
 }
-}
-.gap {
-    height: 30px;
-    width: 100%;
-    clear: both;
-    display: block;
-}
 .footer {
     background: #EDEFF1;
     height: auto;
@@ -432,45 +442,7 @@ border-radius: 3px;
     background-color: #005500;
     border-radius: 2px;
 }
-/* liScroll styles */
 
-.tickercontainer {
-    background: #fff;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    box-shadow: 0px 1px 1px 0px #A9A9A9;
-}
-.tickercontainer .mask {
-    /* that serves as a mask. so you get a sort of padding both left and right */
-
-    position: relative;
-    left: 10px;
-    overflow: hidden;
-}
-ul.newsticker {
-    /* that's your list */
-
-    position: relative;
-    left: 750px;
-    font: bold 10px sans-serif;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-ul.newsticker li {
-    float: left;
-    /* important: display inline gives incorrect results when you check for elem's width */
-
-    margin: 0;
-    padding: 0;
-    background: #fff;
-}
-ul.newsticker a {
-    white-space: nowrap;
-    padding: 0;
-    margin: 0 50px 0 0;
-}
-ul.newsticker span {
-    margin: 0 10px 0 0;
+li {
+    display: inline;
 }
