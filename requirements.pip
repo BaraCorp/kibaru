@@ -7,3 +7,4 @@ django-widget-tweaks==1.4.1
 django-resized==0.3.5
 django-imagefit==0.4
 short-url==1.2.1
+pytz==2015.4
