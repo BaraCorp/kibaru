@@ -22,6 +22,8 @@ from tinymce import models as tinymce_models
 
 from py3compat import implements_to_string
 
+from kibaru.tools import post_to_twitter
+
 
 @implements_to_string
 class Category(models.Model):
@@ -181,6 +183,14 @@ class Article(models.Model):
 
     def clean_tags_html(self, linit=150):
         return u"%s" % re.sub(re.compile('<[^<]+?>'), '', self.text)[:linit]
+
+    def get_absolute_url(self):
+        return self.slug
+
+    def get_twitter_message(self):
+        return u"kibaruu - {}".format(self.title)
+
+models.signals.post_save.connect(post_to_twitter, sender=Article)
 
 
 @implements_to_string
