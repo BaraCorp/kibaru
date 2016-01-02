@@ -59,30 +59,33 @@ body {
     font-size: smaller;
 }
 #sticky {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-radius: 3px;
+    box-shadow: 0px 1px 0px 0px #A9A9A9;
+    background-color: #FFF;
+    overflow: inherit;
 }
 #sticky.stick {
+    overflow: hidden;
     position: fixed;
     bottom: 5px;
     z-index: 10000;
     /*margin-bottom: 0px;*/
-    /*margin-left: -12px;*/
+}
+.new-O-size {
+    font-size: 0px;
 }
 #sticky li {
     display: inline;
+    display: -moz-box;
     list-style-type: none;
 }
 /* liScroll styles */
 
 .tickercontainer {
     background: #fff;
-    position: relative;
-    /*left: 10px;*/
-    overflow: hidden;
     margin: 0;
     padding: 0;
-    box-shadow: 0px 1px 1px 0px #A9A9A9;
 }
 .tickercontainer .mask {
 }
@@ -93,11 +96,10 @@ ul.newsticker {
     font-size: 15px ;
     list-style-type: none;
     margin: 5px;
-    /*padding: 0;*/
 }
 
 li.newsticker {
-    /*display: inline-block;*/
+    display: inline;
 }
 ul.newsticker a {
     white-space: nowrap;
@@ -105,7 +107,7 @@ ul.newsticker a {
     margin: 0 50px 0 0;
 }
 ul.newsticker span {
-    margin: 0 10px 0 0;
+    /*margin: 0 10px 0 0;*/
 }
 
 .pagination {
@@ -442,7 +444,8 @@ border-radius: 3px;
     background-color: #005500;
     border-radius: 2px;
 }
-
+/*
 li {
     display: inline;
 }
+*/

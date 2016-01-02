@@ -11,23 +11,26 @@ import urllib
 import urllib2
 from django.conf import settings
 
-TWITTER_MAXLENGTH = getattr(settings, 'TWITTER_MAXLENGTH', 140)
-
-consumer_key = settings.TWITTER_CONSUMER_KEY
-consumer_secret = settings.TWITTER_CONSUMER_SECRET
-access_token_key = settings.TWITTER_ACCESS_TOKEN_KEY
-access_token_secret = settings.TWITTER_ACCESS_TOKEN_SECRET
-domain = settings.DOMMAIN
-http_headers = None
-
 
 def post_to_twitter(sender, instance, *args, **kwargs):
     """
     Post new saved objects to Twitter.
     """
+
+    TWITTER_MAXLENGTH = getattr(settings, 'TWITTER_MAXLENGTH', 140)
+
+    consumer_key = settings.TWITTER_CONSUMER_KEY
+    consumer_secret = settings.TWITTER_CONSUMER_SECRET
+    access_token_key = settings.TWITTER_ACCESS_TOKEN_KEY
+    access_token_secret = settings.TWITTER_ACCESS_TOKEN_SECRET
+    domain = settings.DOMMAIN
+    http_headers = None
+
+    if not instance.twitte:
+        print("Not Twitte ", instance.twitte)
+        return
     # url = instance.get_absolute_url()
     url = instance.get_short_id
-    print(url)
     if not url.startswith('http://') and not url.startswith('https://'):
         url = u'%s/%s' % (domain, url)
     # TODO
@@ -40,13 +43,12 @@ def post_to_twitter(sender, instance, *args, **kwargs):
         text = instance.get_twitter_message()
     except AttributeError:
         text = unicode(instance)
+    # instance.delete()
 
     mesg = join_(text, link)
     if len(mesg) > TWITTER_MAXLENGTH:
         size = len(mesg + '...') - TWITTER_MAXLENGTH
         mesg = join_(text[:-size], link)
-    print(mesg)
-    instance.delete()
     try:
         # Autant twitter
         consumer = oauth2.Consumer(key=consumer_key, secret=consumer_secret)
@@ -57,10 +59,11 @@ def post_to_twitter(sender, instance, *args, **kwargs):
         body = urllib.urlencode({"status": str(mesg), "wrap_links": True})
         resp, content = client.request(
             "https://api.twitter.com/1.1/statuses/update.json?", method="POST", body=body, headers=http_headers)
-
+        print("{} Send twitte".format(resp))
     except oauth2.Error as err:
         print("Twitter Error:" + err)
-    print(resp, content)
+    except Exception as e:
+        print(e)
 
 
 def join_(a, b):

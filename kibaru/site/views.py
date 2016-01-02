@@ -238,7 +238,6 @@ def display_article(request, *args, **kwargs):
         article = posts.get(id=short_url.decode_url(article_slug))
     else:
         article = posts.get(slug=article_slug)
-
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()

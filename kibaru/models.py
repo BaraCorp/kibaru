@@ -114,6 +114,23 @@ class New(models.Model):
     def __str__(self):
         return "{title} {date}".format(title=self.title, date=self.date)
 
+    def save(self, *args, **kwargs):
+        self.twitte = False
+        if self._state.adding:
+            self.twitte = True
+            print("Created ", self._state.adding)
+        super(New, self).save(*args, **kwargs)
+
+    @property
+    def get_short_id(self):
+        # return short_url.encode_url(self.id)
+        return "{}".format(self.id)
+
+    def get_twitter_message(self):
+        return u"{} - {}".format(self.type_new, self.title)
+
+models.signals.post_save.connect(post_to_twitter, sender=New)
+
 
 @implements_to_string
 class Newsletter(models.Model):
@@ -169,11 +186,14 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
+        self.twitte = False
+        if self._state.adding and status.POSTED:
+            # for ne in Newsletter.objects.all():
+            # print(ne.email)
+            # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
+            self.twitte = True
         self.slug = "-".join(re.findall("([a-zA-Z]+)", self.title.lower()))
         super(Article, self).save(*args, **kwargs)
-        # for ne in Newsletter.objects.all():
-        # print(ne.email)
-        # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
 
     def __str__(self):
         return "{title} {status}".format(title=self.title, status=self.status)

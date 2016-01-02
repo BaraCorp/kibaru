@@ -68,7 +68,8 @@ def home(request):
     for video in videos:
         video.url_del = reverse("del_video", args=[video.id])
 
-    context.update({'articles': articles, 'news': news, 'videos': videos, 'str_news': str_news})
+    context.update({'articles': articles, 'news': news,
+                    'videos': videos, 'str_news': str_news})
     return render(request, 'administration/index.html', context)
 
 
