@@ -187,7 +187,7 @@ class Article(models.Model):
 
     def save(self, *args, **kwargs):
         self.twitte = False
-        if self._state.adding and self.status=POSTED:
+        if self._state.adding and self.status==POSTED:
             # for ne in Newsletter.objects.all():
             # print(ne.email)
             # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
