@@ -31,8 +31,10 @@ def post_to_twitter(sender, instance, *args, **kwargs):
         return
     # url = instance.get_absolute_url()
     url = instance.get_short_id
+    prefix_url_twtt = instance.prefix_url_twtt
     if not url.startswith('http://') and not url.startswith('https://'):
-        url = u'%s/%s' % (domain, url)
+        url = u'%s/%s/%s' % (domain, prefix_url_twtt, url)
+    print(url)
     # TODO
     # tinyurl'ze the object's link
     # create_api = 'http://tinyurl.com/api-create.php'

@@ -114,17 +114,17 @@ class New(models.Model):
     def __str__(self):
         return "{title} {date}".format(title=self.title, date=self.date)
 
-    def save(self, *args, **kwargs):
-        self.twitte = False
-        if self._state.adding:
-            self.twitte = True
-            print("Created ", self._state.adding)
-        super(New, self).save(*args, **kwargs)
-
     @property
     def get_short_id(self):
         # return short_url.encode_url(self.id)
         return "{}".format(self.id)
+
+    def save(self, *args, **kwargs):
+        self.twitte = False
+        if self._state.adding:
+            self.prefix_url_twtt = "new"
+            self.twitte = True
+        super(New, self).save(*args, **kwargs)
 
     def get_twitter_message(self):
         return u"{} - {}".format(self.type_new, self.title)
@@ -188,6 +188,7 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         self.twitte = False
         if self._state.adding and self.status==self.POSTED:
+            self.prefix_url_twtt = "art"
             # for ne in Newsletter.objects.all():
             # print(ne.email)
             # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
