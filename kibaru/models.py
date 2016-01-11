@@ -4,6 +4,7 @@
 
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
+
 from django_resized import ResizedImageField
 
 import datetime
@@ -14,8 +15,7 @@ import short_url
 # from django.core.mail import send_mail
 from django.core import validators
 from django.db import models
-from django.contrib.auth.models import (AbstractBaseUser,
-                                        UserManager)
+from django.contrib.auth.models import (AbstractBaseUser, UserManager)
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from tinymce import models as tinymce_models
