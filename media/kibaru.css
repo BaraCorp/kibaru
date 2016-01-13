@@ -77,7 +77,6 @@ body {
 }
 #sticky li {
     display: inline;
-    display: -moz-box;
     list-style-type: none;
 }
 /* liScroll styles */

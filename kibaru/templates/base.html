@@ -2,10 +2,8 @@
 <html lang="fr">
     {% load staticfiles %}
     <head>
-    <!--
-        <meta name="verify-v1" content="" />
-        <meta name="google-site-verification" content="" /> -->
-
+    <!--<meta name="verify-v1" content="" />-->
+        <meta name="google-site-verification" content="fgLu7IUn1vn7oMl1puvAsjqfA3OZpsfy9_Zf5QG07p8" />
         <meta charset="utf-8">
         <meta property="og:site_name" content="{{ settings.DOMMAIN }}" />
         <meta property="og:new:author" content="{{ settings.APP_NAME }}" />
@@ -37,12 +35,12 @@
             <div id="sticky" class="new-O-size">
                 <ul id="ticker01">
                     {% for new in flash_news %}
-                        <li>
+                        <li data-toggle="{{new.date}}" title="{{new.date}}">
                             <i {% if new.type_new == 'U' %} class="glyphicon glyphicon-fire" style="color: red;" {% elif new.type_new == 'C'%}
                                  class="glyphicon glyphicon-alert" style="color: #2A5DBB;" {% else %}
                                  class="glyphicon glyphicon-info-sign " style="color: green;"{% endif%}>
                             </i>
-                            <span class="new-text"><a href="{{new.url_display}}">  {{new.title}}</a> </span>
+                            <span class="new-text"><a href="{{new.url_display}}" >  {{new.title}}</a> </span>
                         </li>
                     {% endfor %}
                 </ul>

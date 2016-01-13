@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'imagefit',
     'widget_tweaks',
     'disqus',
+    'dbbackup',  # django-dbbackup
 )
 
 

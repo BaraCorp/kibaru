@@ -13,6 +13,9 @@ from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.http import Http404
 
 from kibaru.models import Article, Publicity, Category, New, Video
 from kibaru.forms import Newsletterform
@@ -23,6 +26,20 @@ MONTH_NAMES = ('', 'Janvier', u'Février', 'Mars', 'Avril', 'peut', 'Juin',
                'Juillet', u'Août', 'Septembre', 'Octobre', 'Novembre', u'Décembre')
 
 NOW = datetime.now()
+
+
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
+
+def handler500(request):
+    response = render_to_response('500.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 500
+    return response
 
 
 def year_view(request, year):
@@ -234,10 +251,14 @@ def display_article(request, *args, **kwargs):
 
     posts, context = init()
     article_slug = kwargs["slug"]
-    if len(article_slug) < 9:
-        article = posts.get(id=short_url.decode_url(article_slug))
-    else:
-        article = posts.get(slug=article_slug)
+    try:
+        if len(article_slug) < 9:
+            article = posts.get(id=short_url.decode_url(article_slug))
+        else:
+            article = posts.get(slug=article_slug)
+    except Article.DoesNotExist:
+        # raise Http404("Article does not exist")
+        return HttpResponseRedirect('/')
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()

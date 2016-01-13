@@ -6,7 +6,9 @@
 {% block page-id %} {{ article.id }}{% endblock %}
 
 {% block content %}
-
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
     <div class="post hentry">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
@@ -19,13 +21,14 @@
                 {% if article.image %}
                     <div class="separator thumbnail " style="clear: both; text-align: center;">
                         <a href="{{ article.image.url }}">
-                        <img  style="min-height: 20em;max-height: 25em;" src= {% if article.image %} "{{ article.image.url | resize:'300x220'}}" {% else %} "" {% endif %} border="1"></a>
+                        <img  style="min-height: 20em;max-height: 25em;" src= {% if article.image %} "{{ article.image.url | resize:'400x320'}}" {% else %} "" {% endif %} border="1"></a>
                     </div>
                 {% endif %}
-
-                <div class="post-body entry-content">
-                    <div class= "art-d" dir="ltr" trbidi="on"> <html>{{article.text|safe}}</html></div>
-                </div>
+                <article>
+                    <div class="post-body entry-content">
+                        <div class= "art-d" dir="ltr" trbidi="on"> <html>{{article.text|safe}}</html></div>
+                    </div>
+                </article>
             </div>
                 {% include "_chare.html" with object=article %}
          </div>
