@@ -33,6 +33,9 @@ body {
     padding-left: 10px;
     padding-right: 10px;
 }
+.dropdown-menu {
+    font-size: smaller;
+}
 .post-header {
     margin: 0px 0px 6px;
 }

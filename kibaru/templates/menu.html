@@ -7,11 +7,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/"> </a>
+        <a class="navbar-brand" {% ifequal cat_slug 'Z' %} style="background-color: black;"{% endifequal %} href="/"> Kibaruu</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li {% ifequal cat_slug '' %} class="active" {% endifequal %}><a href="{% url 'home' '' %}">Accueil</a></li>
+        <ul class="nav navbar-nav navbar-right">
+            <!-- <li {% ifequal cat_slug '' %} class="active" {% endifequal %}><a href="{% url 'home' '' %}">Accueil</a></li> -->
             <li {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %} class="dropdown">
                 <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Economie <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -43,6 +43,20 @@
             </li>
             <li {% ifequal cat_slug 'environnement' %} class="active" {% endifequal %}><a href="{% url 'home' 'environnement' %}">Environnement</a></li>
             <li {% ifequal cat_slug 'expression-libre' %} class="active" {% endifequal %}><a href="{% url 'home' 'expression-libre' %}">Expression Libre</a></li>
+            <li  {% if cat_slug == 'archive' %} class="active" {% endif %} class="dropdown">
+                <a href="{% url 'home' 'archive' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Archive<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    {% for line in archive_counts %}
+                        {% if line.isyear %}
+                            {% if not forloop.first %}
+                        {% endif %}
+                            <li><a href="{% url 'article_year' line.year %}" >{{ line.year }} ({{ line.count }})</a></li>
+                        {% else %}
+                            <li><a href="{% url 'article_month' line.year line.month %}"> - {{ line.monthname }} ({{ line.count }})</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
             <li>
                 <div class="input-group col-xs-6 col-sm-9 col-md-9 col-lg-12">
                     <form method="get" action="{% url 'search' %}" class="navbar-form">
