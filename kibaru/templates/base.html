@@ -25,8 +25,10 @@
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <!-- Custom CSS -->
         <link  rel="stylesheet" href="{% static "kibaru.css" %}">
+        <link  rel="stylesheet" href="{% static "navbar.css" %}">
     </head>
     <body>
+
         <div id="{% block page-id %}{% endblock %}">
           <!-- Page Content -->
         <div class="container page">
@@ -89,6 +91,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <!-- // <script src="http://www.gcmingati.net/wordpress/wp-content/lab/jquery/newsticker/jq-liscroll/jquery.li-scroller.1.0.js"></script> -->
         <script src="{% static "jquery.li-scroller.1.0.js" %}"></script>
+        <script src="{% static "nav-reach-bar.js" %}"></script>
         <script type="text/javascript">
         $(document).ready(function(){
             $("ul#ticker01").liScroll({travelocity: 0.04});
@@ -103,8 +106,7 @@
                 }
             }
             $(function() {
-                $(window).scroll(sticky_relocate);
-                  sticky_relocate();
+                $(window).scroll(sticky_relocate); // sticky_relocate();
             });
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -1,16 +1,21 @@
+
+{% load staticfiles %}
 <!-- Navigation -->
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" {% ifequal cat_slug 'Z' %} style="background-color: black;"{% endifequal %} href="/"> Kibaruu</a>
+        <a href="/" class="navbar-brand">
+            Kib@ruu<img style="width: initial;" src="{% static 'favicon.ico' %} ">
+         </a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
+    <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+        <ul class="nav navbar-nav navbar-lelf">
             <!-- <li {% ifequal cat_slug '' %} class="active" {% endifequal %}><a href="{% url 'home' '' %}">Accueil</a></li> -->
             <li {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %} class="dropdown">
                 <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Economie <span class="caret"></span></a>
@@ -58,20 +63,23 @@
                 </ul>
             </li>
             <li>
-                <div class="input-group col-xs-6 col-sm-9 col-md-9 col-lg-12">
-                    <form method="get" action="{% url 'search' %}" class="navbar-form">
-                        <div style="display:inline;" class="form-group">
-                           <div id="custom-search-input">
-                                <span class="input-group-btn">
-                                    <input type="text" class="search-query form-control" name="q" placeholder="Recherche" />
-                                    <button type="submit" class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
+                <form  method="get" action="{% url 'search' %}" class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control pull-right" style="width: 260px; border: 1px solid black; background-color: #e5e5e5;" name="q" placeholder="Recherche">
+                        <span class="input-group-btn">
+                            <button type="reset" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove">
+                                    <span class="sr-only">Close</span>
                                 </span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                            </button>
+                            <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search">
+                                    <span class="sr-only">Search</span>
+                                </span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
             </li>
             {% if user.is_authenticated %}<li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Déconnection <em>{{ user.name }}</em></a></li>{% endif %}
         </ul>

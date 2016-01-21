@@ -15,14 +15,23 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                <div class="post-body entry-content">
-                    <div class= "art-d" dir="ltr" style="text-align: left;" trbidi="on"> <html>{{new.comment}}</html></div>
-                </div>
+                <article>
+                    <div class="post-body entry-content">
+                        <div class= "art-d" dir="ltr" style="text-align: left;" trbidi="on"> <html>{{new.comment}}</html></div>
+                    </div>
+                </article>
             </div>
                 {% include "_chare.html" with object=new %}
          </div>
     </div>
 {% endblock %}
+
+{% block facebook %}
+    <div class="list-group">
+        <div class="list-group-item disabled">Facebook</div>
+        <div class="fb-page" style="width: 100%;" data-href="{{settings.FACEBOOK_PAGE}}/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"></div>
+    </div>
+{% endblock%}
 
 {% block pub %}
 {% endblock %}
