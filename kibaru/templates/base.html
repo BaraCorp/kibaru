@@ -28,12 +28,11 @@
         <link  rel="stylesheet" href="{% static "navbar.css" %}">
     </head>
     <body>
-
         <div id="{% block page-id %}{% endblock %}">
           <!-- Page Content -->
         <div class="container page">
-            {% include "menu.html" %}
-            <div id="sticky-anchor">{% include "site/banner.html" %}</div>
+            {% include "_menu.html" %}
+            <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
             <div id="sticky" class="new-O-size">
                 <ul id="ticker01">
                     {% for new in flash_news %}
@@ -80,7 +79,7 @@
                 {% block footer %}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div>{% include "site/footer.html" %}</div>
+                            <div>{% include "site/_footer.html" %}</div>
                         </div>
                     </div>
                 {% endblock %}
