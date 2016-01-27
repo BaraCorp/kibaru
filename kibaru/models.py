@@ -110,6 +110,8 @@ class New(models.Model):
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
     date = models.DateTimeField(verbose_name=("Fait le"),
                                 default=datetime.datetime.today)
+    count_view = models.IntegerField(default=0)
+    count_like = models.IntegerField(default=0)
 
     def __str__(self):
         return "{title} {date}".format(title=self.title, date=self.date)
