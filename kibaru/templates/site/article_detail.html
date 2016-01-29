@@ -21,7 +21,7 @@
                 {% if article.image %}
                     <div class="separator thumbnail " style="clear: both; text-align: center;">
                         <a href="{{ article.image.url }}">
-                        <img  style="min-height: 20em;max-height: 25em;" src= {% if article.image %} "{{ article.image.url | resize:'400x320'}}" {% else %} "" {% endif %} border="1"></a>
+                        <img src= {% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} border="1"></a>
                     </div>
                 {% endif %}
                 <article>
