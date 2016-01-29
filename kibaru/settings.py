@@ -18,7 +18,7 @@ ROOT_DIR = os.path.dirname(abs_path)
 SECRET_KEY = '3(p&^=gsgxk84xf8s4-rqpob41t7rrwp(tqm_enwxr2ov^!bf='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -129,6 +129,11 @@ TEL2 = ""
 ADDRESS = ""
 BP = ""
 
+IMAGEFIT_PRESETS = {
+    'img_start': {'width': 600, 'height': 200, 'crop': True},
+    'img_artd': {'width': 1024, 'height': 350, 'crop': True},
+    'img_art': {'width': 260, 'height': 120, 'crop': True},
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
