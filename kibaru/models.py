@@ -12,7 +12,6 @@ import re
 import short_url
 # from django.core.urlresolvers import reverse
 
-# from django.core.mail import send_mail
 from django.core import validators
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, UserManager)
@@ -110,6 +109,8 @@ class New(models.Model):
     author = models.ForeignKey(Member, verbose_name=("Auteur"))
     date = models.DateTimeField(verbose_name=("Fait le"),
                                 default=datetime.datetime.today)
+    count_view = models.IntegerField(default=0)
+    count_like = models.IntegerField(default=0)
 
     def __str__(self):
         return "{title} {date}".format(title=self.title, date=self.date)
@@ -189,9 +190,6 @@ class Article(models.Model):
         self.twitte = False
         if self._state.adding and self.status==self.POSTED:
             self.prefix_url_twtt = "art"
-            # for ne in Newsletter.objects.all():
-            # print(ne.email)
-            # send_mail('Nouvel artticle', 'Here is the message. http://127.0.0.1:8000{}'.format(reverse("display_article", args=[self.slug])), 'from@example.com', [ne.email], fail_silently=False)
             self.twitte = True
         self.slug = "-".join(re.findall("([a-zA-Z]+)", self.title.lower()))
         super(Article, self).save(*args, **kwargs)

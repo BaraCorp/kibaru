@@ -90,6 +90,7 @@
             <th>Contenu</th>
             <th>Auteur</th>
             <th>Fait le</th>
+            <th>Nb vue</th>
             <th>Modification</th>
             <th>Suppression</th>
         </tr>
@@ -100,6 +101,7 @@
             <td>{{ new.comment }}</td>
             <td>{{ new.author.name }}</td>
             <td>{{ new.date }}</td>
+            <td>{{ new.count_view }}</td>
             <td><a href="{{ new.url_edit}}" class="btn btn-primary" >Modifier</a></td>
             <td><a href="{{ new.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer l'new ?">Supprimer</a></td>
         </tr>
