@@ -21,7 +21,7 @@
                 <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
                 <div class="post-header">
                     <span class="article_timestamp badge badge-success"style="clear: both; float: right;">
-                      Publié le {{ new.date|date:"l d F Y" }} </span>
+                      Publié le {{ article.date_created|date:"l d F Y" }} </span>
                     <span class="article_author vcard"> <abbr class="fn">Par <u><a href="#">kibaruu</a></u></abbr></span>
                 </div>
                 {% if article.image %}
