@@ -25,7 +25,7 @@
                     <span class="article_author vcard"> <abbr class="fn">Par <u><a href="#">kibaruu</a></u></abbr></span>
                 </div>
                 {% if article.image %}
-                    <div class="separator thumbnail " style="clear: both; text-align: center;">
+                    <div class="img-d">
                         <a href="{{ article.image.url }}">
                         <img src= {% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} border="1"></a>
                     </div>

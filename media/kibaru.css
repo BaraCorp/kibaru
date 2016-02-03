@@ -4,7 +4,6 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-
 @font-face {
     font-family:'kibml-content-sans-serif-font';
     font-style:italic;
@@ -67,14 +66,11 @@ body {
     height: 70px;
     font-size: 12px
 }
-.art img {
-    /*width: 100%;*/
-    /*height: 120px;
-    min-height: 8em;
-    max-height: 8em;*/
-}
 .art .glyphicon {
     font-size: smaller;
+}
+.img-d {
+    clear: both; text-align: center; margin: 3em;
 }
 #sticky {
     margin-bottom: 15px;
@@ -98,7 +94,6 @@ body {
     list-style-type: none;
 }
 /* liScroll styles */
-
 .tickercontainer {
     background: #fff;
     margin: 0;
@@ -110,11 +105,10 @@ ul.newsticker {
     background: #fff;
     position: relative;
     left: 750px;
-    font-size: 15px ;
+    font-size: 15px;
     list-style-type: none;
     margin: 5px;
 }
-
 li.newsticker {
     display: inline;
 }
@@ -126,7 +120,6 @@ ul.newsticker a {
 ul.newsticker span {
     /*margin: 0 10px 0 0;*/
 }
-
 .pagination {
     float: right;
 }
@@ -163,9 +156,8 @@ a:hover {
 .input-group-btn {
     width: 100%;
 }
-/*#custom-search-input{margin:0;margin-top: 10px;padding: 0;}
+/*#custom-search-input{margin:0;margin-top: 10px;padding: 0;}*/
 #custom-search-input .search-query{padding-right: 3px;padding-right: 4px \9;padding-left: 3px;padding-left: 4px \9;/* IE7-8 doesn't have border-radius, so don't indent the padding */
-
 margin-bottom: 0;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
@@ -180,7 +172,6 @@ border-radius: 3px;
     margin-top: 20px;
 }
 /* Carousel Styles */
-
 .carousel-indicators .active {
     background-color: #2980b9;
 }
