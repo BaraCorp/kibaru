@@ -5,6 +5,12 @@
 
 {% block page-id %} {{ article.id }}{% endblock %}
 
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
 {% block content %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -35,6 +41,9 @@
     </div>
 {% endblock %}
 
+{% block footer %}
+    {% include "site/_footer.html" %}
+{% endblock %}
 {% block facebook %}
     <div class="list-group">
         <div class="list-group-item disabled">Facebook</div>

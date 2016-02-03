@@ -5,6 +5,13 @@
 {% block title %} Accueil {% endblock %}
 
 {% block page-id %}index{% endblock %}
+
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
 {% block content %}
     <!-- Project One -->
     {% if starts %}
@@ -125,6 +132,10 @@
     </div>
 {% endblock %}
 
+<!-- Footer -->
+{% block footer %}
+    {% include "site/_footer.html" %}
+{% endblock %}
 
 {% block onJQready %}
     //Events that reset and restart the timer animation when the slides change
