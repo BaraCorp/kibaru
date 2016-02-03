@@ -2,6 +2,12 @@
 {% load i18n staticfiles %}
 {% block title %}  {{subtitle}} {% endblock %}
 
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
 {% block  content %}
     <H2>{{subtitle}}</H2>
     {% for post in post_list %}
@@ -24,5 +30,8 @@
   {% endfor %}
 {% endblock %}
 
+{% block footer %}
+    {% include "site/_footer.html" %}
+{% endblock %}
 {% block pub %}
 {% endblock %}

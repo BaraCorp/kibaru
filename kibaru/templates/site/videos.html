@@ -4,6 +4,12 @@
 
 {% block page-id %} videos {% endblock %}
 
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
 {% block content %}
     <div class="row">
         {% if videos %}
@@ -22,6 +28,10 @@
             Aucune Video publiée.
         {% endif %}
     </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "site/_footer.html" %}
 {% endblock %}
 
 {% block twitter %}

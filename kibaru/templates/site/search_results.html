@@ -5,6 +5,12 @@
 
 {% block page-id %}index{% endblock %}
 
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
 {% block content %}
     {% if found_article %}
         <h4><b>Résultats de recherche pour : </b> {{ query_string }} </h4>
@@ -32,6 +38,10 @@
     {% else %}
         <h4><b> Aucun résultat trouvé pour : </b> {{ query_string }} </h4>
     {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {% include "site/_footer.html" %}
 {% endblock %}
 
 {% block pub %}

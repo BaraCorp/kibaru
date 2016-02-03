@@ -63,3 +63,5 @@ install.txt
 media/images_article/
 migrations/
 Backup_db/
+
+crontab kibaru

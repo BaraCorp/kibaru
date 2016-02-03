@@ -165,7 +165,7 @@ class Article(models.Model):
         max_length=200, unique=True, blank=True, verbose_name=("Slug"))
     title = models.CharField(max_length=200, verbose_name=("Titre"))
     text = tinymce_models.HTMLField(blank=True, verbose_name=("Texte"))
-    image = ResizedImageField(size=[900, 500], upload_to='images_article/',
+    image = ResizedImageField(size=[1024, 500], upload_to='images_article/',
                               blank=True, verbose_name=("Image"))
 
     author = models.ForeignKey(Member, verbose_name=("Auteur"))

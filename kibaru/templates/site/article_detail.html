@@ -5,6 +5,12 @@
 
 {% block page-id %} {{ article.id }}{% endblock %}
 
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
 {% block content %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +18,7 @@
     <div class="post hentry">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                <h3 class="article_post_title entry-title"> {{ article.title }} </h3>
+                <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
                 <div class="post-header">
                     <span class="article_timestamp badge badge-success"style="clear: both; float: right;">
                       Publié le {{ new.date|date:"l d F Y" }} </span>
@@ -21,7 +27,7 @@
                 {% if article.image %}
                     <div class="separator thumbnail " style="clear: both; text-align: center;">
                         <a href="{{ article.image.url }}">
-                        <img  style="min-height: 20em;max-height: 25em;" src= {% if article.image %} "{{ article.image.url | resize:'400x320'}}" {% else %} "" {% endif %} border="1"></a>
+                        <img src= {% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} border="1"></a>
                     </div>
                 {% endif %}
                 <article>
@@ -35,6 +41,9 @@
     </div>
 {% endblock %}
 
+{% block footer %}
+    {% include "site/_footer.html" %}
+{% endblock %}
 {% block facebook %}
     <div class="list-group">
         <div class="list-group-item disabled">Facebook</div>

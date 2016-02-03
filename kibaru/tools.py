@@ -59,9 +59,12 @@ def post_to_twitter(sender, instance, *args, **kwargs):
 
         url_twitter = "https://api.twitter.com/1.1/statuses/update.json?",
         body = urllib.urlencode({"status": str(mesg), "wrap_links": True})
-        resp, content = client.request(
-            "https://api.twitter.com/1.1/statuses/update.json?", method="POST", body=body, headers=http_headers)
-        print("{} Send twitte".format(resp))
+        if not settings.DEBUG:
+            resp, content = client.request(
+                "https://api.twitter.com/1.1/statuses/update.json?", method="POST", body=body, headers=http_headers)
+            print("{} Send twitter".format(resp))
+        else:
+            print("Not POST on Twitter")
     except oauth2.Error as err:
         print("Twitter Error:" + err)
     except Exception as e:

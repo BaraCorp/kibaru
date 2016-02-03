@@ -3,6 +3,12 @@
 
 {% block page-id %} {{ new.id }}{% endblock %}
 
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
 {% block content %}
     <div class="post hentry">
         <div class="row">
@@ -24,6 +30,10 @@
                 {% include "_chare.html" with object=new %}
          </div>
     </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "site/_footer.html" %}
 {% endblock %}
 
 {% block facebook %}
