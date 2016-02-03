@@ -47,7 +47,7 @@ def year_view(request, year):
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts,
-                    'subtitle': 'Articles pour %s' % year})
+                    'subtitle': 'Les articles publiés en %s' % year})
     return render(request, 'site/list_page.html', context)
 
 
@@ -56,7 +56,7 @@ def month_view(request, year, month):
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts,
-                    'subtitle': 'Articles pour %s %s' % (MONTH_NAMES[int(month)], year), })
+                    'subtitle': 'Les articles publiés en %s %s' % (MONTH_NAMES[int(month)], year), })
     return render(request, 'site/list_page.html', context)
 
 
