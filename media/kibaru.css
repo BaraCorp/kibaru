@@ -73,7 +73,7 @@ body {
     clear: both; text-align: center; margin: 3em;
 }
 #sticky {
-    margin-bottom: 15px;
+    margin-bottom: 6px;
     border-radius: 3px;
     box-shadow: 0px 1px 0px 0px #A9A9A9;
     background-color: #FFF;
@@ -107,7 +107,7 @@ ul.newsticker {
     left: 750px;
     font-size: 15px;
     list-style-type: none;
-    margin: 5px;
+    /*margin: 5px;*/
 }
 li.newsticker {
     display: inline;
