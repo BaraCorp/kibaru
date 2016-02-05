@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
 
 from kibaru.forms import Articleform, Newform, Videoform
 from kibaru.models import Article, Member, Category, New, Video
@@ -20,7 +21,7 @@ from kibaru.models import Article, Member, Category, New, Video
 
 @login_required
 def home(request):
-    context = {}
+    c = {'settings': settings}
 
     articles = Article.objects.all().order_by('-date_created')
     paginator = Paginator(articles, 4)
@@ -68,14 +69,14 @@ def home(request):
     for video in videos:
         video.url_del = reverse("del_video", args=[video.id])
 
-    context.update({'articles': articles, 'news': news,
+    c.update({'articles': articles, 'news': news,
                     'videos': videos, 'str_news': str_news})
-    return render(request, 'administration/index.html', context)
+    return render(request, 'administration/index.html', c)
 
 
 @login_required
 def add_article(request):
-    c = {'page_title': "Ajout d'article"}
+    c = {'settings': settings, 'page_title': "Ajout d'article"}
     if request.method == 'POST':
         form = Articleform(request.POST, request.FILES)
         if form.is_valid():
@@ -90,7 +91,7 @@ def add_article(request):
 
 @login_required
 def add_new(request):
-    c = {'page_title': "Ajout de nouvelle"}
+    c = {'settings': settings, 'page_title': "Ajout de nouvelle"}
     if request.method == 'POST':
         form = Newform(request.POST, request.FILES)
         if form.is_valid():
@@ -108,7 +109,7 @@ def add_new(request):
 
 @login_required
 def add_video(request):
-    c = {'page_title': "Ajout de lien d'une video Youtube"}
+    c = {'settings': settings, 'page_title': "Ajout de lien d'une video Youtube"}
     if request.method == 'POST':
         form = Videoform(request.POST)
         if form.is_valid():
