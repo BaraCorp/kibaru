@@ -18,7 +18,7 @@ from kibaru.forms import Articleform, Newform, Videoform
 from kibaru.models import Article, Member, Category, New, Video
 
 
-@login_required()
+@login_required
 def home(request):
     context = {}
 
@@ -73,7 +73,7 @@ def home(request):
     return render(request, 'administration/index.html', context)
 
 
-# @login_required
+@login_required
 def add_article(request):
     c = {'page_title': "Ajout d'article"}
     if request.method == 'POST':
@@ -88,7 +88,7 @@ def add_article(request):
     return render(request, 'administration/add_article.html', c)
 
 
-# @login_required
+@login_required
 def add_new(request):
     c = {'page_title': "Ajout de nouvelle"}
     if request.method == 'POST':
@@ -106,7 +106,7 @@ def add_new(request):
     return render(request, 'administration/add_new.html', c)
 
 
-# @login_required
+@login_required
 def add_video(request):
     c = {'page_title': "Ajout de lien d'une video Youtube"}
     if request.method == 'POST':
@@ -121,7 +121,7 @@ def add_video(request):
     return render(request, 'administration/add_video.html', c)
 
 
-# @login_required()
+@login_required
 def edit_article(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected_article = Article.objects.get(id=id_url)
@@ -152,7 +152,7 @@ def edit_article(request, *args, **kwargs):
                   {'form': form, 'page_title': "Modification d'article"})
 
 
-# @login_required
+@login_required
 def del_article(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected = Article.objects.get(id=id_url)
@@ -161,7 +161,7 @@ def del_article(request, *args, **kwargs):
     return redirect('/admin/')
 
 
-# @login_required
+@login_required
 def del_video(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected = Video.objects.get(id=id_url)
@@ -170,7 +170,7 @@ def del_video(request, *args, **kwargs):
     return redirect('/admin/')
 
 
-# @login_required()
+@login_required
 def edit_new(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected_new = New.objects.get(id=id_url)
@@ -198,7 +198,7 @@ def edit_new(request, *args, **kwargs):
                   {'form': form, 'page_title': "Modification de la nouvelle"})
 
 
-# @login_required
+@login_required
 def del_new(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected = New.objects.get(id=id_url)

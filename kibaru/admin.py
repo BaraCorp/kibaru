@@ -9,16 +9,44 @@ from django.contrib import admin
 from django.db import models
 
 from kibaru.models import Category, Member, New, Article, Newsletter, Publicity, Video
-from kibaru.forms import Articleform, Videoform
+from kibaru.forms import Articleform, Videoform, UserChangeForm, UserCreationForm
+
+from django.contrib import admin
+from django.contrib.auth.models import Group
+from django.contrib.auth.admin import UserAdmin
+
+# unregister and register again
+# admin.site.unregister(Group)
+
+
+@admin.register(Member)
+class MemberAdmin(UserAdmin):
+    form = UserChangeForm
+    add_form = UserCreationForm
+
+    list_display = ('username', 'email', 'date_of_birth', 'is_admin')
+    list_filter = ('is_admin',)
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        ('Personal info', {'fields': ('first_name', 'last_name','date_of_birth', 'email',)}),
+        ('Permissions', {'fields': ('is_admin',)}),
+    )
+    add_fieldsets = (
+        (None, {'classes': ('wide', 'extrapretty'),
+                 'fields': ('username', 'password1', 'password2', )}),
+        ('Personal info', {'fields': ('first_name', 'last_name','date_of_birth', 'email',)}),
+        ('Permissions', {'fields': ('is_admin',)}),
+    )
+    search_fields = ('email',)
+    ordering = ('email',)
+    filter_horizontal = ()
+
+admin.site.unregister(Group)
+
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Member)
-class MemberAdmin(admin.ModelAdmin):
     pass
 
 
@@ -39,6 +67,14 @@ class PublicityAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'date_created', 'date_modified', 'status',
+        'category', 'count_view', 'image')
+    list_filter = ('date_created', 'status', 'author', 'category')
+    fieldsets = (
+        ('Article', {'fields': ('image', 'title', 'text', 'date_created', 'category')}),
+        ('Auteur', {'fields': ('author',)}),
+        (None, {'fields': ('start', 'status')}),
+    )
     exclude = ('slug',)
     form = Articleform
 

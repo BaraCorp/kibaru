@@ -14,7 +14,10 @@ import short_url
 
 from django.core import validators
 from django.db import models
-from django.contrib.auth.models import (AbstractBaseUser, UserManager)
+
+from django.contrib.auth.models import (
+    BaseUserManager, AbstractBaseUser
+)
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from tinymce import models as tinymce_models
@@ -35,11 +38,45 @@ class Category(models.Model):
         return "{name}/{slug}".format(name=self.name, slug=self.slug)
 
 
+class MemberManager(BaseUserManager):
+
+    def create_user(self, email, date_of_birth, password=None):
+        """
+        Creates and saves a User with the given email, date of
+        birth and password.
+        """
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        user = self.model(
+            email=MemberManager.normalize_email(email),
+            date_of_birth=date_of_birth,
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, date_of_birth, password):
+        """
+        Creates and saves a superuser with the given email, date of
+        birth and password.
+        """
+        u = self.create_user(username,
+                        password=password,
+                        date_of_birth=date_of_birth
+                    )
+        u.is_admin = True
+        u.save(using=self._db)
+        return u
+
+
 @implements_to_string
 class Member(AbstractBaseUser):
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    class Meta:
+        verbose_name = 'Utilisateur'
+        verbose_name_plural = 'Utilisateurs'
 
     username = models.CharField(
         _("username"), max_length=50, primary_key=True,
@@ -66,8 +103,12 @@ class Member(AbstractBaseUser):
         help_text=_("Designates whether this user should be treated as "
                     "active. Unselect this instead of deleting accounts."))
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
+    date_of_birth = models.DateField(blank=True, null=True)
+    is_admin = models.BooleanField(default=False)
+    objects = MemberManager()
 
-    objects = UserManager()
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
         return self.name()
@@ -82,6 +123,22 @@ class Member(AbstractBaseUser):
             return self.last_name
         else:
             return self.first_name
+
+    def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        "Does the user have permissions to view the app `app_label`?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    @property
+    def is_staff(self):
+        "Is the user a member of staff?"
+        # Simplest possible answer: All admins are staff
+        return self.is_admin
 
 
 @implements_to_string
