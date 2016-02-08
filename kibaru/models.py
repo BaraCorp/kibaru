@@ -16,7 +16,7 @@ from django.core import validators
 from django.db import models
 
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
+    BaseUserManager, AbstractBaseUser, PermissionsMixin
 )
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
@@ -72,7 +72,7 @@ class MemberManager(BaseUserManager):
 
 
 @implements_to_string
-class Member(AbstractBaseUser):
+class Member(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name = 'Utilisateur'

@@ -29,20 +29,17 @@ class MemberAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         ('Personal info', {'fields': ('first_name', 'last_name','date_of_birth', 'email',)}),
-        ('Permissions', {'fields': ('is_admin',)}),
+        ('Permissions', {'fields': ('groups','is_admin')}),
     )
     add_fieldsets = (
         (None, {'classes': ('wide', 'extrapretty'),
                  'fields': ('username', 'password1', 'password2', )}),
-        ('Personal info', {'fields': ('first_name', 'last_name','date_of_birth', 'email',)}),
-        ('Permissions', {'fields': ('is_admin',)}),
+        ('Personal info', {'fields': ('first_name', 'last_name','date_of_birth', 'email')}),
+        ('Permissions', {'fields': ('groups','is_admin')}),
     )
     search_fields = ('email',)
     ordering = ('email',)
     filter_horizontal = ()
-
-admin.site.unregister(Group)
-
 
 
 @admin.register(Category)

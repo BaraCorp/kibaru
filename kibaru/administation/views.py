@@ -93,7 +93,7 @@ def add_article(request):
 def add_new(request):
     c = {'settings': settings, 'page_title': "Ajout de nouvelle"}
     if request.method == 'POST':
-        form = Newform(request.POST, request.FILES)
+        form = Newform(request.POST, request.FILES, user=request.user)
         if form.is_valid():
             request.date = datetime(form.cleaned_data.get('date').year,
                                     form.cleaned_data.get('date').month,
