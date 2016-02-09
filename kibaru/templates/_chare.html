@@ -1,6 +1,4 @@
 
-{% load i18n staticfiles disqus_tags%}
-
 {% block head_ %}
     <meta property="og:type" content="article"/>
     <meta property="og:description" content="{{ object.title }}" />
@@ -27,6 +25,7 @@
         <g:plus action="share"></g:plus>
         <span class="fb-like" data-href="{{ object.url_display }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span>
     </div>
+    {% load i18n staticfiles disqus_tags%}
     {% disqus_show_comments %}
 </div>
 

@@ -1,22 +1,22 @@
 
 {% load staticfiles %}
 <!-- Navigation -->
-    <ul class="nav navbar-nav">
-        <li {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'admin_home' %}">Administration</a></li>
-        <li class="dropdown"><a href="{% url 'admin_home' %}" class="dropdown-toggle" data-toggle="dropdown"><em><i class="fa fa-plus fa-fw"></i></em> <b class="caret"></b></a>
+<ul class="nav navbar-nav">
+    <li {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'admin_home' %}">Administration</a></li>
+    <li class="dropdown"><a href="{% url 'admin_home' %}" class="dropdown-toggle" data-toggle="dropdown"><em><i class="fa fa-plus fa-fw"></i></em> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'add_article' %}"><i class="fa ">Nouvel Article</i></a></li>
+            <li><a href="{% url 'add_new' %}"><i class="fa " >Nouvel News</i></a></li>
+            <li><a href="{% url 'add_video' %}"><i class="fa ">Nouvel Video</i></a></li>
+        </ul>
+    </li>
+</ul>
+<div class="pull-right">
+    <ul class="nav pull-right">
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <i class="fa fa-user fa-fw"></i><em>{{ user }}</em> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="{% url 'add_article' %}"><i class="fa ">Nouvel Article</i></a></li>
-                <li><a href="{% url 'add_new' %}"><i class="fa ">Nouvel News</i></a></li>
-                <li><a href="{% url 'add_video' %}"><i class="fa ">Nouvel Video</i></a></li>
+                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Déconnection</a></li>
             </ul>
         </li>
     </ul>
-      <div class="pull-right">
-        <ul class="nav pull-right">
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <i class="fa fa-user fa-fw"></i><em>{{ user }}</em> <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Déconnection</a></li>
-                </ul>
-            </li>
-        </ul>
-      </div>
+</div>
