@@ -270,6 +270,8 @@ def display_new(request, *args, **kwargs):
     posts, context = init()
     new_id = kwargs["id"]
     new = New.objects.get(id=new_id)
+    new.count_view += 1
+    new.save()
     context.update({'new': new})
     return render(request, 'site/new_detail.html', context)
 

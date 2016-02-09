@@ -93,12 +93,14 @@ def add_article(request):
 def add_new(request):
     c = {'settings': settings, 'page_title': "Ajout de nouvelle"}
     if request.method == 'POST':
-        form = Newform(request.POST, request.FILES, user=request.user)
+        form = Newform(request.POST, request.FILES)
         if form.is_valid():
             request.date = datetime(form.cleaned_data.get('date').year,
                                     form.cleaned_data.get('date').month,
                                     form.cleaned_data.get('date').day)
-            form.save()
+            new = form.save(commit=False)
+            new.author = request.user
+            new.save()
             messages.success(request, u"la nouvelle a ete ajouter")
             return HttpResponseRedirect('/admin/')
     else:
@@ -146,7 +148,6 @@ def edit_article(request, *args, **kwargs):
             form.save()
             messages.success(request, u"L'article a ete mise a jour")
             return HttpResponseRedirect('/admin/')
-
     else:
         form = Articleform(instance=selected_article)
     return render(request, 'administration/add_article.html',

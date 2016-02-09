@@ -190,7 +190,7 @@ BP = ""
 
 IMAGEFIT_PRESETS = {
     'img_start': {'width': 600, 'height': 200, 'crop': True},
-    'img_artd': {'width': 1024, 'height': 350, 'crop': True},
+    'img_artd': {'width': 760, 'height': 350, 'crop': True},
     'img_art': {'width': 265, 'height': 125, 'crop': True},
 }
 

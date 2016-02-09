@@ -9,20 +9,19 @@ from django import forms
 from kibaru.models import Article, Member, New, Newsletter, Video
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-
 class Articleform(forms.ModelForm):
 
     class Meta:
         model = Article
         exclude = ['slug', 'date_created', 'date_modified', 'thumbnail',
-                   'count_like', 'count_view']
+                   'count_like', 'count_view', 'author']
 
 
 class Newform(forms.ModelForm):
 
     class Meta:
         model = New
-        exclude = []
+        exclude = ['count_like', 'count_view', 'author']
 
 
 class Newsletterform(forms.ModelForm):

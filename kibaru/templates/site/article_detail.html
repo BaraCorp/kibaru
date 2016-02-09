@@ -11,13 +11,13 @@
 {% block sticky %}
     <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
 {% endblock %}
-{% block content %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+{% block content %}
     <div class="post hentry">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+       <!--  <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" > -->
                 <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
                 <div class="post-header">
                     <span class="article_timestamp badge badge-success"style="clear: both; float: right;">
@@ -35,9 +35,9 @@
                         <div class= "art-d" dir="ltr" trbidi="on"> <html>{{article.text|safe}}</html></div>
                     </div>
                 </article>
-            </div>
-                {% include "_chare.html" with object=article %}
-         </div>
+            <!-- </div> -->
+            {% include "_chare.html" with object=article %}
+         <!-- </div> -->
     </div>
 {% endblock %}
 
