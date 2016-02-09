@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+{% block content_larg %}
+<script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js"%}"></script>
+<div class="row">
+    <legend class="text-center">{{ page_title }}</legend>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <form class="form-horizontal" action="" method="post">{% csrf_token %}
+            <!-- Name input-->
+            {% block form %}
+
+            {% endblock %}
+            <!-- Form actions -->
+            <div class="form-group">
+              <div class="col-md-12 text-right">
+                    <a class="btn btn-default" href="{% url 'admin_home' %}" role="button">Annuler</a>
+                    <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
+              </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> </div>
+</div>
+{% endblock %}
+
+{% block pub %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+{% block sidebar1 %}
+{% endblock %}
+
+{% block onJQready %}
+    $( "#id_date" ).datepicker({altField: "#datepicker",
+    closeText: 'Fermer',
+    prevText: 'Précédent',
+    nextText: 'Suivant',
+    currentText: 'Aujourd\'hui',
+    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+    dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+    dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+    dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    weekHeader: 'Sem.',
+    dateFormat: 'yy-mm-dd'
+                });
+{% endblock %}

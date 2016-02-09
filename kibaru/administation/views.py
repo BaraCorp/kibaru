@@ -92,41 +92,6 @@ def add_article(request):
 
 
 @login_required
-def add_new(request):
-    c = {'settings': settings, 'page_title': "Ajout de nouvelle"}
-    if request.method == 'POST':
-        form = Newform(request.POST, request.FILES)
-        if form.is_valid():
-            request.date = datetime(form.cleaned_data.get('date').year,
-                                    form.cleaned_data.get('date').month,
-                                    form.cleaned_data.get('date').day)
-            new = form.save(commit=False)
-            new.author = request.user
-            new.save()
-            messages.success(request, u"la nouvelle a ete ajouter")
-            return HttpResponseRedirect('/admin/')
-    else:
-        form = Newform()
-    c.update({'form': form})
-    return render(request, 'administration/add_new.html', c)
-
-
-@login_required
-def add_video(request):
-    c = {'settings': settings, 'page_title': "Ajout de lien d'une video Youtube"}
-    if request.method == 'POST':
-        form = Videoform(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, u"le lien de la video a ete ajouter")
-            return HttpResponseRedirect('/admin/')
-    else:
-        form = Videoform()
-    c.update({'form': form})
-    return render(request, 'administration/add_video.html', c)
-
-
-@login_required
 def edit_article(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected_article = Article.objects.get(id=id_url)
@@ -141,8 +106,7 @@ def edit_article(request, *args, **kwargs):
             selected_article.text = request.POST.get('text')
             if request.FILES.get('image'):
                 selected_article.image = request.FILES.get('image')
-            selected_article.author = Member.objects.get(
-                username=request.POST.get('author'))
+            # selected_article.author = request.user
             selected_article.category = Category.objects.get(
                 slug=request.POST.get('category'))
             selected_article.status = request.POST.get('status')
@@ -166,12 +130,23 @@ def del_article(request, *args, **kwargs):
 
 
 @login_required
-def del_video(request, *args, **kwargs):
-    id_url = kwargs["id"]
-    selected = Video.objects.get(id=id_url)
-    selected.delete()
-    messages.success(request, u"Le lien de la video a ete supprime")
-    return redirect('/admin/')
+def add_new(request):
+    c = {'settings': settings, 'page_title': "Ajout de nouvelle"}
+    if request.method == 'POST':
+        form = Newform(request.POST, request.FILES)
+        if form.is_valid():
+            request.date = datetime(form.cleaned_data.get('date').year,
+                                    form.cleaned_data.get('date').month,
+                                    form.cleaned_data.get('date').day)
+            new = form.save(commit=False)
+            new.author = request.user
+            new.save()
+            messages.success(request, u"la nouvelle a ete ajouter")
+            return HttpResponseRedirect('/admin/')
+    else:
+        form = Newform()
+    c.update({'form': form})
+    return render(request, 'administration/add_new.html', c)
 
 
 @login_required
@@ -183,19 +158,15 @@ def edit_new(request, *args, **kwargs):
         if form.is_valid():
             selected_new.title = request.POST.get('title')
             selected_new.comment = request.POST.get('comment')
-            selected_new.author = Member.objects.get(
-                username=request.POST.get('author'))
             selected_new.date = datetime(form.cleaned_data.get('date').year,
                                          form.cleaned_data.get('date').month,
                                          form.cleaned_data.get('date').day,
                                          datetime.now().hour,
                                          datetime.now().minute,
                                          datetime.now().second)
-
             form.save()
             messages.success(request, u"La nouvelle a ete mise a jour")
             return HttpResponseRedirect('/admin/')
-
     else:
         form = Newform(instance=selected_new)
     return render(request, 'administration/add_new.html',
@@ -208,4 +179,28 @@ def del_new(request, *args, **kwargs):
     selected = New.objects.get(id=id_url)
     selected.delete()
     messages.success(request, u"La nouvelle a ete supprime")
+    return redirect('/admin/')
+
+
+@login_required
+def add_video(request):
+    c = {'settings': settings, 'page_title': "Ajout de lien d'une video Youtube"}
+    if request.method == 'POST':
+        form = Videoform(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, u"le lien de la video a ete ajouter")
+            return HttpResponseRedirect('/admin/')
+    else:
+        form = Videoform()
+    c.update({'form': form})
+    return render(request, 'administration/add_video.html', c)
+
+
+@login_required
+def del_video(request, *args, **kwargs):
+    id_url = kwargs["id"]
+    selected = Video.objects.get(id=id_url)
+    selected.delete()
+    messages.success(request, u"Le lien de la video a ete supprime")
     return redirect('/admin/')
