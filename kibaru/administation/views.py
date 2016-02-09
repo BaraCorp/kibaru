@@ -80,7 +80,9 @@ def add_article(request):
     if request.method == 'POST':
         form = Articleform(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            article = form.save(commit=False)
+            article.author = request.user
+            article.save()
             messages.success(request, u"l'article a ete ajouter")
             return HttpResponseRedirect('/admin/')
     else:
