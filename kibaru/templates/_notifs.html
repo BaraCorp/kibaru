@@ -1,0 +1,19 @@
+{% load staticfiles %}
+{% if messages %}
+    <div class="container">
+        <div class="row">
+            <div class="alert-group">
+                {% for message in messages %}
+                    <div class="alert {% ifequal message.tags 'success' %} alert-success  {% endifequal %}
+                                {% ifequal message.tags 'info' %} alert-info {% endifequal %}
+                                {% ifequal message.tags 'warning' %} alert-warning {% endifequal %}
+                                {% ifequal message.tags 'error' %} alert-danger {% endifequal %}
+                                alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>{{ message.tags }}!</strong>{{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}
