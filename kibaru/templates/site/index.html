@@ -14,7 +14,9 @@
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         {% for star in starts %}
-                            <li data-slide-to="{{star.id}}" data-target="#carousel-caption" class="{% if forloop.first %} active{% endif %}"></li>
+                            <li data-slide-to="{{star.id}}" data-target="#carousel-caption" class="{% if forloop.first %} active{% endif %}">
+                                <!-- <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">ee</a> -->
+                            </li>
                         {% endfor %}
                     </ol>
                     <!-- Wrapper for slides -->

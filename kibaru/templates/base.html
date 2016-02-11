@@ -26,8 +26,6 @@
           <!-- Page Content -->
             {% include "_menu.html" %}
         <div class="container page">
-
-
             {% block banner %}
             {% endblock %}
             {% block sticky %}
@@ -85,13 +83,26 @@
                 $(function() {
                     $(window).scroll(sticky_relocate); // sticky_relocate();
                 });
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-              ga('create', 'UA-69139072-1', 'auto');
-              ga('send', 'pageview');
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-69139072-1', 'auto');
+                ga('send', 'pageview');
                 {% block onJQready %}{% endblock %}
+
+                $(function() {
+                    $('a[data-confirm]').click(function(ev) {
+                        var href = $(this).attr('href');
+                        if (!$('#dataConfirmModal').length) {
+                            $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Merci de confirmer</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Non</button><a class="btn btn-danger" id="dataConfirmOK">Oui</a></div></div></div></div>');
+                        }
+                        $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+                        $('#dataConfirmOK').attr('href', href);
+                        $('#dataConfirmModal').modal({show:true});
+                        return false;
+                    });
+                });
             });
        </script>
        </div>

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block title %} Administration index {% endblock %}
 {% block page-id %}admin-index{% endblock %}
+
+{% load staticfiles %}
 {% block content_larg %}
 
     <div class="row">
@@ -49,7 +51,7 @@
             <td>{{ article.category.name }}</td>
             <td>{{ article.title_status }}</td>
             <td><a href="{{ article.url_edit}}" class="btn btn-primary" >Modifier</a></td>
-            <td><a href="{{ article.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer l'article ?">Supprimer</a></td>
+            <td><a href="{{ article.url_del}}" class="btn btn-danger" data-confirm="Êtes vous sûr de vouloir supprimer cet article ?">Supprimer</a></td>
         </tr>
         {% endfor %}
         {% else %}
@@ -103,7 +105,7 @@
             <td>{{ new.date }}</td>
             <td>{{ new.count_view }}</td>
             <td><a href="{{ new.url_edit}}" class="btn btn-primary" >Modifier</a></td>
-            <td><a href="{{ new.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer l'new ?">Supprimer</a></td>
+            <td><a href="{{ new.url_del}}" class="btn btn-danger" data-confirm="Êtes vous sûr de vouloir supprimer cette nouvelle ?">Supprimer</a></td>
         </tr>
         {% endfor %}
         {% else %}
@@ -148,7 +150,7 @@
         <tr>
             <td>{{ video.slug }}</td>
             <td>{{ video.title }}</td>
-            <td><a href="{{ video.url_del}}" class="btn btn-danger" data-must-confirm="true" data-confirm-text="Êtes vous sûr de vouloir supprimer le lien de la video ?">Supprimer</a></td>
+            <td><a href="{{ video.url_del}}" class="btn btn-danger" data-confirm="Êtes vous sûr de vouloir supprimer le lien de la video ?">Supprimer</a></td>
         </tr>
         {% endfor %}
         {% else %}
