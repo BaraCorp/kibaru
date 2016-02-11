@@ -2,15 +2,24 @@
 {% if messages %}
     <div class="container">
         <div class="row">
-            <div class="alert-group">
+            <div class="col-lg-10 col-md-10 col-sm-10"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
                 {% for message in messages %}
-                    <div class="alert {% ifequal message.tags 'success' %} alert-success  {% endifequal %}
-                                {% ifequal message.tags 'info' %} alert-info {% endifequal %}
-                                {% ifequal message.tags 'warning' %} alert-warning {% endifequal %}
-                                {% ifequal message.tags 'error' %} alert-danger {% endifequal %}
-                                alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <strong>{{ message.tags }}!</strong>{{ message }}
+                    <div class="alert-labeled-row">
+                        <div class="alert {% ifequal message.tags 'success' %} alert-success  {% endifequal %}
+                                        {% ifequal message.tags 'info' %} alert-info {% endifequal %}
+                                        {% ifequal message.tags 'warning' %} alert-warning {% endifequal %}
+                                        {% ifequal message.tags 'error' %} alert-danger {% endifequal %}
+                                        alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <div>
+                                <p class="header">
+                                    <span class="glyphicon glyphicon-hand-right" style="margin-right: 6px;font-weight: bold;"></span><strong>{{ message.tags }}</strong>
+                                </p>
+                                <hr class="message-inner-separator">
+                                <p class="alert-body alert-body-right alert-labelled-cell">{{ message }}</p>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
