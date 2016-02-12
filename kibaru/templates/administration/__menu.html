@@ -5,9 +5,9 @@
     <li {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'admin_home' %}">Administration</a></li>
     <li class="dropdown"><a href="{% url 'admin_home' %}" class="dropdown-toggle" data-toggle="dropdown"><em><i class="fa fa-plus fa-fw"></i></em> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li><a href="{% url 'add_article' %}"><i class="fa ">Ajouter un Article</i></a></li>
-            <li><a href="{% url 'add_new' %}"><i class="fa " >Ajouter un News</i></a></li>
-            <li><a href="{% url 'add_video' %}"><i class="fa ">Ajouter un Video</i></a></li>
+            <li><a href="{% url 'add_article' %}"><i class="fa ">Ajouter un article</i></a></li>
+            <li><a href="{% url 'add_new' %}"><i class="fa " >Ajouter une nouvelle</i></a></li>
+            <li><a href="{% url 'add_video' %}"><i class="fa ">Ajouter un lien video</i></a></li>
         </ul>
     </li>
 </ul>

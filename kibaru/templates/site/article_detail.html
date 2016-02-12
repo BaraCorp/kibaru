@@ -15,30 +15,25 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content %}
-    <div class="post hentry">
-       <!--  <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" > -->
-                <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
-                <div class="post-header">
-                    <span class="article_timestamp badge badge-success"style="clear: both; float: right;">
-                      Publié le {{ article.date_created|date:"l d F Y" }} </span>
-                    <span class="article_author vcard"> <abbr class="fn">Par <u><a href="#">kibaruu</a></u></abbr></span>
-                </div>
-                {% if article.image %}
-                    <div class="img-d">
-                        <a href="{{ article.image.url }}">
-                        <img src= {% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} border="1"></a>
-                    </div>
-                {% endif %}
-                <article>
-                    <div class="post-body entry-content">
-                        <div class= "art-d" dir="ltr" trbidi="on"> <html>{{article.text|safe}}</html></div>
-                    </div>
-                </article>
-            <!-- </div> -->
-            {% include "_chare.html" with object=article %}
-         <!-- </div> -->
-    </div>
+    <article>
+        <header>
+            <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
+        </header>
+        {% if article.image %}
+            <div class="img-d thumbnail">
+                <a href="{{ article.image.url }}">
+                <img src= {% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} border="1"></a>
+            </div>
+        {% endif %}
+        <span class="meta">
+            <time style="float: right;"> Publié {{ article.date_created|date:"l d F Y" }} </time>
+            <abbr>Par <u><a href="#">kibaruu</a></u></abbr>
+        </span>
+        <div class="post-body">
+            <p><html>{{article.text|safe}}</html></p>
+        </div>
+    </article>
+    {% include "_chare.html" with object=article %}
 {% endblock %}
 
 {% block footer %}

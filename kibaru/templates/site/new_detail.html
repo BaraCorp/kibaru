@@ -9,27 +9,22 @@
 {% block sticky %}
     <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
 {% endblock %}
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 {% block content %}
-    <div class="post hentry">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                <h3 class="new_post_title entry-title"> {{ new.title }} </h3>
-                <div class="post-header">
-                    <span class="new_timestamp badge badge-success"style="clear: both; float: right;">
-                     Publié le {{ new.date|date:"l d F Y" }} </span>
-                    <span class="new_author vcard"> <abbr class="fn">Par <u><a href="#">kibaruu</a></u></abbr></span>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                <article>
-                    <div class="post-body entry-content">
-                        <div class= "art-d" dir="ltr" style="text-align: left;" trbidi="on"> <html>{{new.comment}}</html></div>
-                    </div>
-                </article>
-            </div>
-                {% include "_chare.html" with object=new %}
-         </div>
-    </div>
+    <article>
+        <header>
+            <h2 class="new_post_title entry-title"> {{ new.title }} </h2>
+        </header>
+        <span class="meta">
+            <time style="clear: both; float: right;">
+             Publié {{ new.date|date:"l d F Y" }} </time>
+            <abbr>Par <u><a href="#">kibaruu</a></u></abbr>
+        </span>
+        <p class="post-body" dir="ltr" trbidi="on"> <html>{{new.comment}}</html></p>
+    </article>
+    {% include "_chare.html" with object=new %}
 {% endblock %}
 
 {% block footer %}
