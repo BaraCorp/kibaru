@@ -8,12 +8,11 @@ from __future__ import (unicode_literals, absolute_import,
 from django.contrib import admin
 from django.db import models
 
-from kibaru.models import Category, Member, New, Article, Newsletter, Publicity, Video
-from kibaru.forms import Articleform, Videoform, UserChangeForm, UserCreationForm
-
-from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
+
+from kibaru.models import Category, Member, New, Article, Newsletter, Publicity, Video
+from kibaru.forms import Articleform, Videoform, UserChangeForm, UserCreationForm
 
 # unregister and register again
 # admin.site.unregister(Group)
