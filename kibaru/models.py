@@ -264,7 +264,7 @@ class Article(models.Model):
         return self.slug
 
     def get_twitter_message(self):
-        return u"kibaruu - {}".format(self.title)
+        return u"kibaru - {}".format(self.title)
 
 models.signals.post_save.connect(post_to_twitter, sender=Article)
 
