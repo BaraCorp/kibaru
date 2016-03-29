@@ -14,6 +14,13 @@
     margin-left: 6em;
     margin-right: 6em;
 }
+.logo {
+    width: 100%;
+    left: auto;
+    right: auto;
+    padding-top: 4em;
+    display:inline-block;
+}
 /* index site */
 .art-vt .thumbnail{
     border:none;

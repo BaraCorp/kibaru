@@ -70,7 +70,7 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 $("ul#ticker01").liScroll({travelocity: 0.04});
-                $("#sticky").removeClass('"new-O-size"')
+                $("#sticky").removeClass('new-O-size')
                 function sticky_relocate() {
                     var window_top = $(window).scrollTop();
                     var div_top = $('#sticky-anchor').offset().top;
@@ -90,7 +90,6 @@
                 ga('create', 'UA-69139072-1', 'auto');
                 ga('send', 'pageview');
                 {% block onJQready %}{% endblock %}
-
                 $(function() {
                     $('a[data-confirm]').click(function(ev) {
                         var href = $(this).attr('href');

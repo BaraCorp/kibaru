@@ -4,7 +4,7 @@
 
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
-
+import os
 import oauth2
 import twitter
 import urllib
@@ -56,12 +56,20 @@ def post_to_twitter(sender, instance, *args, **kwargs):
         consumer = oauth2.Consumer(key=consumer_key, secret=consumer_secret)
         token = oauth2.Token(key=access_token_key, secret=access_token_secret)
         client = oauth2.Client(consumer, token)
+        # file = open(instance.image, 'rb')
 
-        url_twitter = "https://api.twitter.com/1.1/statuses/update.json?",
-        body = urllib.urlencode({"status": str(mesg), "wrap_links": True})
-        if not settings.DEBUG:
-            resp, content = client.request(
-                "https://api.twitter.com/1.1/statuses/update.json?", method="POST", body=body, headers=http_headers)
+        print ('{}/{}'.format(domain, instance.image))
+        # data = file.read()
+
+        # url_twitter = 'https://api.twitter.com/1.1/statuses/update_with_media.json?'
+
+        url_twitter = 'https://api.twitter.com/1.1/statuses/update.json?'
+        body = urllib.urlencode({"status": str(mesg),
+                                 "wrap_links": True,
+                                 'media': ["https://kibaru.ml/media/images_article/000_Par8338706_0.jpg"]})
+        # if not settings.DEBUG:
+        if settings.DEBUG:
+            resp, content = client.request(url_twitter, method="POST", body=body, headers=http_headers)
             print("{} Send twitter".format(resp))
         else:
             print("Not POST on Twitter")
