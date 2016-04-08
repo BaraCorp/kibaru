@@ -6,6 +6,7 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
 import os
+import sys
 
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(abs_path)
@@ -126,6 +127,10 @@ TEMPLATES = [
         },
     },
 ]
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_SENDER = 'root@localhost'
 
 AUTH_USER_MODEL = 'kibaru.Member'
 

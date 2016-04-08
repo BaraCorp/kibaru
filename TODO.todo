@@ -1,0 +1,40 @@
+
+Fonctionalités:
+--------------
+ ✔ 2. Publication des articles (Photo et description) @done (16-04-07 11:43)
+ ☐ 3. Faire de la publicité ;
+ ✔ 4. Consultation des articles par catégorie ; @done (16-04-07 11:43)
+ ✔ 5. Visualisation de vidéo ; @done (16-04-07 11:43)
+ ☐ 6. Téléchargement des articles ;
+ ☐ 7. Consultation des annonces ;
+ ✔ 8. Modification de l’article ; @done (16-04-07 11:43)
+ ✔ 9. Recherche d’un article selon ses méta-données (date, etc.) @done (16-04-07 11:43)
+
+Tâches
+-----
+### Design
+  ☐ choix du template
+  ☐ choix des couleurs
+
+### Developpement:
+  ✔ Specification des fonctionnalités ou definition des tâches @done (16-04-07 11:26)
+  ✔ Attribution des tâches @done (16-04-07 11:26)
+  ✔ Preparation de l'evenvironnement (Création du requirement) @done (16-04-07 11:26)
+  ✔ Creation du projet et config du settings @done (16-04-07 11:26)
+  ✔ Modele @done (16-04-07 11:26)
+  ✔ Préparation des fixtures @done (16-04-07 11:26)
+  ✔ Templates statics @done (16-04-07 11:26)
+    ☐ * Bannier
+    ☐ Menus et sous menus
+    ☐ * Details article
+    ☐ * Accueil
+    ☐ * A propos
+  ☐ Forms
+    Article
+    Apropos
+    Pub @due( )
+  ✔ Integration des réseaux sociaux @done (16-04-07 11:25)
+  ✔ Generation des archives @done (16-04-07 11:25)
+
+Bug
+  ☐ post auto de twitter @critical

@@ -6,9 +6,10 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 import os
 import oauth2
-import twitter
+# import twitter
 import urllib
 import urllib2
+
 from django.conf import settings
 
 
@@ -47,7 +48,7 @@ def post_to_twitter(sender, instance, *args, **kwargs):
         text = unicode(instance)
     # instance.delete()
 
-    mesg = join_(text, link)
+    mesg =  join_(text, link)
     if len(mesg) > TWITTER_MAXLENGTH:
         size = len(mesg + '...') - TWITTER_MAXLENGTH
         mesg = join_(text[:-size], link)
@@ -57,19 +58,26 @@ def post_to_twitter(sender, instance, *args, **kwargs):
         token = oauth2.Token(key=access_token_key, secret=access_token_secret)
         client = oauth2.Client(consumer, token)
         # file = open(instance.image, 'rb')
-
-        print ('{}/{}'.format(domain, instance.image))
+        try:
+            image = instance.image
+        except Exception as e:
+            print (e)
+            image = "logo.png"
+        # print(settings.MEDIA_ROOT, image)
+        url_img = "{}/{}".format(settings.MEDIA_ROOT, image)
+        # print("url_img: ", url_img)
         # data = file.read()
-
         # url_twitter = 'https://api.twitter.com/1.1/statuses/update_with_media.json?'
-
         url_twitter = 'https://api.twitter.com/1.1/statuses/update.json?'
         body = urllib.urlencode({"status": str(mesg),
                                  "wrap_links": True,
-                                 'media': ["https://kibaru.ml/media/images_article/000_Par8338706_0.jpg"]})
+                                 'media': ["{img}".format(img=url_img)],})
+
+        print(body)
         # if not settings.DEBUG:
         if settings.DEBUG:
-            resp, content = client.request(url_twitter, method="POST", body=body, headers=http_headers)
+            resp, content = client.request(
+                url_twitter, method="POST", body=body, headers=http_headers)
             print("{} Send twitter".format(resp))
         else:
             print("Not POST on Twitter")
