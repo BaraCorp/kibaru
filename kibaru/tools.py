@@ -75,7 +75,7 @@ def post_to_twitter(sender, instance, *args, **kwargs):
 
         print(body)
         # if not settings.DEBUG:
-        if settings.DEBUG:
+        if not settings.DEBUG:
             resp, content = client.request(
                 url_twitter, method="POST", body=body, headers=http_headers)
             print("{} Send twitter".format(resp))
