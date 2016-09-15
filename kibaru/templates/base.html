@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     {% load staticfiles %}
+    {% load i18n %}
     <head>
     <!--<meta name="verify-v1" content="" />-->
         <meta name="google-site-verification" content="fgLu7IUn1vn7oMl1puvAsjqfA3OZpsfy9_Zf5QG07p8" />
@@ -69,7 +70,6 @@
         {% include "_js_tags.html" %}
         <script type="text/javascript">
             $(document).ready(function(){
-                $("ul#ticker01").liScroll({travelocity: 0.04});
                 $("#sticky").removeClass('new-O-size')
                 function sticky_relocate() {
                     var window_top = $(window).scrollTop();
@@ -80,9 +80,7 @@
                         $('#sticky').removeClass('container stick');
                     }
                 }
-                $(function() {
-                    $(window).scroll(sticky_relocate); // sticky_relocate();
-                });
+                $(window).scroll(sticky_relocate);
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
