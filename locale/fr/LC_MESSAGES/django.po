@@ -1,0 +1,339 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-20 18:14+0000\n"
+"PO-Revision-Date: 2016-09-14 17:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.3\n"
+
+#: kibaru/models.py:34 kibaru/models.py:220 kibaru/models.py:285
+msgid "Slug"
+msgstr ""
+
+#: kibaru/models.py:35
+msgid "Name"
+msgstr "Nom"
+
+#: kibaru/models.py:49
+msgid "Users must have an email address"
+msgstr "Les utilisateurs doivent disposer d’une adresse e-mail"
+
+#: kibaru/models.py:82
+msgid "username"
+msgstr "Nom d'utilisateur"
+
+#: kibaru/models.py:83
+msgid ""
+"Required. 50 characters or fewer. Letters, numbers and @/./+/-/_ characters"
+msgstr ""
+"Requis. 30 caractères ou moins. Lettres, chiffres et @/./+/-/_ caractère"
+
+#: kibaru/models.py:86
+msgid "Enter a valid username."
+msgstr "Entrez un identifiant valide."
+
+#: kibaru/models.py:89
+msgid "First Name"
+msgstr "Prénom"
+
+#: kibaru/models.py:91
+msgid "Last Name"
+msgstr "Nom"
+
+#: kibaru/models.py:93
+msgid "Photo"
+msgstr ""
+
+#: kibaru/models.py:95
+msgid "Job title"
+msgstr "Intitulé de l’emploi"
+
+#: kibaru/models.py:96
+msgid "email address"
+msgstr "adresse électronique"
+
+#: kibaru/models.py:98
+msgid "staff status"
+msgstr "statut du personnel"
+
+#: kibaru/models.py:99
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: kibaru/models.py:102
+msgid "active"
+msgstr "Actif"
+
+#: kibaru/models.py:103
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: kibaru/models.py:105
+msgid "date joined"
+msgstr "Date d’inscription"
+
+#: kibaru/models.py:155
+msgid "info"
+msgstr ""
+
+#: kibaru/models.py:156
+msgid "urgent"
+msgstr ""
+
+#: kibaru/models.py:157
+msgid "communiqué"
+msgstr ""
+
+#: kibaru/models.py:162 kibaru/models.py:221 kibaru/models.py:286
+msgid "Title"
+msgstr "Titre"
+
+#: kibaru/models.py:163
+msgid "Comment"
+msgstr "Réagir"
+
+#: kibaru/models.py:164 kibaru/models.py:226
+msgid "Author"
+msgstr "Auteur"
+
+#: kibaru/models.py:165 kibaru/models.py:227
+msgid "Dated the"
+msgstr "Daté du"
+
+#: kibaru/models.py:196
+msgid "Registration date"
+msgstr "Date d’enregistrement"
+
+#: kibaru/models.py:199
+msgid "E-mail"
+msgstr "Adresses e-mail"
+
+#: kibaru/models.py:222
+msgid "Text"
+msgstr "Texte"
+
+#: kibaru/models.py:224 kibaru/models.py:273
+msgid "Picture"
+msgstr "Image"
+
+#: kibaru/models.py:230
+msgid "Categorie"
+msgstr "Catégorie"
+
+#: kibaru/models.py:231
+msgid "Status"
+msgstr "Statuts"
+
+#: kibaru/models.py:233
+msgid "Start"
+msgstr "Commencer"
+
+#: kibaru/models.py:287
+msgid "Date created"
+msgstr "Date de Création"
+
+#: kibaru/settings.py:161
+msgid "Français"
+msgstr ""
+
+#: kibaru/settings.py:162
+msgid "Anglais"
+msgstr ""
+
+#: kibaru/settings.py:163
+msgid "Arabic"
+msgstr "Arabe"
+
+#: kibaru/templates/404.html:14
+msgid "Page not found"
+msgstr ""
+
+#: kibaru/templates/503.html:4
+msgid "Kibaruu | Site Maintenance"
+msgstr ""
+
+#: kibaru/templates/503.html:16
+msgid ""
+"Sorry for the inconvenience but we&rsquo;re performing some maintenance at "
+"the moment. If you need to you can always <a href="
+msgstr ""
+
+#: kibaru/templates/_chare.html:23
+#, fuzzy
+#| msgid "Tweets of"
+msgid "Tweet"
+msgstr "Tweets de"
+
+#: kibaru/templates/_menu.html:6
+msgid "Toggle navigation"
+msgstr ""
+
+#: kibaru/templates/_menu.html:19
+msgid "Economy"
+msgstr "Économies"
+
+#: kibaru/templates/_menu.html:21
+msgid "Nationale"
+msgstr "Nationale"
+
+#: kibaru/templates/_menu.html:22
+msgid "Regionale"
+msgstr "Regionale"
+
+#: kibaru/templates/_menu.html:23
+msgid "International"
+msgstr "Internationale"
+
+#: kibaru/templates/_menu.html:27
+msgid "Cooperation"
+msgstr ""
+
+#: kibaru/templates/_menu.html:29
+msgid "Actuality"
+msgstr "Actualité"
+
+#: kibaru/templates/_menu.html:30
+msgid "Bilateral"
+msgstr "Bilatéral"
+
+#: kibaru/templates/_menu.html:31
+msgid "Multilateral"
+msgstr "Multilatéral"
+
+#: kibaru/templates/_menu.html:35
+msgid "Society"
+msgstr "Société"
+
+#: kibaru/templates/_menu.html:37
+msgid "Peace process"
+msgstr "Processus de paix"
+
+#: kibaru/templates/_menu.html:38
+msgid "Portrait"
+msgstr "Portrait"
+
+#: kibaru/templates/_menu.html:39
+msgid "Education"
+msgstr "Éducation"
+
+#: kibaru/templates/_menu.html:40
+msgid "Health"
+msgstr "Santé"
+
+#: kibaru/templates/_menu.html:41
+msgid "Sports"
+msgstr "Sport"
+
+#: kibaru/templates/_menu.html:42
+msgid "Culture"
+msgstr "Culture"
+
+#: kibaru/templates/_menu.html:43
+msgid "NTIC"
+msgstr "NTIC"
+
+#: kibaru/templates/_menu.html:44
+msgid "Reportage"
+msgstr "Reportage"
+
+#: kibaru/templates/_menu.html:47
+msgid "Environment"
+msgstr "Environnement"
+
+#: kibaru/templates/_menu.html:48
+msgid "Libre Expression"
+msgstr "Libre Expression"
+
+#: kibaru/templates/_menu.html:50
+msgid "Archive"
+msgstr "Archives"
+
+#: kibaru/templates/_menu.html:70
+msgid "Close"
+msgstr "Fermer"
+
+#: kibaru/templates/_menu.html:75
+msgid "Search"
+msgstr "Recherche"
+
+#: kibaru/templates/administration/__menu.html:5
+msgid "Administration"
+msgstr "Administration"
+
+#: kibaru/templates/administration/__menu.html:8
+msgid "Add your article"
+msgstr "Ajouter votre article"
+
+#: kibaru/templates/administration/__menu.html:9
+msgid "Add new"
+msgstr ""
+
+#: kibaru/templates/administration/__menu.html:10
+msgid "Add video link"
+msgstr "Ajouter un lien vidéo"
+
+#: kibaru/templates/administration/__menu.html:16
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: kibaru/templates/administration/__menu.html:18
+msgid "disconnection"
+msgstr "déconnexion"
+
+#: kibaru/templates/site/_footer.html:8
+msgid "Contact Us"
+msgstr "Contacts"
+
+#: kibaru/templates/site/_footer.html:14
+msgid "Follow us"
+msgstr "Nous suivre"
+
+#: kibaru/templates/site/_footer.html:24
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: kibaru/templates/site/article_detail.html:30
+msgid "Publié"
+msgstr "Published"
+
+#: kibaru/templates/site/article_detail.html:31
+msgid "Par"
+msgstr "by"
+
+#: kibaru/templates/site/index.html:31
+msgid "After"
+msgstr ""
+
+#: kibaru/templates/site/index.html:76
+msgid "No article published."
+msgstr "Aucun article ne publié."
+
+#: kibaru/templates/site/index.html:87
+msgid "Publicity"
+msgstr "Publicité"
+
+#: kibaru/templates/site/index.html:110
+msgid "All videos"
+msgstr "Toutes les vidéos"
+
+#: kibaru/templates/site/index.html:122
+msgid "Tweets of"
+msgstr "Tweets de"
+
+#: kibaru/templates/site/list_page.html:25
+msgid "Date de publication"
+msgstr "Date d’inscription"
