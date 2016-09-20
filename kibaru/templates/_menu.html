@@ -1,11 +1,9 @@
-
-{% load staticfiles %}
+{% load staticfiles i18n %}
 <!-- Navigation -->
-
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">{% trans "Toggle navigation" %}</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -18,38 +16,38 @@
         <ul class="nav navbar-nav">
             <!-- <li {% ifequal cat_slug '' %} class="active" {% endifequal %}><a href="{% url 'home' '' %}">Accueil</a></li> -->
             <li {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %} class="dropdown">
-                <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Economie <span class="caret"></span></a>
+                <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Economy" %} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{% url 'home' 'econationale' %}">Nationale</a></li>
-                    <li><a href="{% url 'home' 'ecoregionale' %}">Régionale</a></li>
-                    <li><a href="{% url 'home' 'ecointernationale' %}">Internationale</a></li>
+                    <li><a href="{% url 'home' 'econationale' %}">{% trans "Nationale" %}</a></li>
+                    <li><a href="{% url 'home' 'ecoregionale' %}">{% trans "Regionale" %}</a></li>
+                    <li><a href="{% url 'home' 'ecointernationale' %}">{% trans "International" %}</a></li>
                 </ul>
             </li>
             <li {% if cat_slug == 'cooperationbila' or cat_slug == 'actualite' or cat_slug == 'cooperationmulti' %} class="active" {% endif %} class="dropdown">
-                <a href="{% url 'home' 'cooperation' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Coopération <span class="caret"></span></a>
+                <a href="{% url 'home' 'cooperation' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Cooperation" %} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{% url 'home' 'actualite' %}">Actualité</a></li>
-                    <li><a href="{% url 'home' 'cooperationbila' %}">Bilatérale</a></li>
-                    <li><a href="{% url 'home' 'cooperationmulti' %}">Multilatérale</a></li>
+                    <li><a href="{% url 'home' 'actualite' %}">{% trans "Actuality" %}</a></li>
+                    <li><a href="{% url 'home' 'cooperationbila' %}">{% trans "Bilateral" %}</a></li>
+                    <li><a href="{% url 'home' 'cooperationmulti' %}">{% trans "Multilateral" %}</a></li>
                 </ul>
             </li>
             <li {% if cat_slug == 'paix' or cat_slug == 'portrait' or cat_slug == 'education' %} cat_slug == 'sante' or cat_slug == 'sport' or cat_slug == 'culture' or cat_slug == 'ntic' or cat_slug == 'reportage' %} class="active" {% endif %} class="dropdown">
-                <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">Société <span class="caret"></span></a>
+                <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Society" %}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{% url 'home' 'paix' %}">Processus de paix</a></li>
-                    <li><a href="{% url 'home' 'portrait' %}">Portrait</a></li>
-                    <li><a href="{% url 'home' 'education' %}">Education</a></li>
-                    <li><a href="{% url 'home' 'sante' %}">Santé</a></li>
-                    <li><a href="{% url 'home' 'sport' %}">Sports</a></li>
-                    <li><a href="{% url 'home' 'culture' %}">Culture</a></li>
-                    <li><a href="{% url 'home' 'ntic' %}">NTIC</a></li>
-                    <li><a href="{% url 'home' 'reportage' %}">Reportage</a></li>
+                    <li><a href="{% url 'home' 'paix' %}">{% trans "Peace process" %}</a></li>
+                    <li><a href="{% url 'home' 'portrait' %}">{% trans "Portrait" %}</a></li>
+                    <li><a href="{% url 'home' 'education' %}">{% trans "Education" %}</a></li>
+                    <li><a href="{% url 'home' 'sante' %}">{% trans "Health" %}</a></li>
+                    <li><a href="{% url 'home' 'sport' %}">{% trans "Sports" %}</a></li>
+                    <li><a href="{% url 'home' 'culture' %}">{% trans "Culture" %}</a></li>
+                    <li><a href="{% url 'home' 'ntic' %}">{% trans "NTIC" %}</a></li>
+                    <li><a href="{% url 'home' 'reportage' %}">{% trans "Reportage" %}</a></li>
                 </ul>
             </li>
-            <li {% ifequal cat_slug 'environnement' %} class="active" {% endifequal %}><a href="{% url 'home' 'environnement' %}">Environnement</a></li>
-            <li {% ifequal cat_slug 'expression-libre' %} class="active" {% endifequal %}><a href="{% url 'home' 'expression-libre' %}">Expression Libre</a></li>
+            <li {% ifequal cat_slug 'environnement' %} class="active" {% endifequal %}><a href="{% url 'home' 'environnement' %}">{% trans "Environment" %}</a></li>
+            <li {% ifequal cat_slug 'expression-libre' %} class="active" {% endifequal %}><a href="{% url 'home' 'expression-libre' %}">{% trans "Libre Expression" %}</a></li>
             <li  {% if cat_slug == 'archive' %} class="active" {% endif %} class="dropdown">
-                <a href="{% url 'home' 'archive' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Archive<span class="caret"></span></a>
+                <a href="{% url 'home' 'archive' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Archive" %}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     {% for line in archive_counts %}
                         {% if line.isyear %}
@@ -69,12 +67,12 @@
                         <span class="input-group-btn">
                             <button type="reset" class="btn btn-default">
                                 <span class="glyphicon glyphicon-remove">
-                                    <span class="sr-only">Close</span>
+                                    <span class="sr-only">{% trans "Close" %}</span>
                                 </span>
                             </button>
                             <button type="submit" class="btn btn-default">
                                 <span class="glyphicon glyphicon-search">
-                                    <span class="sr-only">Search</span>
+                                    <span class="sr-only">{% trans "Search" %}</span>
                                 </span>
                             </button>
                         </span>

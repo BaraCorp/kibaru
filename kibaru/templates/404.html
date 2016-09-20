@@ -1,23 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="https://raw.githubusercontent.com/BaraCorp/kibaru/master/media/favicon.ico" rel="icon" type="image/x-icon" />
-<title>Kibaruu | Site Maintenance</title>
+{% block title %} {% trans "Kibaruu | pase not found" %} {% endblock %}
+{% block page-id %}404{% endblock %}
 
-<body>
-    <div class="container page">
-        <div class="content-box" id="banner">
-             <img alt="" src="https://raw.githubusercontent.com/BaraCorp/kibaru/master/media/logo.png">
+{% block banner %} <div id="sticky-anchor">{% include "site/_banner.html" %}</div> {% endblock %}
+{% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
+{% block content %}
+    <article>
+        <h1>{% trans "Page not found" %} !</h1>
+        <div>
+            <p> ??? </p>
         </div>
-        <div class="row post">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <article>
-                    <h1>We&rsquo;ll be back soon!</h1>
-                    <div>
-                        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:baracorpml@gmail.com">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
-                        <p>&mdash; The Team</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-</body>
+    </article>
+ {% endblock %}

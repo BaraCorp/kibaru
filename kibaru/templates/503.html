@@ -1,7 +1,7 @@
-
+{% load staticfiles i18n %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="https://raw.githubusercontent.com/BaraCorp/kibaru/master/media/favicon.ico" rel="icon" type="image/x-icon" />
-<title>Kibaruu | Site Maintenance</title>
+<title>{% trans "Kibaruu | Site Maintenance" %}</title>
 
 <body>
     <div class="container page">
@@ -11,10 +11,10 @@
         <div class="row post">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <article>
-                    <h1>We&rsquo;ll be back soon!</h1>
+                    <h1>{% trans "We&rsquo;ll be back soon! %}</h1>
                     <div>
-                        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:baracorpml@gmail.com">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
-                        <p>&mdash; The Team</p>
+                        <p>{% trans "Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:baracorpml@gmail.com">contact us</a>, otherwise we&rsquo;ll be back online shortly! %}</p>
+                        <p>{% trans "&mdash; The Team %}</p>
                     </div>
                 </article>
             </div>
