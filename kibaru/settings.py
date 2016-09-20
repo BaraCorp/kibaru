@@ -108,6 +108,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'kibaru.urls'
@@ -123,6 +124,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.core.context_processors.i18n",
             ],
         },
     },
@@ -153,10 +155,16 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
+from django.utils.translation import gettext_lazy as _
 
-LANGUAGES = (('fr', "French"),)
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGES = (
+    ('fr', _('Français')),
+    ('en', _('Anglais')),
+    ('ar', _('Arabic')),
+)
 
+# LANGUAGE_CODE = 'fr-fr'
+DEFAULT_LANGUAGE = 1
 DATE_INPUT_FORMATS = ('%Y-%m-%d')
 
 TIME_ZONE = 'UTC'
@@ -167,6 +175,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = (
+    os.path.join(ROOT_DIR, "locale"),
+    os.path.join(ROOT_DIR, "kibaru/locale"),
+)
 
 MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')
 MEDIA_URL = '/media/'
