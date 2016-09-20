@@ -1,27 +1,26 @@
-{% load widget_tweaks %}
+{% load widget_tweaks i18n %}
 <footer>
     <div class="footer" id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12">
-                    <h3> Nos Contacts </h3>
+                    <h3> {% trans "Contact Us" %} </h3>
                     <ul>
                         <li> <a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaruu"><i class="fa fa-envelope-o fa-fw"></i>kibaruuml@gmail.com</a> </li>
                     </ul>
                 </div>
                 <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12">
-                    <h3> Suivez-nous </h3>
+                    <h3> {% trans "Follow us" %} </h3>
                     <ul class="social">
                         <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class=" fa fa-facebook">   </i> </a> </li>
                         <li> <a href="https://twitter.com/{{ settings.TWITTER_NAME }}"> <i class="fa fa-twitter">   </i> </a> </li>
                         <li> <a href="https://plus.google.com/u/0/{{ settings.GOOGLE_PLUS}}/posts"> <i class="fa fa-google-plus">   </i> </a> </li>
                         <li> <a href="https://www.youtube.com/user/{{ settings.YOUTUBE }}"> <i class="fa fa-youtube">   </i> </a> </li>
-                          <!-- <li class="fb-follow" data-href="https://www.facebook.com/Kibaruu-1652451611660511" data-layout="standard" data-show-faces="true"></li> -->
-
+                        <!-- <li class="fb-follow" data-href="https://www.facebook.com/Kibaruu-1652451611660511" data-layout="standard" data-show-faces="true"></li> -->
                     </ul>
                 </div>
                 <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12 ">
-                    <h3> Newsletter </h3>
+                    <h3> {% trans "Newsletter" %} </h3>
                     <ul>
                         <li>
                             {% if form %}

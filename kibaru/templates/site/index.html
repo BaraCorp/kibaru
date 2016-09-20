@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% load i18n staticfiles %}
-{% load imagefit %}
-{% block title %} Accueil {% endblock %}
+{% load i18n staticfiles imagefit %}
+{% block title %} {% trans "Accueil" %} {% endblock %}
 {% block page-id %}index{% endblock %}
 
 {% block banner %} <div id="sticky-anchor">{% include "site/_banner.html" %}</div> {% endblock %}
@@ -27,7 +26,7 @@
                                 <div class="carousel-caption">
                                     <h4 class="carousel-caption-header">{{ star.title }}
                                     <span class="carousel-caption-text hidden-sm hidden-xs">
-                                        <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">Suite</a>
+                                        <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">{% trans "After" %}</a>
                                     </span></h4>
                                 </div>
                             </div>
@@ -72,7 +71,7 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <h3>Aucun Article publié.</h3>
+                <h3>{% trans "No article published." %}</h3>
             {% endif %}
             {% include "_pagination.html" %}
         </div>
@@ -83,7 +82,7 @@
 
     {% if publicities %}
         <div class="list-group">
-            <div class="list-group-item disabled">Publicité</div>
+            <div class="list-group-item disabled">{% trans "Publicity" %}</div>
             {% for publicity in publicities %}
                 <div class="">
                     <a href="{{publicity.url_display}}">
@@ -106,7 +105,7 @@
                             </div>
                             <h6 class="el-title">{{video.title}}</h6>
                     {% endfor %}
-                 <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; Toutes les videos</h6> </a>
+                 <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
                 </div>
             </div>
         </div>
@@ -118,9 +117,9 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="list-group">
             <!-- <div class="list-group-item disabled">Twitter</div> -->
-                <a class="twitter-timeline"  href="https://twitter.com/{{settings.TWITTER_NAME}}" data-widget-id="655801487575117824">Tweets de @{{ settings.TWITTER_NAME}}</a>
+                <a class="twitter-timeline"  href="https://twitter.com/{{settings.TWITTER_NAME}}" data-widget-id="655801487575117824">{% trans "Tweets of" %} @{{ settings.TWITTER_NAME}}</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

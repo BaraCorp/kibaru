@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
+{% load i18n %}
 {% block title %}  {{subtitle}} {% endblock %}
 
 {% block banner %}
@@ -21,7 +22,7 @@
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
                     <h4>{{ post.title }}</h4>
                     <div class="post_footer">
-                          Date de publication : {{ post.date_created|date:"D d M Y" }}<br>
+                          {% trans "Date de publication" %} : {{ post.date_created|date:"D d M Y" }}<br>
                     </div>
                 </div>
             </div>
