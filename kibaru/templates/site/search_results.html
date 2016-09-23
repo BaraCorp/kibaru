@@ -13,7 +13,7 @@
 {% endblock %}
 {% block content %}
     {% if found_article %}
-        <h4><b>Résultats de recherche pour : </b> {{ query_string }} </h4>
+        <h4><b>{% trans "Search results for :" %}</b> {{ query_string }}</h4>
         {% for post in found_article %}
             <a href="{{ post.url_display }}">
                 <div class="row">
@@ -25,9 +25,9 @@
                     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
                         <h4>{{ post.title }}</h4>
                         <div class="post_footer">
-                              Date de publication : {{ post.date_created.date|date:"D d M Y" }}<br>
+                              {% trans "Publication date"%} : {{ post.date_created.date|date:"D d M Y" }} <br>
                               {% ifnotequal post.date_modified.date post.date_created.date %}
-                                  Dernière modification : {{ post.date_modified.date|date:"D d M Y" }}<br>
+                                  {% trans "Last modification" %} : {{ post.date_modified.date|date:"D d M Y" }}<br>
                               {% endifnotequal %}
                         </div>
                     </div>
@@ -36,7 +36,7 @@
             <hr>
         {% endfor %}
     {% else %}
-        <h4><b> Aucun résultat trouvé pour : </b> {{ query_string }} </h4>
+        <h4><b> {% trans "No results found for : " %}</b> {{ query_string }} </h4>
     {% endif %}
 {% endblock %}
 

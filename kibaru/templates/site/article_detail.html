@@ -26,8 +26,8 @@
             </div>
         {% endif %}
         <span class="meta">
-            <time style="float: right;"> {% trans "Publié" %} {{ article.date_created|date:"l d F Y" }} </time>
-            <abbr>{% trans "Par" %} <u><a href="#">kibaru</a></u></abbr>
+            <time style="float: right;"> {% trans "Published" %} {{ article.date_created|date:"l d F Y" }} </time>
+            <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u></abbr>
         </span>
         <div class="post-body">
             <p><html>{{article.text|safe}}</html></p>
