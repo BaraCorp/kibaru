@@ -1,7 +1,6 @@
 {% extends "administration/base_form.html" %}
-{% load staticfiles %}
-{% load widget_tweaks %}
-{% block title %}Ajout News{% endblock %}
+{% load staticfiles i18n widget_tweaks %}
+{% block title %}{% trans "Add News" %} {% endblock %}
 {% block form %}
     <!-- Name input-->
     <div class="form-group">

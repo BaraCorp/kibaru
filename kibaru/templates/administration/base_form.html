@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load widget_tweaks %}
-{% load staticfiles %}
+{% load widget_tweaks i18n staticfiles %}
 {% block content_larg %}
 <script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js"%}"></script>
 <div class="row">
@@ -14,8 +13,8 @@
             <!-- Form actions -->
             <div class="form-group">
               <div class="col-md-12 text-right">
-                    <a class="btn btn-default" href="{% url 'admin_home' %}" role="button">Annuler</a>
-                    <input type='submit' class="btn btn-primary" value ="Enregistrer"/>
+                    <a class="btn btn-default" href="{% url 'admin_home' %}" role="button">{% trans "Cancel" %}</a>
+                    <input type='submit' class="btn btn-primary" value ="{% trans 'Save' %}"/>
               </div>
             </div>
         </form>
