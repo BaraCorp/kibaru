@@ -16,8 +16,7 @@ from django.core import validators
 from django.db import models
 
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser, PermissionsMixin
-)
+    BaseUserManager, AbstractBaseUser, PermissionsMixin)
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from tinymce import models as tinymce_models
@@ -31,8 +30,12 @@ from kibaru.tools import post_to_twitter
 class Category(models.Model):
 
     """ """
-    slug = models.SlugField("Code", max_length=75, primary_key=True)
-    name = models.CharField(u"Nom", max_length=150)
+    class Meta:
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
+
+    slug = models.SlugField(_("Slug"), max_length=75, primary_key=True)
+    name = models.CharField(_("Name"), max_length=150)
 
     def __str__(self):
         return "{name}/{slug}".format(name=self.name, slug=self.slug)
@@ -46,7 +49,7 @@ class MemberManager(BaseUserManager):
         birth and password.
         """
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError(_('Users must have an email address'))
 
         user = self.model(
             email=MemberManager.normalize_email(email),
@@ -63,9 +66,9 @@ class MemberManager(BaseUserManager):
         birth and password.
         """
         u = self.create_user(username,
-                        password=password,
-                        date_of_birth=date_of_birth
-                    )
+                             password=password,
+                             date_of_birth=date_of_birth
+                             )
         u.is_admin = True
         u.save(using=self._db)
         return u
@@ -75,8 +78,8 @@ class MemberManager(BaseUserManager):
 class Member(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
-        verbose_name = 'Utilisateur'
-        verbose_name_plural = 'Utilisateurs'
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
 
     username = models.CharField(
         _("username"), max_length=50, primary_key=True,
@@ -90,14 +93,13 @@ class Member(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=100, blank=True, null=True,
                                  verbose_name=_("Last Name"))
     image = models.ImageField(upload_to='images_member/', blank=True,
-                              verbose_name=("Photo"))
+                              verbose_name=_("Photo"))
     job_title = models.CharField(max_length=200, blank=True,
-                                 verbose_name=("Poste"))
+                                 verbose_name=_("Job title"))
     email = models.EmailField(_("email address"), blank=True, null=True)
     is_staff = models.BooleanField(
         _("staff status"), default=False,
-        help_text=_("Designates whether the user can "
-                    "log into this admin site."))
+        help_text=_("Designates whether the user can log into this admin site."))
     is_active = models.BooleanField(
         _("active"), default=True,
         help_text=_("Designates whether this user should be treated as "
@@ -146,25 +148,25 @@ class New(models.Model):
 
     class Meta:
         ordering = ('-date',)
+        verbose_name = _('New')
+        verbose_name_plural = _('News')
 
     INFO = "I"
     URGENT = "U"
     COMMUNICATED = "C"
 
     TYPE_NEWS_CHOICES = (
-        (INFO, 'info'),
-        (URGENT, 'urgent'),
-        (COMMUNICATED, 'communiqué'),
+        (INFO, _('info')),
+        (URGENT, _('urgent')),
+        (COMMUNICATED, _('communicated')),
     )
 
-    """ """
-
-    type_new = models.CharField(max_length=2, choices=TYPE_NEWS_CHOICES,
-                                default=INFO)
-    title = models.CharField(max_length=100, verbose_name=("Titre"))
-    comment = models.TextField(blank=True, verbose_name=("Contenu"))
-    author = models.ForeignKey(Member, verbose_name=("Auteur"))
-    date = models.DateTimeField(verbose_name=("Fait le"),
+    type_new = models.CharField(
+        max_length=2, choices=TYPE_NEWS_CHOICES, default=INFO)
+    title = models.CharField(max_length=100, verbose_name=_("Title"))
+    comment = models.TextField(blank=True, verbose_name=_("Comment"))
+    author = models.ForeignKey(Member, verbose_name=_("Author"))
+    date = models.DateTimeField(verbose_name=_("Dated the"),
                                 default=datetime.datetime.today)
     count_view = models.IntegerField(default=0, blank=True, null=True)
     count_like = models.IntegerField(default=0, blank=True, null=True)
@@ -195,10 +197,14 @@ class Newsletter(models.Model):
 
     """ """
 
-    date = models.DateTimeField(verbose_name=("Date d'inscription"),
+    class Meta:
+        verbose_name = _('Newsletter')
+        verbose_name_plural = _('Newsletters')
+
+    date = models.DateTimeField(verbose_name=_("Registration date"),
                                 default=datetime.datetime.today)
     email = models.EmailField(
-        max_length=75, verbose_name=("E-mail"), unique=True)
+        max_length=75, verbose_name=_("E-mail"), unique=True)
 
     def __str__(self):
         return "{email} {date}".format(email=self.email,
@@ -210,29 +216,31 @@ class Article(models.Model):
 
     class Meta:
         ordering = ('-date_created', '-id')
+        verbose_name = _('Article')
+        verbose_name_plural = _('Articles')
 
     DRAFT = 'draft'
     POSTED = 'posted'
 
     STATUS = {
-        DRAFT: "Brouillon",
-        POSTED: "Publié",
+        DRAFT: _("Draft"),
+        POSTED: _("Posted"),
     }
     slug = models.CharField(
-        max_length=200, unique=True, blank=True, verbose_name=("Slug"))
-    title = models.CharField(max_length=200, verbose_name=("Titre"))
-    text = tinymce_models.HTMLField(blank=True, verbose_name=("Texte"))
+        max_length=200, unique=True, blank=True, verbose_name=_("Slug"))
+    title = models.CharField(max_length=200, verbose_name=_("Title"))
+    text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
     image = ResizedImageField(size=[1024, 500], upload_to='images_article/',
-                              blank=True, verbose_name=("Image"))
+                              blank=True, verbose_name=_("Picture"))
 
-    author = models.ForeignKey(Member, verbose_name=("Auteur"))
-    date_created = models.DateTimeField(verbose_name=("Fait le"),
+    author = models.ForeignKey(Member, verbose_name=_("Author"))
+    date_created = models.DateTimeField(verbose_name=_("Dated the"),
                                         default=datetime.datetime.today)
     date_modified = models.DateTimeField(auto_now=True)
-    category = models.ForeignKey(Category, verbose_name=("Categorie"))
-    status = models.CharField(verbose_name="Status", max_length=50,
+    category = models.ForeignKey(Category, verbose_name=_("Category"))
+    status = models.CharField(verbose_name=_("Status"), max_length=50,
                               choices=STATUS.items())
-    start = models.BooleanField(verbose_name="Start", default=False)
+    start = models.BooleanField(verbose_name=_("Start"), default=False)
     count_view = models.IntegerField(default=0)
     count_like = models.IntegerField(default=0)
 
@@ -245,7 +253,7 @@ class Article(models.Model):
 
     def save(self, *args, **kwargs):
         self.twitte = False
-        if self._state.adding and self.status==self.POSTED:
+        if self._state.adding and self.status == self.POSTED:
             self.prefix_url_twtt = "art"
             self.twitte = True
         self.slug = "-".join(re.findall("([a-zA-Z]+)", self.title.lower()))
@@ -271,8 +279,13 @@ models.signals.post_save.connect(post_to_twitter, sender=Article)
 
 @implements_to_string
 class Publicity(models.Model):
+
+    class Meta:
+        verbose_name = _('Publicity')
+        verbose_name_plural = _('Publicities')
+
     image = models.ImageField(upload_to='images_pub/', blank=True,
-                              verbose_name=("Photo"))
+                              verbose_name=_("Picture"))
 
     def __str__(self):
         return self.image.__str__()
@@ -282,11 +295,13 @@ class Video(models.Model):
 
     class Meta:
         ordering = ('-date_created',)
+        verbose_name = _('Video')
+        verbose_name_plural = _('Videos')
 
     slug = models.CharField(
-        max_length=200, unique=True, blank=True, verbose_name=("Slug"))
-    title = models.CharField(max_length=200, verbose_name=("Titre"))
-    date_created = models.DateTimeField(verbose_name=("Ajouter le"),
+        max_length=200, unique=True, blank=True, verbose_name=_("Slug"))
+    title = models.CharField(max_length=200, verbose_name=_("Title"))
+    date_created = models.DateTimeField(verbose_name=_("Date created"),
                                         default=datetime.datetime.today)
 
     def __str__(self):

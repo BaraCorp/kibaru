@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-20 18:14+0000\n"
-"PO-Revision-Date: 2016-09-14 17:28+0000\n"
+"POT-Creation-Date: 2016-09-23 16:37+0000\n"
+"PO-Revision-Date: 2016-09-23 16:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,169 +18,347 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.3\n"
 
-#: kibaru/models.py:34 kibaru/models.py:220 kibaru/models.py:285
-msgid "Slug"
-msgstr ""
+#: kibaru/administation/views.py:81
+msgid "Adding article"
+msgstr "Ajout d’article"
+
+#: kibaru/administation/views.py:88
+msgid "Article added"
+msgstr "Article ajouté"
+
+#: kibaru/administation/views.py:123
+msgid "Editing Article"
+msgstr "Modification de l’Article"
+
+#: kibaru/administation/views.py:138
+msgid "Adding new"
+msgstr "Ajout de nouvelles"
+
+#: kibaru/administation/views.py:179
+msgid "Changing the news"
+msgstr "Changer les nouvelles"
+
+#: kibaru/administation/views.py:187
+msgid "The news was deleted."
+msgstr "La nouvelle a été supprimée."
+
+#: kibaru/administation/views.py:194
+msgid "Adding link to a YouTube video"
+msgstr "Ajout lien vers une vidéo YouTube"
+
+#: kibaru/administation/views.py:199
+msgid "The youtube video link was added."
+msgstr "Le lien vidéo youtube a été ajouté."
+
+#: kibaru/administation/views.py:212
+msgid "The link of the video has been deleted."
+msgstr "Le lien de la vidéo a été supprimé."
+
+#: kibaru/models.py:34 kibaru/models.py:240
+#: kibaru/templates/administration/index.html:40
+msgid "Category"
+msgstr "Catégorie"
 
 #: kibaru/models.py:35
+msgid "Categories"
+msgstr "Catégories"
+
+#: kibaru/models.py:37 kibaru/models.py:230 kibaru/models.py:302
+msgid "Slug"
+msgstr "Identifiant"
+
+#: kibaru/models.py:38
 msgid "Name"
 msgstr "Nom"
 
-#: kibaru/models.py:49
+#: kibaru/models.py:52
 msgid "Users must have an email address"
 msgstr "Les utilisateurs doivent disposer d’une adresse e-mail"
 
+#: kibaru/models.py:81
+msgid "User"
+msgstr "Utilisateur"
+
 #: kibaru/models.py:82
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: kibaru/models.py:85
 msgid "username"
 msgstr "Nom d'utilisateur"
 
-#: kibaru/models.py:83
+#: kibaru/models.py:86
 msgid ""
 "Required. 50 characters or fewer. Letters, numbers and @/./+/-/_ characters"
 msgstr ""
 "Requis. 30 caractères ou moins. Lettres, chiffres et @/./+/-/_ caractère"
 
-#: kibaru/models.py:86
+#: kibaru/models.py:89
 msgid "Enter a valid username."
 msgstr "Entrez un identifiant valide."
 
-#: kibaru/models.py:89
+#: kibaru/models.py:92
 msgid "First Name"
 msgstr "Prénom"
 
-#: kibaru/models.py:91
+#: kibaru/models.py:94
 msgid "Last Name"
 msgstr "Nom"
 
-#: kibaru/models.py:93
+#: kibaru/models.py:96
 msgid "Photo"
-msgstr ""
+msgstr "Photo"
 
-#: kibaru/models.py:95
+#: kibaru/models.py:98
 msgid "Job title"
 msgstr "Intitulé de l’emploi"
 
-#: kibaru/models.py:96
+#: kibaru/models.py:99
 msgid "email address"
 msgstr "adresse électronique"
 
-#: kibaru/models.py:98
+#: kibaru/models.py:101
 msgid "staff status"
 msgstr "statut du personnel"
 
-#: kibaru/models.py:99
+#: kibaru/models.py:102
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
+"Indiquer si l’utilisateur peut se connecter à ce site d’administration."
 
-#: kibaru/models.py:102
+#: kibaru/models.py:104
 msgid "active"
 msgstr "Actif"
 
-#: kibaru/models.py:103
+#: kibaru/models.py:105
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
+"Indique si cet utilisateur doit être traité comme actif. Décochez ceci au "
+"lieu de supprimer des comptes."
 
-#: kibaru/models.py:105
+#: kibaru/models.py:107
 msgid "date joined"
 msgstr "Date d’inscription"
 
-#: kibaru/models.py:155
+#: kibaru/models.py:151
+msgid "New"
+msgstr "Nouvelle"
+
+#: kibaru/models.py:152
+msgid "News"
+msgstr "Actualités"
+
+#: kibaru/models.py:159
 msgid "info"
-msgstr ""
+msgstr "info"
 
-#: kibaru/models.py:156
+#: kibaru/models.py:160
 msgid "urgent"
-msgstr ""
+msgstr "Urgent"
 
-#: kibaru/models.py:157
-msgid "communiqué"
-msgstr ""
+#: kibaru/models.py:161
+msgid "communicated"
+msgstr "communiqué"
 
-#: kibaru/models.py:162 kibaru/models.py:221 kibaru/models.py:286
+#: kibaru/models.py:166 kibaru/models.py:231 kibaru/models.py:303
+#: kibaru/templates/administration/index.html:36
+#: kibaru/templates/administration/index.html:92
+#: kibaru/templates/administration/index.html:147
 msgid "Title"
 msgstr "Titre"
 
-#: kibaru/models.py:163
+#: kibaru/models.py:167
 msgid "Comment"
 msgstr "Réagir"
 
-#: kibaru/models.py:164 kibaru/models.py:226
+#: kibaru/models.py:168 kibaru/models.py:236
+#: kibaru/templates/administration/index.html:39
 msgid "Author"
 msgstr "Auteur"
 
-#: kibaru/models.py:165 kibaru/models.py:227
+#: kibaru/models.py:169 kibaru/models.py:237
 msgid "Dated the"
 msgstr "Daté du"
 
-#: kibaru/models.py:196
+#: kibaru/models.py:201 kibaru/templates/site/_footer.html:23
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: kibaru/models.py:202
+msgid "Newsletters"
+msgstr "Newsletters"
+
+#: kibaru/models.py:204
 msgid "Registration date"
 msgstr "Date d’enregistrement"
 
-#: kibaru/models.py:199
+#: kibaru/models.py:207
 msgid "E-mail"
 msgstr "Adresses e-mail"
 
-#: kibaru/models.py:222
+#: kibaru/models.py:219
+msgid "Article"
+msgstr "Article"
+
+#: kibaru/models.py:220
+msgid "Articles"
+msgstr "Articles"
+
+#: kibaru/models.py:226
+msgid "Draft"
+msgstr "Brouillon"
+
+#: kibaru/models.py:227
+msgid "Posted"
+msgstr "Publiée"
+
+#: kibaru/models.py:232
 msgid "Text"
 msgstr "Texte"
 
-#: kibaru/models.py:224 kibaru/models.py:273
+#: kibaru/models.py:234 kibaru/models.py:288
 msgid "Picture"
 msgstr "Image"
 
-#: kibaru/models.py:230
-msgid "Categorie"
-msgstr "Catégorie"
-
-#: kibaru/models.py:231
+#: kibaru/models.py:241 kibaru/templates/administration/index.html:41
 msgid "Status"
 msgstr "Statuts"
 
-#: kibaru/models.py:233
+#: kibaru/models.py:243
 msgid "Start"
 msgstr "Commencer"
 
-#: kibaru/models.py:287
+#: kibaru/models.py:284 kibaru/templates/site/index.html:85
+msgid "Publicity"
+msgstr "Publicité"
+
+#: kibaru/models.py:285
+msgid "Publicities"
+msgstr "Publicités"
+
+#: kibaru/models.py:298
+msgid "Video"
+msgstr "Vidéo"
+
+#: kibaru/models.py:299
+msgid "Videos"
+msgstr "Vidéos"
+
+#: kibaru/models.py:304
 msgid "Date created"
 msgstr "Date de Création"
 
 #: kibaru/settings.py:161
-msgid "Français"
-msgstr ""
+msgid "French"
+msgstr "Français"
 
 #: kibaru/settings.py:162
-msgid "Anglais"
-msgstr ""
+msgid "English"
+msgstr "Anglais"
 
 #: kibaru/settings.py:163
 msgid "Arabic"
 msgstr "Arabe"
 
-#: kibaru/templates/404.html:14
+#: kibaru/site/views.py:27
+msgid "January"
+msgstr "Janvier"
+
+#: kibaru/site/views.py:27
+msgid "February"
+msgstr "Février"
+
+#: kibaru/site/views.py:27
+msgid "March"
+msgstr "Mars"
+
+#: kibaru/site/views.py:27
+msgid "April"
+msgstr "Avril"
+
+#: kibaru/site/views.py:28
+msgid "May"
+msgstr "Mai"
+
+#: kibaru/site/views.py:28
+msgid "June"
+msgstr "Juin"
+
+#: kibaru/site/views.py:28
+msgid "July"
+msgstr "Juillet"
+
+#: kibaru/site/views.py:28
+msgid "August"
+msgstr "Août"
+
+#: kibaru/site/views.py:28
+msgid "September"
+msgstr "Septembre"
+
+#: kibaru/site/views.py:29
+msgid "October"
+msgstr "Octobre"
+
+#: kibaru/site/views.py:29
+msgid "November"
+msgstr "Novembre"
+
+#: kibaru/site/views.py:29
+msgid "December"
+msgstr "Décembre"
+
+#: kibaru/site/views.py:51 kibaru/site/views.py:61
+msgid "The articles published in"
+msgstr "Articles publiés"
+
+#: kibaru/site/views.py:216
+msgid "Thank you for your subscription"
+msgstr "Nous vous remercions de votre inscription."
+
+#: kibaru/templates/404.html:4
+msgid "Kibaruu | page not found"
+msgstr "Kibaruu | page non trouvée"
+
+#: kibaru/templates/404.html:11
 msgid "Page not found"
-msgstr ""
+msgstr "Page introuvable"
 
 #: kibaru/templates/503.html:4
-msgid "Kibaruu | Site Maintenance"
-msgstr ""
+msgid "Kibaru | website Maintenance"
+msgstr "Kibaru | maintenance du site"
 
 #: kibaru/templates/503.html:16
 msgid ""
-"Sorry for the inconvenience but we&rsquo;re performing some maintenance at "
-"the moment. If you need to you can always <a href="
+"Sorry for the inconvenience but we’re performing some maintenance at the "
+"moment. If you need to you can always"
 msgstr ""
+"Désolé pour le désagrément mais nous sommes performants un peu d’entretien "
+"pour le moment. Si vous devez vous pouvez toujours"
+
+#: kibaru/templates/503.html:17
+msgid "contact us"
+msgstr "nous contacter"
+
+#: kibaru/templates/503.html:17
+msgid "otherwise we’ll be back online shortly!"
+msgstr ""
+"Nous serons de retour d’un instant à l’autre avec de nouvelles "
+"fonctionnalités."
+
+#: kibaru/templates/503.html:18
+msgid "— The Team"
+msgstr "—- L’équipe"
 
 #: kibaru/templates/_chare.html:23
-#, fuzzy
-#| msgid "Tweets of"
 msgid "Tweet"
-msgstr "Tweets de"
+msgstr "Tweeter"
 
 #: kibaru/templates/_menu.html:6
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Touche de navigation"
 
 #: kibaru/templates/_menu.html:19
 msgid "Economy"
@@ -200,7 +378,7 @@ msgstr "Internationale"
 
 #: kibaru/templates/_menu.html:27
 msgid "Cooperation"
-msgstr ""
+msgstr "Coopération"
 
 #: kibaru/templates/_menu.html:29
 msgid "Actuality"
@@ -270,70 +448,241 @@ msgstr "Fermer"
 msgid "Search"
 msgstr "Recherche"
 
-#: kibaru/templates/administration/__menu.html:5
+#: kibaru/templates/administration/__menu.html:4
+#: kibaru/templates/administration/index.html:4
 msgid "Administration"
 msgstr "Administration"
 
-#: kibaru/templates/administration/__menu.html:8
+#: kibaru/templates/administration/__menu.html:7
 msgid "Add your article"
 msgstr "Ajouter votre article"
 
-#: kibaru/templates/administration/__menu.html:9
+#: kibaru/templates/administration/__menu.html:8
+#: kibaru/templates/administration/index.html:87
 msgid "Add new"
-msgstr ""
+msgstr "Ajouter un nouveau"
 
-#: kibaru/templates/administration/__menu.html:10
+#: kibaru/templates/administration/__menu.html:9
 msgid "Add video link"
 msgstr "Ajouter un lien vidéo"
 
-#: kibaru/templates/administration/__menu.html:16
+#: kibaru/templates/administration/__menu.html:15
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: kibaru/templates/administration/__menu.html:18
+#: kibaru/templates/administration/__menu.html:17
 msgid "disconnection"
 msgstr "déconnexion"
 
-#: kibaru/templates/site/_footer.html:8
-msgid "Contact Us"
-msgstr "Contacts"
+#: kibaru/templates/administration/add_article.html:3
+msgid "Add Article"
+msgstr "Ajouter l’article"
 
-#: kibaru/templates/site/_footer.html:14
-msgid "Follow us"
-msgstr "Nous suivre"
+#: kibaru/templates/administration/add_new.html:3
+#: kibaru/templates/administration/add_video.html:4
+msgid "Add News"
+msgstr "Ajouter une actualité"
 
-#: kibaru/templates/site/_footer.html:24
-msgid "Newsletter"
-msgstr "Newsletter"
+#: kibaru/templates/administration/base_form.html:16
+msgid "Cancel"
+msgstr "Annuler"
 
-#: kibaru/templates/site/article_detail.html:30
-msgid "Publié"
-msgstr "Published"
+#: kibaru/templates/administration/base_form.html:17
+msgid "Save"
+msgstr "Enregister"
 
-#: kibaru/templates/site/article_detail.html:31
-msgid "Par"
-msgstr "by"
+#: kibaru/templates/administration/index.html:11
+msgid "List of Articles"
+msgstr "Liste des articles"
 
-#: kibaru/templates/site/index.html:31
-msgid "After"
-msgstr ""
+#: kibaru/templates/administration/index.html:17
+#: kibaru/templates/administration/index.html:73
+#: kibaru/templates/administration/index.html:127
+msgid "previous"
+msgstr "précédent(e)"
 
-#: kibaru/templates/site/index.html:76
+#: kibaru/templates/administration/index.html:25
+#: kibaru/templates/administration/index.html:81
+#: kibaru/templates/administration/index.html:135
+msgid "next"
+msgstr "suivant"
+
+#: kibaru/templates/administration/index.html:31
+msgid "Add article"
+msgstr "Ajouter l’article"
+
+#: kibaru/templates/administration/index.html:37
+msgid "Publication Date"
+msgstr "Date de publication"
+
+#: kibaru/templates/administration/index.html:38
+msgid "Date Modified"
+msgstr "Date de modification"
+
+#: kibaru/templates/administration/index.html:42
+msgid "Change"
+msgstr "Modifier"
+
+#: kibaru/templates/administration/index.html:43
+#: kibaru/templates/administration/index.html:98
+#: kibaru/templates/administration/index.html:109
+#: kibaru/templates/administration/index.html:154
+msgid "Delete"
+msgstr "Supprimer"
+
+#: kibaru/templates/administration/index.html:54
+#: kibaru/templates/administration/index.html:108
+msgid "Edit"
+msgstr "Modifié"
+
+#: kibaru/templates/administration/index.html:55
+msgid "Are you sure you want to delete this article?"
+msgstr "Êtes-vous sûr de vouloir supprimer ceci?"
+
+#: kibaru/templates/administration/index.html:55
+msgid "Deleted"
+msgstr "Supprimer"
+
+#: kibaru/templates/administration/index.html:60
+#: kibaru/templates/site/index.html:74
 msgid "No article published."
 msgstr "Aucun article ne publié."
 
-#: kibaru/templates/site/index.html:87
-msgid "Publicity"
-msgstr "Publicité"
+#: kibaru/templates/administration/index.html:67
+msgid "News list"
+msgstr "Liste de nouvelles"
 
-#: kibaru/templates/site/index.html:110
+#: kibaru/templates/administration/index.html:77
+#: kibaru/templates/administration/index.html:131
+msgid "On"
+msgstr "Sur"
+
+#: kibaru/templates/administration/index.html:93
+msgid "Content"
+msgstr "Contenu"
+
+#: kibaru/templates/administration/index.html:94
+msgid "Autor"
+msgstr "Auteur"
+
+#: kibaru/templates/administration/index.html:95
+msgid "Dated"
+msgstr "Daté du"
+
+#: kibaru/templates/administration/index.html:96
+msgid "Number of view"
+msgstr "Nombre de vues."
+
+#: kibaru/templates/administration/index.html:97
+msgid "Edite"
+msgstr "Editer"
+
+#: kibaru/templates/administration/index.html:114
+msgid "No news posted."
+msgstr "Aucune nouvelle rédigée."
+
+#: kibaru/templates/administration/index.html:121
+msgid "List of videos"
+msgstr "Liste des vidéos"
+
+#: kibaru/templates/administration/index.html:141
+msgid "Add a video link"
+msgstr "Ajouter un lien vidéo"
+
+#: kibaru/templates/administration/index.html:146
+msgid "Id Video"
+msgstr "ID vidéo"
+
+#: kibaru/templates/administration/index.html:154
+msgid "Are you sure you want to delete the video link?"
+msgstr "Etes-vous sûr(e) de vouloir supprimer ce lien ?"
+
+#: kibaru/templates/administration/index.html:159
+msgid "No posted video."
+msgstr "Pas posté vidéo."
+
+#: kibaru/templates/administration/login.html:5
+msgid "Identification"
+msgstr "Identification"
+
+#: kibaru/templates/administration/login.html:17
+msgid "Your username and password do not match. Please try again."
+msgstr ""
+"Votre nom d’utilisateur et mot de passe ne correspondent pas. S’il vous "
+"plaît essayer de nouveau."
+
+#: kibaru/templates/administration/login.html:22
+msgid "Thank you to identify you"
+msgstr "Merci de vous identifier"
+
+#: kibaru/templates/administration/login.html:31
+msgid "Log in"
+msgstr "Se connecter"
+
+#: kibaru/templates/site/_footer.html:7
+msgid "Contact Us"
+msgstr "Contacts"
+
+#: kibaru/templates/site/_footer.html:13
+msgid "Follow us"
+msgstr "Nous suivre"
+
+#: kibaru/templates/site/article_detail.html:29
+msgid "Published"
+msgstr "Publié"
+
+#: kibaru/templates/site/article_detail.html:30
+msgid "By"
+msgstr "Par"
+
+#: kibaru/templates/site/index.html:3
+msgid "Home"
+msgstr "Accueil"
+
+#: kibaru/templates/site/index.html:29
+msgid "After"
+msgstr "Après"
+
+#: kibaru/templates/site/index.html:108
 msgid "All videos"
 msgstr "Toutes les vidéos"
 
-#: kibaru/templates/site/index.html:122
+#: kibaru/templates/site/index.html:120
 msgid "Tweets of"
 msgstr "Tweets de"
 
 #: kibaru/templates/site/list_page.html:25
-msgid "Date de publication"
-msgstr "Date d’inscription"
+#: kibaru/templates/site/search_results.html:28
+msgid "Publication date"
+msgstr "Date de parution"
+
+#: kibaru/templates/site/search_results.html:16
+msgid "Search results for :"
+msgstr "Résultat(s) de recherche pour :"
+
+#: kibaru/templates/site/search_results.html:30
+msgid "Last modification"
+msgstr "Dernière modification"
+
+#: kibaru/templates/site/search_results.html:39
+msgid "No results found for : "
+msgstr "Aucun résultat trouvé pour :"
+
+#~ msgid "Categorys"
+#~ msgstr "Catégories"
+
+#~ msgid "Français"
+#~ msgstr "French"
+
+#, fuzzy
+#~| msgid "No article published."
+#~ msgid "Les articles publiés en"
+#~ msgstr "Aucun article ne publié."
+
+#, fuzzy
+#~| msgid "No article published."
+#~ msgid "Les articles publiés en % s % s"
+#~ msgstr "Aucun article ne publié."
+
+#~ msgid "Par"
+#~ msgstr "by"

@@ -9,6 +9,7 @@ import short_url
 
 from datetime import datetime, timedelta
 from django.shortcuts import render, get_object_or_404
+from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
@@ -22,10 +23,10 @@ from kibaru.forms import Newsletterform
 from django.conf import settings
 from kibaru.site.search import get_query
 
-MONTH_NAMES = ('', 'Janvier', u'Février', 'Mars', 'Avril', 'peut', 'Juin',
-               'Juillet', u'Août', 'Septembre', 'Octobre', 'Novembre', u'Décembre')
-
 NOW = datetime.now()
+MONTH_NAMES = ('', _('January'), _('February'), _('March'), _('April'),
+               _('May'), _('June'), _('July'), _('August'), _('September'),
+               _('October'), _('November'), _('December'))
 
 
 def handler404(request):
@@ -47,7 +48,8 @@ def year_view(request, year):
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts,
-                    'subtitle': 'Les articles publiés en %s' % year})
+                    'subtitle': '{} {}'.format(_("The articles published in"), year)
+                    })
     return render(request, 'site/list_page.html', context)
 
 
@@ -56,7 +58,8 @@ def month_view(request, year, month):
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts,
-                    'subtitle': 'Les articles publiés en %s %s' % (MONTH_NAMES[int(month)], year), })
+                    'subtitle': "{} {} {}".format(_("The articles published in"), MONTH_NAMES[int(month)], year),
+                    })
     return render(request, 'site/list_page.html', context)
 
 
@@ -178,6 +181,12 @@ def search(request):
 
 def home(request, *args, **kwargs):
     cat_slug = kwargs["slug"]
+
+    if request.LANGUAGE_CODE == 'fr':
+        print("FR settings")
+    else:
+        print("EEEE")
+
     try:
         slug = Category.objects.get(slug=cat_slug).slug
     except Category.DoesNotExist:
@@ -204,7 +213,7 @@ def home(request, *args, **kwargs):
         form = Newsletterform(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, u"Merci pour ton abonnement")
+            messages.success(request, _("Thank you for your subscription"))
             return HttpResponseRedirect('/')
     else:
         form = Newsletterform()

@@ -158,8 +158,8 @@ DATABASES = {
 from django.utils.translation import gettext_lazy as _
 
 LANGUAGES = (
-    ('fr', _('Français')),
-    ('en', _('Anglais')),
+    ('fr', _('French')),
+    ('en', _('English')),
     ('ar', _('Arabic')),
 )
 

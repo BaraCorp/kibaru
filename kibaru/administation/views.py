@@ -7,6 +7,7 @@ from __future__ import (unicode_literals, absolute_import,
 
 from datetime import datetime
 
+from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -21,7 +22,8 @@ from kibaru.models import Article, Member, Category, New, Video
 
 @login_required
 def home(request):
-    c = {'settings': settings}
+
+    c = {'settings': settings, 'language': request.LANGUAGE_CODE}
 
     articles = Article.objects.all().order_by('-date_created')
     paginator = Paginator(articles, 4)
@@ -70,20 +72,20 @@ def home(request):
         video.url_del = reverse("del_video", args=[video.id])
 
     c.update({'articles': articles, 'news': news,
-                    'videos': videos, 'str_news': str_news})
+              'videos': videos, 'str_news': str_news})
     return render(request, 'administration/index.html', c)
 
 
 @login_required
 def add_article(request):
-    c = {'settings': settings, 'page_title': "Ajout d'article"}
+    c = {'settings': settings, 'page_title': _("Adding article")}
     if request.method == 'POST':
         form = Articleform(request.POST, request.FILES)
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
             article.save()
-            messages.success(request, u"l'article a ete ajouter")
+            messages.success(request, _("Article added"))
             return HttpResponseRedirect('/admin/')
     else:
         form = Articleform()
@@ -113,12 +115,12 @@ def edit_article(request, *args, **kwargs):
 
             form.save()
             messages.success(request,
-             u"L'article sur {} a été mise à jour.".format(selected_article.title))
+                             u"L'article sur {} a été mise à jour.".format(selected_article.title))
             return HttpResponseRedirect('/admin/')
     else:
         form = Articleform(instance=selected_article)
     return render(request, 'administration/add_article.html',
-                  {'form': form, 'page_title': "Modification d'article"})
+                  {'form': form, 'page_title': _("Editing Article")})
 
 
 @login_required
@@ -127,13 +129,13 @@ def del_article(request, *args, **kwargs):
     selected = Article.objects.get(id=id_url)
     selected.delete()
     messages.warning(request,
-                    u"L'article sur {} a été supprimé.š".format(selected.title))
+                     u"L'article sur {} a été supprimé.".format(selected.title))
     return redirect('/admin/')
 
 
 @login_required
 def add_new(request):
-    c = {'settings': settings, 'page_title': "Ajout de nouvelle"}
+    c = {'settings': settings, 'page_title': _("Adding new")}
     if request.method == 'POST':
         form = Newform(request.POST, request.FILES)
         if form.is_valid():
@@ -143,7 +145,8 @@ def add_new(request):
             new = form.save(commit=False)
             new.author = request.user
             new.save()
-            messages.success(request, u"La nouvelle ({}) a été ajoutée".format(new.title))
+            messages.success(
+                request, u"La nouvelle ({}) a été ajoutée".format(new.title))
             return HttpResponseRedirect('/admin/')
     else:
         form = Newform()
@@ -168,12 +171,12 @@ def edit_new(request, *args, **kwargs):
                                          datetime.now().second)
             form.save()
             messages.success(request,
-                u"La nouvelle ({}) a été mise à jour".format(selected_new.title))
+                             u"La nouvelle ({}) a été mise à jour".format(selected_new.title))
             return HttpResponseRedirect('/admin/')
     else:
         form = Newform(instance=selected_new)
     return render(request, 'administration/add_new.html',
-                  {'form': form, 'page_title': "Modification de la nouvelle."})
+                  {'form': form, 'page_title': _("Changing the news")})
 
 
 @login_required
@@ -181,18 +184,19 @@ def del_new(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected = New.objects.get(id=id_url)
     selected.delete()
-    messages.warning(request, u"La nouvelle a été supprimée.")
+    messages.warning(request, _("The news was deleted."))
     return redirect('/admin/')
 
 
 @login_required
 def add_video(request):
-    c = {'settings': settings, 'page_title': "Ajout de lien d'une video Youtube."}
+    c = {'settings': settings,
+         'page_title': _("Adding link to a YouTube video")}
     if request.method == 'POST':
         form = Videoform(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, u"Le lien video youtube a été ajouté.")
+            messages.success(request, _("The youtube video link was added."))
             return HttpResponseRedirect('/admin/')
     else:
         form = Videoform()
@@ -205,5 +209,5 @@ def del_video(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected = Video.objects.get(id=id_url)
     selected.delete()
-    messages.warning(request, u"Le lien de la video a été supprimé.")
+    messages.warning(request, _("The link of the video has been deleted."))
     return redirect('/admin/')
