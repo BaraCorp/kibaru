@@ -47,7 +47,7 @@ def year_view(request, year):
     posts, context = init(year=year)
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
-    context.update({'post_list': posts,
+    context.update({'post_list': posts, "lang": request.LANGUAGE_CODE,
                     'subtitle': '{} {}'.format(_("The articles published in"), year)
                     })
     return render(request, 'site/list_page.html', context)
@@ -57,7 +57,7 @@ def month_view(request, year, month):
     posts, context = init(month=month, year=year)
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
-    context.update({'post_list': posts,
+    context.update({'post_list': posts, "lang": request.LANGUAGE_CODE,
                     'subtitle': "{} {} {}".format(_("The articles published in"), MONTH_NAMES[int(month)], year),
                     })
     return render(request, 'site/list_page.html', context)
@@ -174,18 +174,13 @@ def search(request):
 
     for article in found_article:
         article.url_display = reverse("art", args=[article.slug])
-    context.update({'query_string': query_string,
+    context.update({'query_string': query_string, "lang": request.LANGUAGE_CODE,
                     'found_article': found_article})
     return render(request, 'site/search_results.html', context)
 
 
 def home(request, *args, **kwargs):
     cat_slug = kwargs["slug"]
-
-    if request.LANGUAGE_CODE == 'fr':
-        print("FR settings")
-    else:
-        print("EEEE")
 
     try:
         slug = Category.objects.get(slug=cat_slug).slug
@@ -219,7 +214,7 @@ def home(request, *args, **kwargs):
         form = Newsletterform()
 
     context.update({'posts': posts, 'form': form, 'subtitle': '',
-                    "starts": starts, "cat_slug": cat_slug, })
+                    "starts": starts, "cat_slug": cat_slug, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/index.html', context)
 
 
@@ -271,7 +266,7 @@ def display_article(request, *args, **kwargs):
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()
-    context.update({'article': article})
+    context.update({'article': article, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/article_detail.html', context)
 
 
@@ -281,7 +276,7 @@ def display_new(request, *args, **kwargs):
     new = New.objects.get(id=new_id)
     new.count_view += 1
     new.save()
-    context.update({'new': new})
+    context.update({'new': new, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/new_detail.html', context)
 
 
@@ -290,12 +285,12 @@ def display_publicity(request, *args, **kwargs):
     publicity_id = kwargs["id"]
     publicity = Publicity.objects.get(id=publicity_id)
 
-    context.update({'publicity': publicity})
+    context.update({'publicity': publicity, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/display_publicity.html', context)
 
 
 def display_videos(request, *args, **kwargs):
     posts, context = init()
 
-    context.update({'posts': posts})
+    context.update({'posts': posts, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/videos.html', context)

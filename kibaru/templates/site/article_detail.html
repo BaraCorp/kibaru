@@ -17,7 +17,7 @@
 {% block content %}
     <article>
         <header>
-            <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
+            <h2 class="article_post_title entry-title"> {% ifequal lang 'ar'  %} {{ article.title_ar }} {% else %} {{ article.title }} {% endifequal %} </h2>
         </header>
         {% if article.image %}
             <div class="img-d thumbnail">
@@ -30,7 +30,7 @@
             <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u></abbr>
         </span>
         <div class="post-body">
-            <p><html>{{article.text|safe}}</html></p>
+            <p><html>{% ifequal lang 'ar'  %} {{article.text_ar|safe}} {% else %} {{article.text|safe}} {% endifequal %}</html></p>
         </div>
     </article>
     {% include "_chare.html" with object=article %}

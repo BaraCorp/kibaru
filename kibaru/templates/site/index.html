@@ -24,9 +24,9 @@
                             <div class="item {% if forloop.first %} active{% endif %}">
                                 <img alt="" src="{% if star.image %}{{ star.image.url|resize:'img_start'}}{% endif %}">
                                 <div class="carousel-caption">
-                                    <h4 class="carousel-caption-header">{{ star.title }}
+                                    <h4 class="carousel-caption-header">{% ifequal lang 'ar'  %} {{ star.title_ar }} {% else %} {{ star.title }} {% endifequal %}
                                     <span class="carousel-caption-text hidden-sm hidden-xs">
-                                        <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">{% trans "After" %}</a>
+                                        <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">{% trans "suite" %}</a>
                                     </span></h4>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                                 <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
                                             {% endif %}
                                     </div>
-                                    <h4 class="art-title"> {{ post.title }} </h4>
+                                    <h4 class="art-title"> {% ifequal lang 'ar'  %} {{ post.title_ar }} {% else %} {{ post.title }} {% endifequal %} </h4>
                                 </div>
                             </div>
                         </a>

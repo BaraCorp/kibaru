@@ -164,7 +164,9 @@ class New(models.Model):
     type_new = models.CharField(
         max_length=2, choices=TYPE_NEWS_CHOICES, default=INFO)
     title = models.CharField(max_length=100, verbose_name=_("Title"))
-    comment = models.TextField(blank=True, verbose_name=_("Comment"))
+    title_ar = models.CharField(max_length=100, verbose_name=_("Title arabic"))
+    comment = models.TextField(blank=True, verbose_name=_("Texte"))
+    comment_ar = models.TextField(blank=True, verbose_name=_("Texte arabic"))
     author = models.ForeignKey(Member, verbose_name=_("Author"))
     date = models.DateTimeField(verbose_name=_("Dated the"),
                                 default=datetime.datetime.today)
@@ -229,7 +231,10 @@ class Article(models.Model):
     slug = models.CharField(
         max_length=200, unique=True, blank=True, verbose_name=_("Slug"))
     title = models.CharField(max_length=200, verbose_name=_("Title"))
+    title_ar = models.CharField(max_length=200, verbose_name=_("Title arabic"))
     text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
+    text_ar = tinymce_models.HTMLField(
+        blank=True, verbose_name=_("Text arabic"))
     image = ResizedImageField(size=[1024, 500], upload_to='images_article/',
                               blank=True, verbose_name=_("Picture"))
 
@@ -301,6 +306,7 @@ class Video(models.Model):
     slug = models.CharField(
         max_length=200, unique=True, blank=True, verbose_name=_("Slug"))
     title = models.CharField(max_length=200, verbose_name=_("Title"))
+    title_ar = models.CharField(max_length=200, verbose_name=_("Title"))
     date_created = models.DateTimeField(verbose_name=_("Date created"),
                                         default=datetime.datetime.today)
 

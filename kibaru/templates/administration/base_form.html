@@ -4,15 +4,15 @@
 <script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js"%}"></script>
 <div class="row">
     <legend class="text-center">{{ page_title }}</legend>
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <form class="form-horizontal" enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <form class="form-horizontal text-center" enctype="multipart/form-data" action="" method="post">{% csrf_token %}
             <!-- Name input-->
             {% block form %}
 
             {% endblock %}
             <!-- Form actions -->
             <div class="form-group">
-              <div class="col-md-12 text-right">
+              <div class="col-md-11 text-right">
                     <a class="btn btn-default" href="{% url 'admin_home' %}" role="button">{% trans "Cancel" %}</a>
                     <input type='submit' class="btn btn-primary" value ="{% trans 'Save' %}"/>
               </div>
