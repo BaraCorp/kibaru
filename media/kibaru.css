@@ -251,6 +251,7 @@ border-radius: 3px;
 .transition-timer-carousel .carousel-caption .carousel-caption-header {
     margin-top: 5px;
     font-size: 5px;
+    color: white;
 }
 @media (min-width: 970px) {
     /* Lower the font size of the carousel caption header so that our caption doesn't take up the full image/slide on smaller screens */
