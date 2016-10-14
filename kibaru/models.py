@@ -19,6 +19,8 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin)
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+
+from django.conf import settings
 from tinymce import models as tinymce_models
 
 from py3compat import implements_to_string
@@ -72,6 +74,27 @@ class MemberManager(BaseUserManager):
         u.is_admin = True
         u.save(using=self._db)
         return u
+
+
+@implements_to_string
+class Language(models.Model):
+
+    FR = "fr"
+    EN = "en"
+    AR = "ar"
+    LANGUAGES_CHOICES = {
+        FR: _('French'),
+        EN: _('English'),
+        AR: _('Arabic'),
+    }
+
+    slug = models.CharField(
+        max_length=50, verbose_name=_("Slug"), choices=LANGUAGES_CHOICES.items())
+    name = models.CharField(max_length=100, blank=True, null=True,
+                            verbose_name=_("Name"))
+
+    def __str__(self):
+        return u"({slug}) {name}".format(name=self.name, slug=self.slug)
 
 
 @implements_to_string
@@ -155,18 +178,18 @@ class New(models.Model):
     URGENT = "U"
     COMMUNICATED = "C"
 
-    TYPE_NEWS_CHOICES = (
-        (INFO, _('info')),
-        (URGENT, _('urgent')),
-        (COMMUNICATED, _('communicated')),
-    )
+    TYPE_NEWS_CHOICES = {
+        INFO: _('info'),
+        URGENT: _('urgent'),
+        COMMUNICATED: _('communicated'),
+    }
 
     type_new = models.CharField(
-        max_length=2, choices=TYPE_NEWS_CHOICES, default=INFO)
+        max_length=2, choices=TYPE_NEWS_CHOICES.items(), default=INFO)
+    lang = models.ForeignKey(
+        Language, blank=True, null=True, verbose_name=_("Language"))
     title = models.CharField(max_length=100, verbose_name=_("Title"))
-    title_ar = models.CharField(max_length=100, verbose_name=_("Title arabic"))
     comment = models.TextField(blank=True, verbose_name=_("Texte"))
-    comment_ar = models.TextField(blank=True, verbose_name=_("Texte arabic"))
     author = models.ForeignKey(Member, verbose_name=_("Author"))
     date = models.DateTimeField(verbose_name=_("Dated the"),
                                 default=datetime.datetime.today)
@@ -197,12 +220,12 @@ models.signals.post_save.connect(post_to_twitter, sender=New)
 @implements_to_string
 class Newsletter(models.Model):
 
-    """ """
-
     class Meta:
         verbose_name = _('Newsletter')
         verbose_name_plural = _('Newsletters')
 
+    lang = models.ForeignKey(
+        Language, blank=True, null=True, verbose_name=_("Language"))
     date = models.DateTimeField(verbose_name=_("Registration date"),
                                 default=datetime.datetime.today)
     email = models.EmailField(
@@ -231,17 +254,15 @@ class Article(models.Model):
     slug = models.CharField(
         max_length=200, unique=True, blank=True, verbose_name=_("Slug"))
     title = models.CharField(max_length=200, verbose_name=_("Title"))
-    title_ar = models.CharField(max_length=200, verbose_name=_("Title arabic"))
     text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
-    text_ar = tinymce_models.HTMLField(
-        blank=True, verbose_name=_("Text arabic"))
     image = ResizedImageField(size=[1024, 500], upload_to='images_article/',
                               blank=True, verbose_name=_("Picture"))
-
     author = models.ForeignKey(Member, verbose_name=_("Author"))
     date_created = models.DateTimeField(verbose_name=_("Dated the"),
                                         default=datetime.datetime.today)
     date_modified = models.DateTimeField(auto_now=True)
+    lang = models.ForeignKey(
+        Language, blank=True, null=True, verbose_name=_("Language"))
     category = models.ForeignKey(Category, verbose_name=_("Category"))
     status = models.CharField(verbose_name=_("Status"), max_length=50,
                               choices=STATUS.items())
@@ -261,7 +282,16 @@ class Article(models.Model):
         if self._state.adding and self.status == self.POSTED:
             self.prefix_url_twtt = "art"
             self.twitte = True
-        self.slug = "-".join(re.findall("([a-zA-Z]+)", self.title.lower()))
+        print(self.lang.slug)
+        if self.lang.slug != "ar":
+            self.slug = u"-".join(
+                re.findall("([a-zA-Z]+)", self.title.lower()))
+        else:
+            print("AR")
+            # self.slug = u"-".join(
+            #     re.findall("([a-zA-Z]+)", self.title.lower()))
+            self.slug = self.title.lower().replace(" ", "-")
+        print("SLUG", self.slug)
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -278,6 +308,7 @@ class Article(models.Model):
 
     def get_twitter_message(self):
         return u"kibaru - {}".format(self.title)
+
 
 models.signals.post_save.connect(post_to_twitter, sender=Article)
 
@@ -306,7 +337,6 @@ class Video(models.Model):
     slug = models.CharField(
         max_length=200, unique=True, blank=True, verbose_name=_("Slug"))
     title = models.CharField(max_length=200, verbose_name=_("Title"))
-    title_ar = models.CharField(max_length=200, verbose_name=_("Title"))
     date_created = models.DateTimeField(verbose_name=_("Date created"),
                                         default=datetime.datetime.today)
 

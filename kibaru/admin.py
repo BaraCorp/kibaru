@@ -11,8 +11,10 @@ from django.db import models
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 
-from kibaru.models import Category, Member, New, Article, Newsletter, Publicity, Video
-from kibaru.forms import Articleform, Videoform, UserChangeForm, UserCreationForm
+from kibaru.models import (Language, Category, Member, New, Article,
+                           Newsletter, Publicity, Video)
+from kibaru.forms import (Articleform, Videoform, UserChangeForm,
+                          UserCreationForm)
 
 # unregister and register again
 # admin.site.unregister(Group)
@@ -27,14 +29,16 @@ class MemberAdmin(UserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name','date_of_birth', 'email',)}),
-        ('Permissions', {'fields': ('groups','is_admin')}),
+        ('Personal info', {
+         'fields': ('first_name', 'last_name', 'date_of_birth', 'email',)}),
+        ('Permissions', {'fields': ('groups', 'is_admin')}),
     )
     add_fieldsets = (
         (None, {'classes': ('wide', 'extrapretty'),
-                 'fields': ('username', 'password1', 'password2', )}),
-        ('Personal info', {'fields': ('first_name', 'last_name','date_of_birth', 'email')}),
-        ('Permissions', {'fields': ('groups','is_admin')}),
+                'fields': ('username', 'password1', 'password2', )}),
+        ('Personal info', {
+         'fields': ('first_name', 'last_name', 'date_of_birth', 'email')}),
+        ('Permissions', {'fields': ('groups', 'is_admin')}),
     )
     search_fields = ('email',)
     ordering = ('email',)
@@ -61,13 +65,19 @@ class PublicityAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(Language)
+class LanguageAdmin(admin.ModelAdmin):
+    pass
+
+
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'date_created', 'date_modified', 'status',
-        'category', 'count_view', 'image')
-    list_filter = ('date_created', 'status', 'author', 'category')
+                    'category', 'count_view', 'slug')
+    list_filter = ('lang', 'date_created', 'status', 'author', 'category')
     fieldsets = (
-        ('Article', {'fields': ('image', 'title', 'text', 'date_created', 'category')}),
+        ('Article', {
+         'fields': ('image', 'title', 'text',  'lang', 'date_created', 'category')}),
         ('Auteur', {'fields': ('author',)}),
         (None, {'fields': ('start', 'status')}),
     )
