@@ -15,14 +15,14 @@
 {% block content %}
     <article>
         <header>
-            <h2 class="new_post_title entry-title"> {% ifequal lang 'ar'  %} {{ new.title_ar }} {% else %} {{ new.title }} {% endifequal %} </h2>
+            <h2 class="new_post_title entry-title"> {{ new.title }}</h2>
         </header>
         <span class="meta">
             <time style="clear: both; float: right;">
              Publié {{ new.date|date:"l d F Y" }} </time>
             <abbr>By <u><a href="#">kibaru</a></u></abbr>
         </span>
-        <p class="post-body" dir="ltr" trbidi="on"> <html>{% ifequal lang 'ar'  %} {{ new.comment_ar }} {% else %} {{ new.comment }} {% endifequal %}</html></p>
+        <p class="post-body" dir="ltr" trbidi="on"> <html>{{ new.comment }}</html></p>
     </article>
     {% include "_chare.html" with object=new %}
 {% endblock %}

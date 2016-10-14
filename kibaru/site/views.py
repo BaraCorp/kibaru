@@ -18,7 +18,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
 
-from kibaru.models import Article, Publicity, Category, New, Video
+from kibaru.models import Article, Publicity, Category, New, Video, Language
 from kibaru.forms import Newsletterform
 from django.conf import settings
 from kibaru.site.search import get_query
@@ -76,8 +76,10 @@ def month_view(request, year, month):
 #     return render(request, 'site/search_results.html', context)
 
 
-def init(month=None, year=None, cat_slug=None):
-    posts = Article.objects.filter(status=Article.POSTED)
+def init(lang='fr', month=None, year=None, cat_slug=None):
+    current_lang = Language.objects.get(slug=lang)
+    posts = Article.objects.filter(
+        lang=current_lang, status=Article.POSTED)
     archive_data = create_archive_data(posts)
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
@@ -95,7 +97,7 @@ def init(month=None, year=None, cat_slug=None):
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
 
-    news = New.objects.all()
+    news = New.objects.filter(lang=current_lang,)
     # start_dat = datetime(NOW.year, NOW.month, NOW.day)
     # end_dat = start_dat + timedelta(days=1)
     # news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
@@ -166,7 +168,7 @@ def create_archive_data(posts):
 def search(request):
     query_string = ''
     found_article = None
-    posts, context = init()
+    posts, context = init(lang=request.LANGUAGE_CODE)
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
         article_query = get_query(query_string, ['title', 'text', ])
@@ -186,7 +188,7 @@ def home(request, *args, **kwargs):
         slug = Category.objects.get(slug=cat_slug).slug
     except Category.DoesNotExist:
         slug = None
-    posts, context = init(cat_slug=slug)
+    posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=slug)
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
 
