@@ -1,14 +1,15 @@
 
 <div id="sticky" class="new-O-size">
     <ul>
-        <marquee height="20" scrolldelay="220" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+        <marquee height="20" scrolldelay="220" behavior="scroll" direction={% ifequal lang 'ar'  %} right {% else % }"left" {% endifequal %}
+        onmouseover="this.stop();" onmouseout="this.start();">
             {% for new in flash_news %}
                 <li data-toggle="{{new.date}}" title="{{new.date}}">
                     <i {% if new.type_new == 'U' %} class="glyphicon glyphicon-fire" style="color: red;" {% elif new.type_new == 'C'%}
                          class="glyphicon glyphicon-alert" style="color: #2A5DBB;" {% else %}
                          class="glyphicon glyphicon-info-sign " style="color: green;"{% endif%}>
                     </i>
-                    <span class="new-text"><a href="{{new.url_display}}" > {% ifequal lang 'ar'  %} {{ new.title_ar }} {% else %} {{ new.title }} {% endifequal %} </a> </span>
+                    <span class="new-text"><a href="{{new.url_display}}" > {{ new.title }}</a> </span>
                 </li>
             {% endfor %}
         </marquee>

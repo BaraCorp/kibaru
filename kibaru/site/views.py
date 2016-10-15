@@ -255,8 +255,9 @@ def get_paginator_context(obj_pagina, page, range_gap=3):
 
 def display_article(request, *args, **kwargs):
 
-    posts, context = init()
+    posts, context = init(lang=request.LANGUAGE_CODE)
     article_slug = kwargs["slug"]
+
     try:
         if len(article_slug) < 9:
             article = posts.get(id=short_url.decode_url(article_slug))

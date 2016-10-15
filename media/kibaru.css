@@ -15,11 +15,6 @@
     margin-right: 6em;
 }
 .logo {
-    width: 100%;
-    left: auto;
-    right: auto;
-    padding-top: 4em;
-    display:inline-block;
 }
 /* index site */
 .art-vt .thumbnail{
@@ -28,6 +23,7 @@
     padding: 0;
     margin-bottom:0;
     max-height: 16em;
+    min-height: 16em;
 }
 
 .el-title{
