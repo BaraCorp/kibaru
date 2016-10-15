@@ -257,6 +257,8 @@ class Article(models.Model):
     text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
     image = ResizedImageField(size=[1024, 500], upload_to='images_article/',
                               blank=True, verbose_name=_("Picture"))
+    legend = models.TextField(
+        max_length=200, verbose_name=_("legend"), blank=True)
     author = models.ForeignKey(Member, verbose_name=_("Author"))
     date_created = models.DateTimeField(verbose_name=_("Dated the"),
                                         default=datetime.datetime.today)

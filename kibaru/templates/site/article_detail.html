@@ -15,19 +15,22 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content %}
-    <article>
+    <article >
         <header>
-            <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
+            <h3 class="article_post_title entry-title"> {{ article.title }} </h3>
         </header>
         {% if article.image %}
-            <div class="img-d thumbnail">
-                <a href="{{ article.image.url }}">
-                <img src= {% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} border="1"></a>
-            </div>
+            <figure>
+                <a href="{{ article.image.url }}"><img class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %}></a>
+
+            </figure>
+
+                {% if article.legend %}
+                    <figcaption class="article-caption"><h6 class="article-title"><a href="">{{article.legend}}</a></h6></figcaption>
+                {% endif %}
         {% endif %}
         <span class="meta">
-            <time style="float: right;"> {% trans "Published" %} {{ article.date_created|date:"l d F Y" }} </time>
-            <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u></abbr>
+            <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u> {% trans "Published" %} {{ article.date_created|date:"l d F Y" }}</abbr>
         </span>
         <div class="post-body">
             <p><html>{{article.text|safe}}</html></p>
@@ -37,7 +40,7 @@
 {% endblock %}
 
 {% block footer %}
-    {% include "site/_footer.html" %}
+    <!-- {% include "site/_footer.html" %} -->
 {% endblock %}
 {% block facebook %}
     <div class="list-group">

@@ -77,7 +77,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ('lang', 'date_created', 'status', 'author', 'category')
     fieldsets = (
         ('Article', {
-         'fields': ('image', 'title', 'text',  'lang', 'date_created', 'category')}),
+         'fields': ('image', 'legend', 'title', 'text',  'lang', 'date_created', 'category')}),
         ('Auteur', {'fields': ('author',)}),
         (None, {'fields': ('start', 'status')}),
     )
