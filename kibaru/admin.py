@@ -11,9 +11,9 @@ from django.db import models
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 
-from kibaru.models import (Language, Category, Member, New, Article,
+from kibaru.models import (Language, Category, Member, New, Article, Directory,
                            Newsletter, Publicity, Video)
-from kibaru.forms import (Articleform, Videoform, UserChangeForm,
+from kibaru.forms import (Articleform, Videoform, UserChangeForm, DirectoryFrom,
                           UserCreationForm)
 
 # unregister and register again
@@ -72,8 +72,8 @@ class LanguageAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'date_created', 'date_modified', 'status',
-                    'category', 'count_view', 'slug')
+    list_display = ('title', 'lang', 'date_created', 'date_modified', 'status',
+                    'category', 'count_view', 'author', 'slug')
     list_filter = ('lang', 'date_created', 'status', 'author', 'category')
     fieldsets = (
         ('Article', {
@@ -88,3 +88,8 @@ class ArticleAdmin(admin.ModelAdmin):
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     form = Videoform
+
+
+@admin.register(Directory)
+class DirectoryAdmin(admin.ModelAdmin):
+    form = DirectoryFrom

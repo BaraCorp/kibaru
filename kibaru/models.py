@@ -29,6 +29,25 @@ from kibaru.tools import post_to_twitter
 
 
 @implements_to_string
+class Directory(models.Model):
+
+    """ Annuaire des sites du Mali"""
+    class Meta:
+        verbose_name = _('Directory')
+        verbose_name_plural = _('Directories')
+
+    name = models.SlugField(_("Name"), max_length=75, primary_key=True)
+    domaine = models.CharField(_("domaine"), max_length=150)
+    logo = models.CharField(_("Logo"), max_length=150)
+    description = models.TextField(_("Description"), max_length=150)
+    date_created = models.DateTimeField(verbose_name=_("Dated the"),
+                                        default=timezone.now)
+
+    def __str__(self):
+        return "{name}/{date_created}".format(name=self.name, date_created=self.date_created)
+
+
+@implements_to_string
 class Category(models.Model):
 
     """ """
@@ -80,15 +99,15 @@ class MemberManager(BaseUserManager):
 class Language(models.Model):
 
     FR = "fr"
-    EN = "en"
+    # EN = "en"
     AR = "ar"
     LANGUAGES_CHOICES = {
         FR: _('French'),
-        EN: _('English'),
+        # EN: _('English'),
         AR: _('Arabic'),
     }
 
-    slug = models.CharField(
+    slug = models.SlugField(
         max_length=50, verbose_name=_("Slug"), choices=LANGUAGES_CHOICES.items())
     name = models.CharField(max_length=100, blank=True, null=True,
                             verbose_name=_("Name"))
@@ -257,7 +276,7 @@ class Article(models.Model):
     text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
     image = ResizedImageField(size=[1024, 500], upload_to='images_article/',
                               blank=True, verbose_name=_("Picture"))
-    legend = models.TextField(
+    legend = models.CharField(
         max_length=200, verbose_name=_("legend"), blank=True)
     author = models.ForeignKey(Member, verbose_name=_("Author"))
     date_created = models.DateTimeField(verbose_name=_("Dated the"),
@@ -284,16 +303,11 @@ class Article(models.Model):
         if self._state.adding and self.status == self.POSTED:
             self.prefix_url_twtt = "art"
             self.twitte = True
-        print(self.lang.slug)
         if self.lang.slug != "ar":
             self.slug = u"-".join(
                 re.findall("([a-zA-Z]+)", self.title.lower()))
         else:
-            print("AR")
-            # self.slug = u"-".join(
-            #     re.findall("([a-zA-Z]+)", self.title.lower()))
             self.slug = self.title.lower().replace(" ", "-")
-        print("SLUG", self.slug)
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):

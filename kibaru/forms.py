@@ -6,8 +6,9 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
 from django import forms
-from kibaru.models import Article, Member, New, Newsletter, Video
+from kibaru.models import Article, Member, New, Newsletter, Video, Directory
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+
 
 class Articleform(forms.ModelForm):
 
@@ -31,6 +32,13 @@ class Newsletterform(forms.ModelForm):
         exclude = ['date']
 
 
+class DirectoryFrom(forms.ModelForm):
+
+    class Meta:
+        model = Directory
+        exclude = ['date']
+
+
 class Videoform(forms.ModelForm):
 
     class Meta:
@@ -39,10 +47,12 @@ class Videoform(forms.ModelForm):
 
 
 class UserCreationForm(forms.ModelForm):
+
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
         model = Member
@@ -64,6 +74,7 @@ class UserCreationForm(forms.ModelForm):
 
 
 class UserChangeForm(forms.ModelForm):
+
     """A form for updating users. Includes all the fields on
     the user, but replaces the password field with admin's
     password hash display field.
@@ -72,8 +83,8 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = Member
-        fields = ('email', 'password', 'date_of_birth', 'is_active', 'is_admin')
+        fields = (
+            'email', 'password', 'date_of_birth', 'is_active', 'is_admin')
 
     def clean_password(self):
         return self.initial["password"]
-

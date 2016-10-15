@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n imagefit %}
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block page-id %} {{ article.id }}{% endblock %}
+
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+{% block content %}
+
+    {% for directory in directories %}
+        <div class="row panel panel-default">
+           <span class="badge badge-success date" style="clear: both; float: right;">07/08/2015</span>
+           <span><u>{{ directory.name }}</u></span>
+            <a href="{{directory.domaine}}">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                  <img class="media-object thumbnail" src={{directory.logo}}>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 ">
+                    <h3>{{directory.name}}</h3>
+                    <div class="detail">{{directory.description}}
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -159,7 +159,7 @@ from django.utils.translation import gettext_lazy as _
 
 LANGUAGES = (
     ('fr', _('French')),
-    ('en', _('English')),
+    # ('en', _('English')),
     ('ar', _('Arabic')),
 )
 
@@ -204,6 +204,10 @@ TEL1 = ""
 TEL2 = ""
 ADDRESS = ""
 BP = ""
+
+FIXTURE_DIRS = (
+    os.path.join(ROOT_DIR, 'fixtures'),
+)
 
 IMAGEFIT_PRESETS = {
     'img_start': {'width': 600, 'height': 200, 'crop': True},

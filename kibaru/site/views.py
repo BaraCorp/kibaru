@@ -18,7 +18,8 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
 
-from kibaru.models import Article, Publicity, Category, New, Video, Language
+from kibaru.models import (Article, Publicity, Category, New, Video, Language,
+                           Directory)
 from kibaru.forms import Newsletterform
 from django.conf import settings
 from kibaru.site.search import get_query
@@ -297,3 +298,11 @@ def display_videos(request, *args, **kwargs):
 
     context.update({'posts': posts, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/videos.html', context)
+
+
+def directory(request, *args, **kwargs):
+    posts, context = init()
+    directories = Directory.objects.all()
+    context.update(
+        {'directories': directories, 'posts': posts, "lang": request.LANGUAGE_CODE})
+    return render(request, 'site/directory.html', context)
