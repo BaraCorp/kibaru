@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-16 22:13+0000\n"
+"POT-Creation-Date: 2016-10-17 22:08+0000\n"
 "PO-Revision-Date: 2016-10-16 22:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -646,6 +646,14 @@ msgstr "Merci de vous identifier"
 msgid "Log in"
 msgstr "Se connecter"
 
+#: kibaru/templates/site/_banner.html:8
+msgid "alghad"
+msgstr ""
+
+#: kibaru/templates/site/_banner.html:9
+msgid "first Arab website Mali"
+msgstr ""
+
 #: kibaru/templates/site/_footer.html:6
 msgid "Contact Us"
 msgstr "Contacts"
@@ -657,6 +665,10 @@ msgstr "Nous suivre"
 #: kibaru/templates/site/_footer.html:38
 msgid "send"
 msgstr "envoyer"
+
+#: kibaru/templates/site/_footer.html:56
+msgid "slogan"
+msgstr ""
 
 #: kibaru/templates/site/article_detail.html:33
 msgid "By"

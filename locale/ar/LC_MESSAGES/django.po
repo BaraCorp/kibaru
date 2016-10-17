@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-16 22:13+0000\n"
-"PO-Revision-Date: 2016-10-16 22:15+0000\n"
+"POT-Creation-Date: 2016-10-17 22:08+0000\n"
+"PO-Revision-Date: 2016-10-17 22:10+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -196,7 +196,7 @@ msgstr "ترسل"
 
 #: kibaru/models.py:209 kibaru/models.py:247 kibaru/models.py:286
 msgid "Language"
-msgstr ""
+msgstr "اللغة"
 
 #: kibaru/models.py:210 kibaru/models.py:275 kibaru/models.py:355
 #: kibaru/templates/administration/index.html:36
@@ -642,6 +642,14 @@ msgstr "شكرا لك للتعرف عليك"
 msgid "Log in"
 msgstr "چـونەژوورەوە"
 
+#: kibaru/templates/site/_banner.html:8
+msgid "alghad"
+msgstr "الغد"
+
+#: kibaru/templates/site/_banner.html:9
+msgid "first Arab website Mali"
+msgstr "أول  صحيفة عربية مالية"
+
 #: kibaru/templates/site/_footer.html:6
 msgid "Contact Us"
 msgstr "تواصل معنا"
@@ -653,6 +661,10 @@ msgstr "تابعنا"
 #: kibaru/templates/site/_footer.html:38
 msgid "send"
 msgstr "إرسال"
+
+#: kibaru/templates/site/_footer.html:56
+msgid "slogan"
+msgstr "وماالخبر رائه لتفهم الحدث"
 
 #: kibaru/templates/site/article_detail.html:33
 msgid "By"
