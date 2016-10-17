@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 22:08+0000\n"
-"PO-Revision-Date: 2016-10-17 22:10+0000\n"
+"PO-Revision-Date: 2016-10-17 22:56+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -390,7 +390,7 @@ msgstr "إقتصاد"
 
 #: kibaru/templates/_menu.html:21
 msgid "Nationale"
-msgstr "الوطنية"
+msgstr "محلية أخبار"
 
 #: kibaru/templates/_menu.html:22
 msgid "Regionale"
@@ -442,7 +442,7 @@ msgstr "رياضة"
 
 #: kibaru/templates/_menu.html:42
 msgid "Culture"
-msgstr "الثقافة"
+msgstr "وفنون ثقافة"
 
 #: kibaru/templates/_menu.html:43
 msgid "NTIC"
@@ -450,7 +450,7 @@ msgstr "تجهيزات"
 
 #: kibaru/templates/_menu.html:44
 msgid "Reportage"
-msgstr "تقرير"
+msgstr "تحقيقات و حوارات\r"
 
 #: kibaru/templates/_menu.html:47
 msgid "Environment"
@@ -664,7 +664,7 @@ msgstr "إرسال"
 
 #: kibaru/templates/site/_footer.html:56
 msgid "slogan"
-msgstr "وماالخبر رائه لتفهم الحدث"
+msgstr "الخبر وما رائه لتفهم الحدث"
 
 #: kibaru/templates/site/article_detail.html:33
 msgid "By"
