@@ -1,6 +1,6 @@
 
     .navbar-collapse {
-        position: relative;
+        /*position: relative;*/
         padding-top: 30px !important;
         max-height: 270px;
     }
