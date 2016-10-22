@@ -16,7 +16,7 @@ from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 
-from kibaru.forms import Articleform, Newform, Videoform
+from kibaru.forms import Articleform, Newform, Videoform, DirectoryFrom
 from kibaru.models import Article, Member, Category, New, Video
 
 
@@ -131,6 +131,25 @@ def del_article(request, *args, **kwargs):
     messages.warning(request,
                      u"L'article sur {} a été supprimé.".format(selected.title))
     return redirect('/admin/')
+
+
+@login_required
+def add_website(request):
+    c = {'settings': settings, 'page_title': _("Adding new website")}
+    print("add website")
+    if request.method == 'POST':
+        print("Methode is POST")
+        form = DirectoryFrom(request.POST)
+        if form.is_valid():
+            print("form isvalid")
+            form.save()
+            messages.success(
+                request, u"Le site ({}) a été ajoutée".format(form.cleaned_data.get('domaine')))
+            return HttpResponseRedirect('/admin/')
+    else:
+        form = DirectoryFrom()
+    c.update({'form': form})
+    return render(request, 'administration/add_website.html', c)
 
 
 @login_required

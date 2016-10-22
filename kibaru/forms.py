@@ -36,7 +36,7 @@ class DirectoryFrom(forms.ModelForm):
 
     class Meta:
         model = Directory
-        exclude = ['date']
+        exclude = ['date_created']
 
 
 class Videoform(forms.ModelForm):

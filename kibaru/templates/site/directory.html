@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load i18n imagefit %}
 
-{% block title %} {{ article.title }} {% endblock %}
+{% block title %} Presse Malienne {% endblock %}
 
-{% block page-id %} {{ article.id }}{% endblock %}
+{% block page-id %} {% endblock %}
 
 {% block banner %}
     <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
@@ -15,22 +15,18 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content %}
-
+    <h1 class="new_post_title entry-title">La presse malienne en ligne</h1>
     {% for directory in directories %}
-        <div class="row panel panel-default">
-           <span class="badge badge-success date" style="clear: both; float: right;">07/08/2015</span>
-           <span><u>{{ directory.name }}</u></span>
+    <blockquote>
+           <span class="badge badge-success date" style="clear: both; float: right;">{{directory.category}}</span>
             <a href="{{directory.domaine}}">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                   <img class="media-object thumbnail" src={{directory.logo}}>
                 </div>
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 ">
-                    <h3>{{directory.name}}</h3>
-                    <div class="detail">{{directory.description}}
-                    </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                    <footer>{{directory.description}}</footer>
                 </div>
-            </a>
-        </div>
+            </a></blockquote>
     {% endfor %}
 
 {% endblock %}

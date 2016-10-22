@@ -36,15 +36,31 @@ class Directory(models.Model):
         verbose_name = _('Directory')
         verbose_name_plural = _('Directories')
 
-    name = models.SlugField(_("Name"), max_length=75, primary_key=True)
-    domaine = models.CharField(_("domaine"), max_length=150)
-    logo = models.CharField(_("Logo"), max_length=150)
-    description = models.TextField(_("Description"), max_length=150)
+    INFO = "I"
+    MUSIC = "M"
+    SPORT = "C"
+
+    TYPE_SITE_CHOICES = {
+        INFO: _('info'),
+        MUSIC: _('Music'),
+        SPORT: _('Sport'),
+    }
+
+    name = models.CharField(
+        verbose_name=_("Name"), max_length=75, primary_key=True)
+    category = models.CharField(
+        max_length=2, choices=TYPE_SITE_CHOICES.items(), default=INFO)
+    domaine = models.CharField(
+        verbose_name=_("adress of site"), max_length=150)
+    logo = models.CharField(verbose_name=_("Logo"), max_length=150)
+    description = models.TextField(
+        _("Description"), max_length=150, blank=True)
     date_created = models.DateTimeField(verbose_name=_("Dated the"),
                                         default=timezone.now)
 
     def __str__(self):
-        return "{name}/{date_created}".format(name=self.name, date_created=self.date_created)
+        return "{name}/{date_created}".format(name=self.name,
+                                              date_created=self.date_created)
 
 
 @implements_to_string
@@ -340,7 +356,7 @@ class Publicity(models.Model):
                               verbose_name=_("Picture"))
 
     def __str__(self):
-        return self.image.__str__()
+        return self.image
 
 
 class Video(models.Model):

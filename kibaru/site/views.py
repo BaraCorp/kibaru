@@ -304,5 +304,5 @@ def directory(request, *args, **kwargs):
     posts, context = init()
     directories = Directory.objects.all()
     context.update(
-        {'directories': directories, 'posts': posts, "lang": request.LANGUAGE_CODE})
+        {'subtitle': 'Presse Malienne', 'directories': directories, 'posts': posts, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/directory.html', context)
