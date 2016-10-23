@@ -2,15 +2,24 @@
 # encoding=utf-8
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
-import os
-import oauth2
-# import twitter
-import urllib
-import urllib2
+from __future__ import (
+    unicode_literals, absolute_import, division, print_function)
 
+import os
+
+from TwitterAPI import TwitterAPI
 from django.conf import settings
+
+TWITTER_MAXLENGTH = getattr(settings, 'TWITTER_MAXLENGTH', 140)
+
+
+def get_body_twitte(body):
+    text, url = body
+    msg = join_(text, url)
+    if len(msg) > TWITTER_MAXLENGTH:
+        size = len(msg.decode('utf-8') + '...') - TWITTER_MAXLENGTH
+        msg = join_(text[:-size], url)
+    return msg
 
 
 def post_to_twitter(sender, instance, *args, **kwargs):
@@ -18,73 +27,31 @@ def post_to_twitter(sender, instance, *args, **kwargs):
     Post new saved objects to Twitter.
     """
 
-    TWITTER_MAXLENGTH = getattr(settings, 'TWITTER_MAXLENGTH', 140)
+    if instance._state.adding and instance.status == instance.POSTED:
+        print("Not Twitte ", instance.twitte)
+        return
+    if settings.DEBUG == True:
+        return
+
+    data = {"status": str(get_body_twitte(instance.get_twitter_message()))}
+    media = {}
+
+    tw_url = 'statuses/update'
+    image = instance.image
+    if image:
+        file = open(os.path.join(settings.MEDIA_ROOT, image.name), 'rb')
+        media.update({'media[]': file.read()})
+        tw_url = 'statuses/update_with_media'
 
     consumer_key = settings.TWITTER_CONSUMER_KEY
     consumer_secret = settings.TWITTER_CONSUMER_SECRET
     access_token_key = settings.TWITTER_ACCESS_TOKEN_KEY
     access_token_secret = settings.TWITTER_ACCESS_TOKEN_SECRET
-    domain = settings.DOMMAIN
-    http_headers = None
 
-    if not instance.twitte:
-        print("Not Twitte ", instance.twitte)
-        return
-    # url = instance.get_absolute_url()
-    url = instance.get_short_id
-    prefix_url_twtt = instance.prefix_url_twtt
-    if not url.startswith('http://') and not url.startswith('https://'):
-        url = u'%s/%s/%s' % (domain, prefix_url_twtt, url)
-    print(url)
-    # TODO
-    # tinyurl'ze the object's link
-    # create_api = 'http://tinyurl.com/api-create.php'
-    # data = urllib.urlencode(dict(url=url))
-    # link = urllib2.urlopen(create_api, data=data).read().strip()
-    link = url
-    try:
-        text = instance.get_twitter_message()
-    except AttributeError:
-        text = unicode(instance)
-    # instance.delete()
-
-    mesg =  join_(text, link)
-    if len(mesg) > TWITTER_MAXLENGTH:
-        size = len(mesg + '...') - TWITTER_MAXLENGTH
-        mesg = join_(text[:-size], link)
-    try:
-        # Autant twitter
-        consumer = oauth2.Consumer(key=consumer_key, secret=consumer_secret)
-        token = oauth2.Token(key=access_token_key, secret=access_token_secret)
-        client = oauth2.Client(consumer, token)
-        # file = open(instance.image, 'rb')
-        try:
-            image = instance.image
-        except Exception as e:
-            print (e)
-            image = "logo.png"
-        # print(settings.MEDIA_ROOT, image)
-        url_img = "{}/{}".format(settings.MEDIA_ROOT, image)
-        # print("url_img: ", url_img)
-        # data = file.read()
-        # url_twitter = 'https://api.twitter.com/1.1/statuses/update_with_media.json?'
-        url_twitter = 'https://api.twitter.com/1.1/statuses/update.json?'
-        body = urllib.urlencode({"status": str(mesg),
-                                 "wrap_links": True,
-                                 'media': ["{img}".format(img=url_img)],})
-
-        print(body)
-        # if not settings.DEBUG:
-        if not settings.DEBUG:
-            resp, content = client.request(
-                url_twitter, method="POST", body=body, headers=http_headers)
-            print("{} Send twitter".format(resp))
-        else:
-            print("Not POST on Twitter")
-    except oauth2.Error as err:
-        print("Twitter Error:" + err)
-    except Exception as e:
-        print(e)
+    api = TwitterAPI(
+        consumer_key, consumer_secret, access_token_key, access_token_secret)
+    r = api.request(tw_url, data, media)
+    # print(r.status_code)
 
 
 def join_(a, b):

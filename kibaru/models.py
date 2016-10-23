@@ -9,6 +9,7 @@ from django_resized import ResizedImageField
 
 import datetime
 import re
+import os
 import short_url
 # from django.core.urlresolvers import reverse
 
@@ -239,15 +240,16 @@ class New(models.Model):
         # return short_url.encode_url(self.id)
         return "{}".format(self.id)
 
+    @property
+    def image(self):
+        return None
+
     def save(self, *args, **kwargs):
-        self.twitte = False
-        if self._state.adding:
-            self.prefix_url_twtt = "new"
-            self.twitte = True
         super(New, self).save(*args, **kwargs)
 
     def get_twitter_message(self):
-        return u"{} - {}".format(self.type_new, self.title)
+        news_url = os.path.join(settings.DOMMAIN, "new", self.get_short_id)
+        return u"{} - {}".format(self.type_new, self.title), news_url
 
 models.signals.post_save.connect(post_to_twitter, sender=New)
 
@@ -315,10 +317,6 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
-        self.twitte = False
-        if self._state.adding and self.status == self.POSTED:
-            self.prefix_url_twtt = "art"
-            self.twitte = True
         if self.lang.slug != "ar":
             self.slug = u"-".join(
                 re.findall("([a-zA-Z]+)", self.title.lower()))
@@ -339,7 +337,8 @@ class Article(models.Model):
         return self.slug
 
     def get_twitter_message(self):
-        return u"kibaru - {}".format(self.title)
+        article_url = os.path.join(settings.DOMMAIN, "art", self.get_short_id)
+        return u"{} - {}".format(self.category.name, self.title), article_url
 
 
 models.signals.post_save.connect(post_to_twitter, sender=Article)
