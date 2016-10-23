@@ -10,8 +10,7 @@ from kibaru.site import views
 
 urlpatterns = patterns('',
                        url(r'^(?P<slug>[-\w\d]*)$', views.home, name='home'),
-                       url(r'^directory(?P<slug>[-\w\d]*)/$',
-                           views.directory, name='directory'),
+                       url(r'^directory/$', views.directory, name='directory'),
                        url(r'^art/(?P<slug>[-\w\d]*)$',
                            views.display_article, name='art'),
                        url(r'^new/(?P<id>[-\w\d]*)$',

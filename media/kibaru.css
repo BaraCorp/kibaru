@@ -18,6 +18,13 @@
     width: 22em;
 }
 /* index site */
+.website {
+    color: white;
+    background-color: wheat;
+    font-size: 2em;
+    margin: 15px;
+    text-align: center;
+}
 .art-vt .thumbnail{
     border:none;
     border-radius:0;

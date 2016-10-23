@@ -5,7 +5,7 @@
                 <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12">
                     <h3> {% trans "Contact Us" %} </h3>
                     <ul>
-                        <li> <a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaru"><i class="fa fa-envelope-o fa-fw"></i>kibaruuml@gmail.com</a> </li>
+                        <li> <address><a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaru"><i class="fa fa-envelope-o fa-fw"></i>kibaruuml@gmail.com</a> </address></li>
                     </ul>
                 </div>
                 <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12">
@@ -53,7 +53,7 @@
     <div class="footer-bottom">
         <div class="container">
             <p class="pull-left">Copyright &copy; {{ settings.APP_NAME }} 2015. All right reserved. </p>
-            <p class="pull-right" style="margin-right: 2em; color: seagreen; font-size: 2em;">{% trans "slogan" %}</p>
+            <p class="pull-right" style="margin-right: 2em; color: seagreen; font-size: 2em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</p>
         </div>
     </div>
 </footer>
