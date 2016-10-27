@@ -23,16 +23,17 @@ class Command(BaseCommand):
 
         art = Article.objects.all()[0]
         data = {'status': art.text}
+        media = {}
         image = art.image
         if image:
             url_img = os.path.join(settings.MEDIA_ROOT, image.name)
             print(url_img)
             file = open(url_img, 'rb')
-            data.update({'media[]': file.read()})
-        print(data)
-        self.twitter(data)
+            media.update({'media[]': file.read()})
+        # print(data)
+        self.twitter(data, media)
 
-    def twitter(self, data):
+    def twitter(self, data, media):
         consumer_key = settings.TWITTER_CONSUMER_KEY
         consumer_secret = settings.TWITTER_CONSUMER_SECRET
         access_token_key = settings.TWITTER_ACCESS_TOKEN_KEY
@@ -42,5 +43,5 @@ class Command(BaseCommand):
         api = TwitterAPI(
             consumer_key, consumer_secret, access_token_key, access_token_secret)
         r = api.request(
-            'statuses/update_with_media', data)
+            'statuses/update_with_media', data, media)
         # print(r.status_code)
