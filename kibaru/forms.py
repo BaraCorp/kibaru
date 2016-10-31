@@ -37,6 +37,14 @@ class DirectoryFrom(forms.ModelForm):
     class Meta:
         model = Directory
         exclude = ['date_created']
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Nom du site'}),
+            'category': forms.TextInput(attrs={'placeholder': "Site d'info."}),
+            'domaine': forms.TextInput(attrs={'placeholder': 'https://kibaru.ml'}),
+            'logo': forms.TextInput(attrs={'placeholder': 'Exp: https://kibaru.ml/static/logo.svg'}),
+            'description': forms.Textarea(
+                attrs={'placeholder': 'Enter description here'}),
+        }
 
 
 class Videoform(forms.ModelForm):
@@ -44,6 +52,10 @@ class Videoform(forms.ModelForm):
     class Meta:
         model = Video
         exclude = ['date_created']
+        widgets = {
+            'slug': forms.TextInput(attrs={'placeholder': 'Exp: 6reLVhqXxy8'}),
+            'title': forms.TextInput(attrs={'placeholder': 'Info. '}),
+        }
 
 
 class UserCreationForm(forms.ModelForm):

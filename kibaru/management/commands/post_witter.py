@@ -31,7 +31,7 @@ class Command(BaseCommand):
             file = open(url_img, 'rb')
             media.update({'media[]': file.read()})
         # print(data)
-        self.twitter(data, media)
+        # self.twitter(data, media)
 
     def twitter(self, data, media):
         consumer_key = settings.TWITTER_CONSUMER_KEY
@@ -40,8 +40,8 @@ class Command(BaseCommand):
         access_token_secret = settings.TWITTER_ACCESS_TOKEN_SECRET
         domain = settings.DOMMAIN
 
-        api = TwitterAPI(
-            consumer_key, consumer_secret, access_token_key, access_token_secret)
+        api = TwitterAPI(consumer_key, consumer_secret, access_token_key,
+                         access_token_secret)
         r = api.request(
             'statuses/update_with_media', data, media)
         # print(r.status_code)
