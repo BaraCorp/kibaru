@@ -31,4 +31,9 @@
         {{form.date|add_class:"form-control"}} {{form.date.errors}}
       </div>
     </div>
+    <div class="form-group">
+      <label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label" for="message">{{form.twitte.label}}</label>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">{{form.twitte|add_class:"form-control"}}</div>
+       <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">{{form.twitte.errors}}</div>
+    </div>
 {% endblock %}

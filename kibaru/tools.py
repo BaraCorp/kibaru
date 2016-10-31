@@ -29,8 +29,9 @@ def post_to_twitter(sender, instance, *args, **kwargs):
 
     # if settings.DEBUG == True:
     #     return
-    if not instance._state.adding and instance.status == instance.DRAFT:
-        print("Not Twitte ")
+    # print("Status", instance._state.adding)
+    if instance.twitter == False:
+        # print("Not Twitte ")
         return
 
     data = {"status": str(get_body_twitte(instance.get_twitter_message()))}

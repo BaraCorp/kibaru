@@ -49,8 +49,9 @@ class Directory(models.Model):
 
     name = models.CharField(
         verbose_name=_("Name"), max_length=75, primary_key=True)
-    category = models.CharField(
-        max_length=2, choices=TYPE_SITE_CHOICES.items(), default=INFO)
+    category = models.CharField(verbose_name=_("Categorie"),
+                                max_length=2, choices=TYPE_SITE_CHOICES.items(),
+                                default=INFO)
     domaine = models.CharField(
         verbose_name=_("adress of site"), max_length=150)
     logo = models.CharField(verbose_name=_("Logo"), max_length=150)
@@ -231,6 +232,7 @@ class New(models.Model):
                                 default=datetime.datetime.today)
     count_view = models.IntegerField(default=0, blank=True, null=True)
     count_like = models.IntegerField(default=0, blank=True, null=True)
+    twitte = models.BooleanField(default=True, blank=True)
 
     def __str__(self):
         return "{title} {date}".format(title=self.title, date=self.date)
@@ -244,7 +246,14 @@ class New(models.Model):
     def image(self):
         return None
 
+    def is_twitte(self):
+        if self.twitte == False:
+            return False
+        self.twitte = False
+        return True
+
     def save(self, *args, **kwargs):
+        self.twitter = self.is_twitte()
         super(New, self).save(*args, **kwargs)
 
     def get_twitter_message(self):
@@ -308,6 +317,7 @@ class Article(models.Model):
     start = models.BooleanField(verbose_name=_("Start"), default=False)
     count_view = models.IntegerField(default=0)
     count_like = models.IntegerField(default=0)
+    twitte = models.BooleanField(default=True, blank=True)
 
     @property
     def get_short_id(self):
@@ -322,10 +332,20 @@ class Article(models.Model):
                 re.findall("([a-zA-Z]+)", self.title.lower()))
         else:
             self.slug = self.title.lower().replace(" ", "-")
+        self.twitter = self.is_twitte()
+
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
         return "{title} {status}".format(title=self.title, status=self.status)
+
+    def is_twitte(self):
+        if self.status == self.DRAFT:
+            return False
+        if self.twitte == False:
+            return False
+        self.twitte = False
+        return True
 
     def title_status(self):
         return self.STATUS.get(self.status)

@@ -72,12 +72,12 @@ class LanguageAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang', 'date_created', 'date_modified', 'status',
+    list_display = ('title', 'lang', 'date_created', 'twitte', 'date_modified', 'status',
                     'category', 'count_view', 'author', 'slug')
     list_filter = ('lang', 'date_created', 'status', 'author', 'category')
     fieldsets = (
         ('Article', {
-         'fields': ('image', 'legend', 'title', 'text',  'lang', 'date_created', 'category')}),
+         'fields': ('image', 'twitte', 'legend', 'title', 'text',  'lang', 'date_created', 'category')}),
         ('Auteur', {'fields': ('author',)}),
         (None, {'fields': ('start', 'status')}),
     )

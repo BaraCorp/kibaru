@@ -22,11 +22,28 @@ SECRET_KEY = '3(p&^=gsgxk84xf8s4-rqpob41t7rrwp(tqm_enwxr2ov^!bf='
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+LOGGING_CONFIG = None
 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/mylog.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+        'request_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/django_request.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
         'null': {
             'level': 'DEBUG',
             'class': 'logging.NullHandler',
@@ -78,7 +95,6 @@ LOGGING = {
         }
     }
 }
-
 # Application definition
 
 INSTALLED_APPS = (
