@@ -4,7 +4,7 @@
 
 
 from django.core.management.base import BaseCommand
-from kibaru.models import Article, Language
+from kibaru.models import Article, New
 
 
 class Command(BaseCommand):
@@ -15,13 +15,21 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-        Language.objects.get_or_create(slug=Language.AR, name=u'Arabe')
-        Language.objects.get_or_create(slug=Language.FR, name=u'Français')
 
         print("handle")
-        for ar in Article.objects.filter(lang=None):
-            ar.lang = Language.objects.get(slug="fr")
+        for ar in Article.objects.filter(twitte=True):
+            ar.twitte = False
             try:
+                print(ar)
                 ar.save()
             except:
-                print(ar.title)
+                pass
+
+        print("New")
+        for new in New.objects.filter(twitte=True):
+            new.twitte = False
+            try:
+                print(new)
+                new.save()
+            except:
+                pass

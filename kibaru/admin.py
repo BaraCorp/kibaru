@@ -52,7 +52,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(New)
 class NewAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'comment', 'author', 'date', 'count_view')
+    list_filter = ('lang', 'author', 'type_new', 'twitte',)
 
 
 @admin.register(Newsletter)
