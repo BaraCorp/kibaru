@@ -11,7 +11,7 @@
         width: 38px
         z-index: 0;
     }
-    .navbar-collapse form[role="search"] button,
+    /*.navbar-collapse form[role="search"] button,*/
     .navbar-collapse form[role="search"] input {
         border-radius: 0px;
         border-width: 0px;
@@ -20,6 +20,8 @@
         border-color: rgb(231, 231, 231);
         box-shadow: none;
         outline: none;
+        width: 260px;
+        padding-left: 2em ;
     }
     .navbar-collapse form[role="search"] input {
         font-style: italic;
