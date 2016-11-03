@@ -257,7 +257,8 @@ class New(models.Model):
         super(New, self).save(*args, **kwargs)
 
     def get_twitter_message(self):
-        news_url = os.path.join(settings.DOMMAIN, "new", self.get_short_id)
+        news_url = os.path.join(
+            settings.DOMMAIN,  self.lang.slug, "new", self.get_short_id)
         return u"{} - {}".format(self.type_new, self.title), news_url
 
 models.signals.post_save.connect(post_to_twitter, sender=New)
@@ -357,7 +358,8 @@ class Article(models.Model):
         return self.slug
 
     def get_twitter_message(self):
-        article_url = os.path.join(settings.DOMMAIN, "art", self.get_short_id)
+        article_url = os.path.join(
+            settings.DOMMAIN, self.lang.slug, "art", self.get_short_id)
         return u"{} - {}".format(self.category.name, self.title), article_url
 
 
