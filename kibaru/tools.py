@@ -27,8 +27,8 @@ def post_to_twitter(sender, instance, *args, **kwargs):
     Post new saved objects to Twitter.
     """
 
-    # if settings.DEBUG == True:
-    #     return
+    if settings.DEBUG == True:
+        return
     # print("Status", instance._state.adding)
     if instance.twitter == False:
         # print("Not Twitte ")

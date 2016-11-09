@@ -25,9 +25,9 @@
 
             </figure>
 
-                {% if article.legend %}
-                    <figcaption class="article-caption"><h6 class="article-title"><a href="">{{article.legend}}</a></h6></figcaption>
-                {% endif %}
+            {% if article.legend %}
+                <figcaption class="article-caption"><h6 class="article-title"><a href="">{{article.legend}}</a></h6></figcaption>
+            {% endif %}
         {% endif %}
         <span class="meta">
             <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u> {% trans "Published" %} {{ article.date_created|date:"l d F Y" }}</abbr>
@@ -36,7 +36,8 @@
             <p><html>{{article.text|safe}}</html></p>
         </div>
     </article>
-    {% include "_chare.html" with object=article %}
+    {% include "site/_chare.html" with object=article %}
+    {% include "site/_disqus.html" %}
 {% endblock %}
 
 {% block footer %}

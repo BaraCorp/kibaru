@@ -328,11 +328,8 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
-        if self.lang.slug != "ar":
-            self.slug = u"-".join(
-                re.findall("([a-zA-Z]+)", self.title.lower()))
-        else:
-            self.slug = self.title.lower().replace(" ", "-")
+        self.slug = re.sub("[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \؟]+",
+                           '-', self.title.lower())
         self.twitter = self.is_twitte()
 
         super(Article, self).save(*args, **kwargs)

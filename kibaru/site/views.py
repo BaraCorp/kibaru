@@ -265,8 +265,8 @@ def display_article(request, *args, **kwargs):
         else:
             article = posts.get(slug=article_slug)
     except Article.DoesNotExist:
-        # raise Http404("Article does not exist")
-        return HttpResponseRedirect('/')
+        raise Http404("Article does not exist")
+        return HttpResponseRedirect('/' + request.LANGUAGE_CODE + '/')
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()

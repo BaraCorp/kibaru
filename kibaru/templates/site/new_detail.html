@@ -24,7 +24,8 @@
         </span>
         <p class="post-body" dir="ltr" trbidi="on"> <html>{{ new.comment }}</html></p>
     </article>
-    {% include "_chare.html" with object=new %}
+    {% include "site/_chare.html" with object=new %}
+    {% include "site/_disqus.html" %}
 {% endblock %}
 
 {% block footer %}
