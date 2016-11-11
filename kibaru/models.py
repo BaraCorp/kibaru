@@ -328,7 +328,7 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
-        self.slug = re.sub("[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \؟]+",
+        self.slug = re.sub("[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+",
                            '-', self.title.lower())
         self.twitter = self.is_twitte()
 

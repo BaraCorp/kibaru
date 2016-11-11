@@ -258,7 +258,6 @@ def display_article(request, *args, **kwargs):
 
     posts, context = init(lang=request.LANGUAGE_CODE)
     article_slug = kwargs["slug"]
-
     try:
         if len(article_slug) < 9:
             article = posts.get(id=short_url.decode_url(article_slug))
