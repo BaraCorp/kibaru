@@ -16,6 +16,9 @@ class Articleform(forms.ModelForm):
         model = Article
         exclude = ['slug', 'date_created', 'date_modified', 'thumbnail',
                    'count_like', 'count_view', 'author']
+        widgets = {
+            'legend': forms.TextInput(attrs={'placeholder': "Legende de l'image"}),
+        }
 
 
 class Newform(forms.ModelForm):
@@ -39,9 +42,8 @@ class DirectoryFrom(forms.ModelForm):
         exclude = ['date_created']
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Nom du site'}),
-            'category': forms.TextInput(attrs={'placeholder': "Site d'info."}),
-            'domaine': forms.TextInput(attrs={'placeholder': 'https://kibaru.ml'}),
-            'logo': forms.TextInput(attrs={'placeholder': 'Exp: https://kibaru.ml/static/logo.svg'}),
+            'domaine': forms.TextInput(attrs={'placeholder': 'Exemple : https://kibaru.ml'}),
+            'logo': forms.TextInput(attrs={'placeholder': 'Exemple : https://kibaru.ml/static/logo.svg'}),
             'description': forms.Textarea(
                 attrs={'placeholder': 'Enter description here'}),
         }
