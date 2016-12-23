@@ -4,11 +4,13 @@
 <div class="content-box">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animated rollIn">
+
+        <img class="logo" alt="" src="{% static 'logo.svg' %}">
         {% ifequal lang 'ar'  %}
-        <div class="slogan">{% trans "alghad" %}</div>
+        <div><span class="slogan">{% trans "alghad" %}</span>
         <span>{% trans "first Arab website Mali" %}</span>
+        </div>
         {% else %}
-            <img class="logo" alt="" src="{% static 'logo.svg' %}">
         {% endifequal %}
         </div>
     </div>

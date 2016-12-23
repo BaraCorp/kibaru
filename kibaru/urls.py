@@ -20,7 +20,6 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin_urls)),
     url(r'^', include(site_urls)),
-
     url(r'^login/$', 'django.contrib.auth.views.login',
         {'template_name': 'administration/login.html'}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
