@@ -59,7 +59,7 @@
                         {% endblock %}
                         {% block hebdo %}
                         {% endblock %}
-                        {% block video %}
+                        {% block sport %}
                         {% endblock %}
                         {% block twitter %}
                         {% endblock %}
@@ -68,14 +68,23 @@
                     {% endblock%}
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     {% block content_larg %}
                     {% endblock %}
                 </div>
             </div>
+            <div class="row">
+                <hr/>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 art-vt">
+                    {% block content_video %}
+                    {% endblock %}
+                </div>
+            </div>
             <!-- Footer -->
             <div class="row">
+                <hr/>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     {% block footer %}
                     {% endblock %}

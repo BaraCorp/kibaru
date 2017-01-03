@@ -126,10 +126,8 @@
 .art-vt .thumbnail{
     border:none;
     border-radius:0;
-    padding: 0;
+    padding: 2em;
     margin-bottom:0;
-    max-height: 16em;
-    min-height: 16em;
 }
 
 .el-title{
@@ -597,6 +595,8 @@ footer {
     text-align: center;
     background-color: rgba(91, 219, 59, 0.4);
     margin-top: -3em;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .article-img {

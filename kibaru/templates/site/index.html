@@ -53,19 +53,15 @@
                 {% for post in posts %}
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 art-vt">
                         <a href="{{post.url_display}}">
-                            <div class="thumbnail">
-                                <!-- <div class=""> -->
-                                    <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
-                                <!-- </div> -->
-                                <div  class="el-title">
-                                    <div  style="color: gray;">
-                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ post.date_created |timesince }}</span>
-                                            {% if user.is_authenticated %}
-                                                <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
-                                            {% endif %}
-                                    </div>
-                                    <h4 class="art-title">{{ post.title }}  </h4>
+                            <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
+                            <div  class="el-title">
+                                <div  style="color: gray;">
+                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ post.date_created |timesince }}</span>
+                                        {% if user.is_authenticated %}
+                                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
+                                        {% endif %}
                                 </div>
+                                <h4 class="art-title">{{ post.title }}  </h4>
                             </div>
                         </a>
                     </div>
@@ -76,6 +72,20 @@
             {% include "_pagination.html" %}
         </div>
     </div>
+{% endblock %}
+
+{% block content_video %}
+    {% if videos_home %}
+        {% for video in videos_home %}
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h6 class="el-title">{{video.title}}</h6>
+            </div>
+        {% endfor %}
+         <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
+    {% endif %}
 {% endblock %}
 
 {% block pub %}
@@ -95,7 +105,7 @@
 {% endblock %}
 
 {% block video %}
-    {% if videos_home %}
+    {% if sports %}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="website animated zoomInDown">
