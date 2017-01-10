@@ -6,11 +6,50 @@ from __future__ import (
     unicode_literals, absolute_import, division, print_function)
 
 import os
+import facebook
 
 from TwitterAPI import TwitterAPI
 from django.conf import settings
 
 TWITTER_MAXLENGTH = getattr(settings, 'TWITTER_MAXLENGTH', 140)
+
+
+def full_image_url(img_name):
+    return os.path.join(settings.DOMMAIN, "media", img_name)
+
+
+def social_share(sender, instance, *args, **kwargs):
+
+    # if settings.DEBUG == True:
+    #     return
+    if instance.twitter:
+        # post_to_twitter(sender, instance)
+        post_to_facebook(sender, instance)
+
+
+def post_to_facebook(sender, instance):
+    print(instance.type_text())
+    attach = {
+        "name": str(instance.type_text()),
+        "link": instance.post_url(),
+        "caption": settings.APP_NAME,
+        "page_token": settings.PAGE_TOKEN
+    }
+
+    if instance.image:
+        attach.update({"picture": full_image_url(instance.image_name)})
+    try:
+        attach.update({"description": instance.legend})
+    except Exception as e:
+        print(e)
+    msg = instance.title
+    page_id = "1652451611660511"
+    graph = facebook.GraphAPI(settings.PAGE_TOKEN)
+    post = graph.put_wall_post(
+        message=msg, attachment=attach, profile_id=page_id)
+    if post:
+        return 'posted'
+    return "No post"
 
 
 def get_body_twitte(body):
@@ -23,34 +62,19 @@ def get_body_twitte(body):
 
 
 def post_to_twitter(sender, instance, *args, **kwargs):
-    """
-    Post new saved objects to Twitter.
-    """
-
-    if settings.DEBUG == True:
-        return
-    # print("Status", instance._state.adding)
-    if instance.twitter == False:
-        # print("Not Twitte ")
-        return
-
-    data = {"status": str(get_body_twitte(instance.get_twitter_message()))}
-    media = {}
-
     tw_url = 'statuses/update'
+    media = {}
     image = instance.image
     if image:
         file = open(os.path.join(settings.MEDIA_ROOT, image.name), 'rb')
         media.update({'media[]': file.read()})
         tw_url = 'statuses/update_with_media'
 
-    consumer_key = settings.TWITTER_CONSUMER_KEY
-    consumer_secret = settings.TWITTER_CONSUMER_SECRET
-    access_token_key = settings.TWITTER_ACCESS_TOKEN_KEY
-    access_token_secret = settings.TWITTER_ACCESS_TOKEN_SECRET
-
-    api = TwitterAPI(
-        consumer_key, consumer_secret, access_token_key, access_token_secret)
+    data = {"status": str(get_body_twitte(instance.get_twiter_message()))}
+    api = TwitterAPI(settings.TWITTER_CONSUMER_KEY,
+                     settings.TWITTER_CONSUMER_SECRET,
+                     settings.TWITTER_ACCESS_TOKEN_KEY,
+                     settings.TWITTER_ACCESS_TOKEN_SECRET)
     r = api.request(tw_url, data, media)
     # print(r.status_code)
 
