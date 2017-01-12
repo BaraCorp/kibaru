@@ -141,7 +141,7 @@ LANGUAGES = (
     ('ar', _('Arabic')),
 )
 
-# LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = 'fr-fr'
 DEFAULT_LANGUAGE = 1
 DATE_INPUT_FORMATS = ('%Y-%m-%d')
 

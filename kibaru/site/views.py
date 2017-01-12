@@ -78,10 +78,13 @@ def month_view(request, year, month):
 
 
 def init(lang='fr', month=None, year=None, cat_slug=None):
+
     current_lang = Language.objects.get(slug=lang)
+
     posts = Article.objects.filter(
         lang=current_lang, status=Article.POSTED)
     archive_data = create_archive_data(posts)
+    articles = posts
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
@@ -97,6 +100,35 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
+    free_expressions = articles.filter(category=Category.objects.get(slug="expression-libre"))[
+        :3] if not cat_slug == "expression-libre" else []
+    for free_expression in free_expressions:
+        free_expression.url_display = reverse(
+            "art", args=[free_expression.slug])
+
+    migrations = articles.filter(category=Category.objects.get(slug="migration"))[
+        :3] if not cat_slug == "migration" else []
+    for migration in migrations:
+        migration.url_display = reverse("art", args=[migration.slug])
+
+    sports = articles.filter(category=Category.objects.get(slug="sport"))[
+        :3] if not cat_slug == "sport" else []
+    for sport in sports:
+        sport.url_display = reverse("art", args=[sport.slug])
+
+    cultures = articles.filter(category=Category.objects.get(slug="culture"))[
+        :4] if not cat_slug == "culture" else []
+    for culture in cultures:
+        culture.url_display = reverse("art", args=[culture.slug])
+
+    arts = articles.filter(category=Category.objects.get(slug="art"))[
+        :4] if not cat_slug == "art" else []
+    for art in arts:
+        art.url_display = reverse("art", args=[art.slug])
+
+    starts = posts.filter(start=True)[:5]
+    for start in starts:
+        start.url_display = reverse("art", args=[start.slug])
 
     news = New.objects.filter(lang=current_lang,)
     # start_dat = datetime(NOW.year, NOW.month, NOW.day)
@@ -113,6 +145,11 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     context = {'settings': settings,
                'flash_news': news,
                'post_list': posts,
+               'arts': arts,
+               'cultures': cultures,
+               'sports': sports,
+               'migrations': migrations,
+               'free_expressions': free_expressions,
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,
                'publicities': publicities,
@@ -192,10 +229,9 @@ def home(request, *args, **kwargs):
     posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=slug)
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
-
     starts = posts.filter(start=True)[:5]
     for start in starts:
-        start.url_start_display = reverse("art", args=[start.slug])
+        start.url_display = reverse("art", args=[start.slug])
 
     paginator = Paginator(posts, 12)
     page = request.GET.get('page')
@@ -215,7 +251,6 @@ def home(request, *args, **kwargs):
             return HttpResponseRedirect('/')
     else:
         form = Newsletterform()
-
     context.update({'posts': posts, 'form': form, 'subtitle': '',
                     "starts": starts, "cat_slug": cat_slug, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/index.html', context)
@@ -296,6 +331,15 @@ def display_videos(request, *args, **kwargs):
     posts, context = init()
 
     context.update({'posts': posts, "lang": request.LANGUAGE_CODE})
+    return render(request, 'site/videos.html', context)
+
+
+def display_heading(request, *args, **kwargs):
+    posts, context = init()
+
+    sports = posts.filter(category=Category.objects.get(slug="sport"))[:3]
+    context.update({'sports': sports,
+                    'posts': posts, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/videos.html', context)
 
 

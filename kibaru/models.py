@@ -359,7 +359,6 @@ class Article(models.Model):
             settings.DOMMAIN, self.lang.slug, "art", self.get_short_id)
         return u"{} - {}".format(self.category.name, self.title), article_url
 
-
 models.signals.post_save.connect(post_to_twitter, sender=Article)
 
 

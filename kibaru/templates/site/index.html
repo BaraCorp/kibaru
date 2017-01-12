@@ -3,7 +3,7 @@
 {% block title %} {% trans "Home" %} {% endblock %}
 {% block page-id %}index{% endblock %}
 
-{% block banner %} <div id="sticky-anchor">{% include "site/_banner.html" %}</div> {% endblock %}
+{% block banner %} {% include "site/_banner.html" %} {% endblock %}
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 {% block content %}
     {% if starts %}
@@ -24,7 +24,7 @@
                             <div class="item {% if forloop.first %} active{% endif %}">
                                 <img alt="" src="{% if star.image %}{{ star.image.url|resize:'img_start'}}{% endif %}">
                                 <div class="carousel-caption">
-                                    <h4 class="carousel-caption-header">{{ star.title }}
+                                    <h4 class=" carousel-caption-header">{{ star.title }}
                                     <span class="carousel-caption-text hidden-sm hidden-xs">
                                         <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">{% trans "suite" %}</a>
                                     </span></h4>
@@ -60,8 +60,9 @@
                                         {% if user.is_authenticated %}
                                             <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
                                         {% endif %}
+                                    <div>{{post.category.name}}</div>
                                 </div>
-                                <h4 class="art-title">{{ post.title }}  </h4>
+                                <div class="art-title">{{ post.title }}  </div>
                             </div>
                         </a>
                     </div>
@@ -73,21 +74,6 @@
         </div>
     </div>
 {% endblock %}
-
-{% block content_video %}
-    {% if videos_home %}
-        {% for video in videos_home %}
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <h6 class="el-title">{{video.title}}</h6>
-            </div>
-        {% endfor %}
-         <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
-    {% endif %}
-{% endblock %}
-
 {% block pub %}
 
     {% if publicities %}
@@ -103,28 +89,46 @@
         </div>
     {% endif %}
 {% endblock %}
-
-{% block video %}
+{% block sport %}
+    <div class="website animated zoomInDown">
+        <a href="{% url 'directory' %}">
+            <span class="label label-large label-yellow arrowed-in arrowed-in-right">
+             Portail des sites d’actualité en ligne
+            </span>
+        </a>
+    </div>
     {% if sports %}
-        <div class="row">
+        <div class="row waterfowl">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="website animated zoomInDown">
-                    <a href="{% url 'directory' %}" ><span class="label label-large label-yellow arrowed-in arrowed-in-right"> {% trans "Portal news sites online" %} </span></a>
-                </div>
-                <div class="thumbnail">
-                    {% for video in videos_home %}
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    <a href="{% url 'home' 'sport' %}" > <div class=heading_title> {% trans "Sport" %} </div></a>
+                    {% for sport in sports %}
+                        <a href="{{sport.url_sport_display}}">
+                            <img data-src="holder.js/100%x100"src="{% if sport.image %}{{ sport.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
+                            <div  class="el-title">
+                                <div  style="color: gray;">
+                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ sport.date_created |timesince }}</span>
+                                        {% if user.is_authenticated %}
+                                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{sport.count_view }}</span>
+                                        {% endif %}
+                                </div>
+                                <div class="art-title">{{ sport.title }}  </div>
                             </div>
-                            <h6 class="el-title">{{video.title}}</h6>
+                        </a>
                     {% endfor %}
-                 <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
-                </div>
             </div>
         </div>
     {% endif %}
 {% endblock %}
-
+{% block culture %}
+    {% if cultures %}
+        {% include "site/_thumbnail.html" with elements=cultures el_title="Culture" link="culture" %}
+    {% endif %}
+{% endblock %}
+{% block art %}
+    {% if arts %}
+        {% include "site/_thumbnail.html" with elements=arts el_title="Art" link="art" %}
+    {% endif %}
+{% endblock %}
 {% block twitter %}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -135,6 +139,30 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block content_free_expression %}
+    {% if free_expressions %}
+        {% include "site/_thumbnail_footer.html" with elements=free_expressions el_title="Free Expression" link="sport" %}
+    {% endif %}
+{% endblock %}
+{% block content_migration %}
+    {% if migrations %}
+        {% include "site/_thumbnail_footer.html" with elements=migrations el_title="Migration" link="migrations" %}
+    {% endif %}
+{% endblock %}
+{% block content_video %}
+    {% if videos_home %}
+        <a href="{% url 'all_videos' %}" > <div class=heading_title> {% trans "Videos" %} </div></a>
+        {% for video in videos_home %}
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h6 class="el-title">"{{video.title}}"</h6>
+            </div>
+        {% endfor %}
+         <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
+    {% endif %}
 {% endblock %}
 
 <!-- Footer -->
