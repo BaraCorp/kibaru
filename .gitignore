@@ -67,3 +67,5 @@ Backup_db/
 crontab kibaru
 
 .DS_Store
+
+*.orig

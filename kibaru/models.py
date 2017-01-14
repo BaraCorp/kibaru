@@ -26,7 +26,7 @@ from tinymce import models as tinymce_models
 
 from py3compat import implements_to_string
 
-from kibaru.tools import post_to_twitter
+from kibaru.tools import social_share
 
 
 @implements_to_string
@@ -246,6 +246,9 @@ class New(models.Model):
     def image(self):
         return None
 
+    def type_text(self):
+        return self.TYPE_NEWS_CHOICES.get(self.type_new)
+
     def is_twitte(self):
         if self.twitte == False:
             return False
@@ -256,12 +259,20 @@ class New(models.Model):
         self.twitter = self.is_twitte()
         super(New, self).save(*args, **kwargs)
 
-    def get_twitter_message(self):
-        news_url = os.path.join(
-            settings.DOMMAIN,  self.lang.slug, "new", self.get_short_id)
-        return u"{} - {}".format(self.type_new, self.title), news_url
+    # def get_twitter_message(self):
+    #     news_url = os.path.join(
+    #         settings.DOMMAIN,  self.lang.slug, "new", self.get_short_id)
+    #     return u"{} - {}".format(self.type_new, self.title), news_url
 
-models.signals.post_save.connect(post_to_twitter, sender=New)
+    def post_url(self):
+        return os.path.join(
+            settings.DOMMAIN, self.lang.slug, "new", self.get_short_id)
+
+    def get_twiter_message(self):
+        return u"{} - {}".format(self.type_text(), self.title), self.post_url()
+
+
+models.signals.post_save.connect(social_share, sender=New)
 
 
 @implements_to_string
@@ -337,6 +348,9 @@ class Article(models.Model):
     def __str__(self):
         return "{title} {status}".format(title=self.title, status=self.status)
 
+    def __unicode__(self):
+        return "{title} {status}".format(title=self.title, status=self.status)
+
     def is_twitte(self):
         if self.status == self.DRAFT:
             return False
@@ -348,18 +362,20 @@ class Article(models.Model):
     def title_status(self):
         return self.STATUS.get(self.status)
 
+    def type_text(self):
+        return self.category.name
+
     def clean_tags_html(self, linit=150):
         return u"%s" % re.sub(re.compile('<[^<]+?>'), '', self.text)[:linit]
 
-    def get_absolute_url(self):
-        return self.slug
-
-    def get_twitter_message(self):
-        article_url = os.path.join(
+    def post_url(self):
+        return os.path.join(
             settings.DOMMAIN, self.lang.slug, "art", self.get_short_id)
-        return u"{} - {}".format(self.category.name, self.title), article_url
 
-models.signals.post_save.connect(post_to_twitter, sender=Article)
+    def get_twiter_message(self):
+        return u"{} - {}".format(self.type_text(), self.title), self.post_url()
+
+models.signals.post_save.connect(social_share, sender=Article)
 
 
 @implements_to_string
