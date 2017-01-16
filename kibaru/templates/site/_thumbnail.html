@@ -2,8 +2,7 @@
 {% load i18n staticfiles imagefit %}
 <div class="row waterfowl">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <a href="{% url 'home' link %}" > <div class=heading_title> {% trans el_title %} </div></a>
-        <!-- elemnets -->
+        <a href="{% url 'home' link %}" > <div class=heading_title> {{ el_title}} </div></a>
         {% for element in elements %}
             <a href="{{element.url_display}}">
                 <img data-src="holder.js/100%x100"src="{% if element.image %}{{ element.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">

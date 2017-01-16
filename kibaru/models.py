@@ -49,9 +49,9 @@ class Directory(models.Model):
 
     name = models.CharField(
         verbose_name=_("Name"), max_length=75, primary_key=True)
-    category = models.CharField(verbose_name=_(
-        "Categorie"), max_length=50, choices=TYPE_SITE_CHOICES.items(),
-        default=INFO)
+    category = models.CharField(verbose_name=_("Category"),
+                                max_length=50, choices=TYPE_SITE_CHOICES.items(),
+                                default=INFO)
     domaine = models.CharField(
         verbose_name=_("adress of site"), max_length=150)
     logo = models.CharField(verbose_name=_("Logo"), max_length=150)
@@ -117,7 +117,7 @@ class MemberManager(BaseUserManager):
 class Language(models.Model):
 
     FR = "fr"
-    # EN = "en"
+    EN = "en"
     AR = "ar"
     LANGUAGES_CHOICES = {
         FR: _('French'),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-23 22:35+0000\n"
+"POT-Creation-Date: 2017-01-16 12:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,10 @@ msgstr ""
 msgid "The link of the video has been deleted."
 msgstr ""
 
+#: kibaru/forms.py:49
+msgid "Enter description here"
+msgstr ""
+
 #: kibaru/models.py:37
 msgid "Directory"
 msgstr ""
@@ -65,7 +69,7 @@ msgstr ""
 msgid "Directories"
 msgstr ""
 
-#: kibaru/models.py:45 kibaru/models.py:218
+#: kibaru/models.py:45 kibaru/models.py:219
 msgid "info"
 msgstr ""
 
@@ -73,224 +77,224 @@ msgstr ""
 msgid "Music"
 msgstr ""
 
-#: kibaru/models.py:47
+#: kibaru/models.py:47 kibaru/site/views.py:146
 msgid "Sport"
 msgstr ""
 
-#: kibaru/models.py:51 kibaru/models.py:76 kibaru/models.py:130
+#: kibaru/models.py:51 kibaru/models.py:77 kibaru/models.py:131
 msgid "Name"
 msgstr ""
 
-#: kibaru/models.py:55
-msgid "adress of site"
-msgstr ""
-
-#: kibaru/models.py:56
-msgid "Logo"
-msgstr ""
-
-#: kibaru/models.py:58
-msgid "Description"
-msgstr ""
-
-#: kibaru/models.py:59 kibaru/models.py:230 kibaru/models.py:300
-msgid "Dated the"
-msgstr ""
-
-#: kibaru/models.py:72 kibaru/models.py:305
+#: kibaru/models.py:52 kibaru/models.py:73 kibaru/models.py:326
 #: kibaru/templates/administration/index.html:40
 msgid "Category"
 msgstr ""
 
-#: kibaru/models.py:73
+#: kibaru/models.py:56
+msgid "adress of site"
+msgstr ""
+
+#: kibaru/models.py:57
+msgid "Logo"
+msgstr ""
+
+#: kibaru/models.py:59
+msgid "Description"
+msgstr ""
+
+#: kibaru/models.py:60 kibaru/models.py:231 kibaru/models.py:321
+msgid "Dated the"
+msgstr ""
+
+#: kibaru/models.py:74
 msgid "Categories"
 msgstr ""
 
-#: kibaru/models.py:75 kibaru/models.py:128 kibaru/models.py:292
-#: kibaru/models.py:369
+#: kibaru/models.py:76 kibaru/models.py:129 kibaru/models.py:313
+#: kibaru/models.py:403
 msgid "Slug"
 msgstr ""
 
-#: kibaru/models.py:90
+#: kibaru/models.py:91
 msgid "Users must have an email address"
 msgstr ""
 
-#: kibaru/models.py:122 kibaru/settings.py:161
+#: kibaru/models.py:123 kibaru/settings.py:139
 msgid "French"
 msgstr ""
 
-#: kibaru/models.py:124 kibaru/settings.py:163
+#: kibaru/models.py:125 kibaru/settings.py:141
 msgid "Arabic"
 msgstr ""
 
-#: kibaru/models.py:140
+#: kibaru/models.py:141
 msgid "User"
 msgstr ""
 
-#: kibaru/models.py:141
+#: kibaru/models.py:142
 msgid "Users"
 msgstr ""
 
-#: kibaru/models.py:144
+#: kibaru/models.py:145
 msgid "username"
 msgstr ""
 
-#: kibaru/models.py:145
+#: kibaru/models.py:146
 msgid ""
 "Required. 50 characters or fewer. Letters, numbers and @/./+/-/_ characters"
 msgstr ""
 
-#: kibaru/models.py:148
+#: kibaru/models.py:149
 msgid "Enter a valid username."
 msgstr ""
 
-#: kibaru/models.py:151
+#: kibaru/models.py:152
 msgid "First Name"
 msgstr ""
 
-#: kibaru/models.py:153
+#: kibaru/models.py:154
 msgid "Last Name"
 msgstr ""
 
-#: kibaru/models.py:155
+#: kibaru/models.py:156
 msgid "Photo"
 msgstr ""
 
-#: kibaru/models.py:157
+#: kibaru/models.py:158
 msgid "Job title"
 msgstr ""
 
-#: kibaru/models.py:158
+#: kibaru/models.py:159
 msgid "email address"
 msgstr ""
 
-#: kibaru/models.py:160
+#: kibaru/models.py:161
 msgid "staff status"
 msgstr ""
 
-#: kibaru/models.py:161
+#: kibaru/models.py:162
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: kibaru/models.py:163
+#: kibaru/models.py:164
 msgid "active"
 msgstr ""
 
-#: kibaru/models.py:164
+#: kibaru/models.py:165
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: kibaru/models.py:166
+#: kibaru/models.py:167
 msgid "date joined"
 msgstr ""
 
-#: kibaru/models.py:210
+#: kibaru/models.py:211
 msgid "New"
 msgstr ""
 
-#: kibaru/models.py:211
+#: kibaru/models.py:212
 msgid "News"
 msgstr ""
 
-#: kibaru/models.py:219
+#: kibaru/models.py:220
 msgid "urgent"
 msgstr ""
 
-#: kibaru/models.py:220
+#: kibaru/models.py:221
 msgid "communicated"
 msgstr ""
 
-#: kibaru/models.py:226 kibaru/models.py:265 kibaru/models.py:304
+#: kibaru/models.py:227 kibaru/models.py:286 kibaru/models.py:325
 msgid "Language"
 msgstr ""
 
-#: kibaru/models.py:227 kibaru/models.py:293 kibaru/models.py:370
+#: kibaru/models.py:228 kibaru/models.py:314 kibaru/models.py:404
 #: kibaru/templates/administration/index.html:36
 #: kibaru/templates/administration/index.html:92
 #: kibaru/templates/administration/index.html:147
 msgid "Title"
 msgstr ""
 
-#: kibaru/models.py:228
+#: kibaru/models.py:229
 msgid "Texte"
 msgstr ""
 
-#: kibaru/models.py:229 kibaru/models.py:299
+#: kibaru/models.py:230 kibaru/models.py:320
 #: kibaru/templates/administration/index.html:39
 msgid "Author"
 msgstr ""
 
-#: kibaru/models.py:261 kibaru/templates/site/_footer.html:22
+#: kibaru/models.py:282 kibaru/templates/site/_footer.html:22
 msgid "Newsletter"
 msgstr ""
 
-#: kibaru/models.py:262
+#: kibaru/models.py:283
 msgid "Newsletters"
 msgstr ""
 
-#: kibaru/models.py:266
+#: kibaru/models.py:287
 msgid "Registration date"
 msgstr ""
 
-#: kibaru/models.py:269
+#: kibaru/models.py:290
 msgid "E-mail"
 msgstr ""
 
-#: kibaru/models.py:281
+#: kibaru/models.py:302
 msgid "Article"
 msgstr ""
 
-#: kibaru/models.py:282
+#: kibaru/models.py:303
 msgid "Articles"
 msgstr ""
 
-#: kibaru/models.py:288
+#: kibaru/models.py:309
 msgid "Draft"
 msgstr ""
 
-#: kibaru/models.py:289
+#: kibaru/models.py:310
 msgid "Posted"
 msgstr ""
 
-#: kibaru/models.py:294
+#: kibaru/models.py:315
 msgid "Text"
 msgstr ""
 
-#: kibaru/models.py:296 kibaru/models.py:355
+#: kibaru/models.py:317 kibaru/models.py:389
 msgid "Picture"
 msgstr ""
 
-#: kibaru/models.py:298
+#: kibaru/models.py:319
 msgid "legend"
 msgstr ""
 
-#: kibaru/models.py:306 kibaru/templates/administration/index.html:41
+#: kibaru/models.py:327 kibaru/templates/administration/index.html:41
 msgid "Status"
 msgstr ""
 
-#: kibaru/models.py:308
+#: kibaru/models.py:329
 msgid "Start"
 msgstr ""
 
-#: kibaru/models.py:351 kibaru/templates/site/index.html:85
+#: kibaru/models.py:385 kibaru/templates/site/index.html:81
 msgid "Publicity"
 msgstr ""
 
-#: kibaru/models.py:352
+#: kibaru/models.py:386
 msgid "Publicities"
 msgstr ""
 
-#: kibaru/models.py:365
+#: kibaru/models.py:399
 msgid "Video"
 msgstr ""
 
-#: kibaru/models.py:366
+#: kibaru/models.py:400 kibaru/templates/site/index.html:132
 msgid "Videos"
 msgstr ""
 
-#: kibaru/models.py:371
+#: kibaru/models.py:405
 msgid "Date created"
 msgstr ""
 
@@ -346,8 +350,24 @@ msgstr ""
 msgid "The articles published in"
 msgstr ""
 
-#: kibaru/site/views.py:214
+#: kibaru/site/views.py:144
+msgid "Art and Culture"
+msgstr ""
+
+#: kibaru/site/views.py:148
+msgid "migration"
+msgstr ""
+
+#: kibaru/site/views.py:150
+msgid "Free Expression"
+msgstr ""
+
+#: kibaru/site/views.py:248
 msgid "Thank you for your subscription"
+msgstr ""
+
+#: kibaru/site/views.py:300
+msgid "Article does not exist"
 msgstr ""
 
 #: kibaru/templates/404.html:4
@@ -380,99 +400,87 @@ msgstr ""
 msgid "— The Team"
 msgstr ""
 
-#: kibaru/templates/_chare.html:23
-msgid "Tweet"
-msgstr ""
-
-#: kibaru/templates/_menu.html:7
+#: kibaru/templates/_menu.html:6
 msgid "Toggle navigation"
 msgstr ""
 
-#: kibaru/templates/_menu.html:17
+#: kibaru/templates/_menu.html:18
 msgid "Economy"
 msgstr ""
 
-#: kibaru/templates/_menu.html:19
+#: kibaru/templates/_menu.html:20
 msgid "Nationale"
 msgstr ""
 
-#: kibaru/templates/_menu.html:20
+#: kibaru/templates/_menu.html:21
 msgid "Regionale"
 msgstr ""
 
-#: kibaru/templates/_menu.html:21
+#: kibaru/templates/_menu.html:22
 msgid "International"
 msgstr ""
 
-#: kibaru/templates/_menu.html:25
+#: kibaru/templates/_menu.html:26
 msgid "Cooperation"
 msgstr ""
 
-#: kibaru/templates/_menu.html:27
+#: kibaru/templates/_menu.html:28
 msgid "Actuality"
 msgstr ""
 
-#: kibaru/templates/_menu.html:28
+#: kibaru/templates/_menu.html:29
 msgid "Bilateral"
 msgstr ""
 
-#: kibaru/templates/_menu.html:29
+#: kibaru/templates/_menu.html:30
 msgid "Multilateral"
 msgstr ""
 
-#: kibaru/templates/_menu.html:33
+#: kibaru/templates/_menu.html:34
 msgid "Society"
 msgstr ""
 
-#: kibaru/templates/_menu.html:35
+#: kibaru/templates/_menu.html:36
 msgid "Peace process"
 msgstr ""
 
-#: kibaru/templates/_menu.html:36
+#: kibaru/templates/_menu.html:37
 msgid "Portrait"
 msgstr ""
 
-#: kibaru/templates/_menu.html:37
+#: kibaru/templates/_menu.html:38
 msgid "Education"
 msgstr ""
 
-#: kibaru/templates/_menu.html:38
+#: kibaru/templates/_menu.html:39
 msgid "Health"
 msgstr ""
 
-#: kibaru/templates/_menu.html:39
-msgid "Sports"
-msgstr ""
-
 #: kibaru/templates/_menu.html:40
-msgid "Culture"
-msgstr ""
-
-#: kibaru/templates/_menu.html:41
 msgid "NTIC"
 msgstr ""
 
-#: kibaru/templates/_menu.html:42
+#: kibaru/templates/_menu.html:41
 msgid "Reportage"
 msgstr ""
 
-#: kibaru/templates/_menu.html:45
+#: kibaru/templates/_menu.html:44
 msgid "Environment"
 msgstr ""
 
-#: kibaru/templates/_menu.html:46
+#: kibaru/templates/_menu.html:45
 msgid "Libre Expression"
 msgstr ""
 
-#: kibaru/templates/_menu.html:48
+#: kibaru/templates/_menu.html:47
 msgid "Archive"
 msgstr ""
 
-#: kibaru/templates/_menu.html:68
+#: kibaru/templates/_menu.html:67
 msgid "Close"
 msgstr ""
 
-#: kibaru/templates/_menu.html:73
+#: kibaru/templates/_menu.html:72
 msgid "Search"
 msgstr ""
 
@@ -577,7 +585,7 @@ msgid "Deleted"
 msgstr ""
 
 #: kibaru/templates/administration/index.html:60
-#: kibaru/templates/site/index.html:74
+#: kibaru/templates/site/index.html:71
 msgid "No article published."
 msgstr ""
 
@@ -638,24 +646,28 @@ msgstr ""
 msgid "Identification"
 msgstr ""
 
-#: kibaru/templates/administration/login.html:17
+#: kibaru/templates/administration/login.html:16
 msgid "Your username and password do not match. Please try again."
 msgstr ""
 
-#: kibaru/templates/administration/login.html:22
+#: kibaru/templates/administration/login.html:21
 msgid "Thank you to identify you"
 msgstr ""
 
-#: kibaru/templates/administration/login.html:31
+#: kibaru/templates/administration/login.html:30
 msgid "Log in"
 msgstr ""
 
-#: kibaru/templates/site/_banner.html:8
+#: kibaru/templates/site/_banner.html:10
 msgid "alghad"
 msgstr ""
 
-#: kibaru/templates/site/_banner.html:9
+#: kibaru/templates/site/_banner.html:11
 msgid "first Arab website Mali"
+msgstr ""
+
+#: kibaru/templates/site/_chare.html:23
+msgid "Tweet"
 msgstr ""
 
 #: kibaru/templates/site/_footer.html:6
@@ -682,6 +694,10 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
+#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:96
+msgid "Portal news sites online"
+msgstr ""
+
 #: kibaru/templates/site/index.html:3
 msgid "Home"
 msgstr ""
@@ -690,16 +706,12 @@ msgstr ""
 msgid "suite"
 msgstr ""
 
-#: kibaru/templates/site/index.html:102
-msgid "Portal news sites online"
-msgstr ""
-
-#: kibaru/templates/site/index.html:111
-msgid "All videos"
-msgstr ""
-
-#: kibaru/templates/site/index.html:123
+#: kibaru/templates/site/index.html:114
 msgid "Tweets of"
+msgstr ""
+
+#: kibaru/templates/site/index.html:141
+msgid "All videos"
 msgstr ""
 
 #: kibaru/templates/site/list_page.html:25
@@ -708,7 +720,7 @@ msgid "Publication date"
 msgstr ""
 
 #: kibaru/templates/site/search_results.html:16
-msgid "Search results for :"
+msgid "Search results for : "
 msgstr ""
 
 #: kibaru/templates/site/search_results.html:30

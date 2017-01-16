@@ -13,7 +13,7 @@
 {% endblock %}
 {% block content %}
     {% if found_article %}
-        <h4><b>{% trans "Search results for :" %}</b> {{ query_string }}</h4>
+        <h4><b>{% trans "Search results for : " %}</b> {{ query_string }}</h4>
         {% for post in found_article %}
             <a href="{{ post.url_display }}">
                 <div class="row">

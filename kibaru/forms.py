@@ -5,6 +5,7 @@
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
+from django.utils.translation import ugettext_lazy as _
 from django import forms
 from kibaru.models import Article, Member, New, Newsletter, Video, Directory
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
@@ -45,7 +46,7 @@ class DirectoryFrom(forms.ModelForm):
             'domaine': forms.TextInput(attrs={'placeholder': 'Exemple : https://kibaru.ml'}),
             'logo': forms.TextInput(attrs={'placeholder': 'Exemple : https://kibaru.ml/static/logo.svg'}),
             'description': forms.Textarea(
-                attrs={'placeholder': 'Enter description here'}),
+                attrs={'placeholder': _('Enter description here')}),
         }
 
 

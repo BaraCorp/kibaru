@@ -49,8 +49,8 @@ def year_view(request, year):
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts, "lang": request.LANGUAGE_CODE,
-                    'subtitle': '{} {}'.format(_("The articles published in"), year)
-                    })
+                    'subtitle': '{} {}'.format(_("The articles published in"),
+                                               year)})
     return render(request, 'site/list_page.html', context)
 
 
@@ -59,7 +59,8 @@ def month_view(request, year, month):
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts, "lang": request.LANGUAGE_CODE,
-                    'subtitle': "{} {} {}".format(_("The articles published in"), MONTH_NAMES[int(month)], year),
+                    'subtitle': "{} {} {}".format(_("The articles published in"),
+                                                  MONTH_NAMES[int(month)], year),
                     })
     return render(request, 'site/list_page.html', context)
 
@@ -81,10 +82,11 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
 
     current_lang = Language.objects.get(slug=lang)
 
-    posts = Article.objects.filter(
-        lang=current_lang, status=Article.POSTED)
+    posts = Article.objects.filter(lang=current_lang, status=Article.POSTED)
     archive_data = create_archive_data(posts)
     articles = posts
+    posts.exclude(category=Category.objects.get(slug="expression-libre")).exclude(
+        category=Category.objects.get(slug="migration")).exclude(category=Category.objects.get(slug="sport")).exclude(category=Category.objects.get(slug="culture"))
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
@@ -101,13 +103,13 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
     free_expressions = articles.filter(category=Category.objects.get(slug="expression-libre"))[
-        :3] if not cat_slug == "expression-libre" else []
+        :4] if not cat_slug == "expression-libre" else []
     for free_expression in free_expressions:
         free_expression.url_display = reverse(
             "art", args=[free_expression.slug])
 
     migrations = articles.filter(category=Category.objects.get(slug="migration"))[
-        :3] if not cat_slug == "migration" else []
+        :4] if not cat_slug == "migration" else []
     for migration in migrations:
         migration.url_display = reverse("art", args=[migration.slug])
 
@@ -116,16 +118,10 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     for sport in sports:
         sport.url_display = reverse("art", args=[sport.slug])
 
-    cultures = articles.filter(category=Category.objects.get(slug="culture"))[
+    art_cultures = articles.filter(category=Category.objects.get(slug="culture"))[
         :4] if not cat_slug == "culture" else []
-    for culture in cultures:
+    for culture in art_cultures:
         culture.url_display = reverse("art", args=[culture.slug])
-
-    arts = articles.filter(category=Category.objects.get(slug="art"))[
-        :4] if not cat_slug == "art" else []
-    for art in arts:
-        art.url_display = reverse("art", args=[art.slug])
-
     starts = posts.filter(start=True)[:5]
     for start in starts:
         start.url_display = reverse("art", args=[start.slug])
@@ -138,18 +134,20 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     # news = news_today
     # else:
     # news = news[:5]
-
     for new in news:
         new.url_display = reverse("news", args=[new.id])
     # tag_data = create_tag_data(posts)
     context = {'settings': settings,
                'flash_news': news,
                'post_list': posts,
-               'arts': arts,
-               'cultures': cultures,
+               'art_cultures': art_cultures,
+               'art_culture_title': _("Art and Culture"),
                'sports': sports,
+               'sport_title': _("Sport"),
                'migrations': migrations,
+               'migration_title': _("migration"),
                'free_expressions': free_expressions,
+               'free_expression_title': _("Free Expression"),
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,
                'publicities': publicities,
@@ -299,7 +297,7 @@ def display_article(request, *args, **kwargs):
         else:
             article = posts.get(slug=article_slug)
     except Article.DoesNotExist:
-        raise Http404("Article does not exist")
+        raise Http404(_("Article does not exist"))
         return HttpResponseRedirect('/' + request.LANGUAGE_CODE + '/')
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1

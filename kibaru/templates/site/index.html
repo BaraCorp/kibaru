@@ -60,7 +60,7 @@
                                         {% if user.is_authenticated %}
                                             <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
                                         {% endif %}
-                                    <div>{{post.category.name}}</div>
+                                    <div>{% trans post.category.name %}</div>
                                 </div>
                                 <div class="art-title">{{ post.title }}  </div>
                             </div>
@@ -93,40 +93,17 @@
     <div class="website animated zoomInDown">
         <a href="{% url 'directory' %}">
             <span class="label label-large label-yellow arrowed-in arrowed-in-right">
-             Portail des sites d’actualité en ligne
+             {% trans "Portal news sites online" %}
             </span>
         </a>
     </div>
     {% if sports %}
-        <div class="row waterfowl">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <a href="{% url 'home' 'sport' %}" > <div class=heading_title> {% trans "Sport" %} </div></a>
-                    {% for sport in sports %}
-                        <a href="{{sport.url_sport_display}}">
-                            <img data-src="holder.js/100%x100"src="{% if sport.image %}{{ sport.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
-                            <div  class="el-title">
-                                <div  style="color: gray;">
-                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ sport.date_created |timesince }}</span>
-                                        {% if user.is_authenticated %}
-                                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{sport.count_view }}</span>
-                                        {% endif %}
-                                </div>
-                                <div class="art-title">{{ sport.title }}  </div>
-                            </div>
-                        </a>
-                    {% endfor %}
-            </div>
-        </div>
+        {% include "site/_thumbnail.html" with elements=sports el_title=sport_title link="sport" %}
     {% endif %}
 {% endblock %}
 {% block culture %}
-    {% if cultures %}
-        {% include "site/_thumbnail.html" with elements=cultures el_title="Culture" link="culture" %}
-    {% endif %}
-{% endblock %}
-{% block art %}
-    {% if arts %}
-        {% include "site/_thumbnail.html" with elements=arts el_title="Art" link="art" %}
+    {% if art_cultures %}
+        {% include "site/_thumbnail.html" with elements=art_cultures el_title=art_culture_title link="culture" %}
     {% endif %}
 {% endblock %}
 {% block twitter %}
@@ -142,12 +119,12 @@
 {% endblock %}
 {% block content_free_expression %}
     {% if free_expressions %}
-        {% include "site/_thumbnail_footer.html" with elements=free_expressions el_title="Free Expression" link="sport" %}
+        {% include "site/_thumbnail_footer.html" with elements=free_expressions el_title=free_expression_title link="expression-libre" %}
     {% endif %}
 {% endblock %}
 {% block content_migration %}
     {% if migrations %}
-        {% include "site/_thumbnail_footer.html" with elements=migrations el_title="Migration" link="migrations" %}
+        {% include "site/_thumbnail_footer.html" with elements=migrations el_title=migration_title link="migrations" %}
     {% endif %}
 {% endblock %}
 {% block content_video %}
