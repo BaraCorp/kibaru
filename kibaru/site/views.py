@@ -85,8 +85,11 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     posts = Article.objects.filter(lang=current_lang, status=Article.POSTED)
     archive_data = create_archive_data(posts)
     articles = posts
-    posts.exclude(category=Category.objects.get(slug="expression-libre")).exclude(
-        category=Category.objects.get(slug="migration")).exclude(category=Category.objects.get(slug="sport")).exclude(category=Category.objects.get(slug="culture"))
+    posts = posts.exclude(
+        category=Category.objects.get(slug="expression-libre")).exclude(
+        category=Category.objects.get(slug="migration")).exclude(
+        category=Category.objects.get(slug="sport")).exclude(
+        category=Category.objects.get(slug="culture"))
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
