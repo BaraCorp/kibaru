@@ -23,21 +23,21 @@ def social_share(sender, instance, *args, **kwargs):
     # if settings.DEBUG == True:
     #     return
     if instance.twitter:
-        # post_to_twitter(sender, instance)
+        post_to_twitter(sender, instance)
         post_to_facebook(sender, instance)
 
 
 def post_to_facebook(sender, instance):
-    print(instance.type_text())
+    # print(instance.type_text())
     attach = {
-        "name": str(instance.type_text()),
+        "name": instance.type_text(),
         "link": instance.post_url(),
         "caption": settings.APP_NAME,
         "page_token": settings.PAGE_TOKEN
     }
 
     if instance.image:
-        attach.update({"picture": full_image_url(instance.image_name)})
+        attach.update({"picture": full_image_url(instance.image.name)})
     try:
         attach.update({"description": instance.legend})
     except Exception as e:
