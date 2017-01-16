@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-16 11:23+0000\n"
-"PO-Revision-Date: 2017-01-16 12:09+0000\n"
+"PO-Revision-Date: 2017-01-16 12:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -364,20 +364,14 @@ msgid "The articles published in"
 msgstr "Articles publiés"
 
 #: kibaru/site/views.py:144
-#, fuzzy
-#| msgid "Culture"
 msgid "Art and Culture"
-msgstr "Culture"
+msgstr "Culture et Art"
 
 #: kibaru/site/views.py:148
-#, fuzzy
-#| msgid "Administration"
 msgid "migration"
-msgstr "Administration"
+msgstr "Migration"
 
 #: kibaru/site/views.py:150
-#, fuzzy
-#| msgid "Libre Expression"
 msgid "Free Expression"
 msgstr "Libre Expression"
 
