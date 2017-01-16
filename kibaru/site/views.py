@@ -85,11 +85,6 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     posts = Article.objects.filter(lang=current_lang, status=Article.POSTED)
     archive_data = create_archive_data(posts)
     articles = posts
-    posts = posts.exclude(
-        category=Category.objects.get(slug="expression-libre")).exclude(
-        category=Category.objects.get(slug="migration")).exclude(
-        category=Category.objects.get(slug="sport")).exclude(
-        category=Category.objects.get(slug="culture"))
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
     publicities = Publicity.objects.all()
@@ -225,9 +220,15 @@ def home(request, *args, **kwargs):
 
     try:
         slug = Category.objects.get(slug=cat_slug).slug
+        posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=slug)
     except Category.DoesNotExist:
+        posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=None)
+        posts = posts.exclude(
+            category=Category.objects.get(slug="expression-libre")).exclude(
+            category=Category.objects.get(slug="migration")).exclude(
+            category=Category.objects.get(slug="sport")).exclude(
+            category=Category.objects.get(slug="culture"))
         slug = None
-    posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=slug)
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     starts = posts.filter(start=True)[:5]
