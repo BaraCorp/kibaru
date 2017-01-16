@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-16 12:09+0000\n"
-"PO-Revision-Date: 2017-01-16 12:05+0000\n"
+"PO-Revision-Date: 2017-01-16 12:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -360,7 +360,7 @@ msgstr "المقالات المنشورة في"
 
 #: kibaru/site/views.py:144
 msgid "Art and Culture"
-msgstr "قافة وفنون"
+msgstr "ثقافة وفنون"
 
 #: kibaru/site/views.py:148
 msgid "migration"
