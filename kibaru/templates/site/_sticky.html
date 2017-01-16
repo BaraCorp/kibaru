@@ -5,11 +5,17 @@
         onmouseover="this.stop();" onmouseout="this.start()">
             {% for new in flash_news %}
                 <li data-toggle="{{new.date}}" title="{{new.date}}" data-placement="left">
-                    <i {% if new.type_new == 'U' %} class="glyphicon glyphicon-fire" style="color: red;" {% elif new.type_new == 'C'%}
-                         class="glyphicon glyphicon-alert" style="color: #2A5DBB;" {% else %}
-                         class="glyphicon glyphicon-info-sign " style="color: green;"{% endif%}>
-                    </i>
-                    <span><a href="{{new.url_display}}" > {{ new.title }}</a> </span>
+
+                    {% if lang == 'ar'  %}
+                        <span><a href="{{new.url_display}}" > {{ new.title }}</a> </span>
+                    {% endif %}
+                        <i {% if new.type_new == 'U' %} class="glyphicon glyphicon-fire" style="color: red;" {% elif new.type_new == 'C'%}
+                             class="glyphicon glyphicon-alert" style="color: #2A5DBB;" {% else %}
+                             class="glyphicon glyphicon-info-sign " style="color: green;"{% endif%}>
+                        </i>
+                    {% if lang != 'ar'  %}
+                        <span><a href="{{new.url_display}}" > {{ new.title }}</a> </span>
+                    {% endif %}
                 </li>
             {% endfor %}
         </marquee>
