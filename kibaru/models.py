@@ -409,5 +409,9 @@ class Video(models.Model):
         return "{title} {slug}".format(slug=self.slug,
                                        title=self.title)
 
+    def __unicode__(self):
+        return "{title} {slug}".format(slug=self.slug,
+                                       title=self.title)
+
     def link(self):
         return "//www.youtube.com/embed/{slug}".format(slug=self.slug)
