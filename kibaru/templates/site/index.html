@@ -107,15 +107,14 @@
     {% endif %}
 {% endblock %}
 {% block twitter %}
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="list-group">
-            <!-- <div class="list-group-item disabled">Twitter</div> -->
-                <a class="twitter-timeline"  href="https://twitter.com/{{settings.TWITTER_NAME}}" data-widget-id="655801487575117824">{% trans "Tweets of" %} @{{ settings.TWITTER_NAME}}</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </div>
-        </div>
-    </div>
+<!--Currency Converter widget by FreeCurrencyRates.com -->
+
+<div id='gcw_mainFtT4UwYQy' class='gcw_mainFtT4UwYQy'></div>
+<a id='gcw_siteFtT4UwYQy' href='http://freecurrencyrates.com/fr/'>FreeCurrencyRates.com</a>
+<script>function reloadFtT4UwYQy(){ var sc = document.getElementById('scFtT4UwYQy');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFtT4UwYQy';sc.src = 'http://freecurrencyrates.com/fr/widget-vertical-editable?iso=EURUSDXOFGBPJPYCNY&df=1&p=FtT4UwYQy&v=fits&source=fcr&width=250&width_title=0&firstrowvalue=1&thm=72B42D,285C00,3F7506,3A8104,FFFFFF,72B42D,285C00,ffffff,ffffff&title=Convertisseur%20de%20devises&tzo=0';var div = document.getElementById('gcw_mainFtT4UwYQy');div.parentNode.insertBefore(sc, div);} reloadFtT4UwYQy(); </script>
+<!-- put custom styles here: .gcw_mainFtT4UwYQy{}, .gcw_headerFtT4UwYQy{}, .gcw_ratesFtT4UwYQy{}, .gcw_sourceFtT4UwYQy{} -->
+<!--End of Currency Converter widget by FreeCurrencyRates.com -->
+
 {% endblock %}
 {% block content_free_expression %}
     {% if free_expressions %}
