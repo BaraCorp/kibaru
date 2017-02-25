@@ -3,7 +3,7 @@
 
 {% block title %} {{ article.title }} {% endblock %}
 
-{% block page-id %} {{ article.id }}{% endblock %}
+{% block page-id %}detail{% endblock %}
 
 {% block banner %}
     <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
@@ -17,7 +17,7 @@
 {% block content %}
     <article >
         <header>
-            <h2 class="article_post_title entry-title"> {{ article.title }} </h2>
+            <h3 class="article_post_title"> {{ article.title }} </h3>
         </header>
         {% if article.image %}
             <figure>
@@ -38,11 +38,13 @@
     </article>
     {% include "site/_chare.html" with object=article %}
     {% include "site/_disqus.html" %}
+
 {% endblock %}
 {% block footer %}
     {% include "site/_footer.html" %}
 {% endblock %}
-{% block facebook %}
+
+{% block sidebar_rigth %}
     <div class="list-group">
         <div class="list-group-item disabled">Facebook</div>
         <div class="fb-page" style="width: 100%;" data-href="{{settings.FACEBOOK_PAGE}}/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"></div>

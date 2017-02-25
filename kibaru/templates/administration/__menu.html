@@ -1,22 +1,22 @@
 {% load staticfiles i18n %}
 <!-- Navigation -->
-<ul class="nav navbar-nav">
+
+<ul class="nav navbar-nav navbar-right">
     <li {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'admin_home' %}">{% trans "Administration" %}</a></li>
     <li class="dropdown"><a href="{% url 'admin_home' %}" class="dropdown-toggle" data-toggle="dropdown"><em><i class="fa fa-plus fa-fw"></i></em> <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li><a href="{% url 'add_article' %}"><i class="fa ">{% trans "Add your article" %}</i></a></li>
+            <li class="divider"></li>
             <li><a href="{% url 'add_new' %}"><i class="fa " >{% trans "Add new" %}</i></a></li>
+            <li class="divider"></li>
             <li><a href="{% url 'add_video' %}"><i class="fa ">{% trans "Add video link" %}</i></a></li>
+            <li class="divider"></li>
             <li><a href="{% url 'add_website' %}"><i class="fa ">{% trans "Add web site" %}</i></a></li>
         </ul>
     </li>
+    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Welcome" %}, <i class="fa fa-user fa-fw"></i><em>{{ user }}</em> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+           <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> {% trans "disconnection" %}</a></li>
+        </ul>
+    </li>
 </ul>
-<div class="pull-right">
-    <ul class="nav pull-right">
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Welcome" %}, <i class="fa fa-user fa-fw"></i><em>{{ user }}</em> <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> {% trans "disconnection" %}</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>

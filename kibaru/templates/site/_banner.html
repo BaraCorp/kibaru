@@ -1,17 +1,28 @@
-
 {% load imagefit i18n staticfiles %}
 
-<div class="content-box">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animated rollIn">
-
-        <img class="logo" alt="" src="{% static 'logo.svg' %}">
+<div class="container-fluid">
+    <div class="banner">
         {% ifequal lang 'ar'  %}
-        <div><span class="slogan">{% trans "alghad" %}</span>
-        <span>{% trans "first Arab website Mali" %}</span>
-        </div>
+            <div>
+                <span class="slogan">{% trans "alghad" %}</span>
+                <span>{% trans "first Arab website Mali" %}</span>
+            </div>
         {% else %}
         {% endifequal %}
-        </div>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <span class="language">
+                <a href="/{{ language.code }}{{ request.get_full_path|slice:'3:' }}"
+                   class="{% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                   lang="{{ language.code }}">
+                    {{ language.name_local }}
+                </a>
+            </span>
+        {% endfor %}
+    </div>
+    <div class="logo animated rollIn">
+        <a href="{% url 'home' '' %}"><img alt="" src="{% static 'logo.svg' %}"></a>
     </div>
 </div>

@@ -5,142 +5,192 @@
 
 {% block banner %} {% include "site/_banner.html" %} {% endblock %}
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
-{% block content %}
-    {% if starts %}
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 start" >
-                <div id="transition-timer-carousel" class="thumbnail carousel slide transition-timer-carousel" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        {% for star in starts %}
-                            <li data-slide-to="{{star.id}}" data-target="#carousel-caption" class="{% if forloop.first %} active{% endif %}">
-                                <!-- <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">ee</a> -->
-                            </li>
-                        {% endfor %}
-                    </ol>
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        {% for star in starts %}
-                            <div class="item {% if forloop.first %} active{% endif %}">
-                                <img alt="" src="{% if star.image %}{{ star.image.url|resize:'img_start'}}{% endif %}">
-                                <div class="carousel-caption">
-                                    <h4 class=" carousel-caption-header">{{ star.title }}
-                                    <span class="carousel-caption-text hidden-sm hidden-xs">
-                                        <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">{% trans "suite" %}</a>
-                                    </span></h4>
+{% block content_index %}
+    <section class="star">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 start" >
+                        <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                {% for star in starts %}
+                                    <li data-slide-to="{{star.id}}" data-target="#carousel-caption" class="{% if forloop.first %} active{% endif %}">
+                                        <!-- <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">ee</a> -->
+                                    </li>
+                                {% endfor %}
+                            </ol>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                {% for star in starts %}
+                                    <div class="item {% if forloop.first %} active{% endif %}">
+                                        <img alt="" src="{% if star.image %}{{ star.image.url|resize:'img_start'}}{% endif %}">
+                                        <div class="carousel-caption">
+                                            <h4 class=" carousel-caption-header">{{ star.title }}
+                                            <span class="carousel-caption-text hidden-sm hidden-xs">
+                                                <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">{% trans "suite" %}</a>
+                                            </span></h4>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                            <!-- Timer "progress bar" -->
+                            <hr class="transition-timer-carousel-progress-bar animate" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        {% include "_pagination.html" %}
+                        {% if posts %}
+                            {% for post in posts %}
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 card">
+                                    <a href="{{post.url_display}}">
+                                        <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
+                                        <div  class="el-title ">
+                                            <div  style="color: gray;">
+                                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ post.date_created |timesince }}</span>
+                                                    {% if user.is_authenticated %}
+                                                        <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
+                                                    {% endif %}
+                                                <div>{% trans post.category.name %}</div>
+                                            </div>
+                                            <div class="art-title">{{ post.title }}  </div>
+                                        </div>
+                                    </a>
                                 </div>
+                            {% endfor %}
+                        {% else %}
+                            <h3>{% trans "No article published." %}</h3>
+                        {% endif %}
+                        {% include "_pagination.html" %}
+                    </div>
+<!--
+                    <li class="media-list__item media-list__item--4">
+                        <div class="media media--overlay block-link">
+                            <div class="media__image">
+                                <div class="responsive-image">
+                                <img src="http://ichef.bbci.co.uk/wwhp/624/cpsprodpb/0943/production/_94817320_mediaitem94817318.jpg" class="image-replace" alt="Zimbabwe FA boss Phillip Chiyangwa" data-src="http://ichef.bbci.co.uk/wwhp/{width}/cpsprodpb/0943/production/_94817320_mediaitem94817318.jpg" width="304"></div>
+                            </div>
+                            <div class="media__content">
+                                <h3 class="media__title">
+                                    <a class="media__link" href="/sport/football/39065917" rev="hero4|headline">
+                                   lks ksd,sd  ksdkds ksddnk sdkdsmEvent organisers explain Hayatou absence        </a>
+                                </h3>
+                                <a class="media__tag tag tag--african-football" href="/sport/football/african" rev="hero4|source">African Football</a>
+                            </div>
+                            <a class="block-link__overlay-link" href="/sport/football/39065917" rev="hero4|overlay" tabindex="-1" aria-hidden="true">
+                                Event organisers explain Hayatou absence</a>
+                        </div>
+                    </li> -->
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <form  method="get" action="{% url 'search' %}" class="navbar-form" role="search" style="padding: 0px;">
+                    <div class="input-group">
+                        <input type="text" class="form-control pull-right" name="q" placeholder="Recherche">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn">
+                                <span class="glyphicon glyphicon-search">
+                                    <span class="sr-only">{% trans "Search" %}</span>
+                                </span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+              <!--   <section class="s_weather">
+                  <div id='openweathermap-widget'></div>
+                    <script type='text/javascript'>
+                    window.myWidgetParam = {
+                        id: 24,
+                        cityid: 2460596,
+                        appid: '590e10acd0a491951183de7731a86993',
+                        containerid: 'openweathermap-widget',
+                    };
+                    (function() {
+                        var script = document.createElement('script');
+                        script.type = 'text/javascript';
+                        script.async = true;
+                        script.src = 'http://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(script, s);
+                    })();
+                  </script>
+                </section> -->
+                <section class="s_culture">
+                    <div id='gcw_mainFtT4UwYQy' class='gcw_mainFtT4UwYQy'></div>
+                    <a id='gcw_siteFtT4UwYQy' href='http://freecurrencyrates.com/fr/'>FreeCurrencyRates.com</a>
+                    <script>function reloadFtT4UwYQy(){ var sc = document.getElementById('scFtT4UwYQy');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFtT4UwYQy';sc.src = 'http://freecurrencyrates.com/fr/widget-vertical-editable?iso=EURUSDXOFGBPJPYCNY&df=1&p=FtT4UwYQy&v=fits&source=fcr&width=250&width_title=0&firstrowvalue=1&thm=72B42D,285C00,3F7506,3A8104,FFFFFF,72B42D,285C00,ffffff,ffffff&title=Convertisseur%20de%20devises&tzo=0';var div = document.getElementById('gcw_mainFtT4UwYQy');div.parentNode.insertBefore(sc, div);} reloadFtT4UwYQy(); </script>
+                    <!-- put custom styles here: .gcw_mainFtT4UwYQy{}, .gcw_headerFtT4UwYQy{}, .gcw_ratesFtT4UwYQy{}, .gcw_sourceFtT4UwYQy{} -->
+                    <!--End of Currency Converter widget by FreeCurrencyRates.com -->
+                </section>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+                <div class="website animated zoomInDown">
+                    <a href="{% url 'directory' %}">
+                        <span class="label label-large label-yellow arrowed-in arrowed-in-right">
+                         {% trans "Portal news sites online" %}
+                        </span>
+                    </a>
+                </div>
+                {% if publicities %}
+                    <div class="list-group">
+                        <div class="list-group-item disabled">{% trans "Publicity" %}</div>
+                        {% for publicity in publicities %}
+                            <div class="">
+                                <a href="{{publicity.url_display}}">
+                                  <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
+                                </a>
                             </div>
                         {% endfor %}
                     </div>
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                    <!-- Timer "progress bar" -->
-                    <hr class="transition-timer-carousel-progress-bar animate" />
-                </div>
+                {% endif %}
+                {% if sports %}
+                    <section class="s_sport">
+                        {% include "site/_thumbnail_right.html" with elements=sports el_title=sport_title link="sport" %}
+                    </section>
+                {% endif %}
+                {% if art_cultures %}
+                    <section class="s_culture">
+                    {% include "site/_thumbnail_right.html" with elements=art_cultures el_title=art_culture_title link="culture" %}
+                    </section>
+                {% endif %}
             </div>
         </div>
+    </section>
+    {% if free_expressions %}
+        <section class="s-free-expression ">
+        {% include "site/_thumbnail_footer.html" with elements=free_expressions el_title=free_expression_title link="expression-libre" %}
+        </section>
     {% endif %}
-    <!-- <hr/> -->
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            {% include "_pagination.html" %}
-            {% if posts %}
-                {% for post in posts %}
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 art-vt">
-                        <a href="{{post.url_display}}">
-                            <img data-src="holder.js/100%x100"src="{% if post.image %}{{ post.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
-                            <div  class="el-title">
-                                <div  style="color: gray;">
-                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ post.date_created |timesince }}</span>
-                                        {% if user.is_authenticated %}
-                                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
-                                        {% endif %}
-                                    <div>{% trans post.category.name %}</div>
-                                </div>
-                                <div class="art-title">{{ post.title }}  </div>
-                            </div>
-                        </a>
+    {% if migrations %}
+        <section class="s-free-migration">
+        {% include "site/_thumbnail_footer.html" with elements=migrations el_title=migration_title link="migration" %}
+        </section>
+    {% endif %}
+    {% if videos_home %}
+        <section class="s-video">
+            <div class="container-fluid">
+                <a href="{% url 'all_videos' %}" > <h3 class=heading-large>  {% trans "Videos" %} </h3></a>
+                {% for video in videos_home %}
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <h6 class="el-title">"{{video.title}}"</h6>
                     </div>
                 {% endfor %}
-            {% else %}
-                <h3>{% trans "No article published." %}</h3>
-            {% endif %}
-            {% include "_pagination.html" %}
-        </div>
-    </div>
-{% endblock %}
-{% block pub %}
-
-    {% if publicities %}
-        <div class="list-group">
-            <div class="list-group-item disabled">{% trans "Publicity" %}</div>
-            {% for publicity in publicities %}
-                <div class="">
-                    <a href="{{publicity.url_display}}">
-                      <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endblock %}
-{% block sport %}
-    <div class="website animated zoomInDown">
-        <a href="{% url 'directory' %}">
-            <span class="label label-large label-yellow arrowed-in arrowed-in-right">
-             {% trans "Portal news sites online" %}
-            </span>
-        </a>
-    </div>
-    {% if sports %}
-        {% include "site/_thumbnail.html" with elements=sports el_title=sport_title link="sport" %}
-    {% endif %}
-{% endblock %}
-{% block culture %}
-    {% if art_cultures %}
-        {% include "site/_thumbnail.html" with elements=art_cultures el_title=art_culture_title link="culture" %}
-    {% endif %}
-{% endblock %}
-{% block twitter %}
-<!--Currency Converter widget by FreeCurrencyRates.com -->
-
-<div id='gcw_mainFtT4UwYQy' class='gcw_mainFtT4UwYQy'></div>
-<a id='gcw_siteFtT4UwYQy' href='http://freecurrencyrates.com/fr/'>FreeCurrencyRates.com</a>
-<script>function reloadFtT4UwYQy(){ var sc = document.getElementById('scFtT4UwYQy');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFtT4UwYQy';sc.src = 'http://freecurrencyrates.com/fr/widget-vertical-editable?iso=EURUSDXOFGBPJPYCNY&df=1&p=FtT4UwYQy&v=fits&source=fcr&width=250&width_title=0&firstrowvalue=1&thm=72B42D,285C00,3F7506,3A8104,FFFFFF,72B42D,285C00,ffffff,ffffff&title=Convertisseur%20de%20devises&tzo=0';var div = document.getElementById('gcw_mainFtT4UwYQy');div.parentNode.insertBefore(sc, div);} reloadFtT4UwYQy(); </script>
-<!-- put custom styles here: .gcw_mainFtT4UwYQy{}, .gcw_headerFtT4UwYQy{}, .gcw_ratesFtT4UwYQy{}, .gcw_sourceFtT4UwYQy{} -->
-<!--End of Currency Converter widget by FreeCurrencyRates.com -->
-
-{% endblock %}
-{% block content_free_expression %}
-    {% if free_expressions %}
-        {% include "site/_thumbnail_footer.html" with elements=free_expressions el_title=free_expression_title link="expression-libre" %}
-    {% endif %}
-{% endblock %}
-{% block content_migration %}
-    {% if migrations %}
-        {% include "site/_thumbnail_footer.html" with elements=migrations el_title=migration_title link="migration" %}
-    {% endif %}
-{% endblock %}
-{% block content_video %}
-    {% if videos_home %}
-        <a href="{% url 'all_videos' %}" > <div class=heading_title> {% trans "Videos" %} </div></a>
-        {% for video in videos_home %}
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <h6 class="el-title">"{{video.title}}"</h6>
+                 <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
             </div>
-        {% endfor %}
-         <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
+        </section>
     {% endif %}
 {% endblock %}
-
 <!-- Footer -->
 {% block footer %}
     {% include "site/_footer.html" %}
