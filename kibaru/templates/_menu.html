@@ -26,10 +26,6 @@
                     <li class="col-sm-4">
                         <ul>
                             <li class="dropdown-header"><a href="{% url 'home' 'econationale' %}">{% trans "Nationale" %}</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Fonts</li>
-                            <li><a href="#">Glyphicon</a></li>
-                            <li><a href="#">Google Fonts</a></li>
                         </ul>
                     </li>
                     <li class="col-sm-4">
@@ -42,36 +38,19 @@
             <li class="dropdown mega-dropdown"{% if cat_slug == 'cooperationbila' or cat_slug == 'actualite' or cat_slug == 'cooperationmulti' %} class="active" {% endif %} class="dropdown">
                 <a href="{% url 'home' 'econationale' %}" class="dropdown-toggle" data-toggle="dropdown"> {% trans "Nationale" %} <span class="caret"></span></a>
                 <ul class="dropdown-menu mega-dropdown-menu">
-                    <li class="col-sm-3">
+                    <li class="col-sm-4">
                         <ul>
                             <li class="dropdown-header"><a href="{% url 'home' 'actualite' %}">{% trans "Actuality" %}</a></li>
-                            <li class="dropdown-header">Features</li>
-                            <li><a href="#">Auto Carousel</a></li>
-                            <li><a href="#">Carousel Control</a></li>
-                            <li><a href="#">Left & Right Navigation</a></li>
-                            <li><a href="#">Four Columns Grid</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Fonts</li>
-                            <li><a href="#">Glyphicon</a></li>
-                            <li><a href="#">Google Fonts</a></li>
                         </ul>
                     </li>
-                    <li class="col-sm-3">
+                    <li class="col-sm-4">
                         <ul>
                             <li class="dropdown-header"><a href="{% url 'home' 'cooperationbila' %}">{% trans "Bilateral" %}</a></li>
-                            <li><a href="#">Navbar Inverse</a></li>
-                            <li><a href="#">Pull Right Elements</a></li>
-                            <li><a href="#">Coloured Headers</a></li>
-                            <li><a href="#">Primary Buttons & Default</a></li>
                         </ul>
                     </li>
-                    <li class="col-sm-3">
+                    <li class="col-sm-4">
                         <ul>
                             <li class="dropdown-header"><a href="{% url 'home' 'cooperationmulti' %}">{% trans "Multilateral" %}</a></li>
-                            <li><a href="#">Easy to Customize</a></li>
-                            <li><a href="#">Calls to action</a></li>
-                            <li><a href="#">Custom Fonts</a></li>
-                            <li><a href="#">Slide down on Hover</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -125,6 +104,32 @@
                             <li><a href="{% url 'article_month' line.year line.month %}"> - {{ line.monthname }} ({{ line.count }})</a></li>
                         {% endif %}
                     {% endfor %}
+                </ul>
+            </li>
+            <li class="dropdown mega-dropdown"  class="dropdown">
+                <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Useful numbers" %}<span class="caret"></span></a>
+                <ul class="dropdown-menu mega-dropdown-menu">
+                    <li class="col-sm-6">
+                        <ul>
+                            <li class="dropdown-header-t">{% trans "Force of order" %} </li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">{% trans "Police :" %} <a href="#">80 00 11 15</a></li>
+                            <li class="dropdown-header">{% trans "Gendarmerie : "%}  <a href="#">80 00 11 14</a></li>
+                            <li class="dropdown-header"> {% trans "Civil protection : " %}<a href="#">80 00 12 01</a></li>
+                            <li class="dropdown-header">{% trans "Police struggle against violence against women :" %} <a href="#"> 80 333</a></li>
+                            <li class="dropdown-header"> {% trans "Airport of Bamako : " %}<a href="#">20 20 27 04</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-6">
+                        <ul>
+                            <li class="dropdown-header-t">{% trans "Health Center" %}</li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header"> {% trans "Gabriel Touré Hospital : " %}<a href="#"> +223 20 22 27 12 ou +223 20 23 07 80</a></li>
+                            <li class="dropdown-header">{% trans "Medico-social Center of French Cooperation in Bamako : " %} <a href="#">+223 20 22 50 72 ou +223 76 35 03 89 ({% trans "permanence" %})</a></li>
+                            <li class="dropdown-header"> {% trans "Point G Hospital : " %}<a href="#">20 22 50 02 ou 20 22 50 03</a></li>
+                            <li class="dropdown-header"> {% trans "Clinic Pasteur : " %}<a href="#">223 20 29 10 10 ou 20 29 14 37</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
         </ul>

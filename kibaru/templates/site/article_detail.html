@@ -22,9 +22,7 @@
         {% if article.image %}
             <figure>
                 <a href="{{ article.image.url }}"><img class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %}></a>
-
             </figure>
-
             {% if article.legend %}
                 <figcaption class="article-caption"><h6 class="article-title"><a href="">{{article.legend}}</a></h6></figcaption>
             {% endif %}
@@ -38,12 +36,10 @@
     </article>
     {% include "site/_chare.html" with object=article %}
     {% include "site/_disqus.html" %}
-
 {% endblock %}
 {% block footer %}
     {% include "site/_footer.html" %}
 {% endblock %}
-
 {% block sidebar_rigth %}
     <div class="list-group">
         <div class="list-group-item disabled">Facebook</div>

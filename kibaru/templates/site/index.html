@@ -58,8 +58,8 @@
                                                     {% if user.is_authenticated %}
                                                         <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
                                                     {% endif %}
-                                                <div>{% trans post.category.name %}</div>
                                             </div>
+                                            <div><a class="media__tag tag tag--asia" href="#" rev="video|source">| {% trans post.category.name %}</a></div>
                                             <div class="art-title">{{ post.title }}  </div>
                                         </div>
                                     </a>
@@ -91,11 +91,11 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                <form  method="get" action="{% url 'search' %}" class="navbar-form" role="search" style="padding: 0px;">
+                <form  method="get" action="{% url 'search' %}" class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control pull-right" name="q" placeholder="Recherche">
                         <span class="input-group-btn">
-                            <button type="submit" class="btn">
+                            <button type="submit" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-search">
                                     <span class="sr-only">{% trans "Search" %}</span>
                                 </span>
@@ -177,7 +177,7 @@
     {% if videos_home %}
         <section class="s-video">
             <div class="container-fluid">
-                <a href="{% url 'all_videos' %}" > <h3 class=heading-large>  {% trans "Videos" %} </h3></a>
+                <a href="{% url 'all_videos' %}" > <h3 class=heading-large>  {% trans "Videos" %} <span> &rsaquo; {% trans "All videos" %} </span></h3></a>
                 {% for video in videos_home %}
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="embed-responsive embed-responsive-16by9">
@@ -186,7 +186,6 @@
                         <h6 class="el-title">"{{video.title}}"</h6>
                     </div>
                 {% endfor %}
-                 <a href="{% url 'all_videos' %}" > <h6 class="list-group-item-heading" style="float: right;padding-right: 18px;">&rsaquo; {% trans "All videos" %}</h6> </a>
             </div>
         </section>
     {% endif %}

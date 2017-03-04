@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 11:23+0000\n"
-"PO-Revision-Date: 2017-01-16 12:23+0000\n"
+"POT-Creation-Date: 2017-03-04 21:35+0000\n"
+"PO-Revision-Date: 2017-03-04 21:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.3\n"
 
 #: kibaru/administation/views.py:81
 msgid "Adding article"
@@ -60,7 +60,7 @@ msgstr "Le lien vidéo youtube a été ajouté."
 msgid "The link of the video has been deleted."
 msgstr "Le lien de la vidéo a été supprimé."
 
-#: kibaru/forms.py:49
+#: kibaru/forms.py:52
 #, fuzzy
 #| msgid "Description"
 msgid "Enter description here"
@@ -82,7 +82,7 @@ msgstr "info"
 msgid "Music"
 msgstr "Musique"
 
-#: kibaru/models.py:47 kibaru/site/views.py:146
+#: kibaru/models.py:47 kibaru/site/views.py:144
 #, fuzzy
 #| msgid "Sports"
 msgid "Sport"
@@ -291,7 +291,7 @@ msgstr "Statuts"
 msgid "Start"
 msgstr "Commencer"
 
-#: kibaru/models.py:385 kibaru/templates/site/index.html:81
+#: kibaru/models.py:385 kibaru/templates/site/index.html:144
 msgid "Publicity"
 msgstr "Publicité"
 
@@ -303,7 +303,7 @@ msgstr "Publicités"
 msgid "Video"
 msgstr "Vidéo"
 
-#: kibaru/models.py:400 kibaru/templates/site/index.html:132
+#: kibaru/models.py:400 kibaru/templates/site/index.html:180
 msgid "Videos"
 msgstr "Vidéos"
 
@@ -363,23 +363,23 @@ msgstr "Décembre"
 msgid "The articles published in"
 msgstr "Articles publiés"
 
-#: kibaru/site/views.py:144
+#: kibaru/site/views.py:142
 msgid "Art and Culture"
 msgstr "Culture et Art"
 
-#: kibaru/site/views.py:148
+#: kibaru/site/views.py:146
 msgid "migration"
 msgstr "Migration"
 
-#: kibaru/site/views.py:150
+#: kibaru/site/views.py:148
 msgid "Free Expression"
 msgstr "Libre Expression"
 
-#: kibaru/site/views.py:248
+#: kibaru/site/views.py:252
 msgid "Thank you for your subscription"
 msgstr "Nous vous remercions de votre inscription."
 
-#: kibaru/site/views.py:300
+#: kibaru/site/views.py:304
 msgid "Article does not exist"
 msgstr "Aucun article ne publié."
 
@@ -417,118 +417,158 @@ msgstr ""
 msgid "— The Team"
 msgstr "—- L’équipe"
 
-#: kibaru/templates/_menu.html:6
+#: kibaru/templates/_menu.html:8
 msgid "Toggle navigation"
 msgstr "Touche de navigation"
 
-#: kibaru/templates/_menu.html:18
+#: kibaru/templates/_menu.html:19
 msgid "Economy"
 msgstr "Économies"
 
-#: kibaru/templates/_menu.html:20
-msgid "Nationale"
-msgstr "Nationale"
-
-#: kibaru/templates/_menu.html:21
-msgid "Regionale"
-msgstr "Regionale"
-
-#: kibaru/templates/_menu.html:22
+#: kibaru/templates/_menu.html:23
 msgid "International"
 msgstr "Internationale"
 
-#: kibaru/templates/_menu.html:26
-msgid "Cooperation"
-msgstr "Coopération"
+#: kibaru/templates/_menu.html:28 kibaru/templates/_menu.html.py:39
+msgid "Nationale"
+msgstr "Nationale"
 
-#: kibaru/templates/_menu.html:28
+#: kibaru/templates/_menu.html:33
+msgid "Regionale"
+msgstr "Regionale"
+
+#: kibaru/templates/_menu.html:43
 msgid "Actuality"
 msgstr "Actualité"
 
-#: kibaru/templates/_menu.html:29
+#: kibaru/templates/_menu.html:48
 msgid "Bilateral"
 msgstr "Bilatéral"
 
-#: kibaru/templates/_menu.html:30
+#: kibaru/templates/_menu.html:53
 msgid "Multilateral"
 msgstr "Multilatéral"
 
-#: kibaru/templates/_menu.html:34
+#: kibaru/templates/_menu.html:59
 msgid "Society"
 msgstr "Société"
 
-#: kibaru/templates/_menu.html:36
+#: kibaru/templates/_menu.html:63
 msgid "Peace process"
 msgstr "Processus de paix"
 
-#: kibaru/templates/_menu.html:37
+#: kibaru/templates/_menu.html:68
 msgid "Portrait"
 msgstr "Portrait"
 
-#: kibaru/templates/_menu.html:38
+#: kibaru/templates/_menu.html:73
 msgid "Education"
 msgstr "Éducation"
 
-#: kibaru/templates/_menu.html:39
+#: kibaru/templates/_menu.html:78
 msgid "Health"
 msgstr "Santé"
 
-#: kibaru/templates/_menu.html:40
+#: kibaru/templates/_menu.html:83
 msgid "NTIC"
 msgstr "NTIC"
 
-#: kibaru/templates/_menu.html:41
+#: kibaru/templates/_menu.html:88
 msgid "Reportage"
 msgstr "Reportage"
 
-#: kibaru/templates/_menu.html:44
+#: kibaru/templates/_menu.html:93
 msgid "Environment"
 msgstr "Environnement"
 
-#: kibaru/templates/_menu.html:45
+#: kibaru/templates/_menu.html:94
 msgid "Libre Expression"
 msgstr "Libre Expression"
 
-#: kibaru/templates/_menu.html:47
+#: kibaru/templates/_menu.html:96
 msgid "Archive"
 msgstr "Archives"
 
-#: kibaru/templates/_menu.html:67
-msgid "Close"
-msgstr "Fermer"
+#: kibaru/templates/_menu.html:110
+msgid "Useful numbers"
+msgstr "Numéros utiles"
 
-#: kibaru/templates/_menu.html:72
-msgid "Search"
-msgstr "Recherche"
+#: kibaru/templates/_menu.html:114
+msgid "Force of order"
+msgstr ""
 
-#: kibaru/templates/administration/__menu.html:4
+#: kibaru/templates/_menu.html:116
+msgid "Police :"
+msgstr "Police :"
+
+#: kibaru/templates/_menu.html:117
+msgid "Gendarmerie : "
+msgstr "Gendarmerie"
+
+#: kibaru/templates/_menu.html:118
+msgid "Civil protection : "
+msgstr "Protection civile"
+
+#: kibaru/templates/_menu.html:119
+msgid "Police struggle against violence against women :"
+msgstr "Police lutte contre la violence faite aux femmes :"
+
+#: kibaru/templates/_menu.html:120
+msgid "Airport of Bamako : "
+msgstr "Aéroport de Bamako :"
+
+#: kibaru/templates/_menu.html:125
+msgid "Health Center"
+msgstr "Centre Santé"
+
+#: kibaru/templates/_menu.html:127
+msgid "Gabriel Touré Hospital : "
+msgstr "L’hôpital Gabriel Touré :"
+
+#: kibaru/templates/_menu.html:128
+msgid "Medico-social Center of French Cooperation in Bamako : "
+msgstr "Centre médico-social de la coopération Français à Bamako :"
+
+#: kibaru/templates/_menu.html:128
+msgid "permanence"
+msgstr "permanence."
+
+#: kibaru/templates/_menu.html:129
+msgid "Point G Hospital : "
+msgstr "Hôpital  Point G :"
+
+#: kibaru/templates/_menu.html:130
+msgid "Clinic Pasteur : "
+msgstr "Clinique Pasteur :"
+
+#: kibaru/templates/administration/__menu.html:5
 #: kibaru/templates/administration/index.html:4
 msgid "Administration"
 msgstr "Administration"
 
-#: kibaru/templates/administration/__menu.html:7
+#: kibaru/templates/administration/__menu.html:8
 msgid "Add your article"
 msgstr "Ajouter votre article"
 
-#: kibaru/templates/administration/__menu.html:8
+#: kibaru/templates/administration/__menu.html:10
 #: kibaru/templates/administration/index.html:87
 msgid "Add new"
 msgstr "Ajouter un nouveau"
 
-#: kibaru/templates/administration/__menu.html:9
+#: kibaru/templates/administration/__menu.html:12
 msgid "Add video link"
 msgstr "Ajouter un lien vidéo"
 
-#: kibaru/templates/administration/__menu.html:10
+#: kibaru/templates/administration/__menu.html:14
 #: kibaru/templates/administration/add_website.html:3
 msgid "Add web site"
 msgstr "Ajouter un site web"
 
-#: kibaru/templates/administration/__menu.html:16
+#: kibaru/templates/administration/__menu.html:17
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: kibaru/templates/administration/__menu.html:18
+#: kibaru/templates/administration/__menu.html:19
 msgid "disconnection"
 msgstr "déconnexion"
 
@@ -602,7 +642,7 @@ msgid "Deleted"
 msgstr "Supprimer"
 
 #: kibaru/templates/administration/index.html:60
-#: kibaru/templates/site/index.html:71
+#: kibaru/templates/site/index.html:69
 msgid "No article published."
 msgstr "Aucun article ne publié."
 
@@ -677,11 +717,11 @@ msgstr "Merci de vous identifier"
 msgid "Log in"
 msgstr "Se connecter"
 
-#: kibaru/templates/site/_banner.html:10
+#: kibaru/templates/site/_banner.html:7
 msgid "alghad"
 msgstr "Alghad"
 
-#: kibaru/templates/site/_banner.html:11
+#: kibaru/templates/site/_banner.html:8
 msgid "first Arab website Mali"
 msgstr "premier site en arabe au Mali"
 
@@ -701,19 +741,23 @@ msgstr "Nous suivre"
 msgid "send"
 msgstr "envoyer"
 
-#: kibaru/templates/site/_footer.html:56
+#: kibaru/templates/site/_footer.html:53
 msgid "slogan"
 msgstr ""
 
-#: kibaru/templates/site/article_detail.html:33
+#: kibaru/templates/site/_thumbnail_footer.html:4
+msgid "all"
+msgstr "tous"
+
+#: kibaru/templates/site/article_detail.html:31
 msgid "By"
 msgstr "Par"
 
-#: kibaru/templates/site/article_detail.html:33
+#: kibaru/templates/site/article_detail.html:31
 msgid "Published"
 msgstr "Publié"
 
-#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:96
+#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:138
 msgid "Portal news sites online"
 msgstr "Portail des sites d’actualité en ligne"
 
@@ -721,15 +765,15 @@ msgstr "Portail des sites d’actualité en ligne"
 msgid "Home"
 msgstr "Accueil"
 
-#: kibaru/templates/site/index.html:29
+#: kibaru/templates/site/index.html:31
 msgid "suite"
 msgstr "suite"
 
-#: kibaru/templates/site/index.html:114
-msgid "Tweets of"
-msgstr "Tweets de"
+#: kibaru/templates/site/index.html:100
+msgid "Search"
+msgstr "Recherche"
 
-#: kibaru/templates/site/index.html:141
+#: kibaru/templates/site/index.html:180
 msgid "All videos"
 msgstr "Toutes les vidéos"
 
@@ -751,6 +795,15 @@ msgstr "Dernière modification"
 #: kibaru/templates/site/search_results.html:39
 msgid "No results found for : "
 msgstr "Aucun résultat trouvé pour :"
+
+#~ msgid "Cooperation"
+#~ msgstr "Coopération"
+
+#~ msgid "Close"
+#~ msgstr "Fermer"
+
+#~ msgid "Tweets of"
+#~ msgstr "Tweets de"
 
 #, fuzzy
 #~| msgid "Categories"

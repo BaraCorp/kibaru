@@ -1,23 +1,22 @@
-
 {% load i18n staticfiles imagefit %}
 
 <div class="container-fluid">
-        <a href="{% url 'home' link %}" > <h3 class=heading-large> {{ el_title }} </h3></a>
-        <!-- elemnets -->
-        {% for element in elements %}
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" >
-                <a href="{{element.url_display}}">
-                    <img data-src="holder.js/100%x100"src="{% if element.image %}{{ element.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
-                    <div  class="el-title">
-                        <div  style="color: gray;">
-                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ element.date_created |timesince }}</span>
-                                {% if user.is_authenticated %}
-                                    <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
-                                {% endif %}
-                        </div>
-                        <div class="element-title">{{ element.title }}  </div>
+    <a href="{% url 'home' link %}" class=heading-large> <h3> {{ el_title }} <span>{% trans "all" %} &rsaquo; </span></h3></a>
+    <!-- elemnets -->
+    {% for element in elements %}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" >
+            <a href="{{element.url_display}}">
+                <img data-src="holder.js/100%x100"src="{% if element.image %}{{ element.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
+                <div  class="el-title">
+                    <div  style="color: gray;">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ element.date_created |timesince }}</span>
+                        {% if user.is_authenticated %}
+                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
+                        {% endif %}
                     </div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
+                    <div class="element-title">{{ element.title }}  </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

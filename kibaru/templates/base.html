@@ -32,10 +32,10 @@
         <!-- <div class="container-fluid"> -->
             {% include "_notifs.html" %}
             <div class="subtitle">{% block subtitle %}{% endblock %}</div>
-            <div>
+
                 {% block content_index %}
                 {% endblock %}
-            </div>
+
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     {% block content %}
@@ -53,10 +53,6 @@
                     {% endblock %}
                 </div>
             </div>
-            <section class= "s-video">
-                    {% block content_video %}
-                    {% endblock %}
-            </section>
             <!-- Footer -->
             <section class= "s-footer">
                     {% block footer %}

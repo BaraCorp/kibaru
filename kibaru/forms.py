@@ -34,6 +34,9 @@ class Newsletterform(forms.ModelForm):
     class Meta:
         model = Newsletter
         exclude = ['date']
+        widgets = {
+            'legend': forms.TextInput(attrs={'placeholder': "{{form.email.label}}"}),
+        }
 
 
 class DirectoryFrom(forms.ModelForm):

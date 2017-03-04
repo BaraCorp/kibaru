@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 12:09+0000\n"
-"PO-Revision-Date: 2017-01-16 12:59+0000\n"
+"POT-Creation-Date: 2017-03-04 21:30+0000\n"
+"PO-Revision-Date: 2017-03-04 21:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.3\n"
 
 #: kibaru/administation/views.py:81
 msgid "Adding article"
@@ -59,7 +59,7 @@ msgstr "تم إضافة وصلة فيديو يوتيوب."
 msgid "The link of the video has been deleted."
 msgstr "تم حذف رابط الفيديو."
 
-#: kibaru/forms.py:49
+#: kibaru/forms.py:52
 #, fuzzy
 #| msgid "Description"
 msgid "Enter description here"
@@ -81,7 +81,7 @@ msgstr "معلومات"
 msgid "Music"
 msgstr "الموسيقى"
 
-#: kibaru/models.py:47 kibaru/site/views.py:146
+#: kibaru/models.py:47 kibaru/site/views.py:144
 msgid "Sport"
 msgstr "الرياضة"
 
@@ -286,7 +286,7 @@ msgstr "الحالة"
 msgid "Start"
 msgstr "بداية"
 
-#: kibaru/models.py:385 kibaru/templates/site/index.html:81
+#: kibaru/models.py:385 kibaru/templates/site/index.html:144
 msgid "Publicity"
 msgstr "دعاية"
 
@@ -298,7 +298,7 @@ msgstr "مناسبات"
 msgid "Video"
 msgstr "فيديو"
 
-#: kibaru/models.py:400 kibaru/templates/site/index.html:132
+#: kibaru/models.py:400 kibaru/templates/site/index.html:180
 msgid "Videos"
 msgstr "الفيديوهات"
 
@@ -358,23 +358,23 @@ msgstr "ديسمبر"
 msgid "The articles published in"
 msgstr "المقالات المنشورة في"
 
-#: kibaru/site/views.py:144
+#: kibaru/site/views.py:142
 msgid "Art and Culture"
 msgstr "ثقافة وفنون"
 
-#: kibaru/site/views.py:148
+#: kibaru/site/views.py:146
 msgid "migration"
 msgstr "الهجــرة"
 
-#: kibaru/site/views.py:150
+#: kibaru/site/views.py:148
 msgid "Free Expression"
 msgstr "مقالات رأي"
 
-#: kibaru/site/views.py:248
+#: kibaru/site/views.py:252
 msgid "Thank you for your subscription"
 msgstr "شكرا لك لاشتراكك"
 
-#: kibaru/site/views.py:300
+#: kibaru/site/views.py:304
 msgid "Article does not exist"
 msgstr ""
 
@@ -410,120 +410,162 @@ msgstr "وإلا سوف نكون الإنترنت مرة أخرى قريبا!"
 msgid "— The Team"
 msgstr "الفريق"
 
-#: kibaru/templates/_menu.html:6
+#: kibaru/templates/_menu.html:8
 msgid "Toggle navigation"
 msgstr "تبديل التصفح"
 
-#: kibaru/templates/_menu.html:18
+#: kibaru/templates/_menu.html:19
 msgid "Economy"
 msgstr "الاقتصاد"
 
-#: kibaru/templates/_menu.html:20
-msgid "Nationale"
-msgstr "أخبار محلية"
-
-#: kibaru/templates/_menu.html:21
-msgid "Regionale"
-msgstr "إقليمية "
-
-#: kibaru/templates/_menu.html:22
+#: kibaru/templates/_menu.html:23
 msgid "International"
 msgstr "دولية"
 
-#: kibaru/templates/_menu.html:26
-msgid "Cooperation"
-msgstr "التعاون"
+#: kibaru/templates/_menu.html:28 kibaru/templates/_menu.html.py:39
+msgid "Nationale"
+msgstr "أخبار محلية"
 
-#: kibaru/templates/_menu.html:28
+#: kibaru/templates/_menu.html:33
+msgid "Regionale"
+msgstr "إقليمية "
+
+#: kibaru/templates/_menu.html:43
 msgid "Actuality"
 msgstr "حقيقة"
 
-#: kibaru/templates/_menu.html:29
+#: kibaru/templates/_menu.html:48
 msgid "Bilateral"
 msgstr "ثنائية الجانب"
 
-#: kibaru/templates/_menu.html:30
+#: kibaru/templates/_menu.html:53
 msgid "Multilateral"
 msgstr "الاتفاقات المتعددة الأطراف"
 
-#: kibaru/templates/_menu.html:34
+#: kibaru/templates/_menu.html:59
 msgid "Society"
 msgstr "المجتمع"
 
-#: kibaru/templates/_menu.html:36
+#: kibaru/templates/_menu.html:63
 msgid "Peace process"
 msgstr "عملية السلام"
 
-#: kibaru/templates/_menu.html:37
+#: kibaru/templates/_menu.html:68
 msgid "Portrait"
 msgstr "عمودي"
 
-#: kibaru/templates/_menu.html:38
+#: kibaru/templates/_menu.html:73
 msgid "Education"
 msgstr "التعليم"
 
-#: kibaru/templates/_menu.html:39
+#: kibaru/templates/_menu.html:78
 msgid "Health"
 msgstr "الصحة"
 
-#: kibaru/templates/_menu.html:40
+#: kibaru/templates/_menu.html:83
 msgid "NTIC"
 msgstr "تجهيزات"
 
-#: kibaru/templates/_menu.html:41
+#: kibaru/templates/_menu.html:88
 msgid "Reportage"
 msgstr "تقارير وحوارات"
 
-#: kibaru/templates/_menu.html:44
+#: kibaru/templates/_menu.html:93
 msgid "Environment"
 msgstr "البيئة"
 
-#: kibaru/templates/_menu.html:45
+#: kibaru/templates/_menu.html:94
 msgid "Libre Expression"
 msgstr "رأي مقالات"
 
-#: kibaru/templates/_menu.html:47
+#: kibaru/templates/_menu.html:96
 msgid "Archive"
 msgstr "الأرشيف"
 
-#: kibaru/templates/_menu.html:67
-msgid "Close"
-msgstr "إغلاق"
+#: kibaru/templates/_menu.html:110
+msgid "Useful numbers"
+msgstr "أرقام مفيدة"
 
-#: kibaru/templates/_menu.html:72
-msgid "Search"
-msgstr "بحث"
+#: kibaru/templates/_menu.html:114
+msgid "Force of order"
+msgstr "قوة النظام"
 
-#: kibaru/templates/administration/__menu.html:4
+#: kibaru/templates/_menu.html:116
+msgid "Police :"
+msgstr "الشرطة"
+
+#: kibaru/templates/_menu.html:117
+msgid "Gendarmerie : "
+msgstr "درك"
+
+#: kibaru/templates/_menu.html:118
+msgid "Civil protection : "
+msgstr "الحماية المدنية:"
+
+#: kibaru/templates/_menu.html:119
+msgid "Police struggle against violence against women :"
+msgstr "شرطة مكافحة العنف ضد المرأة:"
+
+#: kibaru/templates/_menu.html:120
+msgid "Airport of Bamako : "
+msgstr "مطار باماكو:"
+
+#: kibaru/templates/_menu.html:125
+#, fuzzy
+#| msgid "Health"
+msgid "Health Center"
+msgstr "الصحة"
+
+#: kibaru/templates/_menu.html:127
+msgid "Gabriel Touré Hospital : "
+msgstr "غابرييل توري المستشفى:"
+
+#: kibaru/templates/_menu.html:128
+msgid "Medico-social Center of French Cooperation in Bamako : "
+msgstr "المركز الطبي-الاجتماعي التعاون الفرنسية في باماكو:"
+
+#: kibaru/templates/_menu.html:128
+msgid "permanence"
+msgstr "جيم - الدوام()"
+
+#: kibaru/templates/_menu.html:129
+msgid "Point G Hospital : "
+msgstr "نقطة مستشفى ز:"
+
+#: kibaru/templates/_menu.html:130
+msgid "Clinic Pasteur : "
+msgstr "عيادة باستور:"
+
+#: kibaru/templates/administration/__menu.html:5
 #: kibaru/templates/administration/index.html:4
 msgid "Administration"
 msgstr "الادارة"
 
-#: kibaru/templates/administration/__menu.html:7
+#: kibaru/templates/administration/__menu.html:8
 msgid "Add your article"
 msgstr "إضافة المادة الخاصة بك"
 
-#: kibaru/templates/administration/__menu.html:8
+#: kibaru/templates/administration/__menu.html:10
 #: kibaru/templates/administration/index.html:87
 msgid "Add new"
 msgstr "اضافة جديد"
 
-#: kibaru/templates/administration/__menu.html:9
+#: kibaru/templates/administration/__menu.html:12
 msgid "Add video link"
 msgstr "أضف وصلة فيديو"
 
-#: kibaru/templates/administration/__menu.html:10
+#: kibaru/templates/administration/__menu.html:14
 #: kibaru/templates/administration/add_website.html:3
 #, fuzzy
 #| msgid "Add News"
 msgid "Add web site"
 msgstr "اضافة خبر"
 
-#: kibaru/templates/administration/__menu.html:16
+#: kibaru/templates/administration/__menu.html:17
 msgid "Welcome"
 msgstr "مرحباً"
 
-#: kibaru/templates/administration/__menu.html:18
+#: kibaru/templates/administration/__menu.html:19
 msgid "disconnection"
 msgstr "قطع الاتصال"
 
@@ -597,7 +639,7 @@ msgid "Deleted"
 msgstr "تم الحذف"
 
 #: kibaru/templates/administration/index.html:60
-#: kibaru/templates/site/index.html:71
+#: kibaru/templates/site/index.html:69
 msgid "No article published."
 msgstr "نشر لا مقال."
 
@@ -671,11 +713,11 @@ msgstr "شكرا لك للتعرف عليك"
 msgid "Log in"
 msgstr "چـونەژوورەوە"
 
-#: kibaru/templates/site/_banner.html:10
+#: kibaru/templates/site/_banner.html:7
 msgid "alghad"
 msgstr "الغد"
 
-#: kibaru/templates/site/_banner.html:11
+#: kibaru/templates/site/_banner.html:8
 msgid "first Arab website Mali"
 msgstr "أول  صحيفة عربية مالية"
 
@@ -695,19 +737,23 @@ msgstr "تابعنا"
 msgid "send"
 msgstr "إرسال"
 
-#: kibaru/templates/site/_footer.html:56
+#: kibaru/templates/site/_footer.html:53
 msgid "slogan"
 msgstr "الخبر وما رائه لتفهم الحدث"
 
-#: kibaru/templates/site/article_detail.html:33
+#: kibaru/templates/site/_thumbnail_footer.html:4
+msgid "all"
+msgstr "الكل"
+
+#: kibaru/templates/site/article_detail.html:31
 msgid "By"
 msgstr "بواسطة"
 
-#: kibaru/templates/site/article_detail.html:33
+#: kibaru/templates/site/article_detail.html:31
 msgid "Published"
 msgstr "منشور"
 
-#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:96
+#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:138
 msgid "Portal news sites online"
 msgstr "أخبار المدخل المواقع على الإنترنت"
 
@@ -715,15 +761,15 @@ msgstr "أخبار المدخل المواقع على الإنترنت"
 msgid "Home"
 msgstr "الرئيسية"
 
-#: kibaru/templates/site/index.html:29
+#: kibaru/templates/site/index.html:31
 msgid "suite"
 msgstr "جناح"
 
-#: kibaru/templates/site/index.html:114
-msgid "Tweets of"
-msgstr "تويت من"
+#: kibaru/templates/site/index.html:100
+msgid "Search"
+msgstr "بحث"
 
-#: kibaru/templates/site/index.html:141
+#: kibaru/templates/site/index.html:180
 msgid "All videos"
 msgstr "كل الفيديوهات"
 
@@ -747,6 +793,15 @@ msgstr "اخر تعديل"
 #| msgid "No results found for : "
 msgid "No results found for : "
 msgstr "لا توجد نتائج لـ:"
+
+#~ msgid "Cooperation"
+#~ msgstr "التعاون"
+
+#~ msgid "Close"
+#~ msgstr "إغلاق"
+
+#~ msgid "Tweets of"
+#~ msgstr "تويت من"
 
 #, fuzzy
 #~| msgid "Categories"
