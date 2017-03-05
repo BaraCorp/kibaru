@@ -1,7 +1,7 @@
 {% load i18n staticfiles imagefit %}
 
 <div class="container-fluid">
-    <a href="{% url 'home' link %}" class=heading-large> <h3> {{ el_title }} <span>{% trans "all" %} &rsaquo; </span></h3></a>
+    <a href="{% url 'home' link %}" class=heading-large> <h3> {{ el_title }} <span>{% trans "more" %} &rsaquo; </span></h3></a>
     <!-- elemnets -->
     {% for element in elements %}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" >

@@ -1,20 +1,19 @@
 
 {% load i18n staticfiles imagefit %}
 <div>
-        <a href="{% url 'home' link %}" >
-        <h3 class=heading-large> {{ el_title}} </h3></a>
-        {% for element in elements %}
-            <a href="{{element.url_display}}">
-                <img data-src="holder.js/100%x100"src="{% if element.image %}{{ element.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
-                <div  class="el-title">
-                    <div  style="color: gray;">
-                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ element.date_created |timesince }}</span>
-                            {% if user.is_authenticated %}
-                                <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
-                            {% endif %}
-                    </div>
-                    <div class="art-title">{{ element.title }}  </div>
+    <a href="{% url 'home' link %}" class=heading-large> <h3> {{ el_title }} <span>{% trans "more" %} &rsaquo; </span></h3></a>
+    {% for element in elements %}
+        <a href="{{element.url_display}}">
+            <img data-src="holder.js/100%x100"src="{% if element.image %}{{ element.image.url | resize:'img_art' }}{% endif %}" data-holder-rendered="true">
+            <div  class="el-title">
+                <div  style="color: gray;">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"> {{ element.date_created |timesince }}</span>
+                        {% if user.is_authenticated %}
+                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
+                        {% endif %}
                 </div>
-            </a>
-        {% endfor %}
+                <div class="art-title">{{ element.title }}  </div>
+            </div>
+        </a>
+    {% endfor %}
 </div>

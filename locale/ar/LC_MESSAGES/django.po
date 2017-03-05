@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-04 21:30+0000\n"
-"PO-Revision-Date: 2017-03-04 21:32+0000\n"
+"POT-Creation-Date: 2017-03-05 07:54+0000\n"
+"PO-Revision-Date: 2017-03-05 08:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -376,7 +376,7 @@ msgstr "شكرا لك لاشتراكك"
 
 #: kibaru/site/views.py:304
 msgid "Article does not exist"
-msgstr ""
+msgstr "المادة غير موجود"
 
 #: kibaru/templates/404.html:4
 msgid "Kibaruu | page not found"
@@ -487,8 +487,8 @@ msgid "Useful numbers"
 msgstr "أرقام مفيدة"
 
 #: kibaru/templates/_menu.html:114
-msgid "Force of order"
-msgstr "قوة النظام"
+msgid "Law enforcement"
+msgstr "إنفاذ القانون"
 
 #: kibaru/templates/_menu.html:116
 msgid "Police :"
@@ -742,8 +742,9 @@ msgid "slogan"
 msgstr "الخبر وما رائه لتفهم الحدث"
 
 #: kibaru/templates/site/_thumbnail_footer.html:4
-msgid "all"
-msgstr "الكل"
+#: kibaru/templates/site/_thumbnail_right.html:4
+msgid "more"
+msgstr "مزيد"
 
 #: kibaru/templates/site/article_detail.html:31
 msgid "By"
@@ -793,6 +794,12 @@ msgstr "اخر تعديل"
 #| msgid "No results found for : "
 msgid "No results found for : "
 msgstr "لا توجد نتائج لـ:"
+
+#~ msgid "Force of order"
+#~ msgstr "قوة النظام"
+
+#~ msgid "all"
+#~ msgstr "الكل"
 
 #~ msgid "Cooperation"
 #~ msgstr "التعاون"

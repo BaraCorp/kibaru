@@ -7,6 +7,7 @@
     border: none;
     color: #dddddd;
     background :rgba(0, 40, 0, 0.8);
+    border-radius: none;
 }
 .nav .navbar-nav {
     position: relative;
@@ -59,4 +60,7 @@ dropdown-menu > li > a:hover> li > a:focus {
 .dropdown-header-t {
   font-size: 20px;
   color: #EBFF27;
+}
+.navbar {
+    border-radius: 0px;
 }

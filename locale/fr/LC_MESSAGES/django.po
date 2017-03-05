@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-04 21:35+0000\n"
-"PO-Revision-Date: 2017-03-04 21:29+0000\n"
+"POT-Creation-Date: 2017-03-05 07:53+0000\n"
+"PO-Revision-Date: 2017-03-05 07:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -494,8 +494,8 @@ msgid "Useful numbers"
 msgstr "Numéros utiles"
 
 #: kibaru/templates/_menu.html:114
-msgid "Force of order"
-msgstr ""
+msgid "Law enforcement"
+msgstr "Forces de l’ordre"
 
 #: kibaru/templates/_menu.html:116
 msgid "Police :"
@@ -746,8 +746,9 @@ msgid "slogan"
 msgstr ""
 
 #: kibaru/templates/site/_thumbnail_footer.html:4
-msgid "all"
-msgstr "tous"
+#: kibaru/templates/site/_thumbnail_right.html:4
+msgid "more"
+msgstr "plus"
 
 #: kibaru/templates/site/article_detail.html:31
 msgid "By"
@@ -795,6 +796,9 @@ msgstr "Dernière modification"
 #: kibaru/templates/site/search_results.html:39
 msgid "No results found for : "
 msgstr "Aucun résultat trouvé pour :"
+
+#~ msgid "all"
+#~ msgstr "tous"
 
 #~ msgid "Cooperation"
 #~ msgstr "Coopération"
