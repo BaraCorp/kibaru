@@ -19,6 +19,7 @@ body {
 body; h1,h2,h3,h4,h5{
     font-family: 'Montserrat', sans-serif;
 }
+
 .post-body {font-size: 18px;}
 .logo {
     max-height: 100px;
@@ -446,8 +447,7 @@ footer {
     height: 100%;
 }
 
-.article-caption a
-{
+.article-caption a {
 color: white;
 }
 
@@ -586,4 +586,11 @@ a {
 .block-link a, .block-link abbr[title], .block-link__link {
     position: relative;
     z-index: 2;
+}
+
+/* About */
+
+#about .container-fluid {
+    font-size: medium;
+    font-family: serif;
 }

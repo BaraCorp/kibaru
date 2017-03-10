@@ -6,6 +6,7 @@ from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
 from django.conf.urls import patterns, url
+
 from kibaru.site import views
 
 urlpatterns = patterns('',
