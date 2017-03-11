@@ -5,8 +5,6 @@
 from __future__ import (unicode_literals, absolute_import,
                         division, print_function)
 
-from django_resized import ResizedImageField
-
 import datetime
 import re
 import os
@@ -15,16 +13,18 @@ import short_url
 
 from django.core import validators
 from django.db import models
+from django.conf import settings
 
+from django.utils import timezone
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin)
 from django.utils.translation import ugettext_lazy as _
-from django.utils import timezone
 
-from django.conf import settings
 from tinymce import models as tinymce_models
 
 from py3compat import implements_to_string
+
+from django_resized import ResizedImageField
 
 from kibaru.tools import social_share
 

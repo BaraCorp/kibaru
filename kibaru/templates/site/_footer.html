@@ -1,14 +1,21 @@
-{% load widget_tweaks i18n %}
+{% load widget_tweaks staticfiles i18n %}
 <footer>
     <div class="contenair-fluid footer" id="footer">
         <div class="row">
-            <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12">
+
+            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
+                <h3>{% trans "Who are we ? " %}</h3>
+                <ul>
+                    <li><a href="{% url 'about' %}"> {% trans "Site editorial line" %} </a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
                 <h3> {% trans "Contact Us" %} </h3>
                 <ul>
                     <li> <address><a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaru"><i class="fa fa-envelope-o fa-fw"></i>kibaruuml@gmail.com</a> </address></li>
                 </ul>
             </div>
-            <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
                 <h3> {% trans "Follow us" %} </h3>
                 <ul class="social">
                     <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class=" fa fa-facebook">   </i> </a> </li>
@@ -18,7 +25,7 @@
                     <!-- <li class="fb-follow" data-href="https://www.facebook.com/Kibaruu-1652451611660511" data-layout="standard" data-show-faces="true"></li> -->
                 </ul>
             </div>
-                <div class="col-lg-4  col-md-4 col-sm-12 col-xs-12 ">
+                <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
                     <h3> {% trans "Newsletter" %} </h3>
                     <ul>
                         <li>
@@ -33,7 +40,6 @@
                                     {% endif %}
                                     <form action="" method="post" class="form-inline">{% csrf_token %}
                                         <div  class="form-group">
-                                            <label>{{form.email.label}}</label>
                                             {{form.email|add_class:"form-control"}}
                                         <input type='submit' class="btn btn-primary" value ='{% trans "send" %}'/>
                                         </div>
@@ -47,10 +53,10 @@
             </div>
             <!--/.row-->
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom"  style="margin-right: 2em; color: #1b503f;">
             <!-- <div class="container"> -->
                 <p class="pull-left">Copyright &copy; {{ settings.APP_NAME }} 2017. All right reserved. </p>
-                <p class="pull-right" style="margin-right: 2em; color: seagreen; font-size: 2em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</p>
+                <p class="pull-right" style="font-size: 2em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</p>
             <!-- </div> -->
         </div>
     </div>

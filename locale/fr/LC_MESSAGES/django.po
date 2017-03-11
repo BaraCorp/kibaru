@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-05 07:53+0000\n"
-"PO-Revision-Date: 2017-03-05 07:57+0000\n"
+"POT-Creation-Date: 2017-03-11 15:44+0000\n"
+"PO-Revision-Date: 2017-03-11 15:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -82,7 +82,7 @@ msgstr "info"
 msgid "Music"
 msgstr "Musique"
 
-#: kibaru/models.py:47 kibaru/site/views.py:144
+#: kibaru/models.py:47 kibaru/site/views.py:143
 #, fuzzy
 #| msgid "Sports"
 msgid "Sport"
@@ -126,11 +126,11 @@ msgstr "Identifiant"
 msgid "Users must have an email address"
 msgstr "Les utilisateurs doivent disposer d’une adresse e-mail"
 
-#: kibaru/models.py:123 kibaru/settings.py:139
+#: kibaru/models.py:123 kibaru/settings.py:138
 msgid "French"
 msgstr "Français"
 
-#: kibaru/models.py:125 kibaru/settings.py:141
+#: kibaru/models.py:125 kibaru/settings.py:140
 msgid "Arabic"
 msgstr "Arabe"
 
@@ -239,7 +239,7 @@ msgstr "Texte"
 msgid "Author"
 msgstr "Auteur"
 
-#: kibaru/models.py:282 kibaru/templates/site/_footer.html:22
+#: kibaru/models.py:282 kibaru/templates/site/_footer.html:29
 msgid "Newsletter"
 msgstr "Newsletter"
 
@@ -291,7 +291,7 @@ msgstr "Statuts"
 msgid "Start"
 msgstr "Commencer"
 
-#: kibaru/models.py:385 kibaru/templates/site/index.html:144
+#: kibaru/models.py:385 kibaru/templates/site/index.html:113
 msgid "Publicity"
 msgstr "Publicité"
 
@@ -303,7 +303,7 @@ msgstr "Publicités"
 msgid "Video"
 msgstr "Vidéo"
 
-#: kibaru/models.py:400 kibaru/templates/site/index.html:180
+#: kibaru/models.py:400 kibaru/templates/site/index.html:149
 msgid "Videos"
 msgstr "Vidéos"
 
@@ -311,75 +311,75 @@ msgstr "Vidéos"
 msgid "Date created"
 msgstr "Date de Création"
 
-#: kibaru/site/views.py:28
+#: kibaru/site/views.py:27
 msgid "January"
 msgstr "Janvier"
 
-#: kibaru/site/views.py:28
+#: kibaru/site/views.py:27
 msgid "February"
 msgstr "Février"
 
-#: kibaru/site/views.py:28
+#: kibaru/site/views.py:27
 msgid "March"
 msgstr "Mars"
 
-#: kibaru/site/views.py:28
+#: kibaru/site/views.py:27
 msgid "April"
 msgstr "Avril"
 
-#: kibaru/site/views.py:29
+#: kibaru/site/views.py:28
 msgid "May"
 msgstr "Mai"
 
-#: kibaru/site/views.py:29
+#: kibaru/site/views.py:28
 msgid "June"
 msgstr "Juin"
 
-#: kibaru/site/views.py:29
+#: kibaru/site/views.py:28
 msgid "July"
 msgstr "Juillet"
 
-#: kibaru/site/views.py:29
+#: kibaru/site/views.py:28
 msgid "August"
 msgstr "Août"
 
-#: kibaru/site/views.py:29
+#: kibaru/site/views.py:28
 msgid "September"
 msgstr "Septembre"
 
-#: kibaru/site/views.py:30
+#: kibaru/site/views.py:29
 msgid "October"
 msgstr "Octobre"
 
-#: kibaru/site/views.py:30
+#: kibaru/site/views.py:29
 msgid "November"
 msgstr "Novembre"
 
-#: kibaru/site/views.py:30
+#: kibaru/site/views.py:29
 msgid "December"
 msgstr "Décembre"
 
-#: kibaru/site/views.py:52 kibaru/site/views.py:62
+#: kibaru/site/views.py:51 kibaru/site/views.py:61
 msgid "The articles published in"
 msgstr "Articles publiés"
 
-#: kibaru/site/views.py:142
+#: kibaru/site/views.py:141
 msgid "Art and Culture"
 msgstr "Culture et Art"
 
-#: kibaru/site/views.py:146
+#: kibaru/site/views.py:145
 msgid "migration"
 msgstr "Migration"
 
-#: kibaru/site/views.py:148
+#: kibaru/site/views.py:147
 msgid "Free Expression"
 msgstr "Libre Expression"
 
-#: kibaru/site/views.py:252
+#: kibaru/site/views.py:251
 msgid "Thank you for your subscription"
 msgstr "Nous vous remercions de votre inscription."
 
-#: kibaru/site/views.py:304
+#: kibaru/site/views.py:303
 msgid "Article does not exist"
 msgstr "Aucun article ne publié."
 
@@ -729,19 +729,27 @@ msgstr "premier site en arabe au Mali"
 msgid "Tweet"
 msgstr "Tweeter"
 
-#: kibaru/templates/site/_footer.html:6
+#: kibaru/templates/site/_footer.html:7
+msgid "Who are we"
+msgstr "Qui sommes-nous ?"
+
+#: kibaru/templates/site/_footer.html:9
+msgid "Site editorial line"
+msgstr "Ligne éditoriale du site"
+
+#: kibaru/templates/site/_footer.html:13
 msgid "Contact Us"
 msgstr "Contacts"
 
-#: kibaru/templates/site/_footer.html:12
+#: kibaru/templates/site/_footer.html:19
 msgid "Follow us"
 msgstr "Nous suivre"
 
-#: kibaru/templates/site/_footer.html:38
+#: kibaru/templates/site/_footer.html:44
 msgid "send"
 msgstr "envoyer"
 
-#: kibaru/templates/site/_footer.html:53
+#: kibaru/templates/site/_footer.html:59
 msgid "slogan"
 msgstr ""
 
@@ -749,6 +757,10 @@ msgstr ""
 #: kibaru/templates/site/_thumbnail_right.html:4
 msgid "more"
 msgstr "plus"
+
+#: kibaru/templates/site/about.html:4
+msgid "About US"
+msgstr "À propos de nous"
 
 #: kibaru/templates/site/article_detail.html:31
 msgid "By"
@@ -758,7 +770,7 @@ msgstr "Par"
 msgid "Published"
 msgstr "Publié"
 
-#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:138
+#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:107
 msgid "Portal news sites online"
 msgstr "Portail des sites d’actualité en ligne"
 
@@ -770,11 +782,11 @@ msgstr "Accueil"
 msgid "suite"
 msgstr "suite"
 
-#: kibaru/templates/site/index.html:100
+#: kibaru/templates/site/index.html:82
 msgid "Search"
 msgstr "Recherche"
 
-#: kibaru/templates/site/index.html:180
+#: kibaru/templates/site/index.html:149
 msgid "All videos"
 msgstr "Toutes les vidéos"
 

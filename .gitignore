@@ -69,3 +69,5 @@ crontab kibaru
 .DS_Store
 
 *.orig
+
+db.sqlite3 copy

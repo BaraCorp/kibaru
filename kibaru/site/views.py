@@ -16,8 +16,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import Http404
-
+from django.http import Http404, HttpResponse
 from kibaru.models import (Article, Publicity, Category, New, Video, Language,
                            Directory)
 from kibaru.forms import Newsletterform
@@ -309,6 +308,18 @@ def display_article(request, *args, **kwargs):
     context.update({'article': article, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/article_detail.html', context)
 
+def about(request, *args, **kwargs):
+    if request.LANGUAGE_CODE == "ar":
+        filename =  settings.AR_LEDIT
+    else:
+        filename =  settings.FR_LEDIT
+
+    # with open(filename) as pdf:
+    #     response = HttpResponse(pdf, content_type='application/pdf')
+    #     response['Content-Disposition'] = 'attachment; filename={}.pdf'.format(_("Ligne editoriale du site"))
+    #     return response
+
+    return render(request, 'site/about.html', {'url_pdf' : filename})
 
 def display_new(request, *args, **kwargs):
     posts, context = init()

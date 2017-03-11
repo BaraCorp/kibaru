@@ -17,11 +17,10 @@ urlpatterns = [
     # authentication
     url(r'^thumbnails/', include('imagefit.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+  # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
-    url(r'^about/', TemplateView.as_view(
-            template_name="site/about.html"), name='about'),
     url(r'^admin/', include(admin_urls)),
     url(r'^', include(site_urls)),
     url(r'^login/$', 'django.contrib.auth.views.login',

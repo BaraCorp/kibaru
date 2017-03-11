@@ -11,7 +11,6 @@ import sys
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(abs_path)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -164,6 +163,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
 
+
 DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
 DJANGORESIZED_DEFAULT_QUALITY = 75
 DJANGORESIZED_DEFAULT_KEEP_META = True
@@ -171,6 +171,9 @@ DJANGORESIZED_DEFAULT_KEEP_META = True
 FACEBOOK_PAGE = "Kibaruu-1652451611660511"
 FACEBOOK_USER = "kibaruuml"
 FACEBOOK_APP_ID = "1652451611660511"
+
+AR_LEDIT = "ar_ledit.pdf"
+FR_LEDIT = "fr_ledit.pdf"
 
 # TWITTER_MAXLENGTH = 140
 TWITTER_NAME = "kibml"
@@ -193,9 +196,6 @@ IMAGEFIT_PRESETS = {
     'img_artd': {'width': 760, 'height': 350, 'crop': True},
     'img_art': {'width': 265, 'height': 125, 'crop': True},
 }
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 try:
     from kibaru.settings_local import *
