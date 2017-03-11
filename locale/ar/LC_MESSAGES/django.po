@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-11 15:44+0000\n"
-"PO-Revision-Date: 2017-03-11 15:48+0000\n"
+"POT-Creation-Date: 2017-03-11 16:00+0000\n"
+"PO-Revision-Date: 2017-03-11 16:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -726,8 +726,8 @@ msgid "Tweet"
 msgstr "تغريد"
 
 #: kibaru/templates/site/_footer.html:7
-msgid "Who are we"
-msgstr "من نحن"
+msgid "Who are we ? "
+msgstr "من نحن؟"
 
 #: kibaru/templates/site/_footer.html:9
 msgid "Site editorial line"
