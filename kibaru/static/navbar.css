@@ -1,0 +1,66 @@
+/* Meunu */
+/*.navbar-fixed-top{top: 0px;background-color: rgb(0, 52, 6);height: 2px;}*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+.navbar {
+    border: none;
+    color: #dddddd;
+    background :rgba(0, 40, 0, 0.8);
+    border-radius: none;
+}
+.nav .navbar-nav {
+    position: relative;
+    display: block;
+    background: #fff;
+}
+.dropdown-menu {
+    background :rgba(0, 40, 0, 0.8);
+    color: #dddddd;
+}
+.mega-dropdown {
+  position: static !important;
+}
+.mega-dropdown-menu {
+    padding: 20px 0px;
+    width: 100%;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.dropdown-menu > li > a {
+    color: white;
+}
+.mega-dropdown-menu > li > ul {
+  padding: 0;
+  margin: 0;
+}
+.mega-dropdown-menu > li > ul > li {
+  list-style: none;
+}
+.mega-dropdown-menu > li > ul > li > a {
+  display: block;
+  color: #dddddd;
+  padding: 3px 5px;
+}
+.mega-dropdown-menu > li ul > li > a:hover,
+.mega-dropdown-menu > li ul > li > a:focus {
+  text-decoration: none;
+}
+dropdown-menu > li > a:hover> li > a:focus {
+    text-decoration: none;
+    color: #dddddd;
+    /*background-color: #114904;*/
+}
+.mega-dropdown-menu .dropdown-header {
+  font-size: 14px;
+  color: #F2E137;
+  padding: 5px 60px 5px 5px;
+  line-height: 30px;
+}
+.dropdown-header-t {
+  font-size: 20px;
+  color: #EBFF27;
+}
+.navbar {
+    border-radius: 0px;
+}

@@ -57,7 +57,7 @@ docs/_build/
 # PyBuilder
 target/
 settings_local.py
-static/
+/static/
 install.txt
 *~
 media/images_article/
