@@ -12,7 +12,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 
 from kibaru.models import (Language, Category, Member, New, Article, Directory,
-                           Newsletter, Publicity, Video)
+                           Newsletter, Publicity, Video, Job)
 from kibaru.forms import (Articleform, Videoform, UserChangeForm, DirectoryFrom,
                           UserCreationForm)
 
@@ -45,6 +45,21 @@ class MemberAdmin(UserAdmin):
     filter_horizontal = ()
 
 
+@admin.register(Job)
+class JobAdmin(admin.ModelAdmin):
+    list_display = ('title', 'lang', 'date_created', 'twitte', 'date_expired',
+                    'count_view', 'author', 'slug')
+    list_filter = ('lang', 'date_created', 'date_expired', 'author',)
+
+# @admin.register(Question)
+# class QuestionAdmin(admin.ModelAdmin):
+#     pass
+
+# @admin.register(Choice)
+# class CceoixAdmin(admin.ModelAdmin):
+#     pass
+
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     pass
@@ -55,6 +70,7 @@ class NewAdmin(admin.ModelAdmin):
     list_display = ('title', 'comment', 'author', 'date', 'count_view')
     list_filter = ('lang', 'author', 'type_new', 'twitte',)
 
+    exclude = ('slug',)
 
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):

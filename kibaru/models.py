@@ -415,3 +415,48 @@ class Video(models.Model):
 
     def link(self):
         return "//www.youtube.com/embed/{slug}".format(slug=self.slug)
+
+
+class Job(models.Model):
+
+    class Meta:
+        verbose_name = _("Job")
+        verbose_name_plural = _("Jobs")
+
+    TYPE_JOB = {
+    }
+    text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
+    title = models.CharField(max_length=200, verbose_name=_("Title"))
+    count_view = models.IntegerField(default=0)
+    twitte = models.BooleanField(default=True, blank=True)
+    author = models.ForeignKey(Member, verbose_name=_("Author"))
+    slug = models.CharField(max_length=200,
+        unique=True, blank=True,verbose_name=_("Slug"))
+    date_created = models.DateTimeField(
+        verbose_name=_("Dated the"), auto_now=True)
+    date_expired = models.DateTimeField(
+        verbose_name=_("Date expired"), default=datetime.datetime.today)
+    lang = models.ForeignKey(Language, blank=True, null=True,
+        verbose_name=_("Language"))
+    # type_job = models.CharField(verbose_name=_("Type")
+
+    def job_active(self):
+        return Job.objects.filter(date_expired__lte=datetime.datetime.today)
+
+    def __unicode__(self):
+        return "{} / {}".format(self.title, self.date_expired)
+
+    def is_twitte(self):
+        if self.twitte == False:
+            return False
+        self.twitte = False
+        return True
+
+    def save(self, *args, **kwargs):
+        self.slug = re.sub(
+            "[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+", '-',
+            self.title.lower())
+        self.twitter = self.is_twitte()
+        super(Job, self).save(*args, **kwargs)
+
+# models.signals.post_save.connect(social_share, sender=Job)

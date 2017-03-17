@@ -18,7 +18,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404, HttpResponse
 from kibaru.models import (Article, Publicity, Category, New, Video, Language,
-                           Directory)
+                           Directory, Job)
 from kibaru.forms import Newsletterform
 from django.conf import settings
 from kibaru.site.search import get_query
@@ -96,11 +96,17 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     elif year:
         posts = posts.filter(date_created__year=year)
 
+    jobs = Job.objects.filter(date_expired__lte=datetime.today,
+        lang=current_lang)
+    for job in jobs:
+        job.url_display = reverse("display_job", args=[job.id])
+
     for publicity in publicities:
         publicity.url_display = reverse(
             "display_publicity", args=[publicity.id])
-    free_expressions = articles.filter(category=Category.objects.get(slug="expression-libre"))[
-        :4] if not cat_slug == "expression-libre" else []
+    free_expressions = articles.filter(
+        category=Category.objects.get(slug="expression-libre")
+        )[:4] if not cat_slug == "expression-libre" else []
     for free_expression in free_expressions:
         free_expression.url_display = reverse(
             "art", args=[free_expression.slug])
@@ -148,6 +154,8 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
                # 'tag_counts': tag_data,
                'archive_counts': archive_data,
                'publicities': publicities,
+               'jobs': jobs,
+               'job_title': _("Avis d'Appel d'Offres"),
                'videos_home': videos_home,
                'videos': videos}
     return posts, context
@@ -338,6 +346,19 @@ def display_publicity(request, *args, **kwargs):
 
     context.update({'publicity': publicity, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/display_publicity.html', context)
+
+
+def display_job(request, *args, **kwargs):
+    posts, context = init()
+    job_id = kwargs["id"]
+    job = Job.objects.get(id=job_id)
+    job.count_view += 1
+    job.save()
+    context.update({'job': job, "lang": request.LANGUAGE_CODE})
+    # return render(request, 'site/display_job.html', context)
+    #Avis de manifestation d'interet - MEP  Reinsertion Project Mali_14.03.2017
+    filename= "Avis-de-manifestation-d'interet-MEP-Reinsertion-Project-Mali_14.03.2017.pdf"
+    return render(request, 'site/about.html', {'url_pdf' : filename})
 
 
 def display_videos(request, *args, **kwargs):

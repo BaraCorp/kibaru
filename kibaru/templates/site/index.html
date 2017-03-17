@@ -97,6 +97,14 @@
                 <script src="/js/plugins/openWeather.js"></script>
                 <div class="weather-temperature"></div>
                 </section>
+
+                {% ifequal lang 'fr'  %}
+                    {% if jobs %}
+                        <section class="s_jobs">
+                            {% include "site/_thumbnail_obj.html" with elements=jobs el_title=job_title link="jobs" %}
+                        </section>
+                    {% endif %}
+                {% endifequal %}
                 <section class="s_sondage">
                 </section>
             </div>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n  %}
+{% block title %} {{ job.title }} {% endblock %}
+
+{% block page-id %} {{ job.id }}{% endblock %}
+
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+{% block sticky %}
+    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
+{% endblock %}
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+{% block content_larg %}
+  <iframe src="{% static url_pdf %}" width="100%" height="1000" align="middle"></iframe>
+   <!--  <article>
+        <header>
+            <h1 class="job_post_title entry-title"> {{ job.title }}</h1>
+        </header>
+        <span class="meta">
+            <time style="clear: both; float: right;color:red">
+              {% trans "Date expired" %} {{ job.date_expired|date:"l d F Y" }} </time>
+            <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u></abbr>
+        </span>
+        <div class="post-body">
+            <html>{{ obj.text|safe }}</html>
+            <html>{{ obj.text }}</html>
+        </div>
+    </article> -->
+    {% include "site/_chare.html" with object=job %}
+{% endblock %}
+
+{% block footer %}
+    {% include "site/_footer.html" %}
+{% endblock %}
+
