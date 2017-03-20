@@ -1,0 +1,20 @@
+{% spaceless %}
+<html>
+  <head><title>Sondage</title></head>
+  <body>
+    <h1>Sondages</h1>
+    {% for sondage in sondages %}
+        <p><b>{{sondage.question_text}}</b></p>
+        {% for choice in liste_choice %}
+             {% if sondage == choice.question %}
+                <p>{{ choice.choice_text }}<span> - {{ choice.votes }} votes</span></p>
+             {% endif %}
+        {% empty %}
+                <p>Il n'y aucun choice pour ce sondage</p>
+        {% endfor %}
+    {% empty %}
+        <p>Il n'y a pas de sondages</p>
+    {% endfor %}
+  </body>
+</html>
+{% endspaceless %}

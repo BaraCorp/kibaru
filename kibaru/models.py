@@ -363,7 +363,7 @@ class Article(models.Model):
         return self.STATUS.get(self.status)
 
     def type_text(self):
-        return self.category.name
+        return _("{}".format(self.category.name))
 
     def clean_tags_html(self, linit=150):
         return u"%s" % re.sub(re.compile('<[^<]+?>'), '', self.text)[:linit]
@@ -423,8 +423,14 @@ class Job(models.Model):
         verbose_name = _("Job")
         verbose_name_plural = _("Jobs")
 
-    TYPE_JOB = {
+    N = 'n'
+    C = 'c'
+    TYPE_NOTICE = {
+        N :  _("Notice"),
+        C : _("Call for tenders")
     }
+    type_notice = models.CharField(verbose_name=_("Type"), max_length=50,
+                              choices=TYPE_NOTICE.items(), default=N)
     text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
     title = models.CharField(max_length=200, verbose_name=_("Title"))
     count_view = models.IntegerField(default=0)
@@ -438,12 +444,18 @@ class Job(models.Model):
         verbose_name=_("Date expired"), default=datetime.datetime.today)
     lang = models.ForeignKey(Language, blank=True, null=True,
         verbose_name=_("Language"))
-    # type_job = models.CharField(verbose_name=_("Type")
+
+    @property
+    def image(self):
+        return None
 
     def job_active(self):
         return Job.objects.filter(date_expired__lte=datetime.datetime.today)
 
     def __unicode__(self):
+        return "{} / {}".format(self.title, self.date_expired)
+
+    def __str__(self):
         return "{} / {}".format(self.title, self.date_expired)
 
     def is_twitte(self):
@@ -452,6 +464,10 @@ class Job(models.Model):
         self.twitte = False
         return True
 
+    @property
+    def get_short_id(self):
+        return short_url.encode_url(self.id)
+
     def save(self, *args, **kwargs):
         self.slug = re.sub(
             "[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+", '-',
@@ -459,4 +475,14 @@ class Job(models.Model):
         self.twitter = self.is_twitte()
         super(Job, self).save(*args, **kwargs)
 
-# models.signals.post_save.connect(social_share, sender=Job)
+    def type_text(self):
+        return self.TYPE_NOTICE.get(self.type_notice)
+
+    def post_url(self):
+        return os.path.join(
+            settings.DOMMAIN, self.lang.slug, "job", self.get_short_id)
+
+    def get_twiter_message(self):
+        return u"{} - {}".format(self.type_text(), self.title), self.post_url()
+
+models.signals.post_save.connect(social_share, sender=Job)

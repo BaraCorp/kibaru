@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'disqus',
     'dbbackup',  # django-dbbackup
+    'polls'
 )
 
 

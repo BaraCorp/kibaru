@@ -155,7 +155,7 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
                'archive_counts': archive_data,
                'publicities': publicities,
                'jobs': jobs,
-               'job_title': _("Avis d'Appel d'Offres"),
+               'job_title': _("Avis"),
                'videos_home': videos_home,
                'videos': videos}
     return posts, context
@@ -359,6 +359,13 @@ def display_job(request, *args, **kwargs):
     #Avis de manifestation d'interet - MEP  Reinsertion Project Mali_14.03.2017
     filename= "Avis-de-manifestation-d'interet-MEP-Reinsertion-Project-Mali_14.03.2017.pdf"
     return render(request, 'site/about.html', {'url_pdf' : filename})
+
+
+def notices(request, *args, **kwargs):
+    posts, context = init()
+    notices = Job.objects.all()
+    context.update({'notices': notices, "lang": request.LANGUAGE_CODE})
+    return render(request, 'site/notices.html', context)
 
 
 def display_videos(request, *args, **kwargs):

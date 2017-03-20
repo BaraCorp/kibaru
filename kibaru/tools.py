@@ -28,7 +28,6 @@ def social_share(sender, instance, *args, **kwargs):
 
 
 def post_to_facebook(sender, instance):
-    # print(instance.type_text())
     attach = {
         "name": instance.type_text(),
         "link": instance.post_url(),
@@ -64,7 +63,11 @@ def get_body_twitte(body):
 def post_to_twitter(sender, instance, *args, **kwargs):
     tw_url = 'statuses/update'
     media = {}
-    image = instance.image
+    try:
+        image = instance.image
+    except Exception as e:
+        print(e)
+        image = None
     if image:
         file = open(os.path.join(settings.MEDIA_ROOT, image.name), 'rb')
         media.update({'media[]': file.read()})

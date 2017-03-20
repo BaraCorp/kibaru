@@ -49,7 +49,7 @@ class MemberAdmin(UserAdmin):
 class JobAdmin(admin.ModelAdmin):
     list_display = ('title', 'lang', 'date_created', 'twitte', 'date_expired',
                     'count_view', 'author', 'slug')
-    list_filter = ('lang', 'date_created', 'date_expired', 'author',)
+    list_filter = ('lang', 'date_created', 'date_expired', 'author', 'type_notice')
 
 # @admin.register(Question)
 # class QuestionAdmin(admin.ModelAdmin):
