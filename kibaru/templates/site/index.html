@@ -16,7 +16,7 @@
                             <ol class="carousel-indicators">
                                 {% for star in starts %}
                                     <li data-slide-to="{{star.id}}" data-target="#carousel-caption" class="{% if forloop.first %} active{% endif %}">
-                                        <!-- <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">ee</a> -->
+                                        <!-- <a class="btn btn-xs btn-primary" href="{{star.url_display}}">ee</a> -->
                                     </li>
                                 {% endfor %}
                             </ol>
@@ -28,7 +28,7 @@
                                         <div class="carousel-caption">
                                             <h4 class=" carousel-caption-header">{{ star.title }}
                                             <span class="carousel-caption-text hidden-sm hidden-xs">
-                                                <a class="btn btn-xs btn-primary" href="{{star.url_start_display}}">{% trans "suite" %}</a>
+                                                <a class="btn btn-xs btn-primary" href="{{star.url_display}}">{% trans "suite" %}</a>
                                             </span></h4>
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                                                         <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{post.count_view }}</span>
                                                     {% endif %}
                                             </div>
-                                            <div><a class="media__tag tag tag--asia" href="#" rev="video|source">| {% trans post.category.name %}</a></div>
+                                            <div class="media__tag tag tag--asia">| {% trans post.category.name %} </div>
                                             <div class="art-title">{{ post.title }}  </div>
                                         </div>
                                     </a>
@@ -102,7 +102,7 @@
                 {% ifequal lang 'fr'  %}
                 <iframe src="https://www.meteoblue.com/fr/meteo/widget/daily?geoloc=detect&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&humidity=1&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 270px;height: 336px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/fr/meteo/prevision/semaine?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
                 {% else %}
-                    <iframe src="https://www.meteoblue.com/ar/weather/widget/daily?geoloc=detect&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&spot=1&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 270px;height: 363px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ar/weather/forecast/week?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
+                    <iframe src="https://www.meteoblue.com/ar/weather/widget/daily/%d8%a8%d8%a7%d9%85%d8%a7%d9%83%d9%88_%d9%85%d8%a7%d9%84%d9%8a_2460596?geoloc=fixed&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&humidity=1&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 270px;height: 336px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ar/weather/forecast/week/%d8%a8%d8%a7%d9%85%d8%a7%d9%83%d9%88_%d9%85%d8%a7%d9%84%d9%8a_2460596?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
                 {% endifequal %}
                 </section>
                 <section class="s_sondage">

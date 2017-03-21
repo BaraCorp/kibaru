@@ -363,7 +363,7 @@ class Article(models.Model):
         return self.STATUS.get(self.status)
 
     def type_text(self):
-        return _("{}".format(self.category.name))
+        return "{}".format(self.category.name)
 
     def clean_tags_html(self, linit=150):
         return u"%s" % re.sub(re.compile('<[^<]+?>'), '', self.text)[:linit]
@@ -480,7 +480,7 @@ class Job(models.Model):
 
     def post_url(self):
         return os.path.join(
-            settings.DOMMAIN, self.lang.slug, "job", self.get_short_id)
+            settings.DOMMAIN, self.lang.slug, "job", self.id)
 
     def get_twiter_message(self):
         return u"{} - {}".format(self.type_text(), self.title), self.post_url()
