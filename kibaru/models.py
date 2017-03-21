@@ -467,7 +467,7 @@ class Job(models.Model):
     @property
     def get_short_id(self):
         # return short_url.encode_url(self.id)
-        return self.id
+        return "{}".format(self.id)
 
     def save(self, *args, **kwargs):
         self.slug = re.sub(
