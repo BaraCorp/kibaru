@@ -466,7 +466,8 @@ class Job(models.Model):
 
     @property
     def get_short_id(self):
-        return short_url.encode_url(self.id)
+        # return short_url.encode_url(self.id)
+        return self.id
 
     def save(self, *args, **kwargs):
         self.slug = re.sub(
@@ -480,7 +481,7 @@ class Job(models.Model):
 
     def post_url(self):
         return os.path.join(
-            settings.DOMMAIN, self.lang.slug, "job", self.id)
+            settings.DOMMAIN, self.lang.slug, "job", self.get_short_id)
 
     def get_twiter_message(self):
         return u"{} - {}".format(self.type_text(), self.title), self.post_url()
