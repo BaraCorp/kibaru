@@ -357,8 +357,9 @@ def display_job(request, *args, **kwargs):
     context.update({'job': job, "lang": request.LANGUAGE_CODE})
     # return render(request, 'site/display_job.html', context)
     #Avis de manifestation d'interet - MEP  Reinsertion Project Mali_14.03.2017
-    filename= "Avis-de-manifestation-d'interet-MEP-Reinsertion-Project-Mali_14.03.2017.pdf"
-    return render(request, 'site/about.html', {'url_pdf' : filename})
+    # filename= "Avis-de-manifestation-d'interet-MEP-Reinsertion-Project-Mali_14.03.2017.pdf"
+    # return render(request, 'site/about.html', {'url_pdf' : filename})
+    return render(request, 'site/display_job.html', context)
 
 
 def notices(request, *args, **kwargs):
