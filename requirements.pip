@@ -12,3 +12,4 @@ django-dbbackup==2.3.3
 TwitterAPI==2.4.2
 facebook-sdk
 django-polls==0.2.1
+django-simple-poll==0.1.3

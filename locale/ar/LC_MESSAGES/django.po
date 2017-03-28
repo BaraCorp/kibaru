@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-11 16:00+0000\n"
-"PO-Revision-Date: 2017-03-11 16:00+0000\n"
+"POT-Creation-Date: 2017-03-28 15:34+0000\n"
+"PO-Revision-Date: 2017-03-28 15:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -81,7 +81,7 @@ msgstr "معلومات"
 msgid "Music"
 msgstr "الموسيقى"
 
-#: kibaru/models.py:47 kibaru/site/views.py:143
+#: kibaru/models.py:47 kibaru/site/views.py:149
 msgid "Sport"
 msgstr "الرياضة"
 
@@ -107,6 +107,7 @@ msgid "Description"
 msgstr "وصف"
 
 #: kibaru/models.py:60 kibaru/models.py:231 kibaru/models.py:321
+#: kibaru/models.py:442
 msgid "Dated the"
 msgstr "المؤرخة في"
 
@@ -115,7 +116,7 @@ msgid "Categories"
 msgstr "التصنيفات"
 
 #: kibaru/models.py:76 kibaru/models.py:129 kibaru/models.py:313
-#: kibaru/models.py:403
+#: kibaru/models.py:403 kibaru/models.py:440
 msgid "Slug"
 msgstr "وحدة الكتلة"
 
@@ -123,11 +124,11 @@ msgstr "وحدة الكتلة"
 msgid "Users must have an email address"
 msgstr "يجب إدخال البريد الإلكتروني للمستخدمين."
 
-#: kibaru/models.py:123 kibaru/settings.py:138
+#: kibaru/models.py:123 kibaru/settings.py:139
 msgid "French"
 msgstr "فرنسي"
 
-#: kibaru/models.py:125 kibaru/settings.py:140
+#: kibaru/models.py:125 kibaru/settings.py:141
 msgid "Arabic"
 msgstr "العربية"
 
@@ -213,11 +214,12 @@ msgid "communicated"
 msgstr "ترسل"
 
 #: kibaru/models.py:227 kibaru/models.py:286 kibaru/models.py:325
+#: kibaru/models.py:446
 msgid "Language"
 msgstr "اللغة"
 
 #: kibaru/models.py:228 kibaru/models.py:314 kibaru/models.py:404
-#: kibaru/templates/administration/index.html:36
+#: kibaru/models.py:435 kibaru/templates/administration/index.html:36
 #: kibaru/templates/administration/index.html:92
 #: kibaru/templates/administration/index.html:147
 msgid "Title"
@@ -229,7 +231,7 @@ msgstr ",مالية عربية صحيفة أول"
 msgid "Texte"
 msgstr "النص"
 
-#: kibaru/models.py:230 kibaru/models.py:320
+#: kibaru/models.py:230 kibaru/models.py:320 kibaru/models.py:438
 #: kibaru/templates/administration/index.html:39
 msgid "Author"
 msgstr "مؤلف"
@@ -266,7 +268,7 @@ msgstr "مسودة"
 msgid "Posted"
 msgstr "نشر"
 
-#: kibaru/models.py:315
+#: kibaru/models.py:315 kibaru/models.py:434
 msgid "Text"
 msgstr "النص"
 
@@ -286,7 +288,7 @@ msgstr "الحالة"
 msgid "Start"
 msgstr "بداية"
 
-#: kibaru/models.py:385 kibaru/templates/site/index.html:113
+#: kibaru/models.py:385 kibaru/templates/site/index.html:123
 msgid "Publicity"
 msgstr "دعاية"
 
@@ -298,13 +300,37 @@ msgstr "مناسبات"
 msgid "Video"
 msgstr "فيديو"
 
-#: kibaru/models.py:400 kibaru/templates/site/index.html:149
+#: kibaru/models.py:400 kibaru/templates/site/index.html:159
 msgid "Videos"
 msgstr "الفيديوهات"
 
 #: kibaru/models.py:405
 msgid "Date created"
 msgstr "تاريخ الإنشاء"
+
+#: kibaru/models.py:423
+msgid "Job"
+msgstr "الوظيفة"
+
+#: kibaru/models.py:424
+msgid "Jobs"
+msgstr "الوظائف"
+
+#: kibaru/models.py:429
+msgid "Notice"
+msgstr "ملحوظة"
+
+#: kibaru/models.py:430
+msgid "Call for tenders"
+msgstr "دعوة لتقديم العروض"
+
+#: kibaru/models.py:432
+msgid "Type"
+msgstr "النوع"
+
+#: kibaru/models.py:444 kibaru/templates/site/display_job.html:25
+msgid "Date expired"
+msgstr "تاريخ الاستهلاك"
 
 #: kibaru/site/views.py:27
 msgid "January"
@@ -358,23 +384,27 @@ msgstr "ديسمبر"
 msgid "The articles published in"
 msgstr "المقالات المنشورة في"
 
-#: kibaru/site/views.py:141
+#: kibaru/site/views.py:147
 msgid "Art and Culture"
 msgstr "ثقافة وفنون"
 
-#: kibaru/site/views.py:145
+#: kibaru/site/views.py:151
 msgid "migration"
 msgstr "الهجــرة"
 
-#: kibaru/site/views.py:147
+#: kibaru/site/views.py:153
 msgid "Free Expression"
 msgstr "مقالات رأي"
 
-#: kibaru/site/views.py:251
+#: kibaru/site/views.py:158
+msgid "Avis"
+msgstr ""
+
+#: kibaru/site/views.py:259
 msgid "Thank you for your subscription"
 msgstr "شكرا لك لاشتراكك"
 
-#: kibaru/site/views.py:303
+#: kibaru/site/views.py:311
 msgid "Article does not exist"
 msgstr "المادة غير موجود"
 
@@ -759,6 +789,7 @@ msgid "About US"
 msgstr "عنا"
 
 #: kibaru/templates/site/article_detail.html:31
+#: kibaru/templates/site/display_job.html:26
 msgid "By"
 msgstr "بواسطة"
 
@@ -766,7 +797,7 @@ msgstr "بواسطة"
 msgid "Published"
 msgstr "منشور"
 
-#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:107
+#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:117
 msgid "Portal news sites online"
 msgstr "أخبار المدخل المواقع على الإنترنت"
 
@@ -782,7 +813,7 @@ msgstr "جناح"
 msgid "Search"
 msgstr "بحث"
 
-#: kibaru/templates/site/index.html:149
+#: kibaru/templates/site/index.html:159
 msgid "All videos"
 msgstr "كل الفيديوهات"
 

@@ -450,7 +450,7 @@ class Job(models.Model):
         return None
 
     def job_active(self):
-        return Job.objects.filter(date_expired__lte=datetime.datetime.today)
+        return Job.objects.filter(date_expired__gte=datetime.datetime.today)
 
     def __unicode__(self):
         return "{} / {}".format(self.title, self.date_expired)

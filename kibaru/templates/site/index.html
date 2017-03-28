@@ -2,7 +2,7 @@
 {% load i18n staticfiles imagefit %}
 {% block title %} {% trans "Home" %} {% endblock %}
 {% block page-id %}index{% endblock %}
-
+{% load poll_tags %}
 {% block banner %} {% include "site/_banner.html" %} {% endblock %}
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 {% block content_index %}
@@ -98,14 +98,16 @@
                         </section>
                     {% endif %}
                 {% endifequal %}
+                <section class="s_sondage">
+                    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+                    {% poll %}
+                </section>
                 <section class="s_weather">
                 {% ifequal lang 'fr'  %}
                 <iframe src="https://www.meteoblue.com/fr/meteo/widget/daily?geoloc=detect&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&humidity=1&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 270px;height: 336px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/fr/meteo/prevision/semaine?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
                 {% else %}
                     <iframe src="https://www.meteoblue.com/ar/weather/widget/daily/%d8%a8%d8%a7%d9%85%d8%a7%d9%83%d9%88_%d9%85%d8%a7%d9%84%d9%8a_2460596?geoloc=fixed&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&humidity=1&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 270px;height: 336px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ar/weather/forecast/week/%d8%a8%d8%a7%d9%85%d8%a7%d9%83%d9%88_%d9%85%d8%a7%d9%84%d9%8a_2460596?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
                 {% endifequal %}
-                </section>
-                <section class="s_sondage">
                 </section>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
