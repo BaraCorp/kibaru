@@ -80,7 +80,6 @@ def month_view(request, year, month):
 def init(lang='fr', month=None, year=None, cat_slug=None):
 
     current_lang = Language.objects.get(slug=lang)
-
     posts = Article.objects.filter(lang=current_lang, status=Article.POSTED)
     archive_data = create_archive_data(posts)
     articles = posts
@@ -96,14 +95,12 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     elif year:
         posts = posts.filter(date_created__year=year)
 
-    jobs = Job.objects.filter(date_expired__gte=datetime.today,
-        lang=current_lang)
+    jobs = Job.objects.filter(date_expired__gte=datetime.today, lang=current_lang)
     for job in jobs:
         job.url_display = reverse("display_job", args=[job.id])
 
     for publicity in publicities:
-        publicity.url_display = reverse(
-            "display_publicity", args=[publicity.id])
+        publicity.url_display = reverse("display_publicity", args=[publicity.id])
     free_expressions = articles.filter(
         category=Category.objects.get(slug="expression-libre")
         )[:4] if not cat_slug == "expression-libre" else []
@@ -212,7 +209,7 @@ def search(request):
     posts, context = init(lang=request.LANGUAGE_CODE)
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
-        article_query = get_query(query_string, ['title', 'text', ])
+        article_query = get_query(query_string, ['title', 'text',])
         found_article = posts.filter(article_query)
 
     for article in found_article:

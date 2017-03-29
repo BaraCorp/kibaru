@@ -1,0 +1,13 @@
+{% load i18n %}
+
+{% block poll_script %}
+
+{% endblock %}
+
+<div id="poll_container">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <a href="#" class=heading-large> <h3> {% trans "Poll" %} </h3></a>
+    {% block poll_content %}
+
+    {% endblock %}
+</div>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-28 15:34+0000\n"
-"PO-Revision-Date: 2017-03-28 15:39+0000\n"
+"POT-Creation-Date: 2017-03-29 08:50+0000\n"
+"PO-Revision-Date: 2017-03-29 10:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -60,10 +60,8 @@ msgid "The link of the video has been deleted."
 msgstr "تم حذف رابط الفيديو."
 
 #: kibaru/forms.py:52
-#, fuzzy
-#| msgid "Description"
 msgid "Enter description here"
-msgstr "وصف"
+msgstr "أدخل الوصف هنا"
 
 #: kibaru/models.py:37
 msgid "Directory"
@@ -214,7 +212,7 @@ msgid "communicated"
 msgstr "ترسل"
 
 #: kibaru/models.py:227 kibaru/models.py:286 kibaru/models.py:325
-#: kibaru/models.py:446
+#: kibaru/models.py:446 poll/models.py:31
 msgid "Language"
 msgstr "اللغة"
 
@@ -288,7 +286,7 @@ msgstr "الحالة"
 msgid "Start"
 msgstr "بداية"
 
-#: kibaru/models.py:385 kibaru/templates/site/index.html:123
+#: kibaru/models.py:385 kibaru/templates/site/index.html:122
 msgid "Publicity"
 msgstr "دعاية"
 
@@ -300,7 +298,7 @@ msgstr "مناسبات"
 msgid "Video"
 msgstr "فيديو"
 
-#: kibaru/models.py:400 kibaru/templates/site/index.html:159
+#: kibaru/models.py:400 kibaru/templates/site/index.html:158
 msgid "Videos"
 msgstr "الفيديوهات"
 
@@ -328,7 +326,7 @@ msgstr "دعوة لتقديم العروض"
 msgid "Type"
 msgstr "النوع"
 
-#: kibaru/models.py:444 kibaru/templates/site/display_job.html:25
+#: kibaru/models.py:444 kibaru/templates/site/display_job.html:22
 msgid "Date expired"
 msgstr "تاريخ الاستهلاك"
 
@@ -398,7 +396,7 @@ msgstr "مقالات رأي"
 
 #: kibaru/site/views.py:158
 msgid "Avis"
-msgstr ""
+msgstr "أفيس"
 
 #: kibaru/site/views.py:259
 msgid "Thank you for your subscription"
@@ -541,10 +539,8 @@ msgid "Airport of Bamako : "
 msgstr "مطار باماكو:"
 
 #: kibaru/templates/_menu.html:125
-#, fuzzy
-#| msgid "Health"
 msgid "Health Center"
-msgstr "الصحة"
+msgstr "مَرْكَزٌ صِحِّيٌّ"
 
 #: kibaru/templates/_menu.html:127
 msgid "Gabriel Touré Hospital : "
@@ -789,7 +785,7 @@ msgid "About US"
 msgstr "عنا"
 
 #: kibaru/templates/site/article_detail.html:31
-#: kibaru/templates/site/display_job.html:26
+#: kibaru/templates/site/display_job.html:23
 msgid "By"
 msgstr "بواسطة"
 
@@ -797,7 +793,7 @@ msgstr "بواسطة"
 msgid "Published"
 msgstr "منشور"
 
-#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:117
+#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:116
 msgid "Portal news sites online"
 msgstr "أخبار المدخل المواقع على الإنترنت"
 
@@ -813,7 +809,7 @@ msgstr "جناح"
 msgid "Search"
 msgstr "بحث"
 
-#: kibaru/templates/site/index.html:159
+#: kibaru/templates/site/index.html:158
 msgid "All videos"
 msgstr "كل الفيديوهات"
 
@@ -837,6 +833,82 @@ msgstr "اخر تعديل"
 #| msgid "No results found for : "
 msgid "No results found for : "
 msgstr "لا توجد نتائج لـ:"
+
+#: poll/models.py:28
+#, fuzzy
+#| msgid "Description"
+msgid "question"
+msgstr "وصف"
+
+#: poll/models.py:29
+msgid "date"
+msgstr "في:"
+
+#: poll/models.py:30
+#, fuzzy
+#| msgid "Published"
+msgid "is published"
+msgstr "منشور"
+
+#: poll/models.py:37 poll/models.py:72 poll/templates/poll/base.html:8
+msgid "poll"
+msgstr "مؤخرة الرأس"
+
+#: poll/models.py:38
+msgid "polls"
+msgstr "استطلاعات رأي"
+
+#: poll/models.py:54
+msgid "value"
+msgstr "القيمة"
+
+#: poll/models.py:55
+msgid "position"
+msgstr "يمين"
+
+#: poll/models.py:58
+msgid "answer"
+msgstr "يرد على"
+
+#: poll/models.py:59
+msgid "answers"
+msgstr "اجابات"
+
+#: poll/models.py:73
+msgid "voted item"
+msgstr "البند صوت"
+
+#: poll/models.py:74
+msgid "user's IP"
+msgstr "IP المستخدم"
+
+#: poll/models.py:76
+msgid "user"
+msgstr "العضو"
+
+#: poll/models.py:80
+msgid "vote"
+msgstr "التصويت"
+
+#: poll/models.py:81
+msgid "votes"
+msgstr "تصويت"
+
+#: poll/templates/poll/base.html:10
+msgid "Poll"
+msgstr "استطلاع"
+
+#: poll/templates/poll/poll.html:19
+msgid "Please, select an answer"
+msgstr "رجاءا، اختر إجابة"
+
+#: poll/templates/poll/poll.html:41
+msgid "Vote"
+msgstr "تصويت"
+
+#: poll/templates/poll/result.html:16
+msgid "Total votes"
+msgstr "مجموع الأصوات"
 
 #~ msgid "Force of order"
 #~ msgstr "قوة النظام"

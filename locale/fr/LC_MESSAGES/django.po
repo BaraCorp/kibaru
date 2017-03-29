@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-28 15:34+0000\n"
-"PO-Revision-Date: 2017-03-28 15:45+0000\n"
+"POT-Creation-Date: 2017-03-29 08:50+0000\n"
+"PO-Revision-Date: 2017-03-29 08:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -61,10 +61,8 @@ msgid "The link of the video has been deleted."
 msgstr "Le lien de la vidéo a été supprimé."
 
 #: kibaru/forms.py:52
-#, fuzzy
-#| msgid "Description"
 msgid "Enter description here"
-msgstr "Déscription"
+msgstr "Entrez la description ici"
 
 #: kibaru/models.py:37
 msgid "Directory"
@@ -83,8 +81,6 @@ msgid "Music"
 msgstr "Musique"
 
 #: kibaru/models.py:47 kibaru/site/views.py:149
-#, fuzzy
-#| msgid "Sports"
 msgid "Sport"
 msgstr "Sport"
 
@@ -219,7 +215,7 @@ msgid "communicated"
 msgstr "communiqué"
 
 #: kibaru/models.py:227 kibaru/models.py:286 kibaru/models.py:325
-#: kibaru/models.py:446
+#: kibaru/models.py:446 poll/models.py:31
 msgid "Language"
 msgstr "Langue"
 
@@ -293,7 +289,7 @@ msgstr "Statuts"
 msgid "Start"
 msgstr "Commencer"
 
-#: kibaru/models.py:385 kibaru/templates/site/index.html:123
+#: kibaru/models.py:385 kibaru/templates/site/index.html:122
 msgid "Publicity"
 msgstr "Publicité"
 
@@ -305,7 +301,7 @@ msgstr "Publicités"
 msgid "Video"
 msgstr "Vidéo"
 
-#: kibaru/models.py:400 kibaru/templates/site/index.html:159
+#: kibaru/models.py:400 kibaru/templates/site/index.html:158
 msgid "Videos"
 msgstr "Vidéos"
 
@@ -327,13 +323,13 @@ msgstr "Avis"
 
 #: kibaru/models.py:430
 msgid "Call for tenders"
-msgstr ""
+msgstr "Appel d’offres"
 
 #: kibaru/models.py:432
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
-#: kibaru/models.py:444 kibaru/templates/site/display_job.html:25
+#: kibaru/models.py:444 kibaru/templates/site/display_job.html:22
 msgid "Date expired"
 msgstr "Date limite"
 
@@ -793,7 +789,7 @@ msgid "About US"
 msgstr "À propos de nous"
 
 #: kibaru/templates/site/article_detail.html:31
-#: kibaru/templates/site/display_job.html:26
+#: kibaru/templates/site/display_job.html:23
 msgid "By"
 msgstr "Par"
 
@@ -801,7 +797,7 @@ msgstr "Par"
 msgid "Published"
 msgstr "Publié"
 
-#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:117
+#: kibaru/templates/site/directory.html:18 kibaru/templates/site/index.html:116
 msgid "Portal news sites online"
 msgstr "Portail des sites d’actualité en ligne"
 
@@ -817,7 +813,7 @@ msgstr "suite"
 msgid "Search"
 msgstr "Recherche"
 
-#: kibaru/templates/site/index.html:159
+#: kibaru/templates/site/index.html:158
 msgid "All videos"
 msgstr "Toutes les vidéos"
 
@@ -839,6 +835,80 @@ msgstr "Dernière modification"
 #: kibaru/templates/site/search_results.html:39
 msgid "No results found for : "
 msgstr "Aucun résultat trouvé pour :"
+
+#: poll/models.py:28
+msgid "question"
+msgstr "Question"
+
+#: poll/models.py:29
+msgid "date"
+msgstr "date"
+
+#: poll/models.py:30
+msgid "is published"
+msgstr "est publié"
+
+#: poll/models.py:37 poll/models.py:72 poll/templates/poll/base.html:8
+msgid "poll"
+msgstr "sondage"
+
+#: poll/models.py:38
+msgid "polls"
+msgstr "Sondages"
+
+#: poll/models.py:54
+msgid "value"
+msgstr "la valeur"
+
+#: poll/models.py:55
+#, fuzzy
+#| msgid "Description"
+msgid "position"
+msgstr "Déscription"
+
+#: poll/models.py:58
+msgid "answer"
+msgstr "réponse."
+
+#: poll/models.py:59
+msgid "answers"
+msgstr "réponses"
+
+#: poll/models.py:73
+msgid "voted item"
+msgstr "vote"
+
+#: poll/models.py:74
+msgid "user's IP"
+msgstr "IP de l’utilisateur"
+
+#: poll/models.py:76
+msgid "user"
+msgstr "utilisateur"
+
+#: poll/models.py:80
+msgid "vote"
+msgstr "Vote"
+
+#: poll/models.py:81
+msgid "votes"
+msgstr "Votes"
+
+#: poll/templates/poll/base.html:10
+msgid "Poll"
+msgstr "Sondage"
+
+#: poll/templates/poll/poll.html:19
+msgid "Please, select an answer"
+msgstr "S’il vous plaît, sélectionnez une réponse"
+
+#: poll/templates/poll/poll.html:41
+msgid "Vote"
+msgstr "Vote"
+
+#: poll/templates/poll/result.html:16
+msgid "Total votes"
+msgstr "Total voix"
 
 #~ msgid "all"
 #~ msgstr "tous"
