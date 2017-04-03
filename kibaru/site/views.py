@@ -2,26 +2,26 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
+
+from datetime import datetime
+
+from django.conf import settings
+from django.contrib import messages
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.urlresolvers import reverse
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
+from django.utils.translation import ugettext_lazy as _
+
+from kibaru.forms import Newsletterform
+from kibaru.models import (
+    Article, Category, Directory, Job, Language, New, Publicity, Video)
+from kibaru.site.search import get_query
 
 import short_url
-
-from datetime import datetime, timedelta
-from django.shortcuts import render, get_object_or_404
-from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib import messages
-from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.http import Http404, HttpResponse
-from kibaru.models import (Article, Publicity, Category, New, Video, Language,
-                           Directory, Job)
-from kibaru.forms import Newsletterform
-from django.conf import settings
-from kibaru.site.search import get_query
 
 NOW = datetime.now()
 MONTH_NAMES = ('', _('January'), _('February'), _('March'), _('April'),
@@ -58,8 +58,9 @@ def month_view(request, year, month):
     for article in posts:
         article.url_display = reverse("art", args=[article.slug])
     context.update({'post_list': posts, "lang": request.LANGUAGE_CODE,
-                    'subtitle': "{} {} {}".format(_("The articles published in"),
-                                                  MONTH_NAMES[int(month)], year),
+                    'subtitle': "{} {} {}".format(
+                        _("The articles published in"),
+                        MONTH_NAMES[int(month)], year),
                     })
     return render(request, 'site/list_page.html', context)
 
@@ -95,21 +96,23 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     elif year:
         posts = posts.filter(date_created__year=year)
 
-    jobs = Job.objects.filter(date_expired__gte=datetime.today, lang=current_lang)
+    jobs = Job.objects.filter(
+        date_expired__gte=datetime.today, lang=current_lang)
     for job in jobs:
         job.url_display = reverse("display_job", args=[job.id])
 
     for publicity in publicities:
-        publicity.url_display = reverse("display_publicity", args=[publicity.id])
+        publicity.url_display = reverse(
+            "display_publicity", args=[publicity.id])
     free_expressions = articles.filter(
         category=Category.objects.get(slug="expression-libre")
-        )[:4] if not cat_slug == "expression-libre" else []
+    )[:4] if not cat_slug == "expression-libre" else []
     for free_expression in free_expressions:
         free_expression.url_display = reverse(
             "art", args=[free_expression.slug])
 
-    migrations = articles.filter(category=Category.objects.get(slug="migration"))[
-        :4] if not cat_slug == "migration" else []
+    migrations = articles.filter(category=Category.objects.get(
+        slug="migration"))[:4] if not cat_slug == "migration" else []
     for migration in migrations:
         migration.url_display = reverse("art", args=[migration.slug])
 
@@ -118,8 +121,8 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     for sport in sports:
         sport.url_display = reverse("art", args=[sport.slug])
 
-    art_cultures = articles.filter(category=Category.objects.get(slug="culture"))[
-        :4] if not cat_slug == "culture" else []
+    art_cultures = articles.filter(category=Category.objects.get(
+        slug="culture"))[:4] if not cat_slug == "culture" else []
     for culture in art_cultures:
         culture.url_display = reverse("art", args=[culture.slug])
     starts = posts.filter(start=True)[:5]
@@ -197,7 +200,8 @@ def create_archive_data(posts):
 #                 count[tag] = 1
 #             else:
 #                 count[tag] += 1
-#     for tag, count in sorted(count.iteritems(), key=lambda(k, v): (v, k), reverse=True):
+#     for tag, count in sorted(count.iteritems(), key=lambda(k, v): (v, k),
+# reverse=True):
 #         tag_data.append({'tag': tag,
 #                          'count': count, })
 #     return tag_data
@@ -209,13 +213,13 @@ def search(request):
     posts, context = init(lang=request.LANGUAGE_CODE)
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
-        article_query = get_query(query_string, ['title', 'text',])
+        article_query = get_query(query_string, ['title', 'text', ])
         found_article = posts.filter(article_query)
 
     for article in found_article:
         article.url_display = reverse("art", args=[article.slug])
-    context.update({'query_string': query_string, "lang": request.LANGUAGE_CODE,
-                    'found_article': found_article})
+    context.update({'query_string': query_string, 'found_article':
+                    found_article, "lang": request.LANGUAGE_CODE, })
     return render(request, 'site/search_results.html', context)
 
 
@@ -258,7 +262,8 @@ def home(request, *args, **kwargs):
     else:
         form = Newsletterform()
     context.update({'posts': posts, 'form': form, 'subtitle': '',
-                    "starts": starts, "cat_slug": cat_slug, "lang": request.LANGUAGE_CODE})
+                    "starts": starts, "cat_slug": cat_slug,
+                    "lang": request.LANGUAGE_CODE})
     return render(request, 'site/index.html', context)
 
 
@@ -267,10 +272,10 @@ def get_paginator_context(obj_pagina, page, range_gap=3):
         page = int(page)
     except Exception as e:
         page = 1
-    try:
-        paginator = obj_pagina.page(page)
-    except Exception as e:
-        paginator = obj_pagina.page(1)
+    # try:
+    #     paginator = obj_pagina.page(page)
+    # except Exception as e:
+    #     paginator = obj_pagina.page(1)
 
     if page > 4:
         start = page - range_gap
@@ -313,18 +318,14 @@ def display_article(request, *args, **kwargs):
     context.update({'article': article, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/article_detail.html', context)
 
+
 def about(request, *args, **kwargs):
     if request.LANGUAGE_CODE == "ar":
-        filename =  settings.AR_LEDIT
+        filename = settings.AR_LEDIT
     else:
-        filename =  settings.FR_LEDIT
+        filename = settings.FR_LEDIT
+    return render(request, 'site/about.html', {'url_pdf': filename})
 
-    # with open(filename) as pdf:
-    #     response = HttpResponse(pdf, content_type='application/pdf')
-    #     response['Content-Disposition'] = 'attachment; filename={}.pdf'.format(_("Ligne editoriale du site"))
-    #     return response
-
-    return render(request, 'site/about.html', {'url_pdf' : filename})
 
 def display_new(request, *args, **kwargs):
     posts, context = init()
@@ -353,8 +354,7 @@ def display_job(request, *args, **kwargs):
     job.save()
     context.update({'job': job, "lang": request.LANGUAGE_CODE})
     # return render(request, 'site/display_job.html', context)
-    #Avis de manifestation d'interet - MEP  Reinsertion Project Mali_14.03.2017
-    # filename= "Avis-de-manifestation-d'interet-MEP-Reinsertion-Project-Mali_14.03.2017.pdf"
+    # filename= "namefile.pdf"
     # return render(request, 'site/about.html', {'url_pdf' : filename})
     return render(request, 'site/display_job.html', context)
 
@@ -385,6 +385,6 @@ def display_heading(request, *args, **kwargs):
 def directory(request, *args, **kwargs):
     posts, context = init()
     directories = Directory.objects.all()
-    context.update(
-        {'subtitle': 'Presse Malienne', 'directories': directories, 'posts': posts, "lang": request.LANGUAGE_CODE})
+    context.update({'subtitle': 'Presse Malienne', 'directories': directories,
+                    'posts': posts, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/directory.html', context)

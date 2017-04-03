@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 
 import os
-import sys
+
+from django.utils.translation import gettext_lazy as _
 
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(abs_path)
@@ -133,7 +134,6 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
-from django.utils.translation import gettext_lazy as _
 
 LANGUAGES = (
     ('fr', _('French')),

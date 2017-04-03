@@ -2,22 +2,24 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 
 from datetime import datetime
 
-from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.conf import settings
 
-from kibaru.forms import Articleform, Newform, Videoform, DirectoryFrom
-from kibaru.models import Article, Member, Category, New, Video
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.utils.translation import ugettext_lazy as _
+
+from kibaru.forms import Articleform, DirectoryFrom, Newform, Videoform
+from kibaru.models import Article, Category, New, Video
 
 
 @login_required
@@ -112,10 +114,10 @@ def edit_article(request, *args, **kwargs):
             selected_article.category = Category.objects.get(
                 slug=request.POST.get('category'))
             selected_article.status = request.POST.get('status')
-
             form.save()
             messages.success(request,
-                             u"L'article sur {} a été mise à jour.".format(selected_article.title))
+                             u"L'article sur {} a été mise à jour.".format(
+                                 selected_article.title))
             return HttpResponseRedirect('/admin/')
     else:
         form = Articleform(instance=selected_article)
@@ -128,8 +130,8 @@ def del_article(request, *args, **kwargs):
     id_url = kwargs["id"]
     selected = Article.objects.get(id=id_url)
     selected.delete()
-    messages.warning(request,
-                     u"L'article sur {} a été supprimé.".format(selected.title))
+    messages.warning(
+        request, u"L'article sur {} a été supprimé.".format(selected.title))
     return redirect('/admin/')
 
 
@@ -143,8 +145,8 @@ def add_website(request):
         if form.is_valid():
             print("form isvalid")
             form.save()
-            messages.success(
-                request, u"Le site ({}) a été ajoutée".format(form.cleaned_data.get('domaine')))
+            messages.success(request, u"Le site ({}) a été ajoutée".format(
+                form.cleaned_data.get('domaine')))
             return HttpResponseRedirect('/admin/')
     else:
         form = DirectoryFrom()
@@ -189,8 +191,9 @@ def edit_new(request, *args, **kwargs):
                                          datetime.now().minute,
                                          datetime.now().second)
             form.save()
-            messages.success(request,
-                             u"La nouvelle ({}) a été mise à jour".format(selected_new.title))
+            messages.success(
+                request, u"La nouvelle ({}) a été mise à jour".format(
+                    selected_new.title))
             return HttpResponseRedirect('/admin/')
     else:
         form = Newform(instance=selected_new)

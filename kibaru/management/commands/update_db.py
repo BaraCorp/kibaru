@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-
 from django.core.management.base import BaseCommand
+
 from kibaru.models import Article, New
 
 

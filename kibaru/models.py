@@ -2,31 +2,35 @@
 # encoding=utf-8
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 
 import datetime
-import re
 import os
-import short_url
+import re
 # from django.core.urlresolvers import reverse
 
-from django.core import validators
-from django.db import models
 from django.conf import settings
-
-from django.utils import timezone
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser, PermissionsMixin)
+    AbstractBaseUser, BaseUserManager, PermissionsMixin)
+from django.core import validators
+
+
+from django.db import models
+from django.utils import timezone
+
 from django.utils.translation import ugettext_lazy as _
-
-from tinymce import models as tinymce_models
-
-from py3compat import implements_to_string
 
 from django_resized import ResizedImageField
 
 from kibaru.tools import social_share
+
+
+from py3compat import implements_to_string
+
+import short_url
+
+from tinymce import models as tinymce_models
 
 
 @implements_to_string
@@ -49,8 +53,8 @@ class Directory(models.Model):
 
     name = models.CharField(
         verbose_name=_("Name"), max_length=75, primary_key=True)
-    category = models.CharField(verbose_name=_("Category"),
-                                max_length=50, choices=TYPE_SITE_CHOICES.items(),
+    category = models.CharField(verbose_name=_("Category"), max_length=50,
+                                choices=TYPE_SITE_CHOICES.items(),
                                 default=INFO)
     domaine = models.CharField(
         verbose_name=_("adress of site"), max_length=150)
@@ -125,8 +129,8 @@ class Language(models.Model):
         AR: _('Arabic'),
     }
 
-    slug = models.SlugField(
-        max_length=50, verbose_name=_("Slug"), choices=LANGUAGES_CHOICES.items())
+    slug = models.SlugField(max_length=50, verbose_name=_("Slug"),
+                            choices=LANGUAGES_CHOICES.items())
     name = models.CharField(max_length=100, blank=True, null=True,
                             verbose_name=_("Name"))
 
@@ -145,8 +149,10 @@ class Member(AbstractBaseUser, PermissionsMixin):
         _("username"), max_length=50, primary_key=True,
         help_text=_("Required. 50 characters or fewer. "
                     "Letters, numbers and @/./+/-/_ characters"),
-        validators=[validators.RegexValidator(re.compile("^[\w.@+-]+$"),
-                                              _("Enter a valid username."), "invalid")])
+        validators=[
+            validators.RegexValidator(re.compile("^[\w.@+-]+$"),
+                                      _("Enter a valid username."),
+                                      "invalid")])
 
     first_name = models.CharField(max_length=100, blank=True, null=True,
                                   verbose_name=_("First Name"))
@@ -157,9 +163,9 @@ class Member(AbstractBaseUser, PermissionsMixin):
     job_title = models.CharField(max_length=200, blank=True,
                                  verbose_name=_("Job title"))
     email = models.EmailField(_("email address"), blank=True, null=True)
-    is_staff = models.BooleanField(
-        _("staff status"), default=False,
-        help_text=_("Designates whether the user can log into this admin site."))
+    is_staff = models.BooleanField(_("staff status"), default=False,
+                                   help_text=_(
+        "Designates whether the user can log into this admin site."))
     is_active = models.BooleanField(
         _("active"), default=True,
         help_text=_("Designates whether this user should be treated as "
@@ -250,7 +256,7 @@ class New(models.Model):
         return self.TYPE_NEWS_CHOICES.get(self.type_new)
 
     def is_twitte(self):
-        if self.twitte == False:
+        if not self.twitte:
             return False
         self.twitte = False
         return True
@@ -339,8 +345,9 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
-        self.slug = re.sub("[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+",
-                           '-', self.title.lower())
+        self.slug = re.sub(
+            "[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+", '-',
+            self.title.lower())
         self.twitter = self.is_twitte()
 
         super(Article, self).save(*args, **kwargs)
@@ -354,7 +361,7 @@ class Article(models.Model):
     def is_twitte(self):
         if self.status == self.DRAFT:
             return False
-        if self.twitte == False:
+        if not self.twitte:
             return False
         self.twitte = False
         return True
@@ -426,24 +433,24 @@ class Job(models.Model):
     N = 'n'
     C = 'c'
     TYPE_NOTICE = {
-        N :  _("Notice"),
-        C : _("Call for tenders")
+        N: _("Notice"),
+        C: _("Call for tenders")
     }
     type_notice = models.CharField(verbose_name=_("Type"), max_length=50,
-                              choices=TYPE_NOTICE.items(), default=N)
+                                   choices=TYPE_NOTICE.items(), default=N)
     text = tinymce_models.HTMLField(blank=True, verbose_name=_("Text"))
     title = models.CharField(max_length=200, verbose_name=_("Title"))
     count_view = models.IntegerField(default=0)
     twitte = models.BooleanField(default=True, blank=True)
     author = models.ForeignKey(Member, verbose_name=_("Author"))
     slug = models.CharField(max_length=200,
-        unique=True, blank=True,verbose_name=_("Slug"))
+                            unique=True, blank=True, verbose_name=_("Slug"))
     date_created = models.DateTimeField(
         verbose_name=_("Dated the"), auto_now=True)
     date_expired = models.DateTimeField(
         verbose_name=_("Date expired"), default=datetime.datetime.today)
     lang = models.ForeignKey(Language, blank=True, null=True,
-        verbose_name=_("Language"))
+                             verbose_name=_("Language"))
 
     @property
     def image(self):
@@ -459,7 +466,7 @@ class Job(models.Model):
         return "{} / {}".format(self.title, self.date_expired)
 
     def is_twitte(self):
-        if self.twitte == False:
+        if not self.twitte:
             return False
         self.twitte = False
         return True

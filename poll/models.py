@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from django.utils.encoding import python_2_unicode_compatible
 
 import datetime
+
+from django.utils.encoding import python_2_unicode_compatible
+
+
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext as _
 from django.db.models.manager import Manager
+
 from kibaru.models import Language
 
 try:
@@ -19,18 +23,24 @@ else:
 
 
 class PublishedManager(Manager):
+
     def get_query_set(self):
-        return super(PublishedManager, self).get_query_set().filter(is_published=True)
+        return super(PublishedManager, self).get_query_set().filter(
+            is_published=True)
 
 
 @python_2_unicode_compatible
 class Poll(models.Model):
     title = models.CharField(max_length=250, verbose_name=_('question'))
-    date = models.DateField(verbose_name=_('date'), default=datetime.date.today)
-    date_expired = models.DateTimeField(verbose_name=_("Date expired"),
-        default=datetime.datetime.now() + datetime.timedelta(days=7))
-    is_published = models.BooleanField(default=True, verbose_name=_('is published'))
-    lang = models.ForeignKey(Language, blank=True, null=True, verbose_name=_("Language"))
+    date = models.DateField(verbose_name=_(
+        'date'), default=datetime.date.today)
+    date_expired = models.DateTimeField(verbose_name=_(
+        "Date expired"), default=datetime.datetime.now() + datetime.timedelta(
+        days=7))
+    is_published = models.BooleanField(
+        default=True, verbose_name=_('is published'))
+    lang = models.ForeignKey(Language, blank=True,
+                             null=True, verbose_name=_("Language"))
     objects = models.Manager()
     published = PublishedManager()
 
