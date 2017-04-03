@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 
 from django.conf.urls import patterns, url
 
 from kibaru.site import views
 
 urlpatterns = patterns('',
-                       url(r'^about/',  views.about, name='about'),
+                       url(r'^about/', views.about, name='about'),
                        url(r'^(?P<slug>[-\w\d]*)$', views.home, name='home'),
                        url(r'^directory/$', views.directory, name='directory'),
                        url(r'^art/(?P<slug>.*)',

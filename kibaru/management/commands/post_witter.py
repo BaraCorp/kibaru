@@ -4,11 +4,13 @@
 
 import os
 
-from django.core.management.base import BaseCommand
-from kibaru.models import Article
+from TwitterAPI import TwitterAPI
 
 from django.conf import settings
-from TwitterAPI import TwitterAPI
+from django.core.management.base import BaseCommand
+
+
+from kibaru.models import Article
 
 
 class Command(BaseCommand):

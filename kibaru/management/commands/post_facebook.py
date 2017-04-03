@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-import os
-import facebook
-
-from django.core.management.base import BaseCommand
 from django.conf import settings
+from django.core.management.base import BaseCommand, CommandError
+
+import facebook
 
 from kibaru.models import Article
 
@@ -22,10 +21,8 @@ class Command(BaseCommand):
         for art_id in options['art_id']:
             try:
                 self.art = Article.objects.get(pk=art_id)
-                art_text = self.art.text
             except Article.DoesNotExist:
                 raise CommandError('Article "%s" does not exist' % art_id)
-        print(self.post_facebook())
 
     def post_facebook(self):
         attach = {

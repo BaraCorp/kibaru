@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 
 from django.conf.urls import patterns, url
+
 from kibaru.administation import views
 
 
@@ -27,5 +28,4 @@ urlpatterns = patterns('',
                            views.edit_new, name='edit_new'),
                        url(r'^del_new/(?P<id>\d+)$',
                            views.del_new, name="del_new"),
-                       # url(r'^del_site/(?P<id>\d+)$', views.del_s, name="del_new"),
                        )

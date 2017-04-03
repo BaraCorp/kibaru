@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 
-from django.utils.translation import ugettext_lazy as _
 from django import forms
-from kibaru.models import Article, Member, New, Newsletter, Video, Directory
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.utils.translation import ugettext_lazy as _
+
+from kibaru.models import (Article, Directory, Member, New, Newsletter, Video)
 
 
 class Articleform(forms.ModelForm):
@@ -18,7 +19,8 @@ class Articleform(forms.ModelForm):
         exclude = ['slug', 'date_created', 'date_modified', 'thumbnail',
                    'count_like', 'count_view', 'author']
         widgets = {
-            'legend': forms.TextInput(attrs={'placeholder': "Legende de l'image"}),
+            'legend': forms.TextInput(attrs={
+                'placeholder': "Legende de l'image"}),
         }
 
 
@@ -35,7 +37,8 @@ class Newsletterform(forms.ModelForm):
         model = Newsletter
         exclude = ['date']
         widgets = {
-            'legend': forms.TextInput(attrs={'placeholder': "{{form.email.label}}"}),
+            'legend': forms.TextInput(attrs={
+                'placeholder': "{{form.email.label}}"}),
         }
 
 
@@ -46,8 +49,10 @@ class DirectoryFrom(forms.ModelForm):
         exclude = ['date_created']
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Nom du site'}),
-            'domaine': forms.TextInput(attrs={'placeholder': 'Exemple : https://kibaru.ml'}),
-            'logo': forms.TextInput(attrs={'placeholder': 'Exemple : https://kibaru.ml/static/logo.svg'}),
+            'domaine': forms.TextInput(attrs={
+                'placeholder': 'Exemple : https://kibaru.ml'}),
+            'logo': forms.TextInput(attrs={
+                'placeholder': 'Exemple : https://kibaru.ml/static/logo.svg'}),
             'description': forms.Textarea(
                 attrs={'placeholder': _('Enter description here')}),
         }

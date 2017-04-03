@@ -2,19 +2,19 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4 nu
 
-from __future__ import (unicode_literals, absolute_import,
-                        division, print_function)
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 
 from django.contrib import admin
-from django.db import models
+# from django.db import models
 
-from django.contrib.auth.models import Group
+# from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 
-from kibaru.models import (Language, Category, Member, New, Article, Directory,
-                           Newsletter, Publicity, Video, Job)
-from kibaru.forms import (Articleform, Videoform, UserChangeForm, DirectoryFrom,
-                          UserCreationForm)
+from kibaru.forms import (Articleform, DirectoryFrom,
+                          UserChangeForm, UserCreationForm, Videoform)
+from kibaru.models import (Article, Category, Directory, Job, Language, Member,
+                           New, Newsletter, Publicity, Video)
 
 # unregister and register again
 # admin.site.unregister(Group)
@@ -49,7 +49,8 @@ class MemberAdmin(UserAdmin):
 class JobAdmin(admin.ModelAdmin):
     list_display = ('title', 'lang', 'date_created', 'twitte', 'date_expired',
                     'count_view', 'author', 'slug')
-    list_filter = ('lang', 'date_created', 'date_expired', 'author', 'type_notice')
+    list_filter = ('lang', 'date_created', 'date_expired',
+                   'author', 'type_notice')
 
 # @admin.register(Question)
 # class QuestionAdmin(admin.ModelAdmin):
@@ -72,6 +73,7 @@ class NewAdmin(admin.ModelAdmin):
 
     exclude = ('slug',)
 
+
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
     pass
@@ -89,12 +91,12 @@ class LanguageAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lang', 'date_created', 'twitte', 'date_modified', 'status',
-                    'category', 'count_view', 'author', 'slug')
+    list_display = ('title', 'lang', 'date_created', 'twitte', 'date_modified',
+                    'status', 'category', 'count_view', 'author', 'slug')
     list_filter = ('lang', 'date_created', 'status', 'author', 'category')
     fieldsets = (
-        ('Article', {
-         'fields': ('image', 'twitte', 'legend', 'title', 'text',  'lang', 'date_created', 'category')}),
+        ('Article', {'fields': ('image', 'twitte', 'legend', 'title', 'text',
+                                'lang', 'date_created', 'category')}),
         ('Auteur', {'fields': ('author',)}),
         (None, {'fields': ('start', 'status')}),
     )
