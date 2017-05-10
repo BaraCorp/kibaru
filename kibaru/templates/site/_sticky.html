@@ -1,8 +1,7 @@
 
 <div id="sticky" class="new-O-size">
     <ul>
-        <marquee height="20" scrolldelay="220" behavior="scroll" direction={% ifequal lang 'ar'  %} right {% else % }"left" {% endifequal %}
-        onmouseover="this.stop();" onmouseout="this.start()">
+        <marquee height="20" scrollamount="7" scrolldelay="220" behavior="scroll" onmouseover="this.stop();" onmouseout="this.start();" direction={% ifequal lang 'ar'  %} "right" {% else % } "left" {% endifequal %}>
             {% for new in flash_news %}
                 <li data-toggle="{{new.date}}" title="{{new.date}}" data-placement="left">
 

@@ -52,10 +52,6 @@ class JobAdmin(admin.ModelAdmin):
     list_filter = ('lang', 'date_created', 'date_expired',
                    'author', 'type_notice')
 
-# @admin.register(Question)
-# class QuestionAdmin(admin.ModelAdmin):
-#     pass
-
 # @admin.register(Choice)
 # class CceoixAdmin(admin.ModelAdmin):
 #     pass
