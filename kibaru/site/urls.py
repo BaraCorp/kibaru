@@ -12,6 +12,8 @@ from kibaru.site import views
 urlpatterns = patterns('',
                        url(r'^about/', views.about, name='about'),
                        url(r'^(?P<slug>[-\w\d]*)$', views.home, name='home'),
+                       url(r'^pub/(?P<slug>[-\w\d]*)$', views.publicity,
+                           name='publicity'),
                        url(r'^directory/$', views.directory, name='directory'),
                        url(r'^art/(?P<slug>.*)',
                            views.display_article, name='art'),

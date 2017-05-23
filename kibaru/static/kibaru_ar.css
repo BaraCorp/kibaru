@@ -1,5 +1,8 @@
-body {
+.title, .el-title, #poll_form, .article_post_title, .article-title, .article-legend, .post-body {
     text-align: right;
+}
+.published-date {
+    float: right;
 }
 .slogan {
     font-size: 4em;
