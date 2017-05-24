@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %} {% trans "Administration" %} {% endblock %}
+{% block page-id %}admin-price{% endblock %}
+
+{% block content%}
+<h1>Informations de l'espace publicitaire.</h1>
+<table class="table table-striped">
+    <th rowspan="2"> Space </th>
+    <th rowspan="2"> Pages </th>
+    <th rowspan="2"> Dimensions en pixels</th>
+    <th colspan="4"> Montant HT </th>
+    <tr>
+        <th> Tarif hebdo </th>
+        <th> Tarif mensuel </th>
+        <th> Tarif trimestriel </th>
+    </tr>
+    <tr>
+        <th>A</th> <td> Toutes les pages </td><td>800x80</td><td>250 000 F</td> <td>750 000 F</td> <td>2 000 000 F</td>
+    </tr>
+    <tr>
+        <th>E & G</th> <td> Toutes les pages </td><td>288x100</td> <td>300 000 F</td> <td>500 000 F</td> <td>1 800 000 F</td>
+    </tr>
+    <tr>
+        <th>B</th> <td> Accueil </td> <td>605x140</td><td>200 000 F</td> <td>720 000 F</td> <td>1 500 000 F</td>
+    </tr>
+    <tr>
+        <th>C</th> <td> Accueil </td> <td>288x140</td><td>150 000 F</td> <td>350 000 F</td> <td>1 200 000 F</td>
+    </tr>
+    <tr>
+        <th>D</th> <td> Accueil </td> <td>288x140</td><td>120 000 F</td> <td>300 000 F</td> <td>1 000 000 F</td>
+    </tr>
+    <tr>
+        <th>F</th> <td> Accueil </td><td>288x100</td><td>100 000 F</td> <td>250 000 F</td> <td>800 000 F</td>
+    </tr>
+</table>
+{% endblock %}

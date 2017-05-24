@@ -211,6 +211,12 @@ def del_new(request, *args, **kwargs):
 
 
 @login_required
+def proposition_price(request):
+    c = {'settings': settings}
+    return render(request, 'administration/proposition_price.html', c)
+
+
+@login_required
 def add_video(request):
     c = {'settings': settings,
          'page_title': _("Adding link to a YouTube video")}
