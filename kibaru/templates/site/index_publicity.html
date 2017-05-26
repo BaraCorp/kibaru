@@ -46,7 +46,6 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div style="margin-top: 9px;margin-bottom: 3em;""><img src="https://fakeimg.pl/605x140/"><h1 class="pub"> B </h1></div>
                         {% include "_pagination.html" %}
                         {% if posts %}
                             {% for post in posts %}
@@ -70,6 +69,7 @@
                             <h3>{% trans "No article published." %}</h3>
                         {% endif %}
                         {% include "_pagination.html" %}
+                        <div style="margin-top: 9px;margin-bottom: 3em;""><img src="https://fakeimg.pl/605x140/"><h1 class="pub"> B </h1></div>
                     </div>
                 </div>
             </div>
