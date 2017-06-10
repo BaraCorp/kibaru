@@ -5,7 +5,7 @@
 from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.conf import settings
 from django.contrib import messages
@@ -130,11 +130,11 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
         start.url_display = reverse("art", args=[start.slug])
 
     news = New.objects.filter(lang=current_lang,)
-    # start_dat = datetime(NOW.year, NOW.month, NOW.day)
-    # end_dat = start_dat + timedelta(days=1)
-    # news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
+    start_dat = datetime(NOW.year, NOW.month, NOW.day)
+    end_dat = start_dat + timedelta(days=2)
+    news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
     # if news_today.count() > 0:
-    # news = news_today
+    news = news_today
     # else:
     # news = news[:5]
     for new in news:
