@@ -418,6 +418,10 @@ def display_videos(request, *args, **kwargs):
     return render(request, 'site/videos.html', context)
 
 
+def poll(request):
+    return render(request, 'site/poll.html', {})
+
+
 def display_heading(request, *args, **kwargs):
     posts, context = init()
 

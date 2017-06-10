@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles i18n poll_tags %}
+{% block title %} {% trans "" %} {% endblock %}
+
+{% block page-id %}about{% endblock %}
+
+{% block banner %}
+    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+{% endblock %}
+
+{% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+{% block content %}
+    {% poll %}
+{% endblock %}
