@@ -15,7 +15,6 @@ from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.core import validators
 
-
 from django.db import models
 from django.utils import timezone
 
@@ -24,7 +23,6 @@ from django.utils.translation import ugettext_lazy as _
 from django_resized import ResizedImageField
 
 from kibaru.tools import social_share
-
 
 from py3compat import implements_to_string
 
@@ -276,7 +274,6 @@ class New(models.Model):
 
     def get_twiter_message(self):
         return u"{} - {}".format(self.type_text(), self.title), self.post_url()
-
 
 models.signals.post_save.connect(social_share, sender=New)
 

@@ -151,6 +151,8 @@
         {% include "site/_thumbnail_footer.html" with elements=migrations el_title=migration_title link="migration" %}
         </section>
     {% endif %}
+    <div>
+</div>
     {% if videos_home %}
         <section class="s-video">
             <div class="container-fluid">
@@ -158,9 +160,9 @@
                 {% for video in videos_home %}
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe  src="{{video.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                           <iframe  width="200" height="13" src="{{video.link}}?rel=0" frameborder="0" allowfullscreen></iframe>
                         </div>
-                        <h6 class="el-title">"{{video.title}}"</h6>
+                              <h6 class="el-title">"{{video.title}}"</h6>
                     </div>
                 {% endfor %}
             </div>

@@ -10,8 +10,11 @@ class PollItemInline(admin.TabularInline):
 
 
 class PollAdmin(admin.ModelAdmin):
-    list_display = ('title', 'date', 'vote_count', 'is_published', 'date_expired', 'lang')
-    inlines = [PollItemInline,]
+    list_display = ('title', 'date', 'vote_count', 'is_published',
+                    'date_expired', 'lang')
+    inlines = [PollItemInline, ]
+
+    list_filter = ('lang', 'is_published')
 
 admin.site.register(Poll, PollAdmin)
 
@@ -20,4 +23,5 @@ class VoteAdmin(admin.ModelAdmin):
     list_display = ('poll', 'ip', 'user', 'datetime')
     list_filter = ('poll', 'datetime')
 
+    ordering = ('datetime',)
 admin.site.register(Vote, VoteAdmin)

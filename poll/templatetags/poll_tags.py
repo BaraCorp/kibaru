@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import datetime
+
 from django import template
 from django.template.loader import render_to_string
 from django.utils.html import format_html
@@ -13,10 +15,10 @@ register = template.Library()
 def poll(context):
     request = context['request']
     current_lang = Language.objects.get(slug=request.LANGUAGE_CODE)
-    print(current_lang)
     try:
-        poll = Poll.published.filter(is_published=True,
-                                     lang=current_lang).latest("date")
+        poll = Poll.published.filter(
+            is_published=True, lang=current_lang,
+            date_expired__gte=datetime.datetime.today).latest("date_expired")
     except Exception as e:
         print(e)
         return ''
