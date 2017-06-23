@@ -97,7 +97,7 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
         posts = posts.filter(date_created__year=year)
 
     jobs = Job.objects.filter(
-        date_expired__gte=datetime.today, lang=current_lang)
+        date_expired__lte=datetime.today, lang=current_lang)
     for job in jobs:
         job.url_display = reverse("display_job", args=[job.id])
 
@@ -388,7 +388,9 @@ def display_publicity(request, *args, **kwargs):
     publicity = Publicity.objects.get(id=publicity_id)
 
     context.update({'publicity': publicity, "lang": request.LANGUAGE_CODE})
-    return render(request, 'site/display_publicity.html', context)
+    # return render(request, 'site/display_publicity.html', context)
+    filename = "Avis-de-manifestation-d'interet-MEP-Reinsertion-Project-Mali_14.03.2017.pdf"
+    return render(request, 'site/about.html', {'url_pdf': filename})
 
 
 def display_job(request, *args, **kwargs):
