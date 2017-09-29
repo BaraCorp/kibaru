@@ -17,76 +17,34 @@
         <ul class="nav navbar-nav">
             <li class="dropdown mega-dropdown" {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %} class="dropdown">
                 <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Economy" %}  <span class="caret"></span></a>
-                <ul class="dropdown-menu mega-dropdown-menu">
-                    <li class="col-sm-4">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'ecointernationale' %}">{% trans "International" %}</a></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-4">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'econationale' %}">{% trans "Nationale" %}</a></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-4">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'ecoregionale' %}">{% trans "Regionale" %}</a></li>
-                        </ul>
-                    </li>
+                <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'ecointernationale' %}">{% trans "International" %}</a></li>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'econationale' %}">{% trans "Nationale" %}</a></li>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'ecoregionale' %}">{% trans "Regionale" %}</a></li>
                 </ul>
             </li>
-            <li class="dropdown mega-dropdown"{% if cat_slug == 'cooperationbila' or cat_slug == 'actualite' or cat_slug == 'cooperationmulti' %} class="active" {% endif %} class="dropdown">
+            <li class="dropdown mega-dropdown" {% if cat_slug == 'cooperationbila' or cat_slug == 'actualite' or cat_slug == 'cooperationmulti' %} class="active" {% endif %} class="dropdown">
                 <a href="{% url 'home' 'econationale' %}" class="dropdown-toggle" data-toggle="dropdown"> {% trans "Nationale" %} <span class="caret"></span></a>
-                <ul class="dropdown-menu mega-dropdown-menu">
-                    <li class="col-sm-4">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'actualite' %}">{% trans "Actuality" %}</a></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-4">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'cooperationbila' %}">{% trans "Bilateral" %}</a></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-4">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'cooperationmulti' %}">{% trans "Multilateral" %}</a></li>
-                        </ul>
-                    </li>
+                <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'actualite' %}">{% trans "Actuality" %}</a></li>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'cooperationbila' %}">{% trans "Bilateral" %}</a></li>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'cooperationmulti' %}">{% trans "Multilateral" %}</a></li>
                 </ul>
             </li>
             <li class="dropdown mega-dropdown" {% if cat_slug == 'paix' or cat_slug == 'portrait' or cat_slug == 'education' %} cat_slug == 'sante' or cat_slug == 'sport' or cat_slug == 'culture' or cat_slug == 'ntic' or cat_slug == 'reportage' %} class="active" {% endif %} class="dropdown">
                 <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Society" %}<span class="caret"></span></a>
-                <ul class="dropdown-menu mega-dropdown-menu">
-                    <li class="col-sm-2">
-                        <ul>
-                            <li class="dropdown-header"> <a href="{% url 'home' 'paix' %}">{% trans "Peace process" %}</a></li>
-                        </ul>
+                <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
+                    <li class="dropdown-header col-sm-2"> <a href="{% url 'home' 'paix' %}">{% trans "Peace process" %}</a></li>
                     </li>
-                    <li class="col-sm-2">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'portrait' %}">{% trans "Portrait" %}</a></li>
-                        </ul>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'portrait' %}">{% trans "Portrait" %}</a></li>
                     </li>
-                    <li class="col-sm-2">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'education' %}">{% trans "Education" %}</a></li>
-                        </ul>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'education' %}">{% trans "Education" %}</a></li>
                     </li>
-                    <li class="col-sm-2">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'sante' %}">{% trans "Health" %}</a></li>
-                        </ul>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'sante' %}">{% trans "Health" %}</a></li>
                     </li>
-                    <li class="col-sm-2">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'ntic' %}">{% trans "NTIC" %}</a></li>
-                        </ul>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'ntic' %}">{% trans "NTIC" %}</a></li>
                     </li>
-                    <li class="col-sm-2">
-                        <ul>
-                            <li class="dropdown-header"><a href="{% url 'home' 'reportage' %}">{% trans "Reportage" %}</a></li>
-                        </ul>
+                    <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'reportage' %}">{% trans "Reportage" %}</a></li>
                     </li>
                 </ul>
             </li>
@@ -108,26 +66,25 @@
             </li>
             <li class="dropdown mega-dropdown"  class="dropdown">
                 <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Useful numbers" %}<span class="caret"></span></a>
-                <ul class="dropdown-menu mega-dropdown-menu">
-                    <li class="col-sm-6">
-                        <ul>
+
+                <ul class="dropdown-menu mega-dropdown-menu row">
+                    <li class="col-sm-12">
+                        <ul class="col-sm-5">
                             <li class="dropdown-header-t">{% trans "Law enforcement" %} </li>
                             <li class="divider"></li>
-                            <li class="dropdown-header">{% trans "Police :" %} <a href="#">80 00 11 15</a></li>
-                            <li class="dropdown-header">{% trans "Gendarmerie : "%}  <a href="#">80 00 11 14</a></li>
+                            <li class="dropdown-header">{% trans "Police : " %} <a href="#">80 00 11 15</a></li>
+                            <li class="dropdown-header">{% trans "Gendarmerie : "%} <a href="#">80 00 11 14</a></li>
                             <li class="dropdown-header"> {% trans "Civil protection : " %}<a href="#">80 00 12 01</a></li>
-                            <li class="dropdown-header">{% trans "Police struggle against violence against women :" %} <a href="#"> 80 333</a></li>
-                            <li class="dropdown-header"> {% trans "Airport of Bamako : " %}<a href="#">20 20 27 04</a></li>
+                            <li class="dropdown-header">{% trans "Police struggle against violence against women : " %} <a href="#">80 333</a></li>
+                            <li class="dropdown-header"> {% trans "Airport of Bamako : " %}<a href="#">+223 20 20 27 04</a></li>
                         </ul>
-                    </li>
-                    <li class="col-sm-6">
-                        <ul>
+                        <ul class="col-sm-5">
                             <li class="dropdown-header-t">{% trans "Health Center" %}</li>
                             <li class="divider"></li>
                             <li class="dropdown-header"> {% trans "Gabriel Touré Hospital : " %}<a href="#"> +223 20 22 27 12 ou +223 20 23 07 80</a></li>
                             <li class="dropdown-header">{% trans "Medico-social Center of French Cooperation in Bamako : " %} <a href="#">+223 20 22 50 72 ou +223 76 35 03 89 ({% trans "permanence" %})</a></li>
-                            <li class="dropdown-header"> {% trans "Point G Hospital : " %}<a href="#">20 22 50 02 ou 20 22 50 03</a></li>
-                            <li class="dropdown-header"> {% trans "Clinic Pasteur : " %}<a href="#">223 20 29 10 10 ou 20 29 14 37</a></li>
+                            <li class="dropdown-header"> {% trans "Point G Hospital : " %}<a href="#">+223 20 22 50 02 ou +223 20 22 50 03</a></li>
+                            <li class="dropdown-header"> {% trans "Clinic Pasteur : " %}<a href="#">+223 20 29 10 10 ou +223 20 29 14 37</a></li>
                         </ul>
                     </li>
                 </ul>

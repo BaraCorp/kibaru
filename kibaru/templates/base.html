@@ -63,16 +63,6 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 // $("#sticky").removeClass('new-O-size')
-                $(".dropdown").hover(
-                    function() {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-                        $(this).toggleClass('open');
-                    },
-                    function() {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-                        $(this).toggleClass('open');
-                    }
-                );
                 function sticky_relocate() {
                     var window_top = $(window).scrollTop();
                     var div_top = $('#sticky-anchor').offset().top;
