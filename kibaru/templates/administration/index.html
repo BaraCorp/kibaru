@@ -1,166 +1,108 @@
 {% extends "base.html" %}
 {% load i18n staticfiles %}
-
-{% block title %} {% trans "Administration" %} {% endblock %}
 {% block page-id %}admin-index{% endblock %}
+{% block title %} {% trans "Administration" %} {% endblock %}
 
 {% block content_larg %}
-
     <div class="row">
-        <div class="col-md-7">
-            <h2 class="page-header">{% trans "List of Articles" %}</h2>
+        <div class="page-header">
+            <h2>{% trans "List of Articles" %}</h2>
+            <a href="{% url 'add_article' %}" class="btn btn-success" >{% trans "Add article" %}</a>
+            {% include "administration/__pagination.html" with page=articles page_url="articles"%}
         </div>
-        <div class="col-md-3">
-                <div class="pagination" style="margin-top: 51px;">
-                    <span class="step-links">
-                        {% if articles.has_previous %}
-                            <a href="?page={{ articles.previous_page_number }}">{% trans "previous" %}</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Page {{ articles.number }} sur {{ articles.paginator.num_pages }}.
-                        </span>
-
-                        {% if articles.has_next %}
-                            <a href="?page={{ articles.next_page_number }}">{% trans "next" %}</a>
-                        {% endif %}
-                    </span>
-                </div>
-        </div>
-        <div class="col-md-2">
-            <a href="{% url 'add_article' %}" class="btn btn-success page-header" >{% trans "Add article" %}</a>
-        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th> {% trans "Title" %}</th>
+                 <th> {% trans "Publication Date" %}</th>
+                 <th> {% trans "Date Modified" %}</th>
+                 <th> {% trans "Author" %} </th>
+                 <th> {% trans "Category" %} </th>
+                 <th> {% trans "Status" %} </th>
+                 <th> {% trans "Change" %} </th>
+                 <th> {% trans "Delete" %} </th>
+            </tr>
+            {% if articles %}
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>{{ article.date_created }}</td>
+                <td>{{ article.date_modified }}</td>
+                <td>{{ article.author.name }}</td>
+                <td>{{ article.category.name }}</td>
+                <td>{{ article.title_status }}</td>
+                <td><a href="{{ article.url_edit}}" class="btn btn-primary" >{% trans "Edit" %}</a></td>
+                <td><a href="{{ article.url_del}}" class="btn btn-danger" data-confirm={% trans "Are you sure you want to delete this article?" %}>{% trans "Deleted" %}</a></td>
+            </tr>
+            {% endfor %}
+            {% else %}
+                <td colspan="8">
+                   {% trans "No article published." %}
+                </td>
+            {% endif %}
+        </table>
     </div>
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th> {% trans "Title" %}</th>
-             <th> {% trans "Publication Date" %}</th>
-             <th> {% trans "Date Modified" %}</th>
-             <th> {% trans "Author" %} </th>
-             <th> {% trans "Category" %} </th>
-             <th> {% trans "Status" %} </th>
-             <th> {% trans "Change" %} </th>
-             <th> {% trans "Delete" %} </th>
-        </tr>
-        {% if articles %}
-        {% for article in articles %}
-        <tr>
-            <td>{{ article.title }}</td>
-            <td>{{ article.date_created }}</td>
-            <td>{{ article.date_modified }}</td>
-            <td>{{ article.author.name }}</td>
-            <td>{{ article.category.name }}</td>
-            <td>{{ article.title_status }}</td>
-            <td><a href="{{ article.url_edit}}" class="btn btn-primary" >{% trans "Edit" %}</a></td>
-            <td><a href="{{ article.url_del}}" class="btn btn-danger" data-confirm={% trans "Are you sure you want to delete this article?" %}>{% trans "Deleted" %}</a></td>
-        </tr>
-        {% endfor %}
-        {% else %}
-            <td colspan="8">
-               {% trans "No article published." %}
-            </td>
-        {% endif %}
-    </table>
-
     <div class="row">
-        <div class="col-md-7">
-            <h2 class="page-header">{% trans "News list" %}</h2>
+        <div class="page-header">
+            <h2>{% trans "News list" %}</h2>
+            <a href="{% url 'add_new' %}" class="btn btn-success" >{% trans "Add new" %}</a>
+            {% include "administration/__pagination.html" with page=news page_url="news"%}
         </div>
-        <div class="col-md-3">
-            <div class="pagination" style="margin-top: 51px;">
-                <span class="step-links">
-                    {% if news.has_previous %}
-                        <a href="?page1={{ news.previous_page_number }}">{% trans "previous" %}</a>
-                    {% endif %}
-
-                    <span class="current">
-                        Page {{ news.number }} {% trans "On" %} {{ news.paginator.num_pages }}.
-                    </span>
-
-                    {% if news.has_next %}
-                        <a href="?page1={{ news.next_page_number }}">{% trans "next" %}</a>
-                    {% endif %}
-                </span>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <a href="{% url 'add_new' %}" class="btn btn-success page-header" >{% trans "Add new" %}</a>
-        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>{% trans "Title" %}</th>
+                <th>{% trans "Content" %}</th>
+                <th>{% trans "Autor" %}</th>
+                <th>{% trans "Dated" %}</th>
+                <th>{% trans "Number of view" %}</th>
+                <th>{% trans "Edite" %}</th>
+                <th>{% trans "Delete" %}</th>
+            </tr>
+            {% if news %}
+            {% for new in news %}
+            <tr>
+                <td>{{ new.title }}</td>
+                <td>{{ new.comment }}</td>
+                <td>{{ new.author.name }}</td>
+                <td>{{ new.date }}</td>
+                <td>{{ new.count_view }}</td>
+                <td><a href="{{ new.url_edit}}" class="btn btn-primary" >{% trans "Edit" %}</a></td>
+                <td><a href="{{ new.url_del}}" class="btn btn-danger" data-confirm="Êtes vous sûr de vouloir supprimer cette nouvelle ?">{% trans "Delete" %} </a></td>
+            </tr>
+            {% endfor %}
+            {% else %}
+                <td colspan="8">
+                    {% trans "No news posted." %}
+                </td>
+            {% endif %}
+        </table>
     </div>
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>{% trans "Title" %}</th>
-            <th>{% trans "Content" %}</th>
-            <th>{% trans "Autor" %}</th>
-            <th>{% trans "Dated" %}</th>
-            <th>{% trans "Number of view" %}</th>
-            <th>{% trans "Edite" %}</th>
-            <th>{% trans "Delete" %}</th>
-        </tr>
-        {% if news %}
-        {% for new in news %}
-        <tr>
-            <td>{{ new.title }}</td>
-            <td>{{ new.comment }}</td>
-            <td>{{ new.author.name }}</td>
-            <td>{{ new.date }}</td>
-            <td>{{ new.count_view }}</td>
-            <td><a href="{{ new.url_edit}}" class="btn btn-primary" >{% trans "Edit" %}</a></td>
-            <td><a href="{{ new.url_del}}" class="btn btn-danger" data-confirm="Êtes vous sûr de vouloir supprimer cette nouvelle ?">{% trans "Delete" %} </a></td>
-        </tr>
-        {% endfor %}
-        {% else %}
-            <td colspan="8">
-                {% trans "No news posted." %}
-            </td>
-        {% endif %}
-    </table>
-
     <div class="row">
-        <div class="col-md-7">
-            <h2 class="page-header">{% trans "List of videos" %}</h2>
+        <div class="page-header">
+            <h2>{% trans "List of videos" %}</h2>
+            <a href="{% url 'add_video' %}" class="btn btn-success" >{% trans "Add new" %}</a>
+            {% include "administration/__pagination.html" with page=videos page_url="videos"%}
         </div>
-        <div class="col-md-3">
-            <div class="pagination" style="margin-top: 51px;">
-                <span class="step-links">
-                    {% if videos.has_previous %}
-                        <a href="?page1={{ videos.previous_page_number }}">{% trans "previous" %}</a>
-                    {% endif %}
-
-                    <span class="current">
-                        Page {{ videos.number }} {% trans "On" %} {{ videos.paginator.num_pages }}.
-                    </span>
-
-                    {% if videos.has_next %}
-                        <a href="?page1={{ videos.next_page_number }}">{% trans "next" %}</a>
-                    {% endif %}
-                </span>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <a href="{% url 'add_video' %}" class="btn btn-success page-header" >{% trans "Add a video link" %}</a>
-        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>{% trans "Id Video" %}</th>
+                <th>{% trans "Title" %}</th>
+                <th>{% trans "Delete" %}</th>
+            </tr>
+            {% if videos %}
+            {% for video in videos %}
+            <tr>
+                <td>{{ video.slug }}</td>
+                <td>{{ video.title }}</td>
+                <td><a href="{{ video.url_del}}" class="btn btn-danger" data-confirm={% trans "Are you sure you want to delete the video link?" %}>{% trans "Delete" %}</a></td>
+            </tr>
+            {% endfor %}
+            {% else %}
+                <td colspan="8">
+                    {% trans "No posted video." %}
+                </td>
+            {% endif %}
+        </table>
     </div>
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>{% trans "Id Video" %}</th>
-            <th>{% trans "Title" %}</th>
-        </tr>
-        {% if videos %}
-        {% for video in videos %}
-        <tr>
-            <td>{{ video.slug }}</td>
-            <td>{{ video.title }}</td>
-            <td><a href="{{ video.url_del}}" class="btn btn-danger" data-confirm={% trans "Are you sure you want to delete the video link?" %}>{% trans "Delete" %}</a></td>
-        </tr>
-        {% endfor %}
-        {% else %}
-            <td colspan="8">
-                {% trans "No posted video." %}
-            </td>
-        {% endif %}
-    </table>
-
 {% endblock %}
 {% block video %}
 {% endblock %}

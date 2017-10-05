@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load widget_tweaks i18n staticfiles %}
+{% block page-id %}admin-base-form{% endblock %}
 {% block content_larg %}
+
 <script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js"%}"></script>
 <div class="row">
     <legend class="text-center">{{ page_title }}</legend>

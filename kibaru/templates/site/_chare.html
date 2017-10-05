@@ -17,15 +17,15 @@
     <meta name="twitter:image:alt" content=" {{ object.title }}" />
     <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
     <link rel="canonical" href="{{ object.url_display }}" />
-{% endblock %}
-<div class="social col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+{% endblock %}<!--
+<div class="social col-xs-12 col-sm-12 col-md-12 col-lg-12" > -->
     <div class="social">
-    <a href="https://twitter.com/share" data-url="{{ settings.DOMMAIN }}{{ object.short_url }}" class="twitter-share-button"{count} data-via="{{ settings.TWITTER_NAME }}" data-dnt="true">{% trans "Tweet" %}</a>
+        <a href="https://twitter.com/share" data-url="{{ settings.DOMMAIN }}{{ object.short_url }}" class="twitter-share-button"{count} data-via="{{ settings.TWITTER_NAME }}" data-dnt="true">{% trans "Tweet" %}</a>
         <span class="g-plusone" data-size="medium"></span>
         <g:plus action="share"></g:plus>
         <span class="fb-like" data-href="{{ object.url_display }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span>
     </div>
-</div>
+<!-- </div> -->
 
 <!-- twitter -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

@@ -15,36 +15,38 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content %}
-    <article >
-        <header>
-            <h3 class="article_post_title"> {{ article.title }} </h3>
-        </header>
-       <!--  <span class="meta published-date">
-            <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u> {% trans "Published" %} {{ article.date_created|date:"l d F Y" }}</abbr>
-        </span> -->
-        <span class="date-publication meta">
-            <time datetime="17-06-23">
-                <meta itemprop="datePublished" content="2017-06-23">
-                   {% trans "By" %} <u><a href="#">kibaru</a></u>
-            </time>
-            <time datetime="17-06-23" style="float: right; margin: 4px;">
-                {% trans "Published" %} {{ article.date_created }}
-            </time>
-        </span>
-        {% if article.image %}
-            <figure>
-                <a href="{{ article.image.url }}"><img class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %}></a>
-            </figure>
-            {% if article.legend %}
-                <figcaption class="article-caption"><h6 class="article-legend"><a href="">{{article.legend}}</a></h6></figcaption>
+    <div class="content-art">
+        <article >
+            <header>
+                <h2 class="article_post_title"> {{ article.title }} </h2>
+            </header>
+           <!--  <span class="meta published-date">
+                <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u> {% trans "Published" %} {{ article.date_created|date:"l d F Y" }}</abbr>
+            </span> -->
+            <span class="date-publication meta">
+                <time datetime="17-06-23">
+                    <meta itemprop="datePublished" content="2017-06-23">
+                       {% trans "By" %} <u><a href="#">kibaru</a></u>
+                </time>
+                <time datetime="17-06-23" style="float: right; margin: 4px;">
+                    {% trans "Published" %} {{ article.date_created }}
+                </time>
+            </span>
+            {% if article.image %}
+                <figure>
+                    <a href="{{ article.image.url }}"><img class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %}></a>
+                </figure>
+                {% if article.legend %}
+                    <figcaption class="article-caption"><h6 class="article-legend"><a href="">{{article.legend}}</a></h6></figcaption>
+                {% endif %}
             {% endif %}
-        {% endif %}
-        <div class="post-body">
-            <p><html>{{article.text|safe}}</html></p>
-        </div>
-    </article>
-    {% include "site/_chare.html" with object=article %}
-    {% include "site/_disqus.html" %}
+            <div class="post-body">
+                <p><html>{{article.text|safe}}</html></p>
+            </div>
+        </article>
+        {% include "site/_chare.html" with object=article %}
+        {% include "site/_disqus.html" %}
+    </div>
 {% endblock %}
 {% block footer %}
     {% include "site/_footer.html" %}

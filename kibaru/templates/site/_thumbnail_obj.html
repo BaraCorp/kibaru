@@ -4,11 +4,10 @@
     <a href="{% url 'home' link %}" class=heading-large> <h3> {{ el_title }} </h3></a>
     {% for element in elements %}
         <div  class="el-title">
-
             <a href="{{element.url_display}}">
                 <div class="job-title">{{ element.title }}
                         {% if user.is_authenticated %}
-                            <span style="color: gray;" class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
+                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
                         {% endif %}
                 </div>
             </a>

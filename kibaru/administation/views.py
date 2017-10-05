@@ -29,15 +29,15 @@ def home(request):
 
     articles = Article.objects.all().order_by('-date_created')
     paginator = Paginator(articles, 4)
-    page = request.GET.get('page')
+    page = request.GET.get('articles')
 
     news = New.objects.all().order_by('-date')
     paginator1 = Paginator(news, 4)
-    page1 = request.GET.get('page1')
+    page1 = request.GET.get('news')
 
     videos = Video.objects.all().order_by('-date_created')
     paginator2 = Paginator(videos, 4)
-    page2 = request.GET.get('page2')
+    page2 = request.GET.get('videos')
 
     try:
         articles = paginator.page(page)

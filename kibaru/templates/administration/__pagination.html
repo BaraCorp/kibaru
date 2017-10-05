@@ -1,0 +1,16 @@
+{% load i18n staticfiles %}
+<ul class="pagination">
+    {% if page.has_previous %}
+        <li class="page-item">
+            <a href="?{{page_url}}={{ page.previous_page_number }}">{% trans "previous" %} ({{ page.previous_page_number }})</a>
+        </li>
+    {% endif %}
+    <li class="page-item active">
+      <a class="page-link" href="#">Page {{ page.number }}/{{ page.paginator.num_pages }}<span class="sr-only"> sur {{ page.paginator.num_pages }}.</span></a>
+    </li>
+    {% if page.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?{{page_url}}={{ page.next_page_number }}">{% trans "next" %} ({{ page.next_page_number }})</a>
+        </li>
+    {% endif %}
+</ul>

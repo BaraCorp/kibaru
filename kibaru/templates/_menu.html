@@ -12,7 +12,6 @@
         </button>
         <a href="{% url 'home' '' %}" class="navbar-brand"> <stromg>Kib@ru</stromg> </a>
     </div>
-
     <div class="collapse navbar-collapse js-navbar-collapse">
         <ul class="nav navbar-nav">
             <li class="dropdown mega-dropdown" {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %} class="dropdown">
@@ -66,27 +65,24 @@
             </li>
             <li class="dropdown mega-dropdown"  class="dropdown">
                 <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Useful numbers" %}<span class="caret"></span></a>
-
-                <ul class="dropdown-menu mega-dropdown-menu row">
-                    <li class="col-sm-12">
-                        <ul class="col-sm-5">
-                            <li class="dropdown-header-t">{% trans "Law enforcement" %} </li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">{% trans "Police : " %} <a href="#">80 00 11 15</a></li>
-                            <li class="dropdown-header">{% trans "Gendarmerie : "%} <a href="#">80 00 11 14</a></li>
-                            <li class="dropdown-header"> {% trans "Civil protection : " %}<a href="#">80 00 12 01</a></li>
-                            <li class="dropdown-header">{% trans "Police struggle against violence against women : " %} <a href="#">80 333</a></li>
-                            <li class="dropdown-header"> {% trans "Airport of Bamako : " %}<a href="#">+223 20 20 27 04</a></li>
-                        </ul>
-                        <ul class="col-sm-5">
-                            <li class="dropdown-header-t">{% trans "Health Center" %}</li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header"> {% trans "Gabriel Touré Hospital : " %}<a href="#"> +223 20 22 27 12 ou +223 20 23 07 80</a></li>
-                            <li class="dropdown-header">{% trans "Medico-social Center of French Cooperation in Bamako : " %} <a href="#">+223 20 22 50 72 ou +223 76 35 03 89 ({% trans "permanence" %})</a></li>
-                            <li class="dropdown-header"> {% trans "Point G Hospital : " %}<a href="#">+223 20 22 50 02 ou +223 20 22 50 03</a></li>
-                            <li class="dropdown-header"> {% trans "Clinic Pasteur : " %}<a href="#">+223 20 29 10 10 ou +223 20 29 14 37</a></li>
-                        </ul>
-                    </li>
+                <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
+                    <ul class="col-sm-5">
+                        <li class="dropdown-header-t">{% trans "Law enforcement" %} </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">{% trans "Police : " %} <a href="#">80 00 11 15</a></li>
+                        <li class="dropdown-header">{% trans "Gendarmerie : "%} <a href="#">80 00 11 14</a></li>
+                        <li class="dropdown-header"> {% trans "Civil protection : " %}<a href="#">80 00 12 01</a></li>
+                        <li class="dropdown-header">{% trans "Police struggle against violence against women : " %} <a href="#">80 333</a></li>
+                        <li class="dropdown-header"> {% trans "Airport of Bamako : " %}<a href="#">+223 20 20 27 04</a></li>
+                    </ul>
+                    <ul class="col-sm-5">
+                        <li class="dropdown-header-t">{% trans "Health Center" %}</li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header"> {% trans "Gabriel Touré Hospital : " %}<a href="#"> +223 20 22 27 12 ou +223 20 23 07 80</a></li>
+                        <li class="dropdown-header">{% trans "Medico-social Center of French Cooperation in Bamako : " %} <a href="#">+223 20 22 50 72 ou +223 76 35 03 89 {% trans "permanence" %}</a></li>
+                        <li class="dropdown-header"> {% trans "Point G Hospital : " %}<a href="#">+223 20 22 50 02 ou +223 20 22 50 03</a></li>
+                        <li class="dropdown-header"> {% trans "Clinic Pasteur : " %}<a href="#">+223 20 29 10 10 ou +223 20 29 14 37</a></li>
+                    </ul>
                 </ul>
             </li>
         </ul>

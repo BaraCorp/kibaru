@@ -225,6 +225,8 @@ def search(request):
 
 def home(request, *args, **kwargs):
     cat_slug = kwargs["slug"]
+    # pub = kwargs["pub"]
+    # print("YYYYYY", pub)
 
     try:
         slug = Category.objects.get(slug=cat_slug).slug
@@ -268,47 +270,8 @@ def home(request, *args, **kwargs):
 
 
 def publicity(request, *args, **kwargs):
-    cat_slug = kwargs["slug"]
-
-    try:
-        slug = Category.objects.get(slug=cat_slug).slug
-        posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=slug)
-    except Category.DoesNotExist:
-        posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=None)
-        posts = posts.exclude(
-            category=Category.objects.get(slug="expression-libre")).exclude(
-            category=Category.objects.get(slug="migration")).exclude(
-            category=Category.objects.get(slug="sport")).exclude(
-            category=Category.objects.get(slug="culture"))
-        slug = None
-    for article in posts:
-        article.url_display = reverse("art", args=[article.slug])
-    starts = posts.filter(start=True)[:5]
-    for start in starts:
-        start.url_display = reverse("art", args=[start.slug])
-
-    paginator = Paginator(posts, 12)
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
-
-    context.update(get_paginator_context(paginator, page))
-    if request.method == 'POST':
-        form = Newsletterform(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _("Thank you for your subscription"))
-            return HttpResponseRedirect('/')
-    else:
-        form = Newsletterform()
-    context.update({'posts': posts, 'form': form, 'subtitle': '',
-                    "starts": starts, "cat_slug": cat_slug,
-                    "lang": request.LANGUAGE_CODE, "pub": True})
-    return render(request, 'site/index_publicity.html', context)
+    print(args)
+    home(request, pub=True)
 
 
 def get_paginator_context(obj_pagina, page, range_gap=3):
