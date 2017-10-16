@@ -100,14 +100,14 @@ section {float: left; width: 100%;}
     font-size: 11px;*/
 }
 #sticky {
-    background-color: rgba(232, 232, 232, 0.97);
+    background-color: rgba(222, 222, 222, 0.9);
     width: 100%;
     margin-top: 5px;
 }
 #sticky.stick {
     /*overflow: hidden;*/
     position: fixed;
-    bottom: -2px;
+    bottom: -5px;
     z-index: 10000;
 }
 /* liScroll styles */
@@ -346,7 +346,7 @@ footer {
 }*/
 .social li {
     background: none repeat scroll 0 0 #1b503f;
-    border: 2px solid #B5B5B5;
+    border: 2px solid #00682D;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -o-border-radius: 50%;
@@ -376,8 +376,8 @@ footer {
     color: #EDEFF1;
 }
 .social li:hover {
-    border: 2px solid #2c3e50;
-    background: #33CC00;
+    border: 2px solid #bdbfc2;
+    /*background: #33CC00;*/
 }
 .social li a i {
     /*font-size: 16px;

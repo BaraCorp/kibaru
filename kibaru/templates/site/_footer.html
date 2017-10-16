@@ -14,10 +14,10 @@
             <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
                 <h3> {% trans "Follow us" %} </h3>
                 <ul class="social">
-                    <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class="glyphicon glyphicon-facebook">  f </i> </a> </li>
-                    <li> <a href="https://twitter.com/{{ settings.TWITTER_NAME }}"> <i class="glyphicon glyphicon-twitter"> t  </i> </a> </li>
-                    <li> <a href="https://plus.google.com/u/0/{{ settings.GOOGLE_PLUS}}/posts"> <i class="glyphicon glyphicon-google-plus">  g+ </i> </a> </li>
-                    <li> <a href="https://www.youtube.com/user/{{ settings.YOUTUBE }}"> <i class="glyphicon glyphicon-youtube">  y </i> </a> </li>
+                    <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class="fa fa-facebook-official" aria-hidden="true"></i></a> </li>
+                    <li> <a href="https://twitter.com/{{ settings.TWITTER_NAME }}"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a> </li>
+                    <li> <a href="https://plus.google.com/u/0/{{ settings.GOOGLE_PLUS}}/posts"> <i class="fa fa-google-plus-square" aria-hidden="true"></i></a> </li>
+                    <li> <a href="https://www.youtube.com/user/{{ settings.YOUTUBE }}"><i class="fa fa-youtube-square" aria-hidden="true"></i></a> </li>
                     <!-- <li class="fb-follow" data-href="https://www.facebook.com/Kibaruu-1652451611660511" data-layout="standard" data-show-faces="true"></li> -->
                 </ul>
             </div>
@@ -49,10 +49,10 @@
             </div>
             <!--/.row-->
         </div>
-        <div class="footer-bottom"  style="margin-right: 2em; color: #1b503f;">
+        <div class="footer-bottom"  style="margin-right: 2em; color: #1b503f;font-size: 1.5em;">
             <!-- <div class="container"> -->
-                <p class="pull-left">Copyright &copy; {{ settings.APP_NAME }} 2017. All right reserved. </p>
-                <p class="pull-right" style="font-size: 2em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</p>
+                <p class="pull-left">Copyright &copy; <a href="www.baracorp.ml"> BaraCorp</a> 2017. All right reserved. </p>
+                <p class="pull-right">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</p>
             <!-- </div> -->
         </div>
     </div>

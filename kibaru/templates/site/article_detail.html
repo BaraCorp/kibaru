@@ -6,7 +6,7 @@
 {% block page-id %}detail{% endblock %}
 
 {% block banner %}
-    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
+    {% include "site/_banner.html" %}
 {% endblock %}
 {% block sticky %}
     <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
@@ -53,9 +53,10 @@
     {% include "site/_footer.html" %}
 {% endblock %}
 {% block sidebar_rigth %}
-    {% if same_categies %}
-        <section class="section-back">
+    <section class="section-back">
+        <div class="fb-page" data-href="{{settings.FACEBOOK_PAGE}}" data-hide-cover="false" data-show-facepile="false"></div>
+        {% if same_categies %}
             {% include "site/_thumbnail_right.html" with elements=same_categies el_title=same_categies_title link="" %}
-        </section>
-    {% endif %}
+        {% endif %}
+    </section>
 {% endblock%}

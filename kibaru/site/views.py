@@ -309,15 +309,17 @@ def display_article(request, *args, **kwargs):
         raise Http404(_("Article does not exist"))
         return HttpResponseRedirect('/' + request.LANGUAGE_CODE + '/')
 
-    same_categies = posts.filter(category=article.category)[:5]
+    same_categies = posts.filter(
+        category=article.category).exclude(slug=article.slug)[:5]
     for same_categy in same_categies:
         same_categy.url_display = reverse("art", args=[same_categy.slug])
 
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()
-    context.update({'article': article, 'same_categies': same_categies,
-                    'lang': request.LANGUAGE_CODE, 'article_slug': article_slug})
+    context.update({
+        'article': article, 'same_categies': same_categies,
+        'lang': request.LANGUAGE_CODE, 'article_slug': article_slug})
     return render(request, 'site/article_detail.html', context)
 
 
@@ -332,10 +334,12 @@ def about(request, *args, **kwargs):
 def display_new(request, *args, **kwargs):
     posts, context = init()
     new_id = kwargs["id"]
+    new_slug = "new/{}".format(new_id)
     new = New.objects.get(id=new_id)
     new.count_view += 1
     new.save()
-    context.update({'new': new, "lang": request.LANGUAGE_CODE})
+    context.update({
+        'new': new, "lang": request.LANGUAGE_CODE, 'new_slug': new_slug})
     return render(request, 'site/new_detail.html', context)
 
 
