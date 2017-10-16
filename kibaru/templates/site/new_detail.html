@@ -26,7 +26,8 @@
             <p class="post-body" dir="ltr" trbidi="on"> <html>{{ new.comment }}</html></p>
         </article>
         {% include "site/_chare.html" with object=new %}
-        {% include "site/_disqus.html" %}
+        <div id="fb-root"></div>
+        <div class="fb-comments" data-href={{settings.DOMMAIN}}/{{article_slug}} data-numposts="5"></div>
     </div>
 {% endblock %}
 

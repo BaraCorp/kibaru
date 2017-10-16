@@ -45,7 +45,8 @@
             </div>
         </article>
         {% include "site/_chare.html" with object=article %}
-        {% include "site/_disqus.html" %}
+        <div id="fb-root"></div>
+        <div class="fb-comments" data-href={{settings.DOMMAIN}}/{{article_slug}} data-numposts="5"></div>
     </div>
 {% endblock %}
 {% block footer %}

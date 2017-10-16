@@ -406,8 +406,8 @@ footer {
     padding-right: 5px;
     padding-left: 5px;
 }
-img {
-    width: 100%;
+img {/*
+    width: 100%;*/
 }
 .article_post_title {
     color: #035417;

@@ -317,7 +317,7 @@ def display_article(request, *args, **kwargs):
     article.count_view += 1
     article.save()
     context.update({'article': article, 'same_categies': same_categies,
-                    'lang': request.LANGUAGE_CODE})
+                    'lang': request.LANGUAGE_CODE, 'article_slug': article_slug})
     return render(request, 'site/article_detail.html', context)
 
 
