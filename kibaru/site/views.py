@@ -131,17 +131,14 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
 
     news = New.objects.filter(lang=current_lang,)
     start_dat = datetime(NOW.year, NOW.month, NOW.day)
-    end_dat = start_dat + timedelta(days=2)
+    end_dat = start_dat + timedelta(days=3)
     news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
-    # if news_today.count() > 0:
-    news = news_today
-    # else:
-    # news = news[:5]
-    for new in news:
+    flash_news = news_today
+    for new in flash_news:
         new.url_display = reverse("news", args=[new.id])
     # tag_data = create_tag_data(posts)
     context = {'settings': settings,
-               'flash_news': news,
+               'flash_news': flash_news,
                'post_list': posts,
                'art_cultures': art_cultures,
                'art_culture_title': _("Art and Culture"),
@@ -151,7 +148,7 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
                'migration_title': _("migration"),
                'free_expressions': free_expressions,
                'free_expression_title': _("Free Expression"),
-               # 'tag_counts': tag_data,
+               'same_categies_title': _("Same Category"),
                'archive_counts': archive_data,
                'publicities': publicities,
                'jobs': jobs,
@@ -225,9 +222,6 @@ def search(request):
 
 def home(request, *args, **kwargs):
     cat_slug = kwargs["slug"]
-    # pub = kwargs["pub"]
-    # print("YYYYYY", pub)
-
     try:
         slug = Category.objects.get(slug=cat_slug).slug
         posts, context = init(lang=request.LANGUAGE_CODE, cat_slug=slug)
@@ -263,15 +257,10 @@ def home(request, *args, **kwargs):
             return HttpResponseRedirect('/')
     else:
         form = Newsletterform()
-    context.update({'posts': posts, 'form': form, 'subtitle': '',
-                    "starts": starts, "cat_slug": cat_slug,
-                    "lang": request.LANGUAGE_CODE})
+    context.update({"pub": request.GET.get("pub", False), "posts": posts,
+                    "form": form, "subtitle": "", "starts": starts,
+                    "cat_slug": cat_slug, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/index.html', context)
-
-
-def publicity(request, *args, **kwargs):
-    print(args)
-    home(request, pub=True)
 
 
 def get_paginator_context(obj_pagina, page, range_gap=3):
@@ -311,7 +300,6 @@ def display_article(request, *args, **kwargs):
 
     posts, context = init(lang=request.LANGUAGE_CODE)
     article_slug = kwargs["slug"]
-
     try:
         if len(article_slug) < 9:
             article = posts.get(id=short_url.decode_url(article_slug))
@@ -320,10 +308,16 @@ def display_article(request, *args, **kwargs):
     except Article.DoesNotExist:
         raise Http404(_("Article does not exist"))
         return HttpResponseRedirect('/' + request.LANGUAGE_CODE + '/')
+
+    same_categies = posts.filter(category=article.category)[:5]
+    for same_categy in same_categies:
+        same_categy.url_display = reverse("art", args=[same_categy.slug])
+
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()
-    context.update({'article': article, "lang": request.LANGUAGE_CODE})
+    context.update({'article': article, 'same_categies': same_categies,
+                    'lang': request.LANGUAGE_CODE})
     return render(request, 'site/article_detail.html', context)
 
 

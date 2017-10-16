@@ -13,19 +13,21 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content %}
-    <article>
-        <header>
-            <h1 class="new_post_title entry-title"> {{ new.title }}</h1>
-        </header>
-        <span class="meta">
-            <time style="clear: both; float: right;">
-             Publié {{ new.date|date:"l d F Y" }} </time>
-            <abbr>By <u><a href="#">kibaru</a></u></abbr>
-        </span>
-        <p class="post-body" dir="ltr" trbidi="on"> <html>{{ new.comment }}</html></p>
-    </article>
-    {% include "site/_chare.html" with object=new %}
-    {% include "site/_disqus.html" %}
+     <div class="content-art">
+        <article>
+            <header>
+                <h1 class="new_post_title entry-title"> {{ new.title }}</h1>
+            </header>
+            <span class="meta">
+                <time style="clear: both; float: right;">
+                 Publié {{ new.date|date:"l d F Y" }} </time>
+                <abbr>By <u><a href="#">kibaru</a></u></abbr>
+            </span>
+            <p class="post-body" dir="ltr" trbidi="on"> <html>{{ new.comment }}</html></p>
+        </article>
+        {% include "site/_chare.html" with object=new %}
+        {% include "site/_disqus.html" %}
+    </div>
 {% endblock %}
 
 {% block footer %}

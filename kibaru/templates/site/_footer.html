@@ -5,15 +5,11 @@
 
             <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
                 <h3>{% trans "Who are we ? " %}</h3>
-                <ul>
-                    <li><a href="{% url 'about' %}"><i class="glyphicon glyphicon-pencil"> </i>{% trans "Site editorial line" %}  </a></li>
-                </ul>
+                <a href="{% url 'about' %}"><i class="glyphicon glyphicon-pencil"> </i> {% trans "Site editorial line" %}  </a>
             </div>
             <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
                 <h3> {% trans "Contact Us" %} </h3>
-                <ul>
-                    <li><address><a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaru"><i class="glyphicon glyphicon-envelope"> </i>kibaruuml@gmail.com</a> </address></li>
-                </ul>
+                <address><a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaru"><i class="glyphicon glyphicon-envelope"> </i> kibaruuml@gmail.com</a> </address>
             </div>
             <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
                 <h3> {% trans "Follow us" %} </h3>
@@ -41,7 +37,7 @@
                                     <form action="" method="post" class="form-inline">{% csrf_token %}
                                         <div  class="form-group">
                                             {{form.email|add_class:"form-control"}}
-                                        <input type='submit' class="btn btn-primary" value ='{% trans "send" %}'/>
+                                        <button type='submit' class="btn btn-primary">{% trans "send" %}</button>
                                         </div>
 
                                     </form>

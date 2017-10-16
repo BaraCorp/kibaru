@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles imagefit %}
 
 {% block title %} {{ query_string }} {% endblock %}
 
@@ -14,27 +14,29 @@
 {% block content %}
     {% if found_article %}
         <h4><b>{% trans "Search results for : " %}</b> {{ query_string }}</h4>
-        {% for post in found_article %}
-            <a href="{{ post.url_display }}">
-                <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <div class="thumbnail art">
-                              <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url}}{% endif %}">
+        <div class="content-art">
+            {% for post in found_article %}
+                <a href="{{ post.url_display }}">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="thumbnail art">
+                                  <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url|resize:'img_start'}}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+                            <h4>{{ post.title }}</h4>
+                            <div class="post_footer">
+                                  {% trans "Publication date"%} : {{ post.date_created.date|date:"D d M Y" }} <br>
+                                  {% ifnotequal post.date_modified.date post.date_created.date %}
+                                      {% trans "Last modification" %} : {{ post.date_modified.date|date:"D d M Y" }}<br>
+                                  {% endifnotequal %}
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
-                        <h4>{{ post.title }}</h4>
-                        <div class="post_footer">
-                              {% trans "Publication date"%} : {{ post.date_created.date|date:"D d M Y" }} <br>
-                              {% ifnotequal post.date_modified.date post.date_created.date %}
-                                  {% trans "Last modification" %} : {{ post.date_modified.date|date:"D d M Y" }}<br>
-                              {% endifnotequal %}
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <hr>
-        {% endfor %}
+                </a>
+                <hr>
+            {% endfor %}
+        </div>
     {% else %}
         <h4><b> {% trans "No results found for : " %}</b> {{ query_string }} </h4>
     {% endif %}

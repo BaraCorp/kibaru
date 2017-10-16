@@ -5,11 +5,10 @@
     {% for element in elements %}
         <div  class="el-title">
             <a href="{{element.url_display}}">
-                <div class="job-title">{{ element.title }}
-                        {% if user.is_authenticated %}
-                            <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
-                        {% endif %}
-                </div>
+                {% if user.is_authenticated %}
+                    <span class="glyphicon glyphicon-eye-open" style="float: right;"> {{element.count_view }}</span>
+                {% endif %}
+                <div class="title">{{ element.title }} </div>
             </a>
         </div>
     {% endfor %}

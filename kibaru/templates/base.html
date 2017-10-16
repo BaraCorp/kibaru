@@ -22,20 +22,18 @@
         {% include "_css_tags.html" %}
     </head>
     <body>
-            {% include "_menu.html" %}
             {% block banner %}
             {% endblock %}
+            {% include "_menu.html" %}
             {% block sticky %}
             {% endblock %}
-        <div class="page" id="{% block page-id %}{% endblock %}">
+        <div class="container" id="{% block page-id %}{% endblock %}">
           <!-- Page Content -->
         <!-- <div class="container-fluid"> -->
             {% include "_notifs.html" %}
             <div class="subtitle">{% block subtitle %}{% endblock %}</div>
-
                 {% block content_index %}
                 {% endblock %}
-
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     {% block content %}
@@ -46,7 +44,6 @@
                     {% endblock%}
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     {% block content_larg %}
@@ -93,6 +90,25 @@
                     });
                 });
             });
+            /*contextMenuCatch = {
+                ie: function(){
+                    if( document.all ){return false;}
+                },
+                netscape: function(e){
+                    if( document.layers || (document.getElementById && !document.all) ){
+                        if( e.which == 2 || e.which == 3 ){return false;}
+                    }
+                }
+            }
+            if (document.layers) {
+                document.captureEvents(Event.mousedown);
+                document.onmousedown = contextMenuCatch.netscape;
+            } else {
+                document.onmouseup = contextMenuCatch.netscape;
+                document.oncontextmenu = contextMenuCatch.ie;
+            }
+            document.oncontextmenu = new Function("return false");
+            document.onselectstart = new Function("return false");*/
        </script>
        </div>
     </body>

@@ -15,7 +15,7 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content %}
-    <div class="content-art">
+     <div class="content-art">
         <article >
             <header>
                 <h2 class="article_post_title"> {{ article.title }} </h2>
@@ -52,8 +52,9 @@
     {% include "site/_footer.html" %}
 {% endblock %}
 {% block sidebar_rigth %}
-    <div class="list-group">
-        <div class="list-group-item disabled">Facebook</div>
-        <div class="fb-page" style="width: 100%;" data-href="{{settings.FACEBOOK_PAGE}}/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"></div>
-    </div>
+    {% if same_categies %}
+        <section class="section-back">
+            {% include "site/_thumbnail_right.html" with elements=same_categies el_title=same_categies_title link="" %}
+        </section>
+    {% endif %}
 {% endblock%}

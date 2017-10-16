@@ -13,7 +13,7 @@
     <H2>{{subtitle}}</H2>
     {% for post in post_list %}
         <a href="{{ post.url_display }}">
-            <div class="row">
+            <div class="row content-art">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <div class="thumbnail art">
                           <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url}}{% endif %}">

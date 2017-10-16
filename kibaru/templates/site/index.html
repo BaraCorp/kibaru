@@ -23,7 +23,7 @@
                         <div class="carousel-inner">
                             {% for star in starts %}
                                 <div class="item {% if forloop.first %} active {% endif %}">
-                                    <img alt="" src="{% if star.image %}{{ star.image.url|resize:'img_start'}}{% endif %}">
+                                    <img data-src="holder.js/100%x100" class="img-responsive" alt="" src="{% if star.image %}{{ star.image.url|resize:'img_start'}}{% endif %}">
                                     <div class="carousel-caption">
                                         <h4 class=" carousel-caption-header">{{ star.title }}
                                         <span class="carousel-caption-text hidden-sm hidden-xs">
@@ -59,7 +59,7 @@
                                                 {% endif %}
                                         </div>
                                         <div class="media__tag tag tag--asia">| {% trans post.category.name %} </div>
-                                        <div class="art-title">{{ post.title }}  </div>
+                                        <div class="title">{{ post.title }}  </div>
                                     </div>
                                 </a>
                             </div>
@@ -69,23 +69,30 @@
                     {% endif %}
                     {% include "_pagination.html" %}
                 </div>
+                {% if pub%}
+                    <div style="margin-top: 9px;margin-bottom: 3em;"">
+                        <img src="https://fakeimg.pl/605x140/"><h1 class="pub"> B </h1>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-            <form  method="get" action="{% url 'search' %}" class="navbar-form" role="search">
-                <div class="input-group">
-      <div class="input-group-btn">
-                    <input type="text" class="form-control" name="q" placeholder="{% trans 'Search' %}." aria-label="{% trans 'Search' %}">
-                    <button type="submit" class="btn btn-primary glyphicon glyphicon-search"/>
-                </div>
-                </div>
-            </form>
-
+                <form  id="" class="form-search form-horizontal pull-right" method="get" action="{% url 'search' %}" class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="{% trans 'Search' %}." aria-label="{% trans 'Search' %}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary glyphicon glyphicon-search" type="button"></button>
+                        </span>
+                    </div>
+                </form>
             <section class="s_devise">
                 <div id='gcw_mainFtT4UwYQy' class='gcw_mainFtT4UwYQy'></div>
                 <a id='gcw_siteFtT4UwYQy' href='https://freecurrencyrates.com/fr/'></a>
                 <script>function reloadFtT4UwYQy(){ var sc = document.getElementById('scFtT4UwYQy');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFtT4UwYQy';sc.src = 'https://freecurrencyrates.com/fr/widget-vertical-editable?iso=EURUSDXOFGBPJPYCNY&df=1&p=FtT4UwYQy&v=fits&source=fcr&width=250&width_title=0&firstrowvalue=1&thm=72B42D,285C00,3F7506,3A8104,FFFFFF,72B42D,285C00,ffffff,ffffff&title=Convertisseur%20de%20devises&tzo=0';var div = document.getElementById('gcw_mainFtT4UwYQy');div.parentNode.insertBefore(sc, div);} reloadFtT4UwYQy(); </script>
             </section>
+            {% if pub %}
+                <div><img src="https://fakeimg.pl/288x140/"><h1 class="pub"> C </h1></div>
+            {% endif %}
             {% ifequal lang 'fr'  %}
                 {% if jobs %}
                     <section class="s_jobs">
@@ -98,11 +105,14 @@
             </section>
             <section class="s_weather">
             {% ifequal lang 'fr' %}
-            <iframe src="https://www.meteoblue.com/fr/meteo/widget/daily?geoloc=detect&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&humidity=1&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 270px;height: 336px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/fr/meteo/prevision/semaine?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
+            <iframe src="https://www.meteoblue.com/fr/meteo/widget/daily?geoloc=detect&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&humidity=1&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 255px; height: 336px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/fr/meteo/prevision/semaine?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
             {% else %}
                 <iframe src="https://www.meteoblue.com/ar/weather/widget/daily/%d8%a8%d8%a7%d9%85%d8%a7%d9%83%d9%88_%d9%85%d8%a7%d9%84%d9%8a_2460596?geoloc=fixed&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&humidity=0&humidity=1&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&pressure=0&layout=light"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 270px;height: 336px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/ar/weather/forecast/week/%d8%a8%d8%a7%d9%85%d8%a7%d9%83%d9%88_%d9%85%d8%a7%d9%84%d9%8a_2460596?utm_source=weather_widget&utm_medium=linkus&utm_content=daily&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
             {% endifequal %}
             </section>
+            {% if pub %}
+                <div><img src="https://fakeimg.pl/288x100/"><h1 class="pub"> F </h1></div>
+           {% endif %}
         </div>
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 section-back">
             <div class="website animated zoomInDown">
@@ -112,22 +122,16 @@
                     </span>
                 </a>
             </div>
-            {% if publicities %}
-                <div class="list-group">
-                    <div class="list-group-item disabled">{% trans "Publicity" %}</div>
-                    {% for publicity in publicities %}
-                        <div class="">
-                            <a href="{{publicity.url_display}}">
-                              <img src="{% if publicity.image %}{{ publicity.image.url}}{% endif %}"  alt="">
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
+            {% if pub %}
+                <div><img src="https://fakeimg.pl/288x100/"><h1 class="pub"> E </h1> </div>
             {% endif %}
             {% if sports %}
                 <section class="s_sport">
                     {% include "site/_thumbnail_right.html" with elements=sports el_title=sport_title link="sport" %}
                 </section>
+            {% endif %}
+            {% if pub %}
+                <div><img src="https://fakeimg.pl/288x144/"><h1 class="pub"> G </h1></div>
             {% endif %}
             {% if art_cultures %}
                 <section class="s_culture">
@@ -156,7 +160,7 @@
                     <div class="embed-responsive embed-responsive-16by9">
                        <iframe  width="200" height="13" src="{{video.link}}?rel=0" frameborder="0" allowfullscreen></iframe>
                     </div>
-                          <div class="el-title">"{{video.title}}"</div>
+                    <div class="el-title video-title">"{{video.title}}"</div>
                 </div>
             {% endfor %}
         </section>
