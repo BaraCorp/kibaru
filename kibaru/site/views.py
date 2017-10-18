@@ -314,6 +314,7 @@ def display_article(request, *args, **kwargs):
     for same_categy in same_categies:
         same_categy.url_display = reverse("art", args=[same_categy.slug])
 
+    article.url_edit = reverse("edit_article", args=[article.id])
     article.short_url = reverse("art", args=[article.get_short_id])
     article.count_view += 1
     article.save()

@@ -28,7 +28,7 @@
                     <meta itemprop="datePublished" content="2017-06-23">
                        {% trans "By" %} <u><a href="#">kibaru</a></u>
                 </time>
-                <time datetime="17-06-23" style="float: right; margin: 4px;">
+                <time datetime="17-06-23" style="float: right; margin: 4px;"><i class="fa fa-clock-o" aria-hidden="true"></i>
                     {% trans "Published" %} {{ article.date_created }}
                 </time>
             </span>
@@ -40,10 +40,12 @@
                     <figcaption class="article-caption"><h6 class="article-legend"><a href="">{{article.legend}}</a></h6></figcaption>
                 {% endif %}
             {% endif %}
+            {% if user.is_authenticated %}<div class="edit-ar"><a href="{{ article.url_edit}}"><i class="fa fa-pencil" aria-hidden="true"> {% trans "Edit" %}</i></a></div>{% endif %}
             <div class="post-body">
                 <p><html>{{article.text|safe}}</html></p>
             </div>
         </article>
+        {% if user.is_authenticated %}<div class="edit-ar"><a href="{{ article.url_edit}}"><i class="fa fa-pencil" aria-hidden="true"> {% trans "Edit" %}</i></a></div>{% endif %}
         {% include "site/_chare.html" with object=article %}
         <div id="fb-root"></div>
         <div class="fb-comments" data-href={{settings.DOMMAIN}}/{{article_slug}} data-numposts="5"></div>
