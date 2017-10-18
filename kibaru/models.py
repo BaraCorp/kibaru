@@ -342,6 +342,17 @@ class Article(models.Model):
         return re.split(" ", self.tags)
 
     def save(self, *args, **kwargs):
+        if self.image:
+            from PIL import Image
+            img_name = os.path.splitext(os.path.basename(self.image.name))[0]
+            im = Image.open(self.image)
+            im_path = os.path.join("images_article", "{}.jpg".format(img_name))
+            if im.format in ["JPEG"]:
+                print("JPEG")
+            else:
+                im.convert('RGB').save(os.path.join(
+                    settings.MEDIA_ROOT, im_path), "JPEG", quality=86)
+                self.image = im_path
         self.slug = re.sub(
             "[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+", '-',
             self.title.lower())

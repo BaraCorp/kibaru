@@ -35,12 +35,7 @@
   overflow:hidden;
 }
 .slide img{
-/*  width:100%;
-  height:100%;*/
-}
-.slide img{
-/*  width:100%;
-  height:100%;*/
+    height: 69%;
 }
 .image{
 /*  width:100%;
@@ -316,7 +311,6 @@
     margin-left:45px;
   }
 }
-
 @keyframes on{
   0%,100%{
     margin-left:0%;
@@ -354,6 +348,4 @@
   font-size:16px;
   color:#fff;
 }
-.code span{
-  color:#89A978;
-}
+.code span{color:#89A978;}

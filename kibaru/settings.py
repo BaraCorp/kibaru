@@ -74,7 +74,8 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'disqus',
     'dbbackup',  # django-dbbackup
-    'poll'
+    'poll',
+    'sorl.thumbnail',
 )
 
 
@@ -193,7 +194,7 @@ FIXTURE_DIRS = (
 )
 
 IMAGEFIT_PRESETS = {
-    'img_start': {'width': 400, 'height': 350, 'crop': True},
+    'img_start': {'width': 550, 'height': 450, 'crop': True},
     'img_artd': {'width': 760, 'height': 550, 'crop': True},
     'img_art': {'width': 407, 'height': 200, 'crop': True},
 }

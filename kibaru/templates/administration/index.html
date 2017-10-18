@@ -49,6 +49,7 @@
         </div>
         <table class="table table-bordered table-striped">
             <tr>
+                <th>{% trans "type" %}</th>
                 <th>{% trans "Title" %}</th>
                 <th>{% trans "Content" %}</th>
                 <th>{% trans "Autor" %}</th>
@@ -60,6 +61,15 @@
             {% if news %}
             {% for new in news %}
             <tr>
+                <td>
+                    {% if new.type_new == 'U' %}
+                        <i class="fa fa-fire" style="color: red;" aria-hidden="true"></i>
+                    {% elif new.type_new == 'C' %}
+                        <i class="fa fa-exclamation-circle" style="color: #2A5DBB;" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="fa fa-info-circle" style="color: green;" aria-hidden="true"></i>
+                    {% endif %}
+                </td>
                 <td>{{ new.title }}</td>
                 <td>{{ new.comment }}</td>
                 <td>{{ new.author.name }}</td>
