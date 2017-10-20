@@ -1,16 +1,10 @@
 {% extends "base.html" %}
 {% load i18n staticfiles imagefit %}
-
 {% block title %} {{ query_string }} {% endblock %}
-
 {% block page-id %}index{% endblock %}
+{% block banner %} {% include "site/_banner.html" %} {% endblock %}
+{% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 
-{% block banner %}
-    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
-{% endblock %}
-{% block sticky %}
-    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
-{% endblock %}
 {% block content %}
     {% if found_article %}
         <h3><b> {% trans "Search results for : " %}</b> {{ query_string }}</h3>
@@ -21,7 +15,7 @@
                     <div class="row">
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <div class="thumbnail art">
-                                  <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url|resize:'img_start'}}{% endif %}">
+                                    <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url|resize:'img_start'}}{% endif %}">
                             </div>
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">

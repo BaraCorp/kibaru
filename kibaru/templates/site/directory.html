@@ -1,24 +1,17 @@
 {% extends "base.html" %}
-{% load i18n imagefit staticfiles %}
-{% block title %} Presse Malienne {% endblock %}
-
-{% block page-id %} {% endblock %}
-{% block banner %}
-    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
-{% endblock %}
-{% block sticky %}
-    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
-{% endblock %}
+{% load i18n staticfiles imagefit %}
+{% block title %} {% trans "Presse Malienne" %} {% endblock %}
+{% block page-id %}presse{% endblock %}
+{% block banner %} {% include "site/_banner.html" %} {% endblock %}
+{% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-
-{% block content_larg %}
-    <div class="content-art">
+{% block content_index %}
         <link  rel="stylesheet" href="{% static 'directory.css' %}">
         <h1 class="article_post_title entry-title">{% trans "Portal news sites online" %}</h1>
         {% for directory in directories %}
-            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
                     <!-- <div class="col-img-responsive02"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit</span></div> -->
@@ -26,13 +19,15 @@
                     </div>
                     <a  href="{{directory.domaine}}">
                         <div class="panel-body">
-                            <h4>{{directory.name}}</h4>
+                            <h3>{{directory.name}}</h3>
                             <p>{{directory.description}}</p>
                             <!-- <a class="btn btn-primary" > go to <i class="fa fa-chevron-right"></i></a> -->
                         </div>
                     </a>
                 </div>
             </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+{% endblock %}
+{% block footer %}
+    {% include "site/_footer.html" %}
 {% endblock %}
