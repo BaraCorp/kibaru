@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load i18n staticfiles %}
-{% load i18n %}
+{% load i18n staticfiles imagefit %}
 {% block title %}  {{subtitle}} {% endblock %}
 
 {% block banner %}
@@ -16,11 +15,11 @@
             <div class="row content-art">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <div class="thumbnail art">
-                          <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url}}{% endif %}">
+                          <img class="media-object" alt="" src="{% if post.image %}{{ post.image.url|resize:'img_start'}}{% endif %}">
                     </div>
                 </div>
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
-                    <h4>{{ post.title }}</h4>
+                    <h3>{{ post.title }}</h3>
                     <div class="post_footer">
                           {% trans "Publication date" %} : {{ post.date_created|date:"D d M Y" }}<br>
                     </div>

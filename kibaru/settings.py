@@ -72,12 +72,9 @@ INSTALLED_APPS = (
     'tinymce',
     'imagefit',
     'widget_tweaks',
-    'disqus',
     'dbbackup',  # django-dbbackup
     'poll',
-    'sorl.thumbnail',
 )
-
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -182,7 +179,7 @@ TWITTER_NAME = "kibml"
 APP_NAME = "kibaru"
 DOMMAIN = "https://kibaru.ml"
 GOOGLE_PLUS = "112702821247370813954"
-YOUTUBE = "kibaruuml"
+YOUTUBE = "UCGs2eDd4yDuiRQj_4kO90tg"
 GMAIL = "kibaruuml@gmail.com"
 TEL1 = ""
 TEL2 = ""

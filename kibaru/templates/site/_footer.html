@@ -1,8 +1,7 @@
 {% load widget_tweaks staticfiles i18n %}
 <footer>
-    <div class="contenair-fluid footer" id="footer">
+    <div class="footer">
         <div class="row">
-
             <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
                 <h3>{% trans "Who are we ? " %}</h3>
                 <a href="{% url 'about' %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% trans "Site editorial line" %}  </a>
@@ -17,7 +16,7 @@
                     <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class="fa fa-facebook-official" aria-hidden="true"></i></a> </li>
                     <li> <a href="https://twitter.com/{{ settings.TWITTER_NAME }}"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a> </li>
                     <li> <a href="https://plus.google.com/u/0/{{ settings.GOOGLE_PLUS}}/posts"> <i class="fa fa-google-plus-square" aria-hidden="true"></i></a> </li>
-                    <li> <a href="https://www.youtube.com/user/{{ settings.YOUTUBE }}"><i class="fa fa-youtube-square" aria-hidden="true"></i></a> </li>
+                    <li> <a href="https://www.youtube.com/channel/{{ settings.YOUTUBE }}"><i class="fa fa-youtube-square" aria-hidden="true"></i></a> </li>
                 </ul>
             </div>
                 <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
@@ -47,10 +46,11 @@
             </div>
             <!--/.row-->
         </div>
-        <div class="footer-bottom"  style="margin-right: 2em; color: #1b503f;font-size: 1.5em;">
+        <a target="_blank" href="//baracorp.ml"><img  style="max-height: 9em;" src="{% static 'baraCorp.svg' %}"></a>
+        <div class="footer-bottom">
             <!-- <div class="container"> -->
-                <p class="pull-left">Copyright &copy; <a target="_blank" href="//baracorp.ml" style="color: #888e00;">BaraCorp</a> 2017. All right reserved. </p>
-                <p class="pull-right">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</p>
+                <div class="pull-left"> Copyright &copy; <a target="_blank" href="//baracorp.ml" style="color: #888e00;">BaraCorp</a> 2017. All right reserved.</div>
+                <div class="pull-right" style="color: #1b503f;font-size: 1.5em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</div>
             <!-- </div> -->
         </div>
     </div>

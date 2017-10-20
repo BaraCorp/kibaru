@@ -203,20 +203,24 @@ def create_archive_data(posts):
 #                          'count': count, })
 #     return tag_data
 
-
 def search(request):
     query_string = ''
-    found_article = None
+    found_article = []
+    found_article_count = 0
     posts, context = init(lang=request.LANGUAGE_CODE)
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
-        article_query = get_query(query_string, ['title', 'text', ])
+        article_query = get_query(query_string, ['title'])
         found_article = posts.filter(article_query)
+        found_article_count = found_article.count()
 
     for article in found_article:
         article.url_display = reverse("art", args=[article.slug])
-    context.update({'query_string': query_string, 'found_article':
-                    found_article, "lang": request.LANGUAGE_CODE, })
+
+    context.update({
+        'count_find': found_article_count, 'query_string': query_string,
+        'found_article': found_article, "lang": request.LANGUAGE_CODE})
+
     return render(request, 'site/search_results.html', context)
 
 

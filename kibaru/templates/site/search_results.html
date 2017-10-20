@@ -13,7 +13,8 @@
 {% endblock %}
 {% block content %}
     {% if found_article %}
-        <h4><b>{% trans "Search results for : " %}</b> {{ query_string }}</h4>
+        <h3><b> {% trans "Search results for : " %}</b> {{ query_string }}</h3>
+        <h5>{{count_find}} trouver </h5>
         <div class="content-art">
             {% for post in found_article %}
                 <a href="{{ post.url_display }}">
@@ -24,13 +25,15 @@
                             </div>
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
-                            <h4>{{ post.title }}</h4>
-                            <div class="post_footer">
-                                  {% trans "Publication date"%} : {{ post.date_created.date|date:"D d M Y" }} <br>
+                            <div style="float: right;">
+                                  {% trans "Publication date"%} : {{ post.date_created.date|date:"D d M Y" }}
+                            </div>
+                            <div>
                                   {% ifnotequal post.date_modified.date post.date_created.date %}
-                                      {% trans "Last modification" %} : {{ post.date_modified.date|date:"D d M Y" }}<br>
+                                      {% trans "Last modification" %} : {{ post.date_modified.date|date:"D d M Y" }}
                                   {% endifnotequal %}
                             </div>
+                            <h3>{{ post.title }}</h3>
                         </div>
                     </div>
                 </a>
@@ -38,7 +41,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <h4><b> {% trans "No results found for : " %}</b> {{ query_string }} </h4>
+        <h3><b> {% trans "No results found for : " %}</b> {{ query_string }} </h3>
     {% endif %}
 {% endblock %}
 

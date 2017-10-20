@@ -77,14 +77,16 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                <form  id="" class="form-search form-horizontal pull-right" method="get" action="{% url 'search' %}" class="navbar-form" role="search">
+            <div id="custom-search-input">
+                <form  id="custom-search" class="form-search form-horizontal" method="get" action="{% url 'search' %}" class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" placeholder="{% trans 'Search' %}." aria-label="{% trans 'Search' %}">
                         <span class="input-group-btn">
-                            <button class="btn btn-secondary glyphicon glyphicon-search" type="button"></button>
+                            <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                         </span>
                     </div>
                 </form>
+            </div>
             <section class="s_devise">
                 <div id='gcw_mainFtT4UwYQy' class='gcw_mainFtT4UwYQy'></div>
                 <a id='gcw_siteFtT4UwYQy' href='https://freecurrencyrates.com/fr/'></a>
