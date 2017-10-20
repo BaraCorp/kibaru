@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-20 15:08+0000\n"
-"PO-Revision-Date: 2017-10-20 15:09+0000\n"
+"PO-Revision-Date: 2017-10-20 15:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -789,7 +789,7 @@ msgstr "Besoin de publicité ?"
 
 #: kibaru/templates/site/_contact_info.html:6
 msgid "Our contacts"
-msgstr "Nos contacter"
+msgstr "Nos contacts"
 
 #: kibaru/templates/site/_footer.html:6
 msgid "Who are we ? "
