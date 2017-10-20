@@ -350,7 +350,7 @@ class Article(models.Model):
             if not im.format == "JPEG":
                 print("format : ", im.format)
                 im.convert('RGB').save(os.path.join(
-                    settings.MEDIA_ROOT, im_path), "JPEG", quality=86)
+                    settings.MEDIA_ROOT, im_path), "JPEG", quality=95)
                 self.image = im_path
         self.slug = re.sub(
             "[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+", '-',
