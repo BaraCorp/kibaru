@@ -3,10 +3,10 @@
 
 <ul class="nav navbar-nav navbar-right">
     <li {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'admin_home' %}">{% trans "Administration" %}</a></li>
-    <li class="dropdown mega-dropdown"><a href="{% url 'admin_home' %}" class="dropdown-toggle" data-toggle="dropdown"> Spaces publicitaires <b class="caret"></b></a>
+    <li class="dropdown mega-dropdown"><a href="{% url 'admin_home' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Advertising Spaces" %} <b class="caret"></b></a>
     <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
-        <li class="dropdown-header col-sm-6" {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'home' %}?pub=True">{% trans "Pub. proposition" %}</a></li>
-        <li class="dropdown-header col-sm-6" {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'proposition-price' %}">{% trans "Grille Tarifaire" %}</a></li>
+        <li class="dropdown-header col-sm-6" {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'home' %}?pub=True">{% trans "Advertising suggestion" %}</a></li>
+        <li class="dropdown-header col-sm-6" {% ifequal '' 'admmin' %} class="active" {% endifequal %}><a href="{% url 'proposition-price' %}">{% trans "Price list" %}</a></li>
     </ul>
     </li>
     <li class="dropdown mega-dropdown"><a href="{% url 'admin_home' %}" class="dropdown-toggle" data-toggle="dropdown"><em><i class="glyphicon glyphicon-plus"></i></em> <b class="caret"></b></a>
@@ -14,7 +14,7 @@
             <li class="dropdown-header col-sm-3"><a href="{% url 'add_article' %}">{% trans "Add your article" %}</a></li>
             <li class="dropdown-header col-sm-3"><a href="{% url 'add_new' %}">{% trans "Add new" %}</a></li>
             <li class="dropdown-header col-sm-3"><a href="{% url 'add_video' %}">{% trans "Add video link" %}</a></li>
-            <li class="dropdown-header col-sm-3"><a href="{% url 'add_website' %}">{% trans "Add web site" %}</a></li>
+            <li class="dropdown-header col-sm-3"><a href="{% url 'add_website' %}">{% trans "Add a press website" %}</a></li>
         </ul>
     </li>
     <li class="dropdown mega-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Welcome" %}, <i class="glyphicon glyphicon-user"></i><em> {{ user }} </em> <b class="caret"></b></a>

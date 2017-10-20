@@ -21,27 +21,23 @@
             </div>
                 <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
                     <h3> {% trans "Newsletter" %} </h3>
-                    <ul>
-                        <li>
-                            {% if form %}
-                                <div class="input-append newsletter-box text-center">
-                                    {% if messages %}
-                                    <ul class="messages">
-                                        {% for message in messages %}
-                                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                    <form action="" method="post" class="form-inline">{% csrf_token %}
-                                        <div  class="form-group">
-                                            {{form.email|add_class:"form-control"}}
-                                        <button type='submit' class="btn btn-primary">{% trans "send" %}</button>
-                                        </div>
-                                    </form>
-                                </div>
+                    {% if form %}
+                        <div class="input-append newsletter-box text-center">
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
                             {% endif %}
-                        </li>
-                    </ul>
+                            <form action="" method="post" class="form-inline">{% csrf_token %}
+                                <div  class="form-group">
+                                    {{form.email|add_class:"form-control"}}
+                                    <button type='submit' class="btn btn-small">{% trans "send" %}</button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <!--/.row-->
@@ -49,7 +45,7 @@
         <a target="_blank" href="//baracorp.ml"><img  style="max-height: 9em;" src="{% static 'baraCorp.svg' %}"></a>
         <div class="footer-bottom">
             <!-- <div class="container"> -->
-                <div class="pull-left"> Copyright &copy; <a target="_blank" href="//baracorp.ml" style="color: #888e00;">BaraCorp</a> 2017. All right reserved.</div>
+                <div class="pull-left"> Copyright &copy; <a target="_blank" href="//baracorp.ml" style="color: #888e00;">BaraCorp</a> 2017. {% trans "All right reserved." %}</div>
                 <div class="pull-right" style="color: #1b503f;font-size: 1.5em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</div>
             <!-- </div> -->
         </div>

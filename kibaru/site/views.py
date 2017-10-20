@@ -186,7 +186,6 @@ def create_archive_data(posts):
                                  'count': mcount[year][month], })
     return archive_data
 
-
 # def create_tag_data(posts):
 #     tag_data = []
 #     count = {}
@@ -202,6 +201,7 @@ def create_archive_data(posts):
 #         tag_data.append({'tag': tag,
 #                          'count': count, })
 #     return tag_data
+
 
 def search(request):
     query_string = ''
