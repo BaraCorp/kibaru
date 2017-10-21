@@ -71,3 +71,4 @@ crontab kibaru
 *.orig
 
 db.sqlite3 copy
+*.gz

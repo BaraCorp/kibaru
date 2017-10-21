@@ -39,7 +39,9 @@ def post_to_facebook(sender, instance):
     }
 
     if instance.image:
-        attach.update({"picture": full_image_url(instance.image.name)})
+        # print(full_image_url(instance.get_path_img()))
+        attach.update({"picture": full_image_url(instance.get_path_img())})
+        return
     try:
         attach.update({"description": instance.legend})
     except Exception as e:

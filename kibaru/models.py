@@ -341,17 +341,23 @@ class Article(models.Model):
     def get_tag_list(self):
         return re.split(" ", self.tags)
 
+    def get_path_img(self):
+        return os.path.join("images_article", "{}.jpg".format(
+            os.path.splitext(os.path.basename(self.image.name))[0]))
+
+    def convert_to_jpg(self):
+        from PIL import Image
+        im_path = self.get_path_img()
+        im = Image.open(self.image)
+        if not im.format == "JPEG":
+            im.convert('RGB').save(os.path.join(
+                settings.MEDIA_ROOT, im_path), "JPEG", quality=95)
+        return im_path
+
     def save(self, *args, **kwargs):
         if self.image:
-            from PIL import Image
-            img_name = os.path.splitext(os.path.basename(self.image.name))[0]
-            im = Image.open(self.image)
-            im_path = os.path.join("images_article", "{}.jpg".format(img_name))
-            if not im.format == "JPEG":
-                print("format : ", im.format)
-                im.convert('RGB').save(os.path.join(
-                    settings.MEDIA_ROOT, im_path), "JPEG", quality=95)
-                self.image = im_path
+            self.image = self.convert_to_jpg()
+
         self.slug = re.sub(
             "[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+", '-',
             self.title.lower())
