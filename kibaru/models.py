@@ -347,21 +347,20 @@ class Article(models.Model):
 
     def convert_to_jpg(self):
         from PIL import Image
-        im_path = self.get_path_img()
         im = Image.open(self.image)
         if not im.format == "JPEG":
+            im_path = self.get_path_img()
             im.convert('RGB').save(os.path.join(
                 settings.MEDIA_ROOT, im_path), "JPEG", quality=95)
-        return im_path
+            self.image = im_path
 
     def save(self, *args, **kwargs):
-        if self.image:
-            self.image = self.convert_to_jpg()
-
         self.slug = re.sub(
             "[\!\*\’\(\)\;\:\@\&\=\+\$\,\/\?\#\[\](\-)\s \. \؟]+", '-',
             self.title.lower())
         self.twitter = self.is_twitte()
+        if self.image:
+            self.convert_to_jpg()
 
         super(Article, self).save(*args, **kwargs)
 
