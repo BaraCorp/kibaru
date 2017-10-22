@@ -18,7 +18,7 @@ TWITTER_MAXLENGTH = getattr(settings, 'TWITTER_MAXLENGTH', 140)
 
 
 def full_image_url(img_name):
-    return os.path.join(settings.DOMMAIN, "media", img_name)
+    return
 
 
 def social_share(sender, instance, *args, **kwargs):
@@ -39,9 +39,9 @@ def post_to_facebook(sender, instance):
     }
 
     if instance.image:
-        # print(full_image_url(instance.get_path_img()))
-        attach.update({"picture": full_image_url(instance.get_path_img())})
-        return
+        attach.update({"picture": os.path.join(
+            settings.DOMMAIN, "media", instance.get_path_img())}
+        )
     try:
         attach.update({"description": instance.legend})
     except Exception as e:
