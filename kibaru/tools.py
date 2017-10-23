@@ -22,35 +22,34 @@ def full_image_url(img_name):
 
 
 def social_share(sender, instance, *args, **kwargs):
-
-    # if settings.DEBUG == True:
-    #     return
     if instance.twitter:
         post_to_twitter(sender, instance)
         post_to_facebook(sender, instance)
 
 
 def post_to_facebook(sender, instance):
-    attach = {
-        "name": instance.type_text(),
-        "link": instance.post_url(),
-        "caption": settings.APP_NAME,
-        "page_token": settings.PAGE_TOKEN
-    }
+    image_path = ""
+    caption = ""
+    if sender.__name__ == "New":
+        caption = instance.TYPE_NEWS_CHOICES.get(instance.type_new)
 
-    if instance.image:
-        attach.update({"picture": os.path.join(
-            settings.DOMMAIN, "media", instance.get_path_img())}
-        )
-    try:
-        attach.update({"description": instance.legend})
-    except Exception as e:
-        print(e)
+    if sender.__name__ == "Article":
+        caption = instance.category.name
+        if instance.image:
+            image_path = instance.image.name
+
+    attach = {
+        "name": u"{}".format(settings.APP_NAME),
+        "link": instance.post_url(),
+        "page_token": settings.PAGE_TOKEN,
+        "description": u"{}".format(caption),
+        "picture": os.path.join(settings.DOMMAIN, "media", image_path),
+        "caption": u"{}".format(caption)
+    }
     msg = instance.title
-    page_id = "1652451611660511"
-    graph = facebook.GraphAPI(settings.PAGE_TOKEN)
+    graph = facebook.GraphAPI(settings.PAGE_TOKEN, version='2.6')
     post = graph.put_wall_post(
-        message=msg, attachment=attach, profile_id=page_id)
+        message=msg, attachment=attach, profile_id=settings.FACEBOOK_APP_ID)
     if post:
         return 'posted'
     return "No post"

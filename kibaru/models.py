@@ -263,11 +263,6 @@ class New(models.Model):
         self.twitter = self.is_twitte()
         super(New, self).save(*args, **kwargs)
 
-    # def get_twitter_message(self):
-    #     news_url = os.path.join(
-    #         settings.DOMMAIN,  self.lang.slug, "new", self.get_short_id)
-    #     return u"{} - {}".format(self.type_new, self.title), news_url
-
     def post_url(self):
         return os.path.join(
             settings.DOMMAIN, self.lang.slug, "new", self.get_short_id)

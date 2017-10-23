@@ -21,7 +21,7 @@ body {
 .section-back{background: rgb(255, 255, 255);padding-top: 12px;border: 1px solid rgb(206, 206, 206);}
 .post-body {font-size: 18px;text-shadow: initial;}
 .content-art {background: rgba(255, 255, 255, 0.90);padding: 10px;margin-top: 1em;}
-.logo {width: 11em;z-index: 15;margin-top: -4em;position: relative;}
+.logo {width: 11em;z-index: 15;margin-top: -8em;position: relative;}
 .search-query:focus + button {z-index: 3;}
 #banner {margin-bottom: 4px;}
 .banner {float: right;padding-bottom: 2em;z-index: 2;}

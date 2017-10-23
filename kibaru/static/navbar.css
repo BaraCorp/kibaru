@@ -51,3 +51,6 @@
 }.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #fff;
 }
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
