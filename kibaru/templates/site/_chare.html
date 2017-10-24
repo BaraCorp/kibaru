@@ -5,8 +5,9 @@
     <meta property="og:new:section" content="Afrique" />
     <meta property="og:url" content="{{ object.url_display }}" />
     <meta property="og:title" content="{{ object.title }}" />
-    <meta property="og:image" content={% if object.image %}"{{ object.image.url }}"{% endif %} />
+    <meta property="og:image" content={% if object.image %}"{{ settings.DOMMAIN }}{{ object.image.url }}"{% endif %} />
     <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
+    <link rel="image_src" href="{{ settings.DOMMAIN }}{{object.image.url}}" />
 
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:site" content="{{ settings.DOMMAIN }}"/>
