@@ -3,30 +3,10 @@
     <div class="row">
         <div id="slider">
           <div class="slides">
-            <div class="slider">
-                  {% include "site/_contact_info.html" %}
-              <div class="image">
-                <img src="/static/mali-pirogue.jpg">
-              </div>
-            </div>
-            <div class="slider">
-                  {% include "site/_contact_info.html" %}
-              <div class="image">
-                <img src="/static/mali-desert.jpg">
-              </div>
-            </div>
-            <div class="slider">
-                  {% include "site/_contact_info.html" %}
-              <div class="image">
-                <img src="/static/mali-river-horse.jpg">
-              </div>
-            </div>
-            <div class="slider">
-                  {% include "site/_contact_info.html" %}
-              <div class="image">
-                <img src="/static/mali-farme.jpg">
-              </div>
-            </div>
+              {% include "site/_contact_info.html" with img="mali-desert.jpg"%}
+              {% include "site/_contact_info.html" with img="mali-river-horse.jpg"%}
+              {% include "site/_contact_info.html" with img="mali-pirogue.jpg"%}
+              {% include "site/_contact_info.html" with img="mali-farme.jpg"%}
           </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
