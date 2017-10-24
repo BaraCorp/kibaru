@@ -3,21 +3,25 @@
     {% load staticfiles i18n %}
     <head>
     <!--<meta name="verify-v1" content="" />-->
+
+        <meta name="description" content="Kibaru ou « el Ghad », est un site d’information, premier du genre au Mali, avec une version en français et en arabe. Notre credo c’est « l’information, et tout ce qu’il faut comprendre derrière les faits ». Sur cette base, on peut considérer cet organe comme une tribune pour la diversité de l’information. C’est dans ce cadre que nous recherchons la vérité en nous conformant aux exigences et principes du métier aussi bien en Français qu’en Arabe. " />
+        <meta name="keywords" content="infos, actualités, news, informations, culture, sport, mali, Bamako, mauritanie, image, afrique, africa, Kibaru, kib, ml, 233" />
+        <meta name="author" content="" />
+        <meta name="copyright" content="BaraCorp" />
+        <meta name="application-name" content="{{ settings.APP_NAME }}" />
+
         <meta name="google-site-verification" content="fgLu7IUn1vn7oMl1puvAsjqfA3OZpsfy9_Zf5QG07p8" />
         <meta charset="utf-8">
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
         <meta property="og:site_name" content="{{ settings.DOMMAIN }}" />
         <meta property="og:new:author" content="{{ settings.APP_NAME }}" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="fr" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-        <meta name="keywords" content="infos, actualités, news, informations, culture, sport, mali, Bamako, mauritanie, image, afrique, africa, Kibaru, kib, ml, 233" />
-        {% block head_ %}
-            <meta property="og:title" content="Kibaru info" />
-            <meta property="og:type" content="website" />
-            <meta property="og:locale" content="fr_FR" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />{% block head_ %}
         {% endblock %}
-        <link href="{% static "favicon.png" %}" rel="icon" type="image/x-icon" />
+        <link href="{% static 'favicon.png' %}" rel="icon" type="image/x-icon" />
         <title>{{settings.APP_NAME}} | {% block title %}{% endblock %}</title>
         {% include "_css_tags.html" %}
     </head>

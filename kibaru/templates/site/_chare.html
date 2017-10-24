@@ -1,5 +1,6 @@
 {% load staticfiles i18n %}
 {% block head_ %}
+    <!-- fb -->
     <meta property="og:type" content="article"/>
     <meta property="og:description" content="{{ object.title }}" />
     <meta property="og:new:section" content="Afrique" />
@@ -8,7 +9,7 @@
     <meta property="og:image" content={% if object.image %}"{{ settings.DOMMAIN }}{{ object.image.url }}"{% endif %} />
     <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
     <link rel="image_src" href="{{ settings.DOMMAIN }}{{object.image.url}}" />
-
+    <!-- twt -->
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:site" content="{{ settings.DOMMAIN }}"/>
     <meta name="twitter:title" content="{{ settings.APP_NAME }} - {{ object.title }}"/>
