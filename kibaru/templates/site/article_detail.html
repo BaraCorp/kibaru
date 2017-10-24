@@ -34,7 +34,7 @@
             </span>
             {% if article.image %}
                 <figure>
-                    <a href="{{ article.image.url }}"><img class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %}></a>
+                    <a href="{{ article.image.url }}"><img rel="image_src" class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %}></a>
                 </figure>
                 {% if article.legend %}
                     <figcaption class="article-caption"><h6 class="article-legend"><a href="">{{article.legend}}</a></h6></figcaption>
