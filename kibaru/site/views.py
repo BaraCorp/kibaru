@@ -136,6 +136,10 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     flash_news = news_today
     for new in flash_news:
         new.url_display = reverse("news", args=[new.id])
+    if flash_news.count() == 0:
+        flash_news = [New(title=_(
+            "For your advertisements, contact +223 60 16 16 74."))]
+
     # tag_data = create_tag_data(posts)
     context = {'settings': settings,
                'flash_news': flash_news,

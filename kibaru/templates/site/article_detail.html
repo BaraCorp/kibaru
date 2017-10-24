@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n imagefit %}
+{% load i18n staticfiles imagefit %}
 
 {% block title %} {{ article.title }} {% endblock %}
 
@@ -34,7 +34,7 @@
             </span>
             {% if article.image %}
                 <figure>
-                    <a href="{{ article.image.url }}"><img rel="image_src" class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %}></a>
+                    <a id="single" href="{{ article.image.url }}" title="{{article.legend}}"><img rel="image_src" class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} alt="" /></a>
                 </figure>
                 {% if article.legend %}
                     <figcaption class="article-caption"><h6 class="article-legend"><a href="">{{article.legend}}</a></h6></figcaption>
