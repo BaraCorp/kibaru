@@ -3,7 +3,7 @@
     <meta property="og:type" content="article"/>
     <meta property="og:description" content="{{ object.title }}" />
     <meta property="og:new:section" content="Afrique" />
-    <meta property="og:url" content="{{ object.url_display }}" />
+    <meta property="og:url" content="{{ settings.DOMMAIN }}{{ object.url_display }}" />
     <meta property="og:title" content="{{ object.title }}" />
     <meta property="og:image" content={% if object.image %}"{{ settings.DOMMAIN }}{{ object.image.url }}"{% endif %} />
     <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
@@ -17,7 +17,7 @@
     <meta name="twitter:image:src" content={% if object.image %}"{{ object.image.url }}"{% endif %}/>
     <meta name="twitter:image:alt" content=" {{ object.title }}" />
     <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
-    <link rel="canonical" href="{{ object.url_display }}" />
+    <link rel="canonical" href="{{ settings.DOMMAIN }}{{ object.url_display }}" />
 {% endblock %}<!--
 <div class="social col-xs-12 col-sm-12 col-md-12 col-lg-12" > -->
     <div class="social">
