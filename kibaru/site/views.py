@@ -320,6 +320,7 @@ def display_article(request, *args, **kwargs):
 
     article.url_edit = reverse("edit_article", args=[article.id])
     article.short_url = reverse("art", args=[article.get_short_id])
+    article.url_display = reverse("art", args=[article_slug])
     article.count_view += 1
     article.save()
     context.update({
