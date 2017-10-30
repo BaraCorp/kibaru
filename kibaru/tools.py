@@ -23,7 +23,7 @@ def full_image_url(img_name):
 
 def social_share(sender, instance, *args, **kwargs):
     if instance.twitter:
-        # post_to_twitter(sender, instance)
+        post_to_twitter(sender, instance)
         post_to_facebook(sender, instance)
 
 

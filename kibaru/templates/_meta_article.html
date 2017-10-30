@@ -1,7 +1,7 @@
 
     <!-- fb -->
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="{{ object.body }}" />
+    <meta property="og:description" content="<html>{{object.body|safe}}</html>"/>
     <meta property="og:new:section" content="Afrique" />
     <meta property="og:url" content="{{ settings.DOMMAIN }}{{ object.url_display }}" />
     <meta property="og:title" content="{{ object.title }}" />
