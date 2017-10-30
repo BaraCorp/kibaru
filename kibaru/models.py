@@ -250,8 +250,13 @@ class New(models.Model):
     def image(self):
         return None
 
+    @property
     def type_text(self):
         return self.TYPE_NEWS_CHOICES.get(self.type_new)
+
+    @property
+    def body(self):
+        return "{} ...".format(self.comment[:30])
 
     def is_twitte(self):
         if not self.twitte:
@@ -348,6 +353,10 @@ class Article(models.Model):
             im.convert('RGB').save(os.path.join(
                 settings.MEDIA_ROOT, im_path), "JPEG", quality=95)
             self.image = im_path
+
+    @property
+    def body(self):
+        return "{} ...".format(self.text[:30])
 
     def save(self, *args, **kwargs):
         self.slug = re.sub(

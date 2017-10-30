@@ -3,6 +3,7 @@
 {% block title %} {% trans "Home" %} {% endblock %}
 {% block page-id %}index{% endblock %}
 {% load poll_tags %}
+{% block head_ %} {% include "_meta_website.html" with object=article %} {% endblock %}
 {% block banner %} {% include "site/_banner.html" %} {% endblock %}
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 {% block content_index %}

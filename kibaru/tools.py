@@ -23,7 +23,7 @@ def full_image_url(img_name):
 
 def social_share(sender, instance, *args, **kwargs):
     if instance.twitter:
-        post_to_twitter(sender, instance)
+        # post_to_twitter(sender, instance)
         post_to_facebook(sender, instance)
 
 
@@ -43,11 +43,11 @@ def post_to_facebook(sender, instance):
         "link": instance.post_url(),
         "page_token": settings.PAGE_TOKEN,
         "description": u"{}".format(caption),
-        "picture": os.path.join(settings.DOMMAIN, "media", image_path),
+        # "picture": os.path.join(settings.DOMMAIN, "media", image_path),
         "caption": u"{}".format(caption)
     }
-    msg = instance.title
-    graph = facebook.GraphAPI(settings.PAGE_TOKEN, version='2.6')
+    msg = u"{}".format(instance.title)
+    graph = facebook.GraphAPI(settings.PAGE_TOKEN)
     post = graph.put_wall_post(
         message=msg, attachment=attach, profile_id=settings.FACEBOOK_APP_ID)
     if post:

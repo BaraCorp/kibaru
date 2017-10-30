@@ -2,6 +2,11 @@
 {% load i18n staticfiles imagefit %}
 {% block title %} {% trans "Presse Malienne" %} {% endblock %}
 {% block page-id %}presse{% endblock %}
+
+{% block head_ %}
+    {% block head_ %} {% include "_meta_website.html" with object=article %} {% endblock %}
+{% endblock %}
+
 {% block banner %} {% include "site/_banner.html" %} {% endblock %}
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 <!--[if lt IE 9]>

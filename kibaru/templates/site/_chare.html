@@ -1,53 +1,23 @@
 {% load staticfiles i18n %}
-{% block head_ %}
-    <!-- fb -->
-    <meta property="og:type" content="article"/>
-    <meta property="og:description" content="{{ object.title }}" />
-    <meta property="og:new:section" content="Afrique" />
-    <meta property="og:url" content="{{ settings.DOMMAIN }}{{ object.url_display }}" />
-    <meta property="og:title" content="{{ object.title }}" />
-    <meta property="og:image" content={% if object.image %}"{{ settings.DOMMAIN }}{{ object.image.url }}"{% endif %} />
-    <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
-    <link rel="image_src" href="{{ settings.DOMMAIN }}{{object.image.url}}" />
-    <!-- twt -->
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:site" content="{{ settings.DOMMAIN }}"/>
-    <meta name="twitter:title" content="{{ settings.APP_NAME }} - {{ object.title }}"/>
-    <meta name="twitter:description" content="{{ object.title }}"/>
-    <meta name="twitter:creator" content="@{{ settings.TWITTER_NAME }}"/>
-    <meta name="twitter:image:src" content={% if object.image %}"{{ object.image.url }}"{% endif %}/>
-    <meta name="twitter:image:alt" content=" {{ object.title }}" />
-    <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
-    <link rel="canonical" href="{{ settings.DOMMAIN }}{{ object.url_display }}" />
-{% endblock %}<!--
-<div class="social col-xs-12 col-sm-12 col-md-12 col-lg-12" > -->
-    <div class="social">
-        <a href="https://twitter.com/share" data-url="{{ settings.DOMMAIN }}{{ object.short_url }}" class="twitter-share-button"{count} data-via="{{ settings.TWITTER_NAME }}" data-dnt="true">{% trans "Tweet" %}</a>
-        <span class="g-plusone" data-size="medium"></span>
-        <g:plus action="share"></g:plus>
-        <span class="fb-like" data-href="{{ object.url_display }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span>
-    </div>
-<!-- </div> -->
+
+<div class="social">
+    <a href="https://twitter.com/share" data-url="{{ settings.DOMMAIN }}{{ object.short_url }}" class="twitter-share-button"{count} data-via="{{ settings.TWITTER_NAME }}" data-dnt="true">{% trans "Tweet" %}</a>
+    <span class="g-plusone" data-size="medium"></span>
+    <g:plus action="share"></g:plus>
+    <span class="fb-like" data-href="{{ object.url_display }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></span>
+</div>
 
 <!-- twitter -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <!-- Gplus -->
 <script src="https://apis.google.com/js/platform.js" async defer>{lang: {{lang}} } </script>
 <!-- Fb -->
-<!-- <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=1651809315058736";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
- -->
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/{% ifequal lang 'fr' %}fr_FR{% else %}ar_AR{% endifequal %}/sdk.js#xfbml=1&version=v2.10&appId=1651809315058736";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
 

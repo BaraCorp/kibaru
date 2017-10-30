@@ -4,9 +4,7 @@
 
 {% block page-id %}about{% endblock %}
 
-{% block banner %}
-    <div id="sticky-anchor">{% include "site/_banner.html" %}</div>
-{% endblock %}
+{% block banner %} {% include "site/_banner.html" %}{% endblock %}
 
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 <!--[if lt IE 9]>

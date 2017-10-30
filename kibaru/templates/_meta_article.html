@@ -1,0 +1,20 @@
+
+    <!-- fb -->
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="{{ object.body }}" />
+    <meta property="og:new:section" content="Afrique" />
+    <meta property="og:url" content="{{ settings.DOMMAIN }}{{ object.url_display }}" />
+    <meta property="og:title" content="{{ object.title }}" />
+    <meta property="og:image" content={% if object.image %}"{{ settings.DOMMAIN }}{{ object.image.url }}"{% endif %} />
+    <meta property="fb:admins" content="{{ settings.FACEBOOK_USER }}"/>
+    <link rel="image_src" href="{{ settings.DOMMAIN }}{{object.image.url}}" />
+    <!-- twt -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="{{ settings.DOMMAIN }}"/>
+    <meta name="twitter:title" content="{{ settings.APP_NAME }} - {{ object.title }}"/>
+    <meta name="twitter:description" content="{{ object.title }}"/>
+    <meta name="twitter:creator" content="@{{ settings.TWITTER_NAME }}"/>
+    <meta name="twitter:image:src" content={% if object.image %}"{{ object.image.url }}"{% endif %}/>
+    <meta name="twitter:image:alt" content=" {{ object.title }}" />
+    <meta name="twitter:domain" content="{{ settings.DOMMAIN }}">
+    <link rel="canonical" href="{{ settings.DOMMAIN }}{{ object.url_display }}" />

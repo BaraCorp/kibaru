@@ -8,30 +8,23 @@
 {% block banner %}
     {% include "site/_banner.html" %}
 {% endblock %}
-{% block sticky %}
-    <div id="sticky-anchor">{% include "site/_sticky.html" %}</div>
-{% endblock %}
+{% block head_ %} {% include "_meta_article.html" with object=article %} {% endblock %}
+{% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content %}
      <div class="content-art">
-        <article >
-            <header>
-                <h2 class="article_post_title"> {{ article.title }} </h2>
-            </header>
-           <!--  <span class="meta published-date">
-                <abbr>{% trans "By" %} <u><a href="#">kibaru</a></u> {% trans "Published" %} {{ article.date_created|date:"l d F Y" }}</abbr>
-            </span> -->
-            <span class="date-publication meta">
-                <time datetime="17-06-23">
-                    <meta itemprop="datePublished" content="2017-06-23">
-                       {% trans "By" %} <u><a href="#">kibaru</a></u>
-                </time>
-                <time datetime="17-06-23" style="float: right; margin: 4px;"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                    {% trans "Published" %} {{ article.date_created }}
-                </time>
-            </span>
+        <header>
+            <h2 class="article_post_title"> {{ article.title }} </h2>
+        </header>
+        <div class="date-publication">
+            <span> {% trans "By" %}<a href="#">kibaru</a> </span>
+            <time datetime="{{article.date_created}}" style="float: right; margin: 4px;"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                {% trans "Published" %} {{ article.date_created }}
+            </time>
+        </div>
+        <article>
             {% if article.image %}
                 <figure>
                     <a id="single" href="{{ article.image.url }}" title="{{article.legend}}"><img rel="image_src" class="img img-responsive article-img" src={% if article.image %} "{{ article.image.url | resize:'img_artd'}}" {% else %} "" {% endif %} alt="" /></a>
@@ -51,9 +44,7 @@
         <div class="fb-comments" data-href={{settings.DOMMAIN}}/{{article_slug}} data-numposts="5"></div>
     </div>
 {% endblock %}
-{% block footer %}
-    {% include "site/_footer.html" %}
-{% endblock %}
+{% block footer %} {% include "site/_footer.html" %} {% endblock %}
 {% block sidebar_rigth %}
     <section class="section-back">
         <div class="fb-page" data-href="{{settings.FACEBOOK_PAGE}}" data-hide-cover="false" data-show-facepile="false"></div>
