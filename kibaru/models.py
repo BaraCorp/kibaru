@@ -220,9 +220,9 @@ class New(models.Model):
     COMMUNICATED = "C"
 
     TYPE_NEWS_CHOICES = {
-        INFO: _('info'),
-        URGENT: _('urgent'),
-        COMMUNICATED: _('communicated'),
+        INFO: _('Info'),
+        URGENT: _('Urgent'),
+        COMMUNICATED: _('Communicated'),
     }
 
     type_new = models.CharField(
@@ -273,7 +273,7 @@ class New(models.Model):
             settings.DOMMAIN, self.lang.slug, "new", self.get_short_id)
 
     def get_twiter_message(self):
-        return u"{} - {}".format(self.type_text(), self.title), self.post_url()
+        return u"{} - {}".format(self.type_text, self.title), self.post_url()
 
 models.signals.post_save.connect(social_share, sender=New)
 
@@ -385,6 +385,7 @@ class Article(models.Model):
     def title_status(self):
         return self.STATUS.get(self.status)
 
+    @property
     def type_text(self):
         return "{}".format(self.category.name)
 
@@ -396,7 +397,7 @@ class Article(models.Model):
             settings.DOMMAIN, self.lang.slug, "art", self.get_short_id)
 
     def get_twiter_message(self):
-        return u"{} - {}".format(self.type_text(), self.title), self.post_url()
+        return u"{} - {}".format(self.type_text, self.title), self.post_url()
 
 models.signals.post_save.connect(social_share, sender=Article)
 
@@ -499,6 +500,7 @@ class Job(models.Model):
         self.twitter = self.is_twitte()
         super(Job, self).save(*args, **kwargs)
 
+    @property
     def type_text(self):
         return self.TYPE_NOTICE.get(self.type_notice)
 
@@ -507,6 +509,6 @@ class Job(models.Model):
             settings.DOMMAIN, self.lang.slug, "job", self.get_short_id)
 
     def get_twiter_message(self):
-        return u"{} - {}".format(self.type_text(), self.title), self.post_url()
+        return u"{} - {}".format(self.type_text, self.title), self.post_url()
 
 models.signals.post_save.connect(social_share, sender=Job)

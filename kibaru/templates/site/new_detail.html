@@ -6,7 +6,8 @@
 {% block page-id %} {{ new.id }}{% endblock %}
 
 {% block banner %} {% include "site/_banner.html" %}{% endblock %}
-{% block head_ %} {% include "_meta_article.html" with object=new %} {% endblock %}
+
+{% block head_ %} <meta property="og:image" content=""/> {% include "_meta_article.html" with object=new %} {% endblock %}
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
