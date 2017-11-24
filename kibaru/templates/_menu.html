@@ -14,7 +14,7 @@
     </div>
     <div class="collapse navbar-collapse js-navbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="dropdown mega-dropdown" {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %} class="dropdown">
+            <li class="dropdown mega-dropdown" {% if cat_slug == 'econationale' or cat_slug == 'ecoregionale' or cat_slug == 'ecointernationale' %} class="active" {% endif %}>
                 <a href="{% url 'home' 'economie' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Economy" %}  <span class="caret"></span></a>
                 <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'ecointernationale' %}">{% trans "International" %}</a></li>
@@ -22,7 +22,7 @@
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'ecoregionale' %}">{% trans "Regionale" %}</a></li>
                 </ul>
             </li>
-            <li class="dropdown mega-dropdown" {% if cat_slug == 'cooperationbila' or cat_slug == 'actualite' or cat_slug == 'cooperationmulti' %} class="active" {% endif %} class="dropdown">
+            <li class="dropdown mega-dropdown" {% if cat_slug == 'cooperationbila' or cat_slug == 'actualite' or cat_slug == 'cooperationmulti' %} class="active" {% endif %}>
                 <a href="{% url 'home' 'econationale' %}" class="dropdown-toggle" data-toggle="dropdown"> {% trans "Nationale" %} <span class="caret"></span></a>
                 <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'actualite' %}">{% trans "Actuality" %}</a></li>
@@ -30,26 +30,20 @@
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'cooperationmulti' %}">{% trans "Multilateral" %}</a></li>
                 </ul>
             </li>
-            <li class="dropdown mega-dropdown" {% if cat_slug == 'paix' or cat_slug == 'portrait' or cat_slug == 'education' %} cat_slug == 'sante' or cat_slug == 'sport' or cat_slug == 'culture' or cat_slug == 'ntic' or cat_slug == 'reportage' %} class="active" {% endif %} class="dropdown">
+            <li class="dropdown mega-dropdown" {% if cat_slug == 'paix' or cat_slug == 'portrait' or cat_slug == 'education' %} cat_slug == 'sante' or cat_slug == 'sport' or cat_slug == 'culture' or cat_slug == 'ntic' or cat_slug == 'reportage' %} class="active" {% endif %}>
                 <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Society" %}<span class="caret"></span></a>
                 <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
                     <li class="dropdown-header col-sm-2"> <a href="{% url 'home' 'paix' %}">{% trans "Peace process" %}</a></li>
-                    </li>
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'portrait' %}">{% trans "Portrait" %}</a></li>
-                    </li>
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'education' %}">{% trans "Education" %}</a></li>
-                    </li>
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'sante' %}">{% trans "Health" %}</a></li>
-                    </li>
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'ntic' %}">{% trans "NTIC" %}</a></li>
-                    </li>
                     <li class="dropdown-header col-sm-2"><a href="{% url 'home' 'reportage' %}">{% trans "Reportage" %}</a></li>
-                    </li>
                 </ul>
             </li>
             <li {% ifequal cat_slug 'environnement' %} class="active" {% endifequal %}><a href="{% url 'home' 'environnement' %}">{% trans "Environment" %}</a></li>
             <li {% ifequal cat_slug 'expression-libre' %} class="active" {% endifequal %}><a href="{% url 'home' 'expression-libre' %}">{% trans "Libre Expression" %}</a></li>
-            <li  {% if cat_slug == 'archive' %} class="active" {% endif %} class="dropdown">
+            <li class="dropdown" {% if cat_slug == 'archive' %} class="active" {% endif %}>
                 <a href="{% url 'home' 'archive' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Archive" %}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     {% for line in archive_counts %}
@@ -63,7 +57,7 @@
                     {% endfor %}
                 </ul>
             </li>
-            <li class="dropdown mega-dropdown"  class="dropdown">
+            <li class="dropdown mega-dropdown">
                 <a href="{% url 'home' 'societe' %}" class="dropdown-toggle" data-toggle="dropdown">{% trans "Useful numbers" %}<span class="caret"></span></a>
                 <ul class="dropdown-menu mega-dropdown-menu col-sm-12">
                     <ul class="col-sm-5">

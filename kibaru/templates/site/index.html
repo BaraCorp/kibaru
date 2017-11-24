@@ -153,8 +153,7 @@
         {% include "site/_thumbnail_footer.html" with elements=migrations el_title=migration_title link="migration" %}
         </section>
     {% endif %}
-    <div>
-</div>
+
     {% if videos_home %}
         <section class="s-video">
             <a href="{% url 'all_videos' %}" > <span class=heading-large>  {% trans "Videos" %}  &rsaquo; </span></a>
@@ -169,7 +168,6 @@
         </section>
     {% endif %}
 {% endblock %}
-<!-- Footer -->
 {% block footer %}
     {% include "site/_footer.html" %}
 {% endblock %}

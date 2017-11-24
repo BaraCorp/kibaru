@@ -22,7 +22,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from django_resized import ResizedImageField
 
-from kibaru.tools import social_share
+from kibaru.tools import social_share, get_text_in_html
 
 from py3compat import implements_to_string
 
@@ -256,7 +256,7 @@ class New(models.Model):
 
     @property
     def body(self):
-        return "{} ...".format(self.comment[:30])
+        return "{} ...".format(get_text_in_html(self.comment)[:60])
 
     def is_twitte(self):
         if not self.twitte:
@@ -356,7 +356,7 @@ class Article(models.Model):
 
     @property
     def body(self):
-        return "{} ...".format(self.text[:30])
+        return "{} ...".format(get_text_in_html(self.text)[:60])
 
     def save(self, *args, **kwargs):
         self.slug = re.sub(

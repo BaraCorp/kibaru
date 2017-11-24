@@ -16,5 +16,5 @@ if (document.layers) {
     document.onmouseup = contextMenuCatch.netscape;
     document.oncontextmenu = contextMenuCatch.ie;
 }
-document.oncontextmenu = new Function("return false");
-document.onselectstart = new Function("return false");
+/*document.oncontextmenu = new Function("return false");
+document.onselectstart = new Function("return false");*/

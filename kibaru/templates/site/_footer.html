@@ -1,53 +1,49 @@
 {% load widget_tweaks staticfiles i18n %}
-<footer>
-    <div class="footer">
-        <div class="row">
-            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
-                <h3>{% trans "Who are we ? " %}</h3>
-                <a href="{% url 'about' %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% trans "Site editorial line" %}  </a>
-            </div>
-            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
-                <h3> {% trans "Contact Us" %} </h3>
-                <address><a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaru"><i class="fa fa-envelope-o" aria-hidden="true"> </i> kibaruuml@gmail.com</a> </address>
-            </div>
-            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
-                <h3> {% trans "Follow us" %} </h3>
-                <ul class="social">
-                    <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class="fa fa-facebook-official" aria-hidden="true"></i></a> </li>
-                    <li> <a href="https://twitter.com/{{ settings.TWITTER_NAME }}"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a> </li>
-                    <li> <a href="https://plus.google.com/u/0/{{ settings.GOOGLE_PLUS}}/posts"> <i class="fa fa-google-plus-square" aria-hidden="true"></i></a> </li>
-                    <li> <a href="https://www.youtube.com/channel/{{ settings.YOUTUBE }}"><i class="fa fa-youtube-square" aria-hidden="true"></i></a> </li>
-                </ul>
-            </div>
-                <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
-                    <h3> {% trans "Newsletter" %} </h3>
-                    {% if form %}
-                        <div class="input-append newsletter-box text-center">
-                            {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                            <form action="" method="post" class="form-inline">{% csrf_token %}
-                                <div  class="form-group">
-                                    {{form.email|add_class:"form-control"}}
-                                    <button type='submit' class="btn btn-small fa fa-paper-plane-o"></button>
-                                </div>
-                            </form>
+                <footer>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
+                                <h3>{% trans "Who are we ? " %}</h3>
+                                <a href="{% url 'about' %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% trans "Site editorial line" %}  </a>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
+                                <h3> {% trans "Contact Us" %} </h3>
+                                <address><a href="mailto:kibaruuml@gmail.com?Subject=Site%20Kibaru"><i class="fa fa-envelope-o" aria-hidden="true"> </i> kibaruuml@gmail.com</a> </address>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12">
+                                <h3> {% trans "Follow us" %} </h3>
+                                <ul class="social">
+                                    <li> <a href="https://www.facebook.com/{{ settings.FACEBOOK_PAGE }}"> <i class="fa fa-facebook-official" aria-hidden="true"></i></a> </li>
+                                    <li> <a href="https://twitter.com/{{ settings.TWITTER_NAME }}"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a> </li>
+                                    <li> <a href="https://plus.google.com/u/0/{{ settings.GOOGLE_PLUS}}/posts"> <i class="fa fa-google-plus-square" aria-hidden="true"></i></a> </li>
+                                    <li> <a href="https://www.youtube.com/channel/{{ settings.YOUTUBE }}"><i class="fa fa-youtube-square" aria-hidden="true"></i></a> </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
+                                <h3> {% trans "Newsletter" %} </h3>
+                                {% if form %}
+                                    <div class="input-append newsletter-box text-center">
+                                        {% if messages %}
+                                        <ul class="messages">
+                                            {% for message in messages %}
+                                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                        <form action="" method="post" class="form-inline">{% csrf_token %}
+                                            <div  class="form-group">
+                                                {{form.email|add_class:"form-control"}}
+                                                <button type='submit' class="btn btn-small fa fa-paper-plane-o"></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <!--/.row-->
+                        </div><!--<a target="_blank" href="//baracorp.ml"><img  style="max-height: 9em;" src="{% static 'baraCorp.svg' %}"></a> -->
+                        <div class="footer-bottom">
+                                <div class="pull-left"> Copyright &copy; <a target="_blank" href="http://baracorp.ml" style="color: #888e00;">BaraCorp</a> 2017. {% trans "All right reserved." %}</div>
+                                <div class="pull-right" style="color: #1b503f;font-size: 1.5em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</div>
                         </div>
-                    {% endif %}
-                </div>
-            </div>
-            <!--/.row-->
-        </div><!--
-        <a target="_blank" href="//baracorp.ml"><img  style="max-height: 9em;" src="{% static 'baraCorp.svg' %}"></a> -->
-        <div class="footer-bottom">
-            <!-- <div class="container"> -->
-                <div class="pull-left"> Copyright &copy; <a target="_blank" href="http://baracorp.ml" style="color: #888e00;">BaraCorp</a> 2017. {% trans "All right reserved." %}</div>
-                <div class="pull-right" style="color: #1b503f;font-size: 1.5em;">{% ifequal lang 'ar'  %} {% trans "slogan" %} {% endifequal %}</div>
-            <!-- </div> -->
-        </div>
-    </div>
-</footer>
+                    </div>
+                </footer>

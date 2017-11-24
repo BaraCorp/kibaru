@@ -7,6 +7,7 @@ from __future__ import (
 
 import os
 
+import html2text
 from TwitterAPI import TwitterAPI
 
 from django.conf import settings
@@ -15,6 +16,12 @@ import facebook
 
 
 TWITTER_MAXLENGTH = getattr(settings, 'TWITTER_MAXLENGTH', 140)
+
+
+def get_text_in_html(htext):
+    h = html2text.HTML2Text()
+    h.ignore_links = True
+    return h.handle(htext)
 
 
 def full_image_url(img_name):

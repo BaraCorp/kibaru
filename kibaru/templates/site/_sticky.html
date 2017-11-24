@@ -1,6 +1,6 @@
 
 <div class="container-fluid" id="sticky">
-    <marquee scrollamount="7" scrolldelay="220" behavior="scroll" onmouseover="this.stop();" onmouseout="this.start();" direction={% ifequal lang 'ar'  %} "right" {% else % } "left" {% endifequal %}>
+    <marquee scrollamount="7" scrolldelay="220" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" direction="{% ifequal lang 'ar'  %} 'right' {% else % } 'left' {% endifequal %}" >
         {% for flash in flash_news %}
             <span data-toggle="{{flash.date}}" title="{{flash.date}}" data-placement="left">
                 {% if lang == 'ar'  %}
