@@ -2,6 +2,9 @@
 {% load staticfiles i18n widget_tweaks %}
 {% block title %}{% trans "Add News" %} {% endblock %}
 {% block form %}
+
+<!-- Jquery UI CSS -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css">
     <!-- Name input-->
     <div class="form-group">
       <label class="col-xs-12 col-sm-12 col-md-2 col-lg-2" control-label">{{form.type_new.label}}</label>
