@@ -2,18 +2,14 @@
 {% load i18n staticfiles imagefit %}
 {% block title %} {% trans "Presse Malienne" %} {% endblock %}
 {% block page-id %}presse{% endblock %}
-
-{% block head_ %}
-    {% block head_ %} {% include "_meta_website.html" with object=article %} {% endblock %}
-{% endblock %}
-
+{% block head_ %} {% include "_meta_website.html" with object=article %} {% endblock %}
 {% block banner %} {% include "site/_banner.html" %} {% endblock %}
 {% block sticky %} <div id="sticky-anchor">{% include "site/_sticky.html" %}</div> {% endblock %}
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 {% block content_index %}
-        <link  rel="stylesheet" href="{% static 'directory.css' %}">
+        <link  rel="stylesheet" href="{% static 'directory.min.css' %}">
         <h1 class="article_post_title entry-title">{% trans "Portal news sites online" %}</h1>
         {% for directory in directories %}
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
