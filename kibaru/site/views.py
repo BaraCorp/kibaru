@@ -86,7 +86,7 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     articles = posts
     if cat_slug:
         posts = posts.filter(category__slug=cat_slug)
-    publicities = Publicity.objects.all()
+    # publicities = Publicity.objects.all()
     videos = Video.objects.all()
     videos_home = videos[:3]
 
@@ -100,10 +100,10 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
         date_expired__gte=datetime.today, lang=current_lang)
     for job in jobs:
         job.url_display = reverse("display_job", args=[job.id])
-
-    for publicity in publicities:
-        publicity.url_display = reverse(
-            "display_publicity", args=[publicity.id])
+    # for publicity in publicities:
+    #     print(publicity, "kdkdk")
+    #     publicity.url_display = reverse(
+    #         "display_publicity", args=[publicity.id])
     free_expressions = articles.filter(
         category=Category.objects.get(slug="expression-libre")
     )[:4] if not cat_slug == "expression-libre" else []
@@ -129,16 +129,14 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
     for start in starts:
         start.url_display = reverse("art", args=[start.slug])
 
-    news = New.objects.filter(lang=current_lang,)
-    start_dat = datetime(NOW.year, NOW.month, NOW.day)
-    end_dat = start_dat + timedelta(days=3)
-    news_today = news.filter(date__gte=start_dat, date__lte=end_dat)
-    flash_news = news_today
+    news = New.objects.filter(lang=current_lang)
+    valid = datetime.now() - timedelta(days=3)
+    flash_news = news.filter(date__gte=valid)
     for new in flash_news:
         new.url_display = reverse("news", args=[new.id])
-    if flash_news.count() == 0:
-        flash_news = [New(title=_(
-            "For your advertisements, contact +223 60 16 16 74."))]
+    # if flash_news.count() == 0:
+    #     flash_news = [New(title=_(
+    #         "For your advertisements, contact +223 60 16 16 74."))]
 
     # tag_data = create_tag_data(posts)
     context = {'settings': settings,
@@ -154,11 +152,17 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
                'free_expression_title': _("Free Expression"),
                'same_categies_title': _("Same Category"),
                'archive_counts': archive_data,
-               'publicities': publicities,
                'jobs': jobs,
                'job_title': _("Avis"),
                'videos_home': videos_home,
-               'videos': videos}
+               'videos': videos,
+               'a' : Publicity.get_or_none(pos="A"),
+               'b' : Publicity.get_or_none(pos="B"),
+               'c' : Publicity.get_or_none(pos="C"),
+               'd' : Publicity.get_or_none(pos="D"),
+               'e' : Publicity.get_or_none(pos="E"),
+               'f' : Publicity.get_or_none(pos="F")
+               }
     return posts, context
 
 

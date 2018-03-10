@@ -19,7 +19,7 @@ ROOT_DIR = os.path.dirname(abs_path)
 SECRET_KEY = '3(p&^=gsgxk84xf8s4-rqpob41t7rrwp(tqm_enwxr2ov^!bf='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -193,6 +193,7 @@ IMAGEFIT_PRESETS = {
     'img_start': {'width': 550, 'height': 450, 'crop': True},
     'img_artd': {'width': 760, 'height': 550, 'crop': True},
     'img_art': {'width': 407, 'height': 200, 'crop': True},
+    'img_pub': {'width': 1007, 'height': 1000, 'crop': False},
 }
 
 LOGGING = {

@@ -35,9 +35,9 @@
             </div>
         </div>
         <div class="pub-a">
-            {% if pub %}
-                <img src="https://fakeimg.pl/1400x100/"><h1 class="pub"> A </h1>
-            {% endif %}
+            {% if a %}
+                <div ><a href="{{a.url}}"> <img style="max-height: 20em" src="{{ a.image.url | resize:'img_pub'}}"></a></div>
+           {% endif %}
         </div>
     </div>
 </div>

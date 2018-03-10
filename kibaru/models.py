@@ -404,16 +404,46 @@ models.signals.post_save.connect(social_share, sender=Article)
 
 @implements_to_string
 class Publicity(models.Model):
+    A = "A"
+    B = "B"
+    C = "C"
+    D = "D"
+    E = "E"
+    F = "F"
+    G = "G"
+    DISPO = {
+        A: "A 1400X100",
+        B: "B 605X140",
+        C: "C 280X100",
+        D: "D ",
+        E: "E 288X100",
+        F: "F 288X100",
+        G: "G 288X144",
+    }
 
     class Meta:
         verbose_name = _('Publicity')
         verbose_name_plural = _('Publicities')
 
+    name = models.CharField(max_length=200)
+    position = models.CharField(max_length=10, choices=DISPO.items())
     image = models.ImageField(upload_to='images_pub/', blank=True,
                               verbose_name=_("Picture"))
+    url = models.CharField(max_length=10, null=True, blank=True)
+    expired = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.image
+        return u"({}) - {}".format(self.DISPO.get(self.position), self.name)
+
+    def __unicode__(self):
+        return u"({}) - {}".format(self.DISPO.get(self.position), self.name)
+
+    @classmethod
+    def get_or_none(cls, pos):
+        try:
+            return cls.objects.get(position=pos)
+        except cls.DoesNotExist:
+            return None
 
 
 class Video(models.Model):
