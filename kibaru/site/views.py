@@ -156,12 +156,12 @@ def init(lang='fr', month=None, year=None, cat_slug=None):
                'job_title': _("Avis"),
                'videos_home': videos_home,
                'videos': videos,
-               'a' : Publicity.get_or_none(pos="A"),
-               'b' : Publicity.get_or_none(pos="B"),
-               'c' : Publicity.get_or_none(pos="C"),
-               'd' : Publicity.get_or_none(pos="D"),
-               'e' : Publicity.get_or_none(pos="E"),
-               'f' : Publicity.get_or_none(pos="F")
+               'a': Publicity.get_or_none(pos="A"),
+               'b': Publicity.get_or_none(pos="B"),
+               'c': Publicity.get_or_none(pos="C"),
+               'd': Publicity.get_or_none(pos="D"),
+               'e': Publicity.get_or_none(pos="E"),
+               'f': Publicity.get_or_none(pos="F")
                }
     return posts, context
 

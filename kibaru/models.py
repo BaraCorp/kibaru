@@ -441,7 +441,7 @@ class Publicity(models.Model):
     @classmethod
     def get_or_none(cls, pos):
         try:
-            return cls.objects.get(position=pos)
+            return cls.objects.filter(expired=False).get(position=pos)
         except cls.DoesNotExist:
             return None
 
