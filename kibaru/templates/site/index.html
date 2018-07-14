@@ -93,7 +93,7 @@
                 <script>function reloadFtT4UwYQy(){ var sc = document.getElementById('scFtT4UwYQy');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFtT4UwYQy';sc.src = 'https://freecurrencyrates.com/fr/widget-vertical-editable?iso=EURUSDXOFGBPJPYCNY&df=1&p=FtT4UwYQy&v=fits&source=fcr&width=250&width_title=0&firstrowvalue=1&thm=72B42D,285C00,3F7506,3A8104,FFFFFF,72B42D,285C00,ffffff,ffffff&title=Convertisseur%20de%20devises&tzo=0';var div = document.getElementById('gcw_mainFtT4UwYQy');div.parentNode.insertBefore(sc, div);} reloadFtT4UwYQy(); </script>
             </section>
             {% if c %}
-                <div ><a hrec="{% if c.url %}{{c.url}} {% else %} {{c.image.url}} {% endif %}"> <img style="max-height: 20em" src="{{ c.image.url | resize:'img_pub'}}"></a></div>
+                <div ><a href="{% if c.url %}{{c.url}} {% else %} {{c.image.url}} {% endif %}"> <img style="max-height: 20em" src="{{ c.image.url | resize:'img_pub'}}"></a></div>
            {% endif %}
             {% ifequal lang 'fr'  %}
                 {% if jobs %}
