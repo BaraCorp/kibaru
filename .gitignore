@@ -60,7 +60,7 @@ settings_local.py
 /static/
 install.txt
 *~
-media/images_article/
+media/*
 migrations/
 Backup_db/
 

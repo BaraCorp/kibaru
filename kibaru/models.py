@@ -429,7 +429,7 @@ class Publicity(models.Model):
     position = models.CharField(max_length=10, choices=DISPO.items())
     image = models.ImageField(upload_to='images_pub/', blank=True,
                               verbose_name=_("Picture"))
-    url = models.CharField(max_length=10, null=True, blank=True)
+    url = models.CharField(max_length=200, null=True, blank=True)
     expired = models.BooleanField(default=False)
 
     def __str__(self):
