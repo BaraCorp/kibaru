@@ -55,10 +55,13 @@ def post_to_facebook(sender, instance):
     }
     msg = u"{}".format(instance.title)
     graph = facebook.GraphAPI(settings.PAGE_TOKEN)
-    post = graph.put_wall_post(
-        message=msg, attachment=attach, profile_id=settings.FACEBOOK_APP_ID)
-    if post:
-        return 'posted'
+    try:
+        post = graph.put_wall_post(
+            message=msg, attachment=attach, profile_id=settings.FACEBOOK_APP_ID)
+        if post:
+            return 'posted'
+    except:
+        pass
     return "No post"
 
 
