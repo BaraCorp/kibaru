@@ -74,7 +74,7 @@ INSTALLED_APPS = (
     'tinymce',
     'imagefit',
     'widget_tweaks',
-    'import_export',
+    # 'import_export',
     'dbbackup',  # django-dbbackup
     'poll',
 )
