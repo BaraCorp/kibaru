@@ -11,7 +11,7 @@ from django.utils.translation import gettext_lazy as _
 
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(abs_path)
-DATA_DIR = os.getenv("DATA_DIR", os.path.join(os.path.dirname(ROOT_DIR), "data", "kibaru"))
+# DATA_DIR = os.getenv("DATA_DIR", os.path.join(os.path.dirname(ROOT_DIR), "data", "kibaru"))
 # print(DATA_DIR)
 
 # Quick-start development settings - unsuitable for production
@@ -129,7 +129,8 @@ SITE_ID = 1
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(DATA_DIR, "database", 'db.sqlite3'),
+        # 'NAME': os.path.join(DATA_DIR, "database", 'db.sqlite3'),
+        'NAME': os.path.join(ROOT_DIR, 'db.sqlite3'),
     }
 }
 
@@ -159,7 +160,8 @@ LOCALE_PATHS = (
     os.path.join(ROOT_DIR, "kibaru/locale"),
 )
 
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+# MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
