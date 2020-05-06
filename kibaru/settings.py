@@ -11,6 +11,8 @@ from django.utils.translation import gettext_lazy as _
 
 abs_path = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(abs_path)
+DATA_DIR = os.getenv("DATA_DIR", os.path.join(os.path.dirname(ROOT_DIR), "data", "kibaru"))
+# print(DATA_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -23,40 +25,40 @@ SECRET_KEY = '3(p&^=gsgxk84xf8s4-rqpob41t7rrwp(tqm_enwxr2ov^!bf='
 
 ALLOWED_HOSTS = ['*']
 
-LOGGING_CONFIG = None
+# LOGGING_CONFIG = None
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler'
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-        'cities': {
-            'handlers': ['console'],
-            'level': 'INFO'
-        },
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'filters': {
+#         'require_debug_false': {
+#             '()': 'django.utils.log.RequireDebugFalse'
+#         }
+#     },
+#     'handlers': {
+#         'mail_admins': {
+#             'level': 'ERROR',
+#             'filters': ['require_debug_false'],
+#             'class': 'django.utils.log.AdminEmailHandler'
+#         },
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler'
+#         },
+#     },
+#     'loggers': {
+#         'django.request': {
+#             'handlers': ['mail_admins'],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#         'cities': {
+#             'handlers': ['console'],
+#             'level': 'INFO'
+#         },
 
-    }
-}
+#     }
+# }
 # Application definition
 
 INSTALLED_APPS = (
@@ -72,10 +74,11 @@ INSTALLED_APPS = (
     'tinymce',
     'imagefit',
     'widget_tweaks',
+    'import_export',
     'dbbackup',  # django-dbbackup
     'poll',
 )
-
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,11 +125,11 @@ SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+# print(os.path.join(DATA_DIR, "database", 'db.sqlite3'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(ROOT_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(DATA_DIR, "database", 'db.sqlite3'),
     }
 }
 
@@ -150,18 +153,18 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+DEBUG = True
 LOCALE_PATHS = (
     os.path.join(ROOT_DIR, "locale"),
     os.path.join(ROOT_DIR, "kibaru/locale"),
 )
 
-MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
-
+print(STATIC_ROOT)
 
 DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
 DJANGORESIZED_DEFAULT_QUALITY = 75
@@ -188,6 +191,8 @@ BP = ""
 FIXTURE_DIRS = (
     os.path.join(ROOT_DIR, 'fixtures'),
 )
+
+IMAGEFIT_ROOT = os.path.dirname(MEDIA_ROOT)
 
 IMAGEFIT_PRESETS = {
     'img_start': {'width': 550, 'height': 450, 'crop': True},
@@ -225,11 +230,11 @@ LOGGING = {
             'propagate': True,
             'level': 'INFO',
         },
-        'django.request': {
-            'handlers': ['mail_admins', 'file'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
+        # 'django.request': {
+        #     'handlers': ['mail_admins', 'file'],
+        #     'level': 'ERROR',
+        #     'propagate': False,
+        # },
         'iso8601': {
             'handlers': ['null'],
             'level': 'DEBUG',
@@ -252,7 +257,7 @@ LOGGING = {
     }
 }
 
-try:
-    from kibaru.settings_local import *
-except Exception as e:
-    print(e)
+# try:
+#     from kibaru.settings_local import *
+# except Exception as e:
+#     print(e)

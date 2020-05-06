@@ -4,7 +4,9 @@
 
 from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
+import csv
 
+from django.http import HttpResponse
 from datetime import datetime, timedelta
 
 from django.conf import settings
@@ -414,3 +416,49 @@ def directory(request, *args, **kwargs):
     context.update({'subtitle': 'Presse Malienne', 'directories': directories,
                     'posts': posts, "lang": request.LANGUAGE_CODE})
     return render(request, 'site/directory.html', context)
+
+
+def csv_database_write(request):
+
+    # Get all data from UserDetail Databse Table
+    articles = Article.objects.all()
+
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="csv_database_write.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow([
+        'slug',
+        'title',
+        'text',
+        'legend',
+        'author',
+        'date_created',
+        'date_modified',
+        'lang',
+        'category',
+        'status',
+        'start',
+        'count_view',
+        'count_like',
+        'twitte'])
+
+    for art in articles:
+        writer.writerow([
+            art.slug,
+            art.title,
+            art.text,
+            art.legend,
+            art.author,
+            art.date_created,
+            art.date_modified,
+            art.lang,
+            art.category,
+            art.status,
+            art.start,
+            art.count_view,
+            art.count_like,
+            art.twitte])
+
+    return response

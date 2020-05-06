@@ -15,7 +15,7 @@ from kibaru.forms import (Articleform, DirectoryFrom,
                           UserChangeForm, UserCreationForm, Videoform)
 from kibaru.models import (Article, Category, Directory, Job, Language, Member,
                            New, Newsletter, Publicity, Video)
-
+from import_export.admin import ImportExportModelAdmin
 # unregister and register again
 # admin.site.unregister(Group)
 
@@ -98,6 +98,11 @@ class ArticleAdmin(admin.ModelAdmin):
     )
     exclude = ('slug',)
     form = Articleform
+
+
+# @admin.register(Article)
+class ArticleAdmin(ImportExportModelAdmin):
+    pass
 
 
 @admin.register(Video)
