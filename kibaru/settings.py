@@ -166,7 +166,7 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
-print(STATIC_ROOT)
+# print(STATIC_ROOT)
 
 DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
 DJANGORESIZED_DEFAULT_QUALITY = 75
@@ -259,7 +259,7 @@ LOGGING = {
     }
 }
 
-# try:
-#     from kibaru.settings_local import *
-# except Exception as e:
-#     print(e)
+try:
+    from kibaru.settings_local import *
+except Exception as e:
+    print(e)
