@@ -45,18 +45,25 @@ def post_to_facebook(sender, instance):
         if instance.image:
             image_path = instance.image.name
 
-    attach = {
-        "name": u"{}".format(settings.APP_NAME),
-        "link": instance.post_url(),
-        "page_token": settings.PAGE_TOKEN,
-        "description": u"{}".format(caption),
-        # "picture": os.path.join(settings.DOMMAIN, "media", image_path),
-        "caption": u"{}".format(caption)
-    }
+    # attach = {
+    #     "name": u"{}".format(settings.APP_NAME),
+    #     "link": instance.post_url(),
+    #     "page_token": settings.PAGE_TOKEN,
+    #     "description": u"{}".format(caption),
+    #     # "picture": os.path.join(settings.DOMMAIN, "media", image_path),
+    #     "caption": u"{}".format(caption)
+    # }
+
     msg = u"{}".format(instance.title)
-    graph = facebook.GraphAPI(settings.PAGE_TOKEN)
-    post = graph.put_wall_post(
-        message=msg, attachment=attach, profile_id=settings.FACEBOOK_APP_ID)
+    graph = facebook.GraphAPI(access_token=settings.PAGE_TOKEN)
+
+    graph.put_object(
+       parent_object=settings.FACEBOOK_PAGE_ID,
+       connection_name="feed",
+       message=msg,
+       link=instance.post_url()
+    )
+
     if post:
         return 'posted'
     return "No post"
