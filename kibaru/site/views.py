@@ -314,8 +314,11 @@ def display_article(request, *args, **kwargs):
 
     posts, context = init(lang=request.LANGUAGE_CODE)
     article_slug = kwargs["slug"]
+    if article_slug[-1:] == '/':
+        article_slug = article_slug[:-1]
     try:
         if len(article_slug) < 9:
+            print("article_slug:", article_slug)
             article = posts.get(id=short_url.decode_url(article_slug))
         else:
             article = posts.get(slug=article_slug)
