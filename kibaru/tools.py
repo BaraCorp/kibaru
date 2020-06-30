@@ -58,11 +58,12 @@ def post_to_facebook(sender, instance):
     graph = facebook.GraphAPI(access_token=settings.PAGE_TOKEN)
 
     graph.put_object(
-       parent_object=settings.FACEBOOK_PAGE_ID,
-       connection_name="feed",
-       message=msg,
-       link=instance.post_url()
+        parent_object="1652451611660511",
+        connection_name="feed",
+        message=msg,
+        link=instance.post_url()
     )
+
 
     if post:
         return 'posted'
