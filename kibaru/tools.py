@@ -56,10 +56,6 @@ def post_to_facebook(sender, instance):
 
     msg = u"{}".format(instance.title)
     graph = facebook.GraphAPI(access_token=settings.PAGE_TOKEN)
-    # PAGE_TOKEN = "EAACtg4kX1nUBADsVBNKDS4WXGf1ri58VSU8jhJ7OZCpXvlnyWZBTaVJynvsxp7bDIzbNzLWPjQtcqrsR3ZAOT2Qywh55Qj1wZA9E2wBN9lmVDPyUd0BJXnvVurSIldGamZCGRlkl3FWtc3oCD0WX4dDoBZC29XySQLiQZADnk0sDH9L7fsZBntFH1VU4dw8w6m4VhV4scELWhgZDZD"
-    # graph = facebook.GraphAPI(access_token=PAGE_TOKEN)
-    print(msg)
-    print(instance.post_url())
     post = graph.put_object(
         parent_object="1652451611660511",
         connection_name="feed",
